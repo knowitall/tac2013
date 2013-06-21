@@ -1,0 +1,130 @@
+KBP relation,Max values (9 means no limit),Relation terms,Arg2 begins,Entity in,SlotFill in,Slot type
+per:alternate_names,9,known,as,arg1,arg2,ProperNoun
+,,,,,,
+per:cause_of_death,9,died,from,arg1,arg2,<any>
+per:cause_of_death,9,died,as,arg1,arg2,result of X
+per:cause_of_death,9,died,of,arg1,arg2,<any>
+per:cause_of_death,9,died,due to,arg1,arg2,<any>
+,,,,,,
+per:city_of_death,1,died,in,arg1,arg2,City
+per:country_of_death,1,died,in,arg1,arg2,Country
+per:stateorprovince_of_death,1,died,in,arg1,arg2,Stateorprovince
+,,,,,,
+per:date_of_death,1,died,in,arg1,arg2,Date
+per:date_of_death,1,died,on,arg1,arg2,Date
+,,,,,,
+per:other_family,9,cousin,of,arg1,arg2,Person 
+per:other_family,9,cousin,[of],arg1,arg2,Person 
+per:other_family,9,cousin,of,arg2,arg1,Person 
+per:other_family,9,cousin,[of],arg2,arg1,Person 
+per:other_family,9,uncle,of,arg1,arg2,Person 
+per:other_family,9,uncle,[of],arg1,arg2,Person 
+per:other_family,9,uncle,of,arg2,arg1,Person 
+per:other_family,9,uncle,[of],arg2,arg1,Person 
+per:other_family,9,aunt,of,arg1,arg2,Person 
+per:other_family,9,aunt,[of],arg1,arg2,Person 
+per:other_family,9,aunt,of,arg2,arg1,Person 
+per:other_family,9,aunt,[of],arg2,arg1,Person 
+,,,,,,
+per:children,9,son,of,arg2,arg1,Person
+per:children,9,son,[of],arg2,arg1,Person
+per:children,9,daughter,of,arg2,arg1,Person
+per:children,9,daughter,[of],arg2,arg1,Person
+per:children,9,father,of,arg1,arg2,Person
+per:children,9,father,[of],arg1,arg2,Person
+per:children,9,mother,of,arg1,arg2,Person
+per:children,9,mother,[of],arg1,arg2,Person
+per:children,9,parents,of,arg1,arg2,Person
+,,,,,,
+per:date_of_birth,1,born,in,arg1,arg2,Date
+per:date_of_birth,1,born,on,arg1,arg2,Date
+,,,,,,
+per:schools_attended,9,attended,,arg1,arg2,School
+per:schools_attended,9,graduated,from,arg1,arg2,School
+per:schools_attended,9,graduate,from,arg1,arg2,School
+per:schools_attended,9,graduate,of,arg1,arg2,School
+per:schools_attended,9,enrolled,in,arg1,arg2,School
+per:schools_attended,9,enrolled,at,arg1,arg2,School
+per:schools_attended,9,student,at,arg1,arg2,School
+,,,,,,
+per:employee_or_member_of,9,employed,at,arg1,arg2,Organization
+per:employee_or_member_of,9,employed,by,arg1,arg2,Organization
+per:employee_or_member_of,9,hired,by,arg1,arg2,Organization
+per:employee_or_member_of,9,hired,,arg2,arg1,Organization
+per:employee_or_member_of,9,joined,,arg1,arg2,Organization
+per:employee_or_member_of,9,<JobTitle>,of,arg1,arg2,Organization
+per:employee_or_member_of,9,<JobTitle> ,[of],arg1,arg2,Organization
+per:employee_or_member_of,9,<JobTitle>,at,arg1,arg2,Organization
+per:employee_or_member_of,9,<JobTitle>,for,arg1,arg2,Organization
+,,,,,,
+per:title,9,employed,as,arg1,arg2,JobTitle
+per:title,9,hired,as,arg1,arg2,JobTitle
+per:title,9,employed,as,arg1,arg2,JobTitle
+per:title,9,employed,as,arg1,arg2,JobTitle
+per:employee_or_member_of,9,<JobTitle>,of,arg1,relation,JobTitle
+per:employee_or_member_of,9,<JobTitle>,[of],arg1,relation,JobTitle
+per:employee_or_member_of,9,<JobTitle>,at,arg1,relation,JobTitle
+per:employee_or_member_of,9,<JobTitle>,for,arg1,relation,JobTitle
+,,,,,,
+per:parents,9,son,of,arg1,arg2,Person
+per:parents,9,son,[of],arg1,arg2,Person
+per:parents,9,daughter,of,arg1,arg2,Person
+per:parents,9,daughter,[of],arg1,arg2,Person
+per:parents,9,father,of,arg2,arg1,Person
+per:parents,9,father,[of],arg2,arg1,Person
+per:parents,9,mother,of,arg2,arg1,Person
+per:parents,9,mother,[of],arg2,arg1,Person
+per:parents,9,parents,of,arg2,arg1,Person
+,,,,,,
+per:city_of_birth,1,born,in,arg1,arg2,City
+,,,,,arg1,
+per:country_of_birth,1,born,in,arg1,arg2,Country
+,,,,,,
+per:stateorprovince_of_birth,1,born,in,arg1,arg2,Stateorprovince
+,,,,,,
+per:cities_of_residence,9,lived,in,arg1,arg2,City
+per:cities_of_residence,,came,from,arg1,arg2,City
+per:cities_of_residence,,be,from,arg1,arg2,City
+per:cities_of_residence,,grew up,in,arg1,arg2,City
+,,,,,,
+per:countries_of_residence,9,lived,in,arg1,arg2,Country
+per:countries_of_residence,,came,from,arg1,arg2,Country
+per:countries_of_residence,,be,from,arg1,arg2,Country
+per:countries_of_residence,,grew up,in,arg1,arg2,Country
+,,,,,,
+per:statesorprovinces_of_residence,9,lived,in,arg1,arg2,Stateorprovince
+per:statesorprovinces_of_residence,,came,from,arg1,arg2,Stateorprovince
+per:statesorprovinces_of_residence,,be,from,arg1,arg2,Stateorprovince
+per:statesorprovinces_of_residence,,grew up,in,arg1,arg2,Stateorprovince
+,,,,,,
+per:religion,1,be,,arg1,arg2,Religion
+,,,,,,
+per:siblings,9,brother,of,arg1 ,arg1,Person
+per:siblings,9,brother,[of],arg1 ,arg1,Person
+per:siblings,9,brother,of,arg2 ,arg1,Person
+per:siblings,9,brother,[of],arg2 ,arg1,Person
+per:siblings,9,sister,of,arg1 ,arg1,Person
+per:siblings,9,sister,[of],arg1 ,arg1,Person
+per:siblings,9,sister,of,arg2 ,arg1,Person
+per:siblings,9,sister,[of],arg2 ,arg1,Person
+,,,,,,
+per:spouse,9,wife,of,arg1,arg2,Person
+per:spouse,9,wife,[of],arg1,arg2,Person
+per:spouse,9,wife,of,arg2,arg1,Person
+per:spouse,9,wife,[of],arg2,arg1,Person
+per:spouse,9,husband,of,arg1,arg2,Person
+per:spouse,9,husband,[of],arg1,arg2,Person
+per:spouse,9,husband,of,arg2,arg1,Person
+per:spouse,9,husband,[of],arg2,arg1,Person
+per:spouse,9,married,,arg1,arg2,Person
+per:spouse,9,married,to,arg1,arg2,Person
+per:spouse,9,married,,arg2,arg1,Person
+per:spouse,9,married,to,arg2,arg1,Person
+,,,,,,
+per:age,1,old,,arg1,relation,<integer>-year-old
+per:age,1,age,,arg1,arg2,Integer
+,,,,,,
+per:charges,9,charged,with,arg1,arg2,Crime
+,,,,,,
+per:origin,1,national,of,arg1,arg2,Country
+per:origin,1,be,,arg1,arg2,Nationality
