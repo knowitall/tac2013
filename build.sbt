@@ -13,6 +13,8 @@ organization := "edu.knowitall"
 resolvers += "amateras-repo" at "http://amateras.sourceforge.jp/mvn"
 
 libraryDependencies ++= Seq(
+    "net.databinder" %% "unfiltered-filter" % "0.6.8",
+    "net.databinder" %% "unfiltered-jetty" % "0.6.8",
 	"jp.sf.amateras.solr.scala" %% "solr-scala-client" % "0.0.7",
 	"edu.stanford.nlp" % "stanford-corenlp" % "1.3.4",
 	"org.scalatest" % "scalatest_2.10" % "1.9.1" % "test",
