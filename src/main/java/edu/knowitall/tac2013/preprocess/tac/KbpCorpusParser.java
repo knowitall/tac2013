@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -45,7 +46,7 @@ public class KbpCorpusParser {
 		this.input = input;
 	}
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 
 		String usage = 
 				"Usage: KbpCorpusParser <inputfile> <outputfile> [--news, --web, --forum]\n" +
@@ -92,7 +93,7 @@ public class KbpCorpusParser {
 			for (String line : docWrapper.lines) docBuffer.append(line);
 			String docString = docBuffer.toString();
 			
-			InputStream docStream = new ByteArrayInputStream(docString.getBytes());
+			InputStream docStream = new ByteArrayInputStream(docString.getBytes("UTF8"));
 
 			try {
 				Document xmlDoc = parser.getXmlDocument(docStream);

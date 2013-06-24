@@ -1,0 +1,999 @@
+ eng-NG-31-150379-10636475 	0	197	This post was written by jht...@gmail.com.
+ eng-NG-31-150379-10636475 	1	85	This post was written on 2007-10-22T10:31:03 .
+ eng-NG-31-150379-10636475 	2	161	2910 V3.1.1 RC2 firmware 
+ eng-NG-31-150379-10636475 	3	318	File Name 2910_3650.all http://draytek-vigor-2910-user-group.googlegroups.com/web/v2910_3650.all 
+ eng-NG-31-150391-10636477 	0	192	This post was written by Dread Knight.
+ eng-NG-31-150391-10636477 	1	84	This post was written on 2007-10-23T05:02:38 .
+ eng-NG-31-150391-10636477 	2	159	Hello all linux users! 
+ eng-NG-31-150391-10636477 	3	309	Greetings! 
+ eng-NG-31-150391-10636477 	4	321	I'm an Ubuntu Gutsy user. 
+ eng-NG-31-150391-10636477 	5	347	Love google very much, too bad it sometimes leaves linux behind in the favor of Mac :\ 
+ eng-NG-31-150391-10636477 	6	543	Well at least the got some programs for Linux. 
+ eng-NG-31-150391-10636477 	7	590	But I am still eagerly awaiting a Google Talk port to Linux. 
+ eng-NG-31-150391-10636477 	8	652	On Oct 23, 1:02 am, Dread Knight &lt;dk.v ... 
+ eng-NG-31-150391-10636477 	9	698	@gmail.com&gt; wrote: 
+ eng-NG-31-150391-10636477 	10	743	&gt; Greetings! 
+ eng-NG-31-150391-10636477 	11	760	&gt; I'm an Ubuntu Gutsy user. 
+ eng-NG-31-150391-10636477 	12	791	Love google very much, too bad it sometimes &gt; leaves linux behind in the favor of Mac :\ "> 
+ eng-NG-31-150391-10636477 	13	1026	On Tue, 23 Oct 2007, Gtr225 wrote: &gt; Well at least the got some programs for Linux. 
+ eng-NG-31-150391-10636477 	14	1113	But I am still eagerly &gt; awaiting a Google Talk port to Linux. "> 
+ eng-NG-31-150391-10636477 	15	1183	Why not use Pidgin with your gtalk account? 
+ eng-NG-31-150391-10636477 	16	1227	Google opened up XMPP usage not long after they released gtalk. 
+ eng-NG-31-150391-10636477 	17	1292	-- patrik_wallstrom-&gt;foodfight-&gt;pa ... 
+ eng-NG-31-150391-10636477 	18	1337	@blipp.com-&gt;+46-733173956 
+ eng-NG-31-150396-10636480 	0	198	This post was written by Miami Web design Florida.
+ eng-NG-31-150396-10636480 	1	84	This post was written on 2007-12-05T06:12:07 .
+ eng-NG-31-150396-10636480 	2	159	Powerful Internet Solutions 
+ eng-NG-31-150396-10636480 	3	333	Powerful Internet Solutions 
+ eng-NG-31-150396-10636480 	4	362	Professional Web Design and eCommerce Development Company 
+ eng-NG-31-150396-10636480 	5	421	Offering Web Design, eCommerce Solutions and Custom Web Development to Miami and Fort Lauderdale Area. 
+ eng-NG-31-150396-10636480 	6	524	Look over our Web Design and eCommerce Solutions Portfolio and see the diversity of our web design styles. 
+ eng-NG-31-150396-10636480 	7	632	For more details, visit our site: * http://www.fuelpipe.com* &lt; http://www.fuelpipe.com &gt; 
+ eng-NG-31-150396-10636480 	8	728	Phone:     (305) 921-9581 Fax:     (954) 467-5411 Email:     off ... 
+ eng-NG-31-150396-10636480 	9	797	@fuelpipe.com Address:     1314 East Las Olas Blvd. 
+ eng-NG-31-150396-10636480 	10	849	Fort Lauderdale FL 33301 USA 
+ eng-NG-31-150399-10636491 	0	224	This post was written by travelhead.
+ eng-NG-31-150399-10636491 	1	84	This post was written on 2007-12-20T18:16:44 .
+ eng-NG-31-150399-10636491 	2	159	Tracking Affiliate Links With Google Website Optimizer 
+ eng-NG-31-150399-10636491 	3	345	Hello! 
+ eng-NG-31-150399-10636491 	4	353	I've used GWO in the past with my clients, but I've never tried using it to track affiliate links.  
+ eng-NG-31-150399-10636491 	5	453	Meaning, I have a link on my page that goes to a website on another domain. 
+ eng-NG-31-150399-10636491 	6	529	If someone clicks the link, it should be registered as a conversion event. 
+ eng-NG-31-150399-10636491 	7	605	I've research this a bit, and found a few posts describing some sort of a solution. 
+ eng-NG-31-150399-10636491 	8	690	I came upon this code: 
+ eng-NG-31-150399-10636491 	9	714	&lt;script&gt; if(typeof(urchinTracker)!
+ eng-NG-31-150399-10636491 	10	754	='function')document.write('&lt;sc'+'ript src=&quot;'+ 'http'+(document.location.protocol=='https:'?'
+ eng-NG-31-150399-10636491 	11	855	s://ssl':'://www')+ '.google-analytics.com/urchin.js'+' &quot;&gt;&lt;/sc'+'ript&gt;') &lt;/script&gt; 
+ eng-NG-31-150399-10636491 	12	959	&lt;h2 align=&quot;center&quot;&gt;&lt;font face=&quot;Arial&quot;&gt;Click on this link&lt;a href=http:// www.blah.com/payme onclick=&quot;_uacct=' UA-XXXXXXX-X'; urchinTracker('/ XXXXXXXXX/goal'); return true;&quot;&gt; here&lt;/a&gt;!
+ eng-NG-31-150399-10636491 	13	1196	&lt;/font&gt;&lt;/h2&gt; 
+ eng-NG-31-150399-10636491 	14	1222	I can see how it's using an onClick event, but I wasn't sure how that ties into GWO. 
+ eng-NG-31-150399-10636491 	15	1308	For example, here's the link I want to track &lt;a href=&quot;http:// www.keywordresearching.com/recommends/keycompete &quot; onClick=&quot;javascript:urchinTracker('/outgoing/ keycompete/');&quot;&gt;KeyCompete&lt;/a&gt; 
+ eng-NG-31-150399-10636491 	16	1531	I'm already using that link to track onClick events as a Goal for Google Analytics. 
+ eng-NG-31-150399-10636491 	17	1616	Now I want to tie in GWO. 
+ eng-NG-31-150399-10636491 	18	1643	Any ideas? 
+ eng-NG-31-150399-10636491 	19	1655	Thanks! 
+ eng-NG-31-150399-10636491 	20	1663	Joshua 
+ eng-NG-31-150304-10636344 	0	180	This post was written by Per Ekström.
+ eng-NG-31-150304-10636344 	1	84	This post was written on 2007-10-09T14:47:37 .
+ eng-NG-31-150304-10636344 	2	159	Roll Call! 
+ eng-NG-31-150304-10636344 	3	297	Hi everyone! 
+ eng-NG-31-150304-10636344 	4	311	First off, I want to apologize. 
+ eng-NG-31-150304-10636344 	5	343	I've had some trouble with my money flow the last six weeks, and thus I haven't been able to get a stable net connection yet. 
+ eng-NG-31-150304-10636344 	6	469	Also, stuff keeps popping up that require my attention in the real world. 
+ eng-NG-31-150304-10636344 	7	543	So... :/ Hopefully, everything will have settled for good in a month or so, and then I can finally begin to work on the firmware for real. 
+ eng-NG-31-150304-10636344 	8	683	So, since the pace is slowly picking up again, here's a general roll call. 
+ eng-NG-31-150304-10636344 	9	758	Did everyone die, or are there people out there still? 
+ eng-NG-31-150304-10636344 	10	813	What's happening? 
+ eng-NG-31-150304-10636344 	11	831	If you want to help or think you can help in any way shape or form, please say so. 
+ eng-NG-31-150304-10636344 	12	914	And as for you guys, have you been doing some research and stuff? 
+ eng-NG-31-150304-10636344 	13	980	Report in, soldiers! 
+ eng-NG-31-150304-10636344 	14	1001	;) 
+ eng-NG-31-150304-10636344 	15	1005	Also, it might be a good idea to meet in our MUC to decide how we're going to move forward and see where we are right now, so, meeting time! 
+ eng-NG-31-150304-10636344 	16	1146	I'm suggesting a weekend in November sometime, anyone against that idea? 
+ eng-NG-31-150304-10636344 	17	1220	I'm still interested in bringing this to reality, and I hope you guys are. :) Seeya! 
+ eng-NG-31-150304-10636344 	18	1438	I'm still here too...but just like Wertigon, I keep finding life to get in the way. 
+ eng-NG-31-150304-10636344 	19	1522	This project is taking much longer than I had ever expected, but that's okay. 
+ eng-NG-31-150304-10636344 	20	1600	We'll get there eventually as long as we don't give up on this common dream of ours ;) 
+ eng-NG-31-150304-10636344 	21	1688	- Derick 
+ eng-NG-31-150304-10636344 	22	1698	On 10/9/07, Per Ekström &lt;werti ... 
+ eng-NG-31-150304-10636344 	23	1736	@gmail.com&gt; wrote: 
+ eng-NG-31-150304-10636344 	24	1781	&gt; Hi everyone! 
+ eng-NG-31-150304-10636344 	25	1800	&gt; First off, I want to apologize. 
+ eng-NG-31-150304-10636344 	26	1837	I've had some trouble with my money &gt; flow the last six weeks, and thus I haven't been able to get a stable &gt; net connection yet. 
+ eng-NG-31-150304-10636344 	27	1973	Also, stuff keeps popping up that require my &gt; attention in the real world. 
+ eng-NG-31-150304-10636344 	28	2052	So... :/ Hopefully, everything will have &gt; settled for good in a month or so, and then I can finally begin to &gt; work on the firmware for real. 
+ eng-NG-31-150304-10636344 	29	2202	&gt; So, since the pace is slowly picking up again, here's a general roll &gt; call. 
+ eng-NG-31-150304-10636344 	30	2287	Did everyone die, or are there people out there still? 
+ eng-NG-31-150304-10636344 	31	2342	What's &gt; happening? 
+ eng-NG-31-150304-10636344 	32	2365	If you want to help or think you can help in any way shape &gt; or form, please say so. 
+ eng-NG-31-150304-10636344 	33	2453	And as for you guys, have you been doing some &gt; research and stuff? 
+ eng-NG-31-150304-10636344 	34	2524	Report in, soldiers! 
+ eng-NG-31-150304-10636344 	35	2545	;) 
+ eng-NG-31-150304-10636344 	36	2549	&gt; Also, it might be a good idea to meet in our MUC to decide how we're &gt; going to move forward and see where we are right now, so, meeting &gt; time! 
+ eng-NG-31-150304-10636344 	37	2705	I'm suggesting a weekend in November sometime, anyone against &gt; that idea? 
+ eng-NG-31-150304-10636344 	38	2784	&gt; I'm still interested in bringing this to reality, and I hope you guys &gt; are. :) Seeya! 
+ eng-NG-31-150304-10636344 	39	2879	"> 
+ eng-NG-31-150304-10636343 	0	187	This post was written by Per Ekström.
+ eng-NG-31-150304-10636343 	1	84	This post was written on 2007-10-27T21:27:03 .
+ eng-NG-31-150304-10636343 	2	159	Meeting Nov 10th! 
+ eng-NG-31-150304-10636343 	3	304	We're having a meeting Saturday November 10th at 2:00 PM UTC in our MUC, o ... 
+ eng-NG-31-150304-10636343 	4	383	@conference.jabber.se, here's the agenda: 
+ eng-NG-31-150304-10636343 	5	426	0. 
+ eng-NG-31-150304-10636343 	6	429	Roll Call 1. 
+ eng-NG-31-150304-10636343 	7	442	Agenda Bashing 2. 
+ eng-NG-31-150304-10636343 	8	460	Where are we now? 
+ eng-NG-31-150304-10636343 	9	478	3. 
+ eng-NG-31-150304-10636343 	10	481	How to move forward 4. 
+ eng-NG-31-150304-10636343 	11	504	Delegate assignments 5. 
+ eng-NG-31-150304-10636343 	12	528	Other 6. 
+ eng-NG-31-150304-10636343 	13	537	Finish 
+ eng-NG-31-150304-10636343 	14	545	Everyone invited! 
+ eng-NG-31-150304-10636343 	15	696	I'm sorry to say I will not be able to make it, as I'll be out of town that weekend, but good luck guys! 
+ eng-NG-31-150304-10636343 	16	802	- Derick 
+ eng-NG-31-150304-10636343 	17	812	On 10/27/07, Per Ekström &lt;werti ... 
+ eng-NG-31-150304-10636343 	18	851	@gmail.com&gt; wrote: 
+ eng-NG-31-150304-10636343 	19	896	&gt; We're having a meeting Saturday November 10th at 2:00 PM UTC in our &gt; MUC, o ... 
+ eng-NG-31-150304-10636343 	20	985	@conference.jabber.se, here's the agenda: 
+ eng-NG-31-150304-10636343 	21	1028	&gt; 0. 
+ eng-NG-31-150304-10636343 	22	1036	Roll Call &gt; 1. 
+ eng-NG-31-150304-10636343 	23	1054	Agenda Bashing &gt; 2. 
+ eng-NG-31-150304-10636343 	24	1077	Where are we now? 
+ eng-NG-31-150304-10636343 	25	1095	&gt; 3. 
+ eng-NG-31-150304-10636343 	26	1103	How to move forward &gt; 4. 
+ eng-NG-31-150304-10636343 	27	1131	Delegate assignments &gt; 5. 
+ eng-NG-31-150304-10636343 	28	1160	Other &gt; 6. 
+ eng-NG-31-150304-10636343 	29	1174	Finish 
+ eng-NG-31-150304-10636343 	30	1182	&gt; Everyone invited! 
+ eng-NG-31-150304-10636343 	31	1205	"> 
+ eng-NG-31-150304-10636343 	32	1324	Just a friendly reminder of the meeting today. :) 
+ eng-NG-31-150304-10636343 	33	1375	- Per 
+ eng-NG-31-150304-10636343 	34	1382	On Oct 27, 10:27 pm, Per Ekström &lt;werti ... 
+ eng-NG-31-150304-10636343 	35	1429	@gmail.com&gt; wrote: 
+ eng-NG-31-150304-10636343 	36	1474	&gt; We're having a meeting Saturday November 10th at 2:00 PM UTC in our &gt; MUC, o ... 
+ eng-NG-31-150304-10636343 	37	1563	@conference.jabber.se, here's the agenda: 
+ eng-NG-31-150304-10636343 	38	1606	&gt; 0. 
+ eng-NG-31-150304-10636343 	39	1614	Roll Call &gt; 1. 
+ eng-NG-31-150304-10636343 	40	1632	Agenda Bashing &gt; 2. 
+ eng-NG-31-150304-10636343 	41	1655	Where are we now? 
+ eng-NG-31-150304-10636343 	42	1673	&gt; 3. 
+ eng-NG-31-150304-10636343 	43	1681	How to move forward &gt; 4. 
+ eng-NG-31-150304-10636343 	44	1709	Delegate assignments &gt; 5. 
+ eng-NG-31-150304-10636343 	45	1738	Other &gt; 6. 
+ eng-NG-31-150304-10636343 	46	1752	Finish 
+ eng-NG-31-150304-10636343 	47	1760	&gt; Everyone invited! 
+ eng-NG-31-150304-10636343 	48	1783	"> 
+ eng-NG-31-150304-8805222 	0	192	This post was written by merlinwood.
+ eng-NG-31-150304-8805222 	1	83	This post was written on 2007-09-19T14:05:00 .
+ eng-NG-31-150304-8805222 	2	158	New member - hello all! 
+ eng-NG-31-150304-8805222 	3	309	Hi, i'm new to the consortium and would like to ask a few questions. 
+ eng-NG-31-150304-8805222 	4	378	Firstly this is the first online project i've joined so this is all new to me. 
+ eng-NG-31-150304-8805222 	5	457	I've been reading some of the posts, and in addition derick mentioned in his email that your at the stage of trying to get a os/ distro off the ground. 
+ eng-NG-31-150304-8805222 	6	609	Hows it going? 
+ eng-NG-31-150304-8805222 	7	624	What/have you many any decisions about it yet? 
+ eng-NG-31-150304-8805222 	8	787	Hi merlinwood, and welcome to the OGC project! 
+ eng-NG-31-150304-8805222 	9	835	Right now things are going slow, mostly due to real life issues for me and the fact that we're such a small community. 
+ eng-NG-31-150304-8805222 	10	954	I'm hoping that I can pick up the pace in October sometime. 
+ eng-NG-31-150304-8805222 	11	1014	Right now we haven't made too many decisions, nothing is set in stone, but the general idea is to develop a firmware that is capable of running OpenGL/AL and OIS (Object-oriented Input System). 
+ eng-NG-31-150304-8805222 	12	1208	On top of that we'll put something we call the &quot;HomeUI&quot;, which is essentially a few modules with the same generic GUI, and we'll develop it in Python. 
+ eng-NG-31-150304-8805222 	13	1370	Hopefully, this will take around six months to complete once I can get started. 
+ eng-NG-31-150304-8805222 	14	1450	We're happy with any help we can get. :) 
+ eng-NG-31-150304-8805222 	15	1492	- Per 
+ eng-NG-31-150304-8805222 	16	1499	On Sep 19, 8:05 pm, merlinwood &lt;WillsW ... 
+ eng-NG-31-150304-8805222 	17	1545	@gmail.com&gt; wrote: 
+ eng-NG-31-150304-8805222 	18	1590	&gt; Hi, i'm new to the consortium and would like to ask a few questions. 
+ eng-NG-31-150304-8805222 	19	1664	&gt; Firstly this is the first online project i've joined so this is all &gt; new to me. 
+ eng-NG-31-150304-8805222 	20	1753	I've been reading some of the posts, and in addition derick &gt; mentioned in his email that your at the stage of trying to get a os/ &gt; distro off the ground. 
+ eng-NG-31-150304-8805222 	21	1915	Hows it going? 
+ eng-NG-31-150304-8805222 	22	1930	What/have you many any decisions &gt; about it yet? 
+ eng-NG-31-150304-8805222 	23	1982	"> 
+ eng-NG-31-150304-10636341 	0	193	This post was written by Derick Eisenhardt.
+ eng-NG-31-150304-10636341 	1	84	This post was written on 2007-11-15T01:08:04 .
+ eng-NG-31-150304-10636341 	2	159	Chat Log from Saturday 
+ eng-NG-31-150304-10636341 	3	326	Chat log has finally been posted to the wiki: http://www.opengameconsole.org/wiki/index.php?
+ eng-NG-31-150304-10636341 	4	418	title=1.
+ eng-NG-31-150304-10636341 	5	426	_MUC_meeting 
+ eng-NG-31-150304-10636341 	6	440	- Derick 
+ eng-NG-31-150304-8805220 	0	179	This post was written by Per Ekström.
+ eng-NG-31-150304-8805220 	1	83	This post was written on 2007-10-09T10:47:00 .
+ eng-NG-31-150304-8805220 	2	158	Roll Call! 
+ eng-NG-31-150304-8805220 	3	296	Hi everyone! 
+ eng-NG-31-150304-8805220 	4	310	First off, I want to apologize. 
+ eng-NG-31-150304-8805220 	5	342	I've had some trouble with my money flow the last six weeks, and thus I haven't been able to get a stable net connection yet. 
+ eng-NG-31-150304-8805220 	6	468	Also, stuff keeps popping up that require my attention in the real world. 
+ eng-NG-31-150304-8805220 	7	542	So... :/ Hopefully, everything will have settled for good in a month or so, and then I can finally begin to work on the firmware for real. 
+ eng-NG-31-150304-8805220 	8	682	So, since the pace is slowly picking up again, here's a general roll call. 
+ eng-NG-31-150304-8805220 	9	757	Did everyone die, or are there people out there still? 
+ eng-NG-31-150304-8805220 	10	812	What's happening? 
+ eng-NG-31-150304-8805220 	11	830	If you want to help or think you can help in any way shape or form, please say so. 
+ eng-NG-31-150304-8805220 	12	913	And as for you guys, have you been doing some research and stuff? 
+ eng-NG-31-150304-8805220 	13	979	Report in, soldiers! 
+ eng-NG-31-150304-8805220 	14	1000	;) 
+ eng-NG-31-150304-8805220 	15	1004	Also, it might be a good idea to meet in our MUC to decide how we're going to move forward and see where we are right now, so, meeting time! 
+ eng-NG-31-150304-8805220 	16	1145	I'm suggesting a weekend in November sometime, anyone against that idea? 
+ eng-NG-31-150304-8805220 	17	1219	I'm still interested in bringing this to reality, and I hope you guys are. :) Seeya! 
+ eng-NG-31-150304-8805220 	18	1447	I'm still here too...but just like Wertigon, I keep finding life to get in the way. 
+ eng-NG-31-150304-8805220 	19	1531	This project is taking much longer than I had ever expected, but that's okay. 
+ eng-NG-31-150304-8805220 	20	1609	We'll get there eventually as long as we don't give up on this common dream of ours ;) 
+ eng-NG-31-150304-8805220 	21	1697	- Derick 
+ eng-NG-31-150304-8805220 	22	1707	On 10/9/07, Per Ekström &lt;werti ... 
+ eng-NG-31-150304-8805220 	23	1745	@gmail.com&gt; wrote: 
+ eng-NG-31-150304-8805220 	24	1790	&gt; Hi everyone! 
+ eng-NG-31-150304-8805220 	25	1809	&gt; First off, I want to apologize. 
+ eng-NG-31-150304-8805220 	26	1846	I've had some trouble with my money &gt; flow the last six weeks, and thus I haven't been able to get a stable &gt; net connection yet. 
+ eng-NG-31-150304-8805220 	27	1982	Also, stuff keeps popping up that require my &gt; attention in the real world. 
+ eng-NG-31-150304-8805220 	28	2061	So... :/ Hopefully, everything will have &gt; settled for good in a month or so, and then I can finally begin to &gt; work on the firmware for real. 
+ eng-NG-31-150304-8805220 	29	2211	&gt; So, since the pace is slowly picking up again, here's a general roll &gt; call. 
+ eng-NG-31-150304-8805220 	30	2296	Did everyone die, or are there people out there still? 
+ eng-NG-31-150304-8805220 	31	2351	What's &gt; happening? 
+ eng-NG-31-150304-8805220 	32	2374	If you want to help or think you can help in any way shape &gt; or form, please say so. 
+ eng-NG-31-150304-8805220 	33	2462	And as for you guys, have you been doing some &gt; research and stuff? 
+ eng-NG-31-150304-8805220 	34	2533	Report in, soldiers! 
+ eng-NG-31-150304-8805220 	35	2554	;) 
+ eng-NG-31-150304-8805220 	36	2558	&gt; Also, it might be a good idea to meet in our MUC to decide how we're &gt; going to move forward and see where we are right now, so, meeting &gt; time! 
+ eng-NG-31-150304-8805220 	37	2714	I'm suggesting a weekend in November sometime, anyone against &gt; that idea? 
+ eng-NG-31-150304-8805220 	38	2793	&gt; I'm still interested in bringing this to reality, and I hope you guys &gt; are. :) Seeya! 
+ eng-NG-31-150304-8805220 	39	2888	"> 
+ eng-NG-31-150304-10636339 	0	180	This post was written by Neoncyber2001.
+ eng-NG-31-150304-10636339 	1	84	This post was written on 2007-12-18T16:48:21 .
+ eng-NG-31-150304-10636339 	2	159	New Member 
+ eng-NG-31-150304-10636339 	3	302	Hello everyone! 
+ eng-NG-31-150304-10636339 	4	318	- My name is Joe Herbert and I have been very active in gaming and computer technology sense I was very young. 
+ eng-NG-31-150304-10636339 	5	429	I have graduated WarenTech (jefferson county vocational school) with a certification in Computer Programming and Technology and have worked as a professional QA Tech (tester) on several Activision game projects (still under NDA). 
+ eng-NG-31-150304-10636339 	6	659	Several years ago a friend and I had begun taking notes and writing up plans for just such a project! 
+ eng-NG-31-150304-10636339 	7	761	We unfortunately allowed ourselves to get destracted. 
+ eng-NG-31-150304-10636339 	8	815	We did not think we were ready for a project proposal. 
+ eng-NG-31-150304-10636339 	9	870	I was amazed when I learned that we were not the only ones to think of an open gaming platform. 
+ eng-NG-31-150304-10636339 	10	966	I would like to do what i can to help this project get going and would love to share some of the ideas that i had come upwith, aswell as some of the issues (that i have not seen addressed on the wiki) that i had faced when trying to come up with my own plans for an OGC. 
+ eng-NG-31-150304-10636339 	11	1238	- I look forward to working with you all! 
+ eng-NG-31-150304-10636339 	12	1280	Joe 
+ eng-NG-31-150304-10636339 	13	1285	PS: Please forgive my spelling :) 
+ eng-NG-31-150304-10636346 	0	193	This post was written by merlinwood.
+ eng-NG-31-150304-10636346 	1	84	This post was written on 2007-09-19T18:05:28 .
+ eng-NG-31-150304-10636346 	2	159	New member - hello all! 
+ eng-NG-31-150304-10636346 	3	310	Hi, i'm new to the consortium and would like to ask a few questions. 
+ eng-NG-31-150304-10636346 	4	379	Firstly this is the first online project i've joined so this is all new to me. 
+ eng-NG-31-150304-10636346 	5	458	I've been reading some of the posts, and in addition derick mentioned in his email that your at the stage of trying to get a os/ distro off the ground. 
+ eng-NG-31-150304-10636346 	6	610	Hows it going? 
+ eng-NG-31-150304-10636346 	7	625	What/have you many any decisions about it yet? 
+ eng-NG-31-150304-10636346 	8	788	Hi merlinwood, and welcome to the OGC project! 
+ eng-NG-31-150304-10636346 	9	836	Right now things are going slow, mostly due to real life issues for me and the fact that we're such a small community. 
+ eng-NG-31-150304-10636346 	10	955	I'm hoping that I can pick up the pace in October sometime. 
+ eng-NG-31-150304-10636346 	11	1015	Right now we haven't made too many decisions, nothing is set in stone, but the general idea is to develop a firmware that is capable of running OpenGL/AL and OIS (Object-oriented Input System). 
+ eng-NG-31-150304-10636346 	12	1209	On top of that we'll put something we call the &quot;HomeUI&quot;, which is essentially a few modules with the same generic GUI, and we'll develop it in Python. 
+ eng-NG-31-150304-10636346 	13	1371	Hopefully, this will take around six months to complete once I can get started. 
+ eng-NG-31-150304-10636346 	14	1451	We're happy with any help we can get. :) 
+ eng-NG-31-150304-10636346 	15	1493	- Per 
+ eng-NG-31-150304-10636346 	16	1500	On Sep 19, 8:05 pm, merlinwood &lt;WillsW ... 
+ eng-NG-31-150304-10636346 	17	1546	@gmail.com&gt; wrote: 
+ eng-NG-31-150304-10636346 	18	1591	&gt; Hi, i'm new to the consortium and would like to ask a few questions. 
+ eng-NG-31-150304-10636346 	19	1665	&gt; Firstly this is the first online project i've joined so this is all &gt; new to me. 
+ eng-NG-31-150304-10636346 	20	1754	I've been reading some of the posts, and in addition derick &gt; mentioned in his email that your at the stage of trying to get a os/ &gt; distro off the ground. 
+ eng-NG-31-150304-10636346 	21	1916	Hows it going? 
+ eng-NG-31-150304-10636346 	22	1931	What/have you many any decisions &gt; about it yet? 
+ eng-NG-31-150304-10636346 	23	1983	"> 
+ eng-NG-31-150320-10636359 	0	192	This post was written by mjuri...@yahoo.com.
+ eng-NG-31-150320-10636359 	1	84	This post was written on 2007-09-26T16:16:30 .
+ eng-NG-31-150320-10636359 	2	159	Big Prize dev contest 
+ eng-NG-31-150320-10636359 	3	317	Hello, 
+ eng-NG-31-150320-10636359 	4	325	We have announced a contest for any game developing teams out there. 
+ eng-NG-31-150320-10636359 	5	394	The prize includes: - $100 000 cash advance - paid game engine licence up to $1 million (any comercial game engine available) - standard dev team royalties from shipped title 
+ eng-NG-31-150320-10636359 	6	570	Estimated duration of the project until Nov 2008 
+ eng-NG-31-150320-10636359 	7	620	Martin 
+ eng-NG-31-150320-8805223 	0	190	This post was written by .
+ eng-NG-31-150320-8805223 	1	83	This post was written on 2007-09-26T12:16:00 .
+ eng-NG-31-150320-8805223 	2	158	Big Prize dev contest 
+ eng-NG-31-150320-8805223 	3	326	Hello, 
+ eng-NG-31-150320-8805223 	4	334	We have announced a contest for any game developing teams out there. 
+ eng-NG-31-150320-8805223 	5	403	The prize includes: - $100 000 cash advance - paid game engine licence up to $1 million (any comercial game engine available) - standard dev team royalties from shipped title 
+ eng-NG-31-150320-8805223 	6	579	Estimated duration of the project until Nov 2008 
+ eng-NG-31-150320-8805223 	7	629	Martin 
+ eng-NG-31-150326-10636365 	0	203	This post was written by Im a Dreamer.
+ eng-NG-31-150326-10636365 	1	84	This post was written on 2007-11-15T22:09:20 .
+ eng-NG-31-150326-10636365 	2	159	.:::]- X BOX - 360 Leagues -[:::. 
+ eng-NG-31-150326-10636365 	3	323	.:::]- X BOX - 360 Leagues -[:::. =========================== Are you a gamer ? 
+ eng-NG-31-150326-10636365 	4	403	Do you like to know about XBOX games ? 
+ eng-NG-31-150326-10636365 	5	442	Game Reviews, Bets, Discussions, All about X-BOX. 
+ eng-NG-31-150326-10636365 	6	492	Come and Join us for Free and have the maximum fun you can imagine of. 
+ eng-NG-31-150326-10636365 	7	564	http://www.360leagues.com 
+ eng-NG-31-150335-10636382 	0	175	This post was written by bigt...@gmail.com.
+ eng-NG-31-150335-10636382 	1	84	This post was written on 2007-11-12T15:14:03 .
+ eng-NG-31-150335-10636382 	2	159	COD 4 
+ eng-NG-31-150335-10636382 	3	271	WOW, COD 4 is the shits. 
+ eng-NG-31-150335-10636382 	4	296	Better than HALO maybe, well see. 
+ eng-NG-31-150355-10636411 	0	185	This post was written by jimy.clark...@gmail.com.
+ eng-NG-31-150355-10636411 	1	84	This post was written on 2007-11-05T10:50:38 .
+ eng-NG-31-150355-10636411 	2	159	A Must Read!!! 
+ eng-NG-31-150355-10636411 	3	320	I have found an excellent resource on software verifications. 
+ eng-NG-31-150355-10636411 	4	383	http://testingmechanism.blogspot.com/ 
+ eng-NG-31-150355-10636411 	5	560	Validation activities can be applied to all aspects of the product in any of its intended environments, such as operation, training, manufacturing, maintenance, and ..... 
+ eng-NG-31-150355-10636411 	6	732	http://testingmechanism.blogspot.com/ 
+ eng-NG-31-150355-10636413 	0	185	This post was written by michael.huss...@gmail.com.
+ eng-NG-31-150355-10636413 	1	84	This post was written on 2007-10-10T07:16:39 .
+ eng-NG-31-150355-10636413 	2	159	A Must Read!!! 
+ eng-NG-31-150355-10636413 	3	324	I have found an excellent resource on Product Integration based upon the CMMI standards. 
+ eng-NG-31-150355-10636413 	4	414	http://testingmechanism.blogspot.com/ 
+ eng-NG-31-150365-10636437 	0	203	This post was written by Shi Xia Liu.
+ eng-NG-31-150365-10636437 	1	84	This post was written on 2007-11-05T08:02:41 .
+ eng-NG-31-150365-10636437 	2	159	Shi Xia Liu is out of the office. 
+ eng-NG-31-150365-10636437 	3	318	I will be out of the office starting  2007-10-27 and will not return until 2007-11-10. 
+ eng-NG-31-150365-10636437 	4	406	I will be out of office on from Oct 27 to Nov 10. 
+ eng-NG-31-150365-10636437 	5	456	Any thing urgent, please contact my backup Tian Shu Wang/China/IBM. 
+ eng-NG-31-150365-10636435 	0	187	This post was written by Xiaoru Yuan (University of Minnesota at Twin Cities).
+ eng-NG-31-150365-10636435 	1	84	This post was written on 2007-11-05T20:00:24 .
+ eng-NG-31-150365-10636435 	2	159	Our Google Group 
+ eng-NG-31-150365-10636435 	3	349	Hi, 
+ eng-NG-31-150365-10636435 	4	354	Our Google group has around 20 members. 
+ eng-NG-31-150365-10636435 	5	394	It is a good start. 
+ eng-NG-31-150365-10636435 	6	414	To begin, how about everyone post a message introducing him/herself? 
+ eng-NG-31-150365-10636435 	7	484	To facilitate the communication, please set the &quot;Name&quot; field of your group membership information following what I and Zhao Ye have done. 
+ eng-NG-31-150365-10636435 	8	632	The format  is &quot;Name (Institute)&quot;. 
+ eng-NG-31-150365-10636435 	9	678	Cheers, 
+ eng-NG-31-150365-10636435 	10	687	Xiaoru 
+ eng-NG-31-150365-10636435 	11	804	Hi, all, this is Ye Zhao from Kent State University. 
+ eng-NG-31-150365-10636435 	12	857	I got my PhD from Stony Brook University last year and now is an assistant professor at Kent, Ohio. 
+ eng-NG-31-150365-10636435 	13	957	I am working on natural phenomena simulation and visualization. 
+ eng-NG-31-150365-10636435 	14	1021	I am now looking for good PhD students. 
+ eng-NG-31-150365-10636435 	15	1061	If you know someone may be interested, please give them a recommendation. 
+ eng-NG-31-150365-10636435 	16	1135	Thanks a lot! 
+ eng-NG-31-150365-10636435 	17	1149	More information can be found at http://www.cs.kent.edu/~zhao 
+ eng-NG-31-150365-10636435 	18	1212	-Ye Zhao 
+ eng-NG-31-150365-10636435 	19	1222	-- Ye Zhao, Ph.D. 
+ eng-NG-31-150365-10636435 	20	1240	Assistant Professor Kent State University Department of Computer Science Kent, Ohio 44242-0001 Tel: (330)672-9059 
+ eng-NG-31-150365-10636426 	0	203	This post was written by Shi Xia Liu.
+ eng-NG-31-150365-10636426 	1	84	This post was written on 2007-12-30T20:02:19 .
+ eng-NG-31-150365-10636426 	2	159	Shi Xia Liu is out of the office. 
+ eng-NG-31-150365-10636426 	3	318	I will be out of the office starting  2007-12-24 and will not return until 2008-01-02. 
+ eng-NG-31-150365-10636426 	4	406	I will be out of office on from Dec 24 to Jan 2 for a vacation leave. 
+ eng-NG-31-150365-10636430 	0	189	This post was written by Guoning Chen (Oregon State University).
+ eng-NG-31-150365-10636430 	1	84	This post was written on 2007-11-22T18:34:33 .
+ eng-NG-31-150365-10636430 	2	159	Happy thanksgiving 
+ eng-NG-31-150365-10636430 	3	338	Hi everyone, 
+ eng-NG-31-150365-10636430 	4	352	I hope you all have a great thanksgiving here :). 
+ eng-NG-31-150365-10636430 	5	403	cheers, Guoning 
+ eng-NG-31-150365-10636432 	0	200	This post was written by Xiaoru Yuan (University of Minnesota at Twin Cities).
+ eng-NG-31-150365-10636432 	1	84	This post was written on 2007-11-12T22:43:41 .
+ eng-NG-31-150365-10636432 	2	159	Faculty opportunities at TAMU 
+ eng-NG-31-150365-10636432 	3	362	For whom interested in looking for viz faculty positions in 2008, there are openings at TAMU http://www-viz.tamu.edu/announcements/facultysearch07/ 
+ eng-NG-31-150365-10636432 	4	511	Best, 
+ eng-NG-31-150365-10636432 	5	518	Xiaoru 
+ eng-NG-31-150365-10636440 	0	175	This post was written by Pan.
+ eng-NG-31-150365-10636440 	1	84	This post was written on 2007-11-05T03:58:17 .
+ eng-NG-31-150365-10636440 	2	159	hello 
+ eng-NG-31-150365-10636440 	3	284	Hi everybody, 
+ eng-NG-31-150365-10636440 	4	299	my name is Pan, currently i am Ph.d candidate in University of Science Malaysia. i've been in this country for more than 8 years, yet i am from mainland China. 
+ eng-NG-31-150365-10636440 	5	460	Thanks xiaoru for inviting me to join this group. we shall have fun to discuss related issue here. for guys who would like to find some interested visualization topic/content in Chinese, you might want to drop by www.vislab.cn/bbs . 
+ eng-NG-31-150365-10636440 	6	694	thanks 
+ eng-NG-31-150365-10636440 	7	702	regards 
+ eng-NG-31-150365-10636440 	8	711	Yours 
+ eng-NG-31-150365-10636440 	9	718	Pan 
+ eng-NG-31-150365-10636440 	10	845	Thank you for sharing the information. 
+ eng-NG-31-150365-10636440 	11	884	I am Guoning Chen from Oregon State University. 
+ eng-NG-31-150365-10636440 	12	933	Guoning 
+ eng-NG-31-150365-10636440 	13	942	On 11/4/07, Pan &lt;panzh ... 
+ eng-NG-31-150365-10636440 	14	972	@gmail.com&gt; wrote: 
+ eng-NG-31-150365-10636440 	15	1017	&gt; Hi everybody, 
+ eng-NG-31-150365-10636440 	16	1037	&gt; my name is Pan, currently i am Ph.d candidate in University of Science &gt; Malaysia. i've been in this country for more than 8 years, yet i am &gt; from mainland China. 
+ eng-NG-31-150365-10636440 	17	1213	&gt; Thanks xiaoru for inviting me to join this group. we shall have fun to &gt; discuss related issue here. for guys who would like to find some &gt; interested visualization topic/content in Chinese, you might want to &gt; drop by www.vislab.cn/bbs . 
+ eng-NG-31-150365-10636440 	18	1467	&gt; thanks 
+ eng-NG-31-150365-10636440 	19	1480	&gt; regards 
+ eng-NG-31-150365-10636440 	20	1494	&gt; Yours 
+ eng-NG-31-150365-10636440 	21	1506	&gt; Pan "> 
+ eng-NG-31-150365-10636440 	22	1634	Thanks and I am Wei Chen from Zhejiang university. 
+ eng-NG-31-150365-10636440 	23	1686	Wei 
+ eng-NG-31-150365-10636440 	24	1691	On Nov 5, 2007 12:48 PM, Guoning Chen &lt;guoning.c ... 
+ eng-NG-31-150365-10636440 	25	1747	@gmail.com&gt; wrote: 
+ eng-NG-31-150365-10636440 	26	1792	&gt; Thank you for sharing the information. 
+ eng-NG-31-150365-10636440 	27	1836	I am Guoning Chen from Oregon State &gt; University. 
+ eng-NG-31-150365-10636440 	28	1890	&gt; Guoning 
+ eng-NG-31-150365-10636440 	29	1904	&gt; On 11/4/07, Pan &lt;panzh ... 
+ eng-NG-31-150365-10636440 	30	1939	@gmail.com&gt; wrote: 
+ eng-NG-31-150365-10636440 	31	1962	&gt; &gt; Hi everybody, 
+ eng-NG-31-150365-10636440 	32	1987	&gt; &gt; my name is Pan, currently i am Ph.d candidate in University of Science &gt; &gt; Malaysia. i've been in this country for more than 8 years, yet i am &gt; &gt; from mainland China. 
+ eng-NG-31-150365-10636440 	33	2178	&gt; &gt; Thanks xiaoru for inviting me to join this group. we shall have fun to &gt; &gt; discuss related issue here. for guys who would like to find some &gt; &gt; interested visualization topic/content in Chinese, you might want to &gt; &gt; drop by www.vislab.cn/bbs . 
+ eng-NG-31-150365-10636440 	34	2452	&gt; &gt; thanks 
+ eng-NG-31-150365-10636440 	35	2470	&gt; &gt; regards 
+ eng-NG-31-150365-10636440 	36	2489	&gt; &gt; Yours 
+ eng-NG-31-150365-10636440 	37	2506	&gt; &gt; Pan "> 
+ eng-NG-31-150365-10636440 	38	2644	Hello: My name is Shangshu Cai. 
+ eng-NG-31-150365-10636440 	39	2676	Now I am a Ph.D candidate in Mississippi State University. 
+ eng-NG-31-150365-10636440 	40	2735	My research areas are Multivariate visualization, hyperspectral analysis, and information visualization. 
+ eng-NG-31-150365-10636440 	41	2840	Further information about me can be found: www.ece.msstate.edu/~sc318 . 
+ eng-NG-31-150365-10636440 	42	2913	Now I am hunting jobs (including post-doc). 
+ eng-NG-31-150365-10636440 	43	2957	I appreciate that if anyone has jobs information share to me. 
+ eng-NG-31-150365-10636440 	44	3020	Thanks. 2007-11-08 
+ eng-NG-31-150365-10636440 	45	3040	Shangshu Cai 
+ eng-NG-31-150365-10636440 	46	3054	发件人： Wei Chen 发送时间： 2007-11-05  22:12:23 收件人： Visualization@googlegroups.com 抄送： 主题： [Visualization], Re: hello 
+ eng-NG-31-150365-10636440 	47	3167	Thanks and I am Wei Chen from Zhejiang university. 
+ eng-NG-31-150365-10636440 	48	3219	Wei 
+ eng-NG-31-150365-10636440 	49	3224	On Nov 5, 2007 12:48 PM, Guoning Chen  &lt;guoning.c ... 
+ eng-NG-31-150365-10636440 	50	3281	@gmail.com &gt; wrote: 
+ eng-NG-31-150365-10636440 	51	3327	&gt; Thank you for sharing the information. 
+ eng-NG-31-150365-10636440 	52	3371	I am Guoning Chen from Oregon State &gt; University. 
+ eng-NG-31-150365-10636440 	53	3425	&gt; Guoning 
+ eng-NG-31-150365-10636440 	54	3439	&gt; On 11/4/07, Pan  &lt;panzh ... 
+ eng-NG-31-150365-10636440 	55	3475	@gmail.com &gt; wrote: 
+ eng-NG-31-150365-10636440 	56	3499	&gt;  &gt; Hi everybody, 
+ eng-NG-31-150365-10636440 	57	3525	&gt;  &gt; my name is Pan, currently i am Ph.d candidate in University of Science &gt;  &gt; Malaysia. i've been in this country for more than 8 years, yet i am &gt;  &gt; from mainland China. 
+ eng-NG-31-150365-10636440 	58	3719	&gt;  &gt; Thanks xiaoru for inviting me to join this group. we shall have fun to &gt;  &gt; discuss related issue here. for guys who would like to find some &gt;  &gt; interested visualization topic/content in Chinese, you might want to &gt;  &gt; drop by www.vislab.cn/bbs . 
+ eng-NG-31-150365-10636440 	59	3997	&gt;  &gt; thanks 
+ eng-NG-31-150365-10636440 	60	4016	&gt;  &gt; regards 
+ eng-NG-31-150365-10636440 	61	4036	&gt;  &gt; Yours 
+ eng-NG-31-150365-10636440 	62	4054	&gt;  &gt; Pan "> 
+ eng-NG-31-150365-10636440 	63	4193	Hi, 
+ eng-NG-31-150365-10636440 	64	4198	It is my turn. 
+ eng-NG-31-150365-10636440 	65	4213	I am Xiaoru Yuan, working at Center for Magnetic Resonance Research (CMRR) at University of Minnesota. 
+ eng-NG-31-150365-10636440 	66	4316	I graduated last year from the CSE department at UMN. 
+ eng-NG-31-150365-10636440 	67	4370	More information can be found at my homepage: http://www.cs.umn.edu/~xyuan/ Next year, I will start my faculty position at Peking University. 
+ eng-NG-31-150365-10636440 	68	4512	Please let me know when you visit Beijing in the future. 
+ eng-NG-31-150365-10636440 	69	4570	Cheers, 
+ eng-NG-31-150365-10636440 	70	4579	-- Xiaoru Yuan   Ph.D. 
+ eng-NG-31-150365-10636440 	71	4602	Center for Magnetic Resonance Research (CMRR) Digital Technology Center University of Minnesota B18A Walter Library 117 Pleasant Street S.E. 
+ eng-NG-31-150365-10636440 	72	4743	Minneapolis, MN 55455 http://www.cs.umn.edu/~xyuan 
+ eng-NG-31-150365-10636440 	73	4795	On Nov 8, 2007 12:19 AM, Shangshu Cai &lt;shangshu. ... 
+ eng-NG-31-150365-10636440 	74	4851	@gmail.com&gt; wrote: 
+ eng-NG-31-150365-10636440 	75	4896	&gt;  Hello: &gt;            My name is Shangshu Cai. 
+ eng-NG-31-150365-10636440 	76	4950	Now I am a &gt; Ph.D candidate in Mississippi State University. 
+ eng-NG-31-150365-10636440 	77	5014	&gt; My research areas are Multivariate visualization, &gt; hyperspectral analysis, and information visualization. 
+ eng-NG-31-150365-10636440 	78	5129	&gt; Further information about me can be found: &gt; www.ece.msstate.edu/~sc318 &lt; http://www.ece.msstate.edu/%7Esc318 &gt;. 
+ eng-NG-31-150365-10636440 	79	5257	&gt;      Now I am hunting jobs (including post-doc). 
+ eng-NG-31-150365-10636440 	80	5311	I &gt; appreciate that if anyone has jobs information share to me. 
+ eng-NG-31-150365-10636440 	81	5379	&gt; Thanks. 
+ eng-NG-31-150365-10636440 	82	5392	&gt; 2007-11-08 &gt; ------------------------------ &gt;  Shangshu Cai &gt; ------------------------------ &gt;  *发件人：* Wei Chen &gt; *发送时间：* 2007-11-05  22:12:23 &gt; *收件人：* Visualization@googlegroups.com &gt; *抄送：* &gt; *主题：* [Visualization], Re: hello &gt;   Thanks and I am Wei Chen from Zhejiang university. 
+ eng-NG-31-150365-10636440 	83	5706	&gt; Wei 
+ eng-NG-31-150365-10636440 	84	5716	&gt; On Nov 5, 2007 12:48 PM, Guoning Chen  &lt;guoning.c ... 
+ eng-NG-31-150365-10636440 	85	5778	@gmail.com &gt; wrote: 
+ eng-NG-31-150365-10636440 	86	5802	&gt; &gt; Thank you for sharing the information. 
+ eng-NG-31-150365-10636440 	87	5851	I am Guoning Chen from Oregon State &gt; &gt; University. 
+ eng-NG-31-150365-10636440 	88	5910	&gt; &gt; Guoning 
+ eng-NG-31-150365-10636440 	89	5929	&gt; &gt; On 11/4/07, Pan  &lt;panzh ... 
+ eng-NG-31-150365-10636440 	90	5970	@gmail.com &gt; wrote: 
+ eng-NG-31-150365-10636440 	91	5994	&gt; &gt;  &gt; Hi everybody, 
+ eng-NG-31-150365-10636440 	92	6025	&gt; &gt;  &gt; my name is Pan, currently i am Ph.d &gt;  candidate in University of Science &gt; &gt;  &gt; Malaysia. i've been in this country for more than 8 years, yet i am &gt; &gt;  &gt; from mainland China. 
+ eng-NG-31-150365-10636440 	93	6240	&gt; &gt; Thanks xiaoru for inviting me to join this group. we shall have fun to &gt; &gt;  &gt; discuss related issue here. for guys who would like to find some &gt; &gt;  &gt; interested visualization topic/content in Chinese, you might want to &gt; &gt;  &gt; drop by www.vislab.cn/bbs . 
+ eng-NG-31-150365-10636440 	94	6532	&gt; &gt;  &gt; thanks 
+ eng-NG-31-150365-10636440 	95	6556	&gt; &gt;  &gt; regards 
+ eng-NG-31-150365-10636440 	96	6581	&gt; &gt;  &gt; Yours 
+ eng-NG-31-150365-10636440 	97	6604	&gt; &gt;  &gt; Pan "> 
+ eng-NG-31-150365-10636440 	98	6750	Hello everyone, 
+ eng-NG-31-150365-10636440 	99	6767	I am Guoning Chen from Oregon State University. 
+ eng-NG-31-150365-10636440 	100	6815	I am a fourth year PhD student. 
+ eng-NG-31-150365-10636440 	101	6847	My research areas include vector field analysis, visualization and design, tensor field visualization and design, and geometry modeling. 
+ eng-NG-31-150365-10636440 	102	6984	My homepage is; http://oregonstate.edu/~cheng . 
+ eng-NG-31-150365-10636440 	103	7033	To Shangshu, I will be in the same situation as you are now soon. 
+ eng-NG-31-150365-10636440 	104	7099	Here is a web page I found which lists a number of visualization research related labs. 
+ eng-NG-31-150365-10636440 	105	7187	Hope it will help. http://www.sdsc.edu/~johnson/projects/resource/catalog.html . 
+ eng-NG-31-150365-10636440 	106	7269	-cheers, Guoning 
+ eng-NG-31-150365-10636440 	107	7287	On 11/8/07, Xiaoru Yuan &lt;xiaoru.y ... 
+ eng-NG-31-150365-10636440 	108	7328	@gmail.com&gt; wrote: 
+ eng-NG-31-150365-10636440 	109	7373	&gt; Hi, 
+ eng-NG-31-150365-10636440 	110	7383	&gt; It is my turn. 
+ eng-NG-31-150365-10636440 	111	7403	I am Xiaoru Yuan, working at Center for Magnetic Resonance &gt; Research (CMRR) at University of Minnesota. 
+ eng-NG-31-150365-10636440 	112	7511	I graduated last year from the &gt; CSE department at UMN. 
+ eng-NG-31-150365-10636440 	113	7570	More information can be found at my homepage: &gt; http://www.cs.umn.edu/~xyuan/ &gt; Next year, I will start my faculty position at Peking University. 
+ eng-NG-31-150365-10636440 	114	7722	Please &gt; let me know when you visit Beijing in the future. 
+ eng-NG-31-150365-10636440 	115	7785	&gt; Cheers, 
+ eng-NG-31-150365-10636440 	116	7799	&gt; -- &gt; Xiaoru Yuan   Ph.D. 
+ eng-NG-31-150365-10636440 	117	7832	&gt; Center for Magnetic Resonance Research (CMRR) &gt; Digital Technology Center &gt; University of Minnesota &gt; B18A Walter Library &gt; 117 Pleasant Street S.E. 
+ eng-NG-31-150365-10636440 	118	7998	&gt; Minneapolis, MN 55455 &gt; http://www.cs.umn.edu/~xyuan 
+ eng-NG-31-150365-10636440 	119	8060	&gt; On Nov 8, 2007 12:19 AM, Shangshu Cai &lt;shangshu. ... 
+ eng-NG-31-150365-10636440 	120	8121	@gmail.com&gt; wrote: 
+ eng-NG-31-150365-10636440 	121	8144	&gt; &gt;  Hello: &gt; &gt;            My name is Shangshu Cai. 
+ eng-NG-31-150365-10636440 	122	8208	Now I am a &gt; &gt; Ph.D candidate in Mississippi State University. 
+ eng-NG-31-150365-10636440 	123	8277	&gt; &gt; My research areas are Multivariate visualization, &gt; &gt; hyperspectral analysis, and information visualization. 
+ eng-NG-31-150365-10636440 	124	8402	&gt; &gt; Further information about me can be found: &gt; &gt; www.ece.msstate.edu/~sc318 &lt; http://www.ece.msstate.edu/%7Esc318 &gt;. 
+ eng-NG-31-150365-10636440 	125	8540	&gt; &gt;      Now I am hunting jobs (including post-doc). 
+ eng-NG-31-150365-10636440 	126	8599	I &gt; &gt; appreciate that if anyone has jobs information share to me. 
+ eng-NG-31-150365-10636440 	127	8672	&gt; &gt; Thanks. 
+ eng-NG-31-150365-10636440 	128	8690	&gt; &gt; 2007-11-08 &gt; &gt; ------------------------------ &gt; &gt;  Shangshu Cai &gt; &gt; ------------------------------ &gt; &gt;  *发件人：* Wei Chen &gt; &gt; *发送时间：* 2007-11-05  22:12:23 &gt; &gt; *收件人：* Visualization@googlegroups.com &gt; &gt; *抄送：* &gt; &gt; *主题：* [Visualization], Re: hello &gt; &gt;    Thanks and I am Wei Chen from Zhejiang university. 
+ eng-NG-31-150365-10636440 	129	9055	&gt; &gt; Wei 
+ eng-NG-31-150365-10636440 	130	9070	&gt; &gt; On Nov 5, 2007 12:48 PM, Guoning Chen  &lt;guoning.c ... 
+ eng-NG-31-150365-10636440 	131	9137	@gmail.com &gt; wrote: 
+ eng-NG-31-150365-10636440 	132	9161	&gt; &gt; &gt; Thank you for sharing the information. 
+ eng-NG-31-150365-10636440 	133	9215	I am Guoning Chen from Oregon State &gt; &gt; &gt; University. 
+ eng-NG-31-150365-10636440 	134	9279	&gt; &gt; &gt; Guoning 
+ eng-NG-31-150365-10636440 	135	9303	&gt; &gt; &gt; On 11/4/07, Pan  &lt;panzh ... 
+ eng-NG-31-150365-10636440 	136	9349	@gmail.com &gt; wrote: 
+ eng-NG-31-150365-10636440 	137	9373	&gt; &gt; &gt;  &gt; Hi everybody, 
+ eng-NG-31-150365-10636440 	138	9409	&gt; &gt; &gt;  &gt; my name is Pan, currently i am Ph.d &gt; &gt;  candidate in University of Science &gt; &gt; &gt;  &gt; Malaysia. i've been in this country for more than 8 years, yet i am &gt; &gt; &gt;  &gt; from mainland China. 
+ eng-NG-31-150365-10636440 	139	9644	&gt; &gt; &gt; Thanks xiaoru for inviting me to join this group. we shall have fun to &gt; &gt; &gt;  &gt; discuss related issue here. for guys who would like to find some 
+ eng-NG-31-150365-10636440 	140	9817	&gt; &gt; &gt; interested visualization topic/content in Chinese, you might want to &gt; &gt; &gt;  &gt; drop by www.vislab.cn/bbs . 
+ eng-NG-31-150365-10636440 	141	9951	&gt; &gt; &gt;  &gt; thanks 
+ eng-NG-31-150365-10636440 	142	9980	&gt; &gt; &gt;  &gt; regards 
+ eng-NG-31-150365-10636440 	143	10010	&gt; &gt; &gt;  &gt; Yours 
+ eng-NG-31-150365-10636440 	144	10038	&gt; &gt; &gt;  &gt; Pan "> 
+ eng-NG-31-150365-10636440 	145	10180	Hi, 
+ eng-NG-31-150365-10636440 	146	10185	First of all, thanks Xiaoru for connecting us together. 
+ eng-NG-31-150365-10636440 	147	10242	I am Shixia Liu, a Research Staff Member from IBM China Research Lab, where I manage the Information Visualization and Analysis team. 
+ eng-NG-31-150365-10636440 	148	10376	With IBM Research, I have worked primarily on information visualization and text analysis. 
+ eng-NG-31-150365-10636440 	149	10467	Recently, I have been bridging the areas of Information Visualization and information management. 
+ eng-NG-31-150365-10636440 	150	10565	My current research interests include information visualization, visual analytics, social network analysis, information retrieval and text mining. 
+ eng-NG-31-150365-10636440 	151	10713	For more information, please visit my team's website: http://domino.research.ibm.com/comm/research_teams.nsf/pages/iva.inde... . 
+ eng-NG-31-150365-10636440 	152	10842	This website is still under construction. 
+ eng-NG-31-150365-10636440 	153	10884	We will provide more content later. 
+ eng-NG-31-150365-10636440 	154	10921	Regards, 
+ eng-NG-31-150365-10636440 	155	10931	Shixia Liu(刘世霞),Ph.D Information Visualization and Analysis IBM China Research Laboratory Tel:(86-10)58748065 Fax:(86-10)58748230 Email:li ... 
+ eng-NG-31-150365-10636440 	156	11074	@cn.ibm.com Website: http://it.crl.ibm.com/infowiki/Collaborative_Visual_Analytics 
+ eng-NG-31-150365-10636440 	157	11158	Shangshu Cai &lt;shangshu.cai@gma il.com&gt;                                                    To Sent by:                  &quot;Visualization@googlegroups.com&quot; Visualization@goo         &lt;Visualization@googlegroups.com&gt; glegroups.com                                              cc 
+ eng-NG-31-150365-10636440 	158	11454	Subject 2007-11-08 01:19          [Visualization], Re: hello 
+ eng-NG-31-150365-10636440 	159	11516	Please respond to Visualization@goo glegroups.com 
+ eng-NG-31-150365-10636440 	160	11567	Hello: My name is Shangshu Cai. 
+ eng-NG-31-150365-10636440 	161	11599	Now I am a Ph.D candidate in Mississippi State University. 
+ eng-NG-31-150365-10636440 	162	11658	My research areas are Multivariate visualization, hyperspectral analysis, and information visualization. 
+ eng-NG-31-150365-10636440 	163	11763	Further information about me can be found: www.ece.msstate.edu/~sc318 . 
+ eng-NG-31-150365-10636440 	164	11836	Now I am hunting jobs (including post-doc). 
+ eng-NG-31-150365-10636440 	165	11880	I appreciate that if anyone has jobs information share to me. 
+ eng-NG-31-150365-10636440 	166	11943	Thanks. 2007-11-08 
+ eng-NG-31-150365-10636440 	167	11963	Shangshu Cai 
+ eng-NG-31-150365-10636440 	168	11977	发件人： Wei Chen 发送时间： 2007-11-05  22:12:23 收件人： Visualization@googlegroups.com 抄送： 主题： [Visualization], Re: hello Thanks and I am Wei Chen from Zhejiang university. 
+ eng-NG-31-150365-10636440 	169	12141	Wei 
+ eng-NG-31-150365-10636440 	170	12146	On Nov 5, 2007 12:48 PM, Guoning Chen  &lt;guoning.c ... 
+ eng-NG-31-150365-10636440 	171	12203	@gmail.com &gt; wrote: 
+ eng-NG-31-150365-10636440 	172	12249	&gt; Thank you for sharing the information. 
+ eng-NG-31-150365-10636440 	173	12293	I am Guoning Chen from Oregon State &gt; University. 
+ eng-NG-31-150365-10636440 	174	12347	&gt; Guoning 
+ eng-NG-31-150365-10636440 	175	12361	&gt; On 11/4/07, Pan  &lt;panzh ... 
+ eng-NG-31-150365-10636440 	176	12397	@gmail.com &gt; wrote: 
+ eng-NG-31-150365-10636440 	177	12421	&gt;  &gt; Hi everybody, 
+ eng-NG-31-150365-10636440 	178	12447	&gt;  &gt; my name is Pan, currently i am Ph.d candidate in University of Science &gt;  &gt; Malaysia. i've been in this country for more than 8 years, yet i am &gt;  &gt; from mainland China. 
+ eng-NG-31-150365-10636440 	179	12641	&gt;  &gt; Thanks xiaoru for inviting me to join this group. we shall have fun to &gt;  &gt; discuss related issue here. for guys who would like to find some &gt;  &gt; interested visualization topic/content in Chinese, you might want to &gt;  &gt; drop by www.vislab.cn/bbs . 
+ eng-NG-31-150365-10636440 	180	12919	&gt;  &gt; thanks 
+ eng-NG-31-150365-10636440 	181	12938	&gt;  &gt; regards 
+ eng-NG-31-150365-10636440 	182	12958	&gt;  &gt; Yours 
+ eng-NG-31-150365-10636440 	183	12976	&gt;  &gt; Pan "> 
+ eng-NG-31-150365-10636440 	184	12995	graycol.gif 1K Download pic06775.gif 1K Download ecblank.gif 1K Download 
+ eng-NG-31-150365-10636440 	185	13182	Shangru, 
+ eng-NG-31-150365-10636440 	186	13192	If you are interested in working at IBM CRL, please send your resume to me. 
+ eng-NG-31-150365-10636440 	187	13268	My team is recruiting the new member now. 
+ eng-NG-31-150365-10636440 	188	13311	Regards, 
+ eng-NG-31-150365-10636440 	189	13321	Shixia Liu(刘世霞),Ph.D Information Visualization and Analysis IBM China Research Laboratory Tel:(86-10)58748065 Fax:(86-10)58748230 Email:li ... 
+ eng-NG-31-150365-10636440 	190	13464	@cn.ibm.com Website: http://it.crl.ibm.com/infowiki/Collaborative_Visual_Analytics 
+ eng-NG-31-150365-10636440 	191	13548	Shangshu Cai &lt;shangshu.cai@gma il.com&gt;                                                    To Sent by:                  &quot;Visualization@googlegroups.com&quot; Visualization@goo         &lt;Visualization@googlegroups.com&gt; glegroups.com                                              cc 
+ eng-NG-31-150365-10636440 	192	13844	Subject 2007-11-08 01:19          [Visualization], Re: hello 
+ eng-NG-31-150365-10636440 	193	13906	Please respond to Visualization@goo glegroups.com 
+ eng-NG-31-150365-10636440 	194	13957	Hello: My name is Shangshu Cai. 
+ eng-NG-31-150365-10636440 	195	13989	Now I am a Ph.D candidate in Mississippi State University. 
+ eng-NG-31-150365-10636440 	196	14048	My research areas are Multivariate visualization, hyperspectral analysis, and information visualization. 
+ eng-NG-31-150365-10636440 	197	14153	Further information about me can be found: www.ece.msstate.edu/~sc318 . 
+ eng-NG-31-150365-10636440 	198	14226	Now I am hunting jobs (including post-doc). 
+ eng-NG-31-150365-10636440 	199	14270	I appreciate that if anyone has jobs information share to me. 
+ eng-NG-31-150365-10636440 	200	14333	Thanks. 2007-11-08 
+ eng-NG-31-150365-10636440 	201	14353	Shangshu Cai 
+ eng-NG-31-150365-10636440 	202	14367	发件人： Wei Chen 发送时间： 2007-11-05  22:12:23 收件人： Visualization@googlegroups.com 抄送： 主题： [Visualization], Re: hello Thanks and I am Wei Chen from Zhejiang university. 
+ eng-NG-31-150365-10636440 	203	14531	Wei 
+ eng-NG-31-150365-10636440 	204	14536	On Nov 5, 2007 12:48 PM, Guoning Chen  &lt;guoning.c ... 
+ eng-NG-31-150365-10636440 	205	14593	@gmail.com &gt; wrote: 
+ eng-NG-31-150365-10636440 	206	14639	&gt; Thank you for sharing the information. 
+ eng-NG-31-150365-10636440 	207	14683	I am Guoning Chen from Oregon State &gt; University. 
+ eng-NG-31-150365-10636440 	208	14737	&gt; Guoning 
+ eng-NG-31-150365-10636440 	209	14751	&gt; On 11/4/07, Pan  &lt;panzh ... 
+ eng-NG-31-150365-10636440 	210	14787	@gmail.com &gt; wrote: 
+ eng-NG-31-150365-10636440 	211	14811	&gt;  &gt; Hi everybody, 
+ eng-NG-31-150365-10636440 	212	14837	&gt;  &gt; my name is Pan, currently i am Ph.d candidate in University of Science &gt;  &gt; Malaysia. i've been in this country for more than 8 years, yet i am &gt;  &gt; from mainland China. 
+ eng-NG-31-150365-10636440 	213	15031	&gt;  &gt; Thanks xiaoru for inviting me to join this group. we shall have fun to &gt;  &gt; discuss related issue here. for guys who would like to find some &gt;  &gt; interested visualization topic/content in Chinese, you might want to &gt;  &gt; drop by www.vislab.cn/bbs . 
+ eng-NG-31-150365-10636440 	214	15309	&gt;  &gt; thanks 
+ eng-NG-31-150365-10636440 	215	15328	&gt;  &gt; regards 
+ eng-NG-31-150365-10636440 	216	15348	&gt;  &gt; Yours 
+ eng-NG-31-150365-10636440 	217	15366	&gt;  &gt; Pan "> 
+ eng-NG-31-150365-10636440 	218	15385	graycol.gif 1K Download pic23397.gif 1K Download ecblank.gif 1K Download 
+ eng-NG-31-150365-10636440 	219	15576	Hi all, I am Yingcai Wu from the Hong Kong University of Science and Technology. 
+ eng-NG-31-150365-10636440 	220	15657	I am a a fourth year PhD student. 
+ eng-NG-31-150365-10636440 	221	15691	My research interests are in scientific volume visualization and information visualization. 
+ eng-NG-31-150365-10636440 	222	15783	Currently, I am working on medical volume visualization, mainly on effective, intuitive, and intelligent Volume Visualization. 
+ eng-NG-31-150365-10636440 	223	15911	Best wishes, Yingcai -- Department of Computer Science and Engineering, Hong Kong University of Science and Technology, Clear Water Bay, Kowloon , Hong Kong. 
+ eng-NG-31-150365-10636440 	224	16190	Hi, Shixia: 
+ eng-NG-31-150365-10636440 	225	16203	Thank you for providing me this every important information. 
+ eng-NG-31-150365-10636440 	226	16264	My gf still need to stay here for another year to graduate, therefore, I will at least stay in America for another one year.  
+ eng-NG-31-150365-10636440 	227	16390	I think your letter will take me luck. 
+ eng-NG-31-150365-10636440 	228	16429	Thank you again! 
+ eng-NG-31-150365-10636440 	229	16447	shangshu 
+ eng-NG-31-150365-10636440 	230	16457	2007-11-08 
+ eng-NG-31-150365-10636440 	231	16469	Shangshu Cai 
+ eng-NG-31-150365-10636440 	232	16483	发件人： Shi Xia Liu 发送时间： 2007-11-08  14:50:15 收件人： Visualization@googlegroups.com 抄送： Visualization@googlegroups.com 主题： [Visualization], Re: hello 
+ eng-NG-31-150365-10636440 	233	16630	Shangru, 
+ eng-NG-31-150365-10636440 	234	16640	If you are interested in working at IBM CRL, please send your resume to me. 
+ eng-NG-31-150365-10636440 	235	16716	My team is recruiting the new member now. 
+ eng-NG-31-150365-10636440 	236	16759	Regards, 
+ eng-NG-31-150365-10636440 	237	16769	Shixia Liu(刘世霞),Ph.D Information Visualization and Analysis IBM China Research Laboratory Tel:(86-10)58748065 Fax:(86-10)58748230 Email:li ... 
+ eng-NG-31-150365-10636440 	238	16912	@cn.ibm.com Website: http://it.crl.ibm.com/infowiki/Collaborative_Visual_Analytics Shangshu Cai &lt;shangshu. ... 
+ eng-NG-31-150365-10636440 	239	17026	@gmail.com&gt; 
+ eng-NG-31-150365-10636440 	240	17042	Shangshu Cai &lt;shangshu. ... 
+ eng-NG-31-150365-10636440 	241	17073	@gmail.com&gt; Sent by: Visualization@googlegroups.com 2007-11-08 01:19 Please respond to Visualization@googlegroups.com 
+ eng-NG-31-150365-10636440 	242	17195	To &quot;Visualization@googlegroups.com&quot; &lt;Visualization@googlegroups.com&gt; 
+ eng-NG-31-150365-10636440 	243	17281	cc 
+ eng-NG-31-150365-10636440 	244	17285	Subject [Visualization], Re: hello 
+ eng-NG-31-150365-10636440 	245	17321	Hello: My name is Shangshu Cai. 
+ eng-NG-31-150365-10636440 	246	17353	Now I am a Ph.D candidate in Mississippi State University. 
+ eng-NG-31-150365-10636440 	247	17412	My research areas are Multivariate visualization, hyperspectral analysis, and information visualization. 
+ eng-NG-31-150365-10636440 	248	17517	Further information about me can be found: www.ece.msstate.edu/~sc318 . 
+ eng-NG-31-150365-10636440 	249	17590	Now I am hunting jobs (including post-doc). 
+ eng-NG-31-150365-10636440 	250	17634	I appreciate that if anyone has jobs information share to me. 
+ eng-NG-31-150365-10636440 	251	17697	Thanks. 2007-11-08 
+ eng-NG-31-150365-10636440 	252	17717	Shangshu Cai 
+ eng-NG-31-150365-10636440 	253	17731	发件人： Wei Chen 发送时间： 2007-11-05 22:12:23 收件人： Visualization@googlegroups.com 抄送： 主题： [Visualization], Re: hello Thanks and I am Wei Chen from Zhejiang university. 
+ eng-NG-31-150365-10636440 	254	17894	Wei 
+ eng-NG-31-150365-10636440 	255	17899	On Nov 5, 2007 12:48 PM, Guoning Chen &lt;guoning.c ... 
+ eng-NG-31-150365-10636440 	256	17955	@gmail.com &gt; wrote: 
+ eng-NG-31-150365-10636440 	257	18001	&gt; Thank you for sharing the information. 
+ eng-NG-31-150365-10636440 	258	18045	I am Guoning Chen from Oregon State &gt; University. 
+ eng-NG-31-150365-10636440 	259	18099	&gt; Guoning 
+ eng-NG-31-150365-10636440 	260	18113	&gt; On 11/4/07, Pan &lt;panzh ... 
+ eng-NG-31-150365-10636440 	261	18148	@gmail.com &gt; wrote: 
+ eng-NG-31-150365-10636440 	262	18172	&gt; &gt; Hi everybody, 
+ eng-NG-31-150365-10636440 	263	18197	&gt; &gt; my name is Pan, currently i am Ph.d candidate in University of Science &gt; &gt; Malaysia. i've been in this country for more than 8 years, yet i am &gt; &gt; from mainland China. 
+ eng-NG-31-150365-10636440 	264	18388	&gt; &gt; Thanks xiaoru for inviting me to join this group. we shall have fun to &gt; &gt; discuss related issue here. for guys who would like to find some &gt; &gt; interested visualization topic/content in Chinese, you might want to &gt; &gt; drop by www.vislab.cn/bbs . 
+ eng-NG-31-150365-10636440 	265	18662	&gt; &gt; thanks 
+ eng-NG-31-150365-10636440 	266	18680	&gt; &gt; regards 
+ eng-NG-31-150365-10636440 	267	18699	&gt; &gt; Yours 
+ eng-NG-31-150365-10636440 	268	18716	&gt; &gt; Pan "> 
+ eng-NG-31-150365-10636440 	269	18734	graycol(11-08-21-23-21).gif 1K Download ecblank(11-08-21-23-21).gif 1K Download 
+ eng-NG-31-150365-10636440 	270	18930	Hello,ShangShu, 
+ eng-NG-31-150365-10636440 	271	18947	if you are looking for Post-doc vacancy, here in my university now opens some post-doc fellowship. the payment is quite ok. it is about RM4000~RM7000 depending on your previous experiences and research publications. (1 US$ = 3.5 Ringgit Malaysia). and the living cost is not higher than Shanghai or other major cities in China. 
+ eng-NG-31-150365-10636440 	272	19276	you might refer url below http://www.ips.usm.my/news/news-2007/post%20doc%20research%20fellowsh... 
+ eng-NG-31-150365-10636440 	273	19376	and my supervisor is looking for some post-doc.his webpage is http://www.cs.usm.my/seorang.php?
+ eng-NG-31-150365-10636440 	274	19471	s_id=215 
+ eng-NG-31-150365-10636440 	275	19481	thank you 
+ eng-NG-31-150365-10636440 	276	19492	regards 
+ eng-NG-31-150365-10636440 	277	19501	Yours 
+ eng-NG-31-150365-10636440 	278	19508	Pan 
+ eng-NG-31-150365-10636440 	279	19622	Xiaoru, It is great that your will go to PKU. 
+ eng-NG-31-150365-10636440 	280	19668	Congratulations! 
+ eng-NG-31-150365-10636440 	281	19685	Keep contact! 
+ eng-NG-31-150365-10636440 	282	19699	-Ye 
+ eng-NG-31-150365-10636440 	283	19726	Xiaoru Yuan wrote: &gt; Hi, 
+ eng-NG-31-150365-10636440 	284	19755	&gt; It is my turn. 
+ eng-NG-31-150365-10636440 	285	19775	I am Xiaoru Yuan, working at Center for Magnetic &gt; Resonance Research (CMRR) at University of Minnesota. 
+ eng-NG-31-150365-10636440 	286	19883	I graduated last &gt; year from the CSE department at UMN. 
+ eng-NG-31-150365-10636440 	287	19942	More information can be found at &gt; my homepage: http://www.cs.umn.edu/~xyuan/ &gt; &lt; http://www.cs.umn.edu/%7Exyuan/ &gt; &gt; Next year, I will start my faculty position at Peking University. 
+ eng-NG-31-150365-10636440 	288	20141	&gt; Please let me know when you visit Beijing in the future. 
+ eng-NG-31-150365-10636440 	289	20204	&gt; Cheers, 
+ eng-NG-31-150365-10636440 	290	20218	&gt; -- &gt; Xiaoru Yuan Ph.D. 
+ eng-NG-31-150365-10636440 	291	20249	&gt; Center for Magnetic Resonance Research (CMRR) &gt; Digital Technology Center &gt; University of Minnesota &gt; B18A Walter Library &gt; 117 Pleasant Street S.E. 
+ eng-NG-31-150365-10636440 	292	20415	&gt; Minneapolis, MN 55455 &gt; http://www.cs.umn.edu/~xyuan &lt; http://www.cs.umn.edu/%7Exyuan &gt; 
+ eng-NG-31-150365-10636440 	293	20518	&gt; On Nov 8, 2007 12:19 AM, Shangshu Cai &lt;shangshu. ... 
+ eng-NG-31-150365-10636440 	294	20579	@gmail.com &gt; &lt;mailto:shangshu. ... 
+ eng-NG-31-150365-10636440 	295	20620	@gmail.com&gt;&gt; wrote: 
+ eng-NG-31-150365-10636440 	296	20647	&gt;     Hello: &gt;     My name is Shangshu Cai. 
+ eng-NG-31-150365-10636440 	297	20697	Now I am a &gt;     Ph.D candidate in Mississippi State University. 
+ eng-NG-31-150365-10636440 	298	20765	&gt;     My research areas are Multivariate visualization, &gt;     hyperspectral analysis, and information visualization. 
+ eng-NG-31-150365-10636440 	299	20888	&gt;     Further information about me can be found: &gt; www.ece.msstate.edu/~sc318 &lt; http://www.ece.msstate.edu/%7Esc318 &gt;. 
+ eng-NG-31-150365-10636440 	300	21019	&gt;     Now I am hunting jobs (including post-doc). 
+ eng-NG-31-150365-10636440 	301	21072	I &gt;     appreciate that if anyone has jobs information share to me. 
+ eng-NG-31-150365-10636440 	302	21143	&gt;     Thanks. 
+ eng-NG-31-150365-10636440 	303	21160	&gt;     2007-11-08 &gt;     ------------------------------------------------------------------------ &gt;     Shangshu Cai &gt;     ------------------------------------------------------------------------ &gt;     *发件人：* Wei Chen &gt;     *发送时间：* 2007-11-05 22:12:23 &gt;     *收件人：* Visualization@googlegroups.com &gt;     &lt;mailto:Visualization@googlegroups.com&gt; &gt;     *抄送：* &gt;     *主题：* [Visualization], Re: hello &gt;     Thanks and I am Wei Chen from Zhejiang university. 
+ eng-NG-31-150365-10636440 	304	21647	&gt;     Wei &gt;     On Nov 5, 2007 12:48 PM, Guoning Chen &lt;guoning.c ... 
+ eng-NG-31-150365-10636440 	305	21725	@gmail.com &gt;     &lt;mailto:guoning.c ... 
+ eng-NG-31-150365-10636440 	306	21770	@gmail.com&gt; &gt; wrote: &gt;     &gt; Thank you for sharing the information. 
+ eng-NG-31-150365-10636440 	307	21850	I am Guoning Chen from &gt;     Oregon State &gt;     &gt; University. 
+ eng-NG-31-150365-10636440 	308	21922	&gt;     &gt; Guoning 
+ eng-NG-31-150365-10636440 	309	21945	&gt;     &gt; On 11/4/07, Pan &lt;panzh ... 
+ eng-NG-31-150365-10636440 	310	21989	@gmail.com &lt;mailto:panzh ... 
+ eng-NG-31-150365-10636440 	311	22021	@gmail.com&gt; &gt;     &gt; wrote: 
+ eng-NG-31-150365-10636440 	312	22058	&gt;     &gt; &gt; Hi everybody, 
+ eng-NG-31-150365-10636440 	313	22092	&gt;     &gt; &gt; my name is Pan, currently i am Ph.d candidate in University of &gt;     Science &gt;     &gt; &gt; Malaysia. i've been in this country for more than 8 years, yet &gt;     i am &gt;     &gt; &gt; from mainland China. 
+ eng-NG-31-150365-10636440 	314	22328	&gt;     &gt; &gt; Thanks xiaoru for inviting me to join this group. we shall &gt;     have fun to &gt;     &gt; &gt; discuss related issue here. for guys who would like to find some &gt;     &gt; &gt; interested visualization topic/content in Chinese, you might &gt;     want to &gt;     &gt; &gt; drop by www.vislab.cn/bbs &lt; http://www.vislab.cn/bbs &gt; . 
+ eng-NG-31-150365-10636440 	315	22691	&gt;     &gt; &gt; thanks 
+ eng-NG-31-150365-10636440 	316	22718	&gt;     &gt; &gt; regards 
+ eng-NG-31-150365-10636440 	317	22746	&gt;     &gt; &gt; Yours 
+ eng-NG-31-150365-10636440 	318	22772	&gt;     &gt; &gt; Pan "> 
+ eng-NG-31-150365-10636440 	319	22799	-- Ye Zhao, Ph.D. 
+ eng-NG-31-150365-10636440 	320	22817	Assistant Professor Kent State University Department of Computer Science Kent, Ohio 44242-0001 Tel: (330)672-9059 
+ eng-NG-31-150372-10636446 	0	183	This post was written by David Decraene.
+ eng-NG-31-150372-10636446 	1	84	This post was written on 2008-07-07T19:09:34 .
+ eng-NG-31-150372-10636446 	2	159	Documentation 
+ eng-NG-31-150372-10636446 	3	312	I extended the current (read: nearly non-existent) documentation on the jOWL library. 
+ eng-NG-31-150372-10636446 	4	399	The documentation has been stored as an OWL-DL file, and is browsed with jOWL itself. 
+ eng-NG-31-150372-10636446 	5	485	Providing some nice functionality in my opinion. 
+ eng-NG-31-150372-10636446 	6	535	See http://jowl.ontologyonline.org/documentation.html 
+ eng-NG-31-150372-10636445 	0	178	This post was written by David Decraene.
+ eng-NG-31-150372-10636445 	1	84	This post was written on 2008-07-14T19:10:11 .
+ eng-NG-31-150372-10636445 	2	159	jOWL 0.5 
+ eng-NG-31-150372-10636445 	3	307	Released jOWL 0.5 ( http://code.google.com/p/jowl-plugin/ ), this version includes the indexing of rdf:about attributes that makes browsing of BFO and other ontologies possible (as for example at http://jowl.ontologyonline.org/bfo.html ). 
+ eng-NG-31-150372-10636445 	4	546	I also expanded the demo section, you can read about it in the blog post: http://ontologyonline.blogspot.com/2008/07/jowl-status-update.html 
+ eng-NG-31-150372-10636445 	5	688	Yours, David Decraene http://ontologyonline.org 
+ eng-NG-31-150372-10636473 	0	184	This post was written by thewebseman...@gmail.com.
+ eng-NG-31-150372-10636473 	1	84	This post was written on 2007-12-03T04:26:17 .
+ eng-NG-31-150372-10636473 	2	159	embedded RDFa 
+ eng-NG-31-150372-10636473 	3	321	David, 
+ eng-NG-31-150372-10636473 	4	329	I just read your post on embedding rdf in xhtml.  
+ eng-NG-31-150372-10636473 	5	379	I like where you're going, but I'm skeptical about embedding rdf with xhtml.  
+ eng-NG-31-150372-10636473 	6	457	Microformats seem to scratch an itch for designers, and designers tend to have the power to get them released on their site. 
+ eng-NG-31-150372-10636473 	7	583	When the source is a backend that's already capable of creating rdf formatted data, I'd imagine a discoverable link within the xhtml would be better...something similar to auto discovered RSS, operator would recognize a div/span and be redirected to the end point that provides RDF. 
+ eng-NG-31-150372-10636473 	8	867	The problem with OWL/RDF is that it isn't well specified for common domains.  
+ eng-NG-31-150372-10636473 	9	945	Take for example the ical ontology posted on the w3c.  
+ eng-NG-31-150372-10636473 	10	1000	Load that up into Protege and it doesn't even recognize the date fields as dates, they aren't specified as 'functional' and allow multiple entries...you cannot have an event start at two times.  
+ eng-NG-31-150372-10636473 	11	1195	It's just a really poor example of owl, and yet, that's supposed to be the OWL version of vCalendar.  
+ eng-NG-31-150372-10636473 	12	1297	The microformat standard is better.  
+ eng-NG-31-150372-10636473 	13	1334	Go ahead, load this up in Protege http://www.w3.org/2002/12/cal/ical .  
+ eng-NG-31-150372-10636473 	14	1406	Even if we want to share our data, it's not clear what ontology we should use! 
+ eng-NG-31-150372-10636473 	15	1486	At the spring semweb conference in San Jose somebody gave a talk on embedding rdf in Atom...at first I thought that it was an odd idea, but he's right, it's a really good idea.  
+ eng-NG-31-150372-10636473 	16	1664	Google is using Atom for it's open social.  
+ eng-NG-31-150372-10636473 	17	1708	So the XHTML would frame a region and point the plugin to the rdf endpoint, and it'd probably be best to deliver it via Atom...which I think would allow the rdf to be more normal, regular rdf, as opposed to RDFa. 
+ eng-NG-31-150372-10636473 	18	2055	My (small) dissappointment in Microformats is really that they force you to use a kind of pre-defined structure (basically templates) to make the data machine-readable. 
+ eng-NG-31-150372-10636473 	19	2224	That's fine when we are talking about vCards, or address specifications, but what if I wish to to do same for food, or movies, books or other topics. 
+ eng-NG-31-150372-10636473 	20	2374	You'd need a microformat specification for each one of them. 
+ eng-NG-31-150372-10636473 	21	2435	A common syntax to express ontological data would allow us to overcome these limitations, as you can somehow separate meaning versus representation. 
+ eng-NG-31-150372-10636473 	22	2584	I do agree OWL has it's limitations (for one that has been addressed by OWL 1.1; cfr an earlier post of mine: http://lists.tdwg.org/pipermail/tdwg-tag/2006-September/000171.html ), but currently I know of no other ontology language that has (being xml / RDF based) to possibility to integrate with web content. 
+ eng-NG-31-150372-10636473 	23	2895	One thing I am thinking of is that you could markup sections of text with reference to an ontology class they are referring to, and more or less forget about advanced relating. 
+ eng-NG-31-150372-10636473 	24	3072	Very Rudimentary example: &lt;div instanceof=&quot;someontology#address&quot;&gt; &lt;span instanceof=&quot;someontology#street&quot;&gt;some street&lt;/span&gt;&lt;span instanceof=&quot;someontology#country&quot;&gt;France&lt;/span&gt; &lt;/div&gt; By reasoning over the tagged classes the relations could be extracted by itself and a template might be generated. 
+ eng-NG-31-150372-10636473 	25	3437	I must agree this thought is quite primitive at the moment, and yes, there still should be a reference ontology to which you refer (although if you abstract it you might try and let go explicit ontology references in the above examples (instanceof=&quot;street&quot;, instanceof=&quot;country&quot; etc) and let an application that works with the data disambiguate the meaning of it. 
+ eng-NG-31-150372-10636473 	26	3821	All very hypothetical of course. 
+ eng-NG-31-150372-10636473 	27	3855	In the case of the ical example, I believe it would be better if the rdf:datatype would be made explicit as xsd:date-time (instead of integer as it is now), and if I am correct the property should be declared as datatypeproperty as well. 
+ eng-NG-31-150372-10636473 	28	4093	So there might be some design imperfections, and perhaps correcting these might lead to a better recognition in Protege. 
+ eng-NG-31-150372-10636473 	29	4214	It just shows that OWL is not very accessible to many (and also got me puzzled now and then) and is really still in it's infancy. 
+ eng-NG-31-150372-10636473 	30	4345	Perhaps putting RDF into Atom feeds would allow you to achieve certain things, but in my opinion the direct tagging of content with semantic classes, although very impractical, might definately have some advantages as well. 
+ eng-NG-31-150372-10636473 	31	4570	I wrote the article (in the same way that I use the website) to try and explore some ideas I have, whether embedding OWL in XHTML will or will not be a mainstream, the fact that it is possible already got me (and I hope others) thinking, and we all know the semantic web requires a serious push in the back. 
+ eng-NG-31-150372-10636473 	32	4879	David. 
+ eng-NG-31-150372-10636473 	33	4887	On 3 dec, 05:26, &quot;thewebseman ... 
+ eng-NG-31-150372-10636473 	34	4926	@gmail.com&quot; &lt;thewebseman ... 
+ eng-NG-31-150372-10636473 	35	4963	@gmail.com&gt; wrote: 
+ eng-NG-31-150372-10636473 	36	5008	&gt; David, 
+ eng-NG-31-150372-10636473 	37	5021	&gt; I just read your post on embedding rdf in xhtml.  
+ eng-NG-31-150372-10636473 	38	5076	I like where you're &gt; going, but I'm skeptical about embedding rdf with xhtml.  
+ eng-NG-31-150372-10636473 	39	5159	Microformats &gt; seem to scratch an itch for designers, and designers tend to have the &gt; power to get them released on their site. 
+ eng-NG-31-150372-10636473 	40	5295	&gt; When the source is a backend that's already capable of creating rdf &gt; formatted data, I'd imagine a discoverable link within the xhtml would &gt; be better...something similar to auto discovered RSS, operator would &gt; recognize a div/span and be redirected to the end point that provides &gt; RDF. 
+ eng-NG-31-150372-10636473 	41	5604	&gt; The problem with OWL/RDF is that it isn't well specified for common &gt; domains.  
+ eng-NG-31-150372-10636473 	42	5692	Take for example the ical ontology posted on the w3c.  
+ eng-NG-31-150372-10636473 	43	5747	Load &gt; that up into Protege and it doesn't even recognize the date fields as &gt; dates, they aren't specified as 'functional' and allow multiple &gt; entries...you cannot have an event start at two times.  
+ eng-NG-31-150372-10636473 	44	5957	It's just a &gt; really poor example of owl, and yet, that's supposed to be the OWL &gt; version of vCalendar.  
+ eng-NG-31-150372-10636473 	45	6069	The microformat standard is better.  
+ eng-NG-31-150372-10636473 	46	6106	Go ahead, &gt; load this up in Protege http://www.w3.org/2002/12/cal/ical .  
+ eng-NG-31-150372-10636473 	47	6183	Even if &gt; we want to share our data, it's not clear what ontology we should use! 
+ eng-NG-31-150372-10636473 	48	6268	&gt; At the spring semweb conference in San Jose somebody gave a talk on &gt; embedding rdf in Atom...at first I thought that it was an odd idea, &gt; but he's right, it's a really good idea.  
+ eng-NG-31-150372-10636473 	49	6461	Google is using Atom for &gt; it's open social.  
+ eng-NG-31-150372-10636473 	50	6510	So the XHTML would frame a region and point the &gt; plugin to the rdf endpoint, and it'd probably be best to deliver it &gt; via Atom...which I think would allow the rdf to be more normal, &gt; regular rdf, as opposed to RDFa. "> 
+ eng-NG-31-150372-10636473 	51	6848	i have been thinking for some time about a use case where i use rdfa to mark up extensive web-based lectures for students. this would require creating an ontology for the course topic which may at first be problematic but may well be adopted by publishers if successful. this would allow reasoning and relationships between the lecture, the course discussions, assessments such as carefully structured multiple guess, and other course elements. your article is very interesting to me with reference to this project. these kinds of applications of rdfa are not directly related to data exchange (at least at first), but allow the semantic web to be used to create content and then actually use that content outside the web page. 
+ eng-NG-31-150372-10636473 	52	7710	That is exactly the kind of use-case I'm having in mind as well. 
+ eng-NG-31-150372-10636473 	53	7775	And true, it would require an ontology about your domain of discourse first. 
+ eng-NG-31-150372-10636473 	54	7852	On top of that particular usecase of RDfa, having the ontology content easily accessible (and hence, easily referencable) would promote the use of it, which in my opinion provides arguments for publishing the ontology within regular web pages as well. 
+ eng-NG-31-150372-10636473 	55	8104	Publishing the ontology within web pages would could also make it more transparant to the user and thereby let him understand the content better, that is something you will never achieve by just looking at the OWL syntax (or any other syntax you express your ontology in), which by definition facilitates machine-readability, not human understanding....
+ eng-NG-31-150372-10636473 	56	8457	(For a concrete example: any concept page of http://ontologyonline.org versus the owl syntax that can also be shown when selecting the 'Show OWL syntax' option present on those pages). 
+ eng-NG-31-150372-10636473 	57	8643	David. 
+ eng-NG-31-150372-10636473 	58	8651	On 4 dec, 20:20, kip &lt;canfi ... 
+ eng-NG-31-150372-10636473 	59	8686	@umbc.edu&gt; wrote: 
+ eng-NG-31-150372-10636473 	60	8730	&gt; i have been thinking for some time about a use case where i use rdfa &gt; to mark up extensive web-based lectures for students. this would &gt; require creating an ontology for the course topic which may at first &gt; be problematic but may well be adopted by publishers if successful. 
+ eng-NG-31-150372-10636473 	61	9021	&gt; this would allow reasoning and relationships between the lecture, the &gt; course discussions, assessments such as carefully structured multiple &gt; guess, and other course elements. your article is very interesting to &gt; me with reference to this project. these kinds of applications of rdfa &gt; are not directly related to data exchange (at least at first), but &gt; allow the semantic web to be used to create content and then actually &gt; use that content outside the web page. "> 
+ eng-NG-31-150372-10636448 	0	183	This post was written by David Decraene.
+ eng-NG-31-150372-10636448 	1	84	This post was written on 2008-07-02T10:41:29 .
+ eng-NG-31-150372-10636448 	2	159	new JOWL demo 
+ eng-NG-31-150372-10636448 	3	312	I uploaded a new jOWL demo which demonstrates the new rdf:about indexing functionality (better compatibility with the different ways to express ontology entries with OWL-DL ). 
+ eng-NG-31-150372-10636448 	4	489	The demo allows for online browsing of BFO, the Basic formal ontology. 
+ eng-NG-31-150372-10636448 	5	560	BFO 1.1 can be browsed in it's unmodified form with jOWL online at: http://jowl.ontologyonline.org/bfo.html 
+ eng-NG-31-150372-10636448 	6	669	Best Regards David Decraene http://ontologyonline.org 
+ eng-NG-31-150372-10636448 	7	724	remark: the current downloadable release at google code does not yet contain all the features needed to reproduce this page's functionality. 
+ eng-NG-31-150372-10636448 	8	865	The features will be part of the forthcoming jOWL 1.0 release. 
+ eng-NG-31-150372-10636448 	9	1035	impressive progress! 
+ eng-NG-31-150372-10636448 	10	1057	On Jul 2, 6:41 am, David Decraene &lt;david.MA.decra ... 
+ eng-NG-31-150372-10636448 	11	1114	@gmail.com&gt; wrote: 
+ eng-NG-31-150372-10636448 	12	1159	&gt; I uploaded a new jOWL demo which demonstrates the new rdf:about &gt; indexing functionality (better compatibility with the different ways &gt; to express ontology entries with OWL-DL ). 
+ eng-NG-31-150372-10636448 	13	1351	&gt; The demo allows for online browsing of BFO, the Basic formal ontology. 
+ eng-NG-31-150372-10636448 	14	1427	&gt; BFO 1.1 can be browsed in it's unmodified form with jOWL online at: http://jowl.ontologyonline.org/bfo.html 
+ eng-NG-31-150372-10636448 	15	1541	&gt; Best Regards &gt; David Decraene http://ontologyonline.org 
+ eng-NG-31-150372-10636448 	16	1606	&gt; remark: the current downloadable release at google code does not yet &gt; contain all the features needed to reproduce this page's &gt; functionality. 
+ eng-NG-31-150372-10636448 	17	1762	The features will be part of the forthcoming jOWL 1.0 &gt; release. "> 
+ eng-NG-31-150372-10636448 	18	1961	Thanks, 
+ eng-NG-31-150372-10636448 	19	1970	a serious rewrite, but it was worth it :) 
+ eng-NG-31-150372-10636448 	20	2013	On Jul 2, 4:26 pm, kip &lt;canfi ... 
+ eng-NG-31-150372-10636448 	21	2050	@umbc.edu&gt; wrote: 
+ eng-NG-31-150372-10636448 	22	2094	&gt; impressive progress! 
+ eng-NG-31-150372-10636448 	23	2121	&gt; On Jul 2, 6:41 am, David Decraene &lt;david.MA.decra ... 
+ eng-NG-31-150372-10636448 	24	2183	@gmail.com&gt; wrote: 
+ eng-NG-31-150372-10636448 	25	2206	&gt; &gt; I uploaded a new jOWL demo which demonstrates the new rdf:about &gt; &gt; indexing functionality (better compatibility with the different ways &gt; &gt; to express ontology entries with OWL-DL ). 
+ eng-NG-31-150372-10636448 	26	2413	&gt; &gt; The demo allows for online browsing of BFO, the Basic formal ontology. 
+ eng-NG-31-150372-10636448 	27	2494	&gt; &gt; BFO 1.1 can be browsed in it's unmodified form with jOWL online at: http://jowl.ontologyonline.org/bfo.html 
+ eng-NG-31-150372-10636448 	28	2613	&gt; &gt; Best Regards &gt; &gt; David Decraene http://ontologyonline.org 
+ eng-NG-31-150372-10636448 	29	2688	&gt; &gt; remark: the current downloadable release at google code does not yet &gt; &gt; contain all the features needed to reproduce this page's &gt; &gt; functionality. 
+ eng-NG-31-150372-10636448 	30	2859	The features will be part of the forthcoming jOWL 1.0 &gt; &gt; release. "> 
+ eng-NG-31-150373-8805227 	0	197	This post was written by eyesofgreen.
+ eng-NG-31-150373-8805227 	1	83	This post was written on 2007-08-13T15:03:00 .
+ eng-NG-31-150373-8805227 	2	158	Fun Easy and ONLY 5 dollars? 
+ eng-NG-31-150373-8805227 	3	320	MAKE QUICK LEGAL EASY MONEY!!!!!!!!!!!!!!!!!!!!!!
+ eng-NG-31-150373-8805227 	4	369	&quot; Turn $5.00 into $42,000, WITH HARDLY ANY WORK.... read this to find out how!!!! 
+ eng-NG-31-150373-8805227 	5	456	READING THIS COULD CHANGE YOUR LIFE!!!! 
+ eng-NG-31-150373-8805227 	6	496	I found this on a bulletin board and decided to try it. 
+ eng-NG-31-150373-8805227 	7	552	A little while back, I was browsing through newsgroups, just like you are now, and came across an article similar to this that said you could make thousands of cash within weeks with only an initial investment of $5.00!! 
+ eng-NG-31-150373-8805227 	8	773	So I thought, &quot;Yeah right, this must  be a scam&quot;, but like most of us, I was curious, so I kept reading. 
+ eng-NG-31-150373-8805227 	9	888	Before you get skeptical, just take a few minutes to fishish reading this. 
+ eng-NG-31-150373-8805227 	10	963	WITH THIS PLAN, YOU REALLY CAN MAKE TONS OF TOTALLY LEGAL, FAST AND EASY CASH MONEY!! 
+ eng-NG-31-150373-8805227 	11	1049	IT WORKS!!! 
+ eng-NG-31-150373-8805227 	12	1061	BUT YOU HAVE TO FOLLOW IT CAREFULLY FOR IT TO WORK CORRECTLY AND IN YOUR FAVOR!!!! 
+ eng-NG-31-150373-8805227 	13	1144	WITH ALL THE MONEY YOU ARE GONNA MAKE, YOU WILL SOON GET EVERTHING YOU'VE  ALWAYS DREAMED OF!!!! 
+ eng-NG-31-150373-8805227 	14	1241	Here's how it works. 
+ eng-NG-31-150373-8805227 	15	1262	All you do is send $1.00 to each of the 5 names and address stated in the article. 
+ eng-NG-31-150373-8805227 	16	1345	You then place your own name and address in the bottom of the list at #5, and post the article in at least 200 newsgroups. 
+ eng-NG-31-150373-8805227 	17	1468	(There are thousands.) 
+ eng-NG-31-150373-8805227 	18	1491	No catch, that was it. 
+ eng-NG-31-150373-8805227 	19	1514	So after thinking it over, and talking to a few people first, I thought about trying it. 
+ eng-NG-31-150373-8805227 	20	1603	I figured, what have I got to lose except 5 stamps and $5.00, right? 
+ eng-NG-31-150373-8805227 	21	1672	Like most of us I was a little skeptical and a little worried about the legal aspects of it all. 
+ eng-NG-31-150373-8805227 	22	1769	So I checked it out with the U.S. 
+ eng-NG-31-150373-8805227 	23	1803	Post Office (1-800-725-2161) and they confirmed that it is indeed legal! 
+ eng-NG-31-150373-8805227 	24	1876	Then I invested the measly $5.00. 
+ eng-NG-31-150373-8805227 	25	1910	Well, GUESS WHAT!!... 
+ eng-NG-31-150373-8805227 	26	1932	Within 7 days, I started getting money in the mail! 
+ eng-NG-31-150373-8805227 	27	1984	I was shocked! 
+ eng-NG-31-150373-8805227 	28	1999	I figured it would end soon, but the money just kept coming in. 
+ eng-NG-31-150373-8805227 	29	2063	In my first week, I made about $25.00. 
+ eng-NG-31-150373-8805227 	30	2102	By the end of the second week I had made a total of over $1,000! 
+ eng-NG-31-150373-8805227 	31	2167	In the third week I had over $10,000 and it's still growing. 
+ eng-NG-31-150373-8805227 	32	2228	This is now my fourth week and I have made a total of just over $42,000.00, and it's still coming in rapidly. 
+ eng-NG-31-150373-8805227 	33	2338	It's certainly worth $5.00, and 5 stamps. 
+ eng-NG-31-150373-8805227 	34	2380	By the way, I have spent more than that on the lottery in the last month!! 
+ eng-NG-31-150373-8805227 	35	2455	Let me tell you how this works and most importantly, why it works....also, make sure you print a copy of this article NOW, so you can get the information off of it as you  need it. 
+ eng-NG-31-150373-8805227 	36	2637	STEP 1: Get 5 separate pieces of paper and write the following on each piece of paper, &quot;PLEASE PUT ME ON YOUR MAILING LIST.
+ eng-NG-31-150373-8805227 	37	2765	&quot; Also, be sure to include your name and address. 
+ eng-NG-31-150373-8805227 	38	2820	Now, get 5 U.S. $1.00 bills and place ONE inside EACH of the 5 pieces of paper so the bill will not be seen through the envelope, to prevent thievery. 
+ eng-NG-31-150373-8805227 	39	2971	Next, place one paper in each of the 5 envelopes and seal them. 
+ eng-NG-31-150373-8805227 	40	3035	You should now have 5 sealed envelopes, each with a piece of paper stating the above phrase, your name and address, and a $1.00 bill. 
+ eng-NG-31-150373-8805227 	41	3169	What you are doing is creating a service by this. 
+ eng-NG-31-150373-8805227 	42	3219	THIS IS ABSOLUTELY LEGAL! 
+ eng-NG-31-150373-8805227 	43	3245	Mail the 5 envelopes to the following addresses: 
+ eng-NG-31-150373-8805227 	44	3295	:#1) CINDY  MCCLANAHAN 7656  SOMERSET LN. 
+ eng-NG-31-150373-8805227 	45	3337	MANASSAS, VA. 20111 
+ eng-NG-31-150373-8805227 	46	3358	: #2) AILENE  BESS P.O.BOX 24403 DETROIT, MI 48224 
+ eng-NG-31-150373-8805227 	47	3410	: #3) ILENE  ELLIS 10314 BERKSHIRE  ST. 
+ eng-NG-31-150373-8805227 	48	3450	DETROIT, MI 48224 
+ eng-NG-31-150373-8805227 	49	3469	: #4) GAYLE  MASCIOLI 18432  VANOWEN  ST. 
+ eng-NG-31-150373-8805227 	50	3511	RESEDA, CA  91335 
+ eng-NG-31-150373-8805227 	51	3530	#5) ANGELA  ROCKWELL P.O.BOX 146 FRANKFORT, ME  04438 
+ eng-NG-31-150373-8805227 	52	3585	STEP 2:   Now take the #1 name off the list that you see above, move the other names up (5 becomes 4, 4 becomes 3, etc...) and add YOUR Name as number 5 on the list. 
+ eng-NG-31-150373-8805227 	53	3751	STEP 3:   Change anything you need to, but try to keep this article as close to original as possible. 
+ eng-NG-31-150373-8805227 	54	3853	If you do not live in the U.S. or there is a foreign address, you must put an international stamp on your envelopes. 
+ eng-NG-31-150373-8805227 	55	3970	Now, post your amended article to at least 200 newsgroups. 
+ eng-NG-31-150373-8805227 	56	4029	(I think there are close to 24,000 groups in all.) 
+ eng-NG-31-150373-8805227 	57	4080	All you need is 200, but remember, the more you post, the more money you make! 
+ eng-NG-31-150373-8805227 	58	4160	: -----DIRECTIONS FOR HOW TO POST TO ON NEWSGROUP BULLETINS----- STEP 1: You do not need to re-type this entire letter to do your own posting. 
+ eng-NG-31-150373-8805227 	59	4303	Simply put your cursor at the beginning of this letter and drag your cursor to the bottom of this letter. 
+ eng-NG-31-150373-8805227 	60	4409	Then select 'copy' from the edit menu. 
+ eng-NG-31-150373-8805227 	61	4448	This will copy the entire letter into the computers temporary memory. 
+ eng-NG-31-150373-8805227 	62	4518	STEP 2: Open a blank 'notepad' or word processor file and place your cursor at the top of the blank page. 
+ eng-NG-31-150373-8805227 	63	4624	From the 'edit' menu select 'paste'. 
+ eng-NG-31-150373-8805227 	64	4661	This will paste a copy of the letter into notepad so that you can add your name to the list. 
+ eng-NG-31-150373-8805227 	65	4754	STEP 3: Save your new notepad file as a *.txt file. 
+ eng-NG-31-150373-8805227 	66	4806	If you want to do your postings in different sittings, you'll always have this file to go back to. 
+ eng-NG-31-150373-8805227 	67	4905	STEP 4: Use your internet provider and search engines to find various newsgroups (on-line forums, message boards, chat sites, discussions). 
+ eng-NG-31-150373-8805227 	68	5045	STEP 6: Visit these message boards and post this article as a new message by highlighting the text of this letter and selecting paste from the edit menu. 
+ eng-NG-31-150373-8805227 	69	5199	Fill in the Subject, and this will be the header that everyone sees as they scroll through the list of postings in a particular group. 
+ eng-NG-31-150373-8805227 	70	5334	Then click the post message button. 
+ eng-NG-31-150373-8805227 	71	5370	You're done with your first one! 
+ eng-NG-31-150373-8805227 	72	5403	Congratulations...THAT'S IT! 
+ eng-NG-31-150373-8805227 	73	5432	All you have to do is jump to different newsgroups and post away. 
+ eng-NG-31-150373-8805227 	74	5498	After you get the hang of it, it will only take about 30 seconds for each posting!! 
+ eng-NG-31-150373-8805227 	75	5582	**REMEMBER, THE MORE NEWSGROUPS YOU POST IN, THE MORE MONEY YOU WILL MAKE!!
+ eng-NG-31-150373-8805227 	76	5657	---BUT YOU HAVE TO POST A MINIMUM OF 200** That's it! 
+ eng-NG-31-150373-8805227 	77	5711	You will begin receiving money from around the world within days! 
+ eng-NG-31-150373-8805227 	78	5777	You may eventually want to rent a P.O. 
+ eng-NG-31-150373-8805227 	79	5816	Box due to the large amount of mail you will receive. 
+ eng-NG-31-150373-8805227 	80	5870	If you wish to stay anonymous, you can invent a name to use, as long as the postal service will deliver it. 
+ eng-NG-31-150373-8805227 	81	5978	**JUST MAKE SURE ALL THE ADDRESSES ARE CORRECT** ----Now the WHY part---- Out of 200 postings, say I receive only 5 replies (a very low example). 
+ eng-NG-31-150373-8805227 	82	6124	So then I made $5.00 with my name at #5 on the letter. 
+ eng-NG-31-150373-8805227 	83	6179	Now, each of the 5 persons who just sent me $1.00 make the MINIMUM 200 postings, each with my name at #5, and only 5 persons respond to each of the original 5, that is another $25.00. 
+ eng-NG-31-150373-8805227 	84	6363	Then those 25 each make 200 MINIMUM posts with my name at #4, and only 5 replies to each, and I will bring in an additional $125.00! 
+ eng-NG-31-150373-8805227 	85	6496	Now, those 125 persons turn around and post the MINIMUM 200 with my name at #3 and only receive 5 replies each, and I will make an additional $625.00! 
+ eng-NG-31-150373-8805227 	86	6647	OK, now here is the fun part. 
+ eng-NG-31-150373-8805227 	87	6677	Each of those 625 persons post a MINIMUM 200 letters with my name at #2, and they each only receive 5 replies, that just made me $3,125.00!!! 
+ eng-NG-31-150373-8805227 	88	6819	Those 3,125 persons will all deliver this message to 200 newsgroups with my name at #1, and if still 5 persons per 200 newsgroups react, I will receive an amazing $15,625,00! 
+ eng-NG-31-150373-8805227 	89	6994	With an original investment of only $5.00! 
+ eng-NG-31-150373-8805227 	90	7037	AMAZING! 
+ eng-NG-31-150373-8805227 	91	7046	When your name is no longer on the list, you just take the latest posting in the newsgroups, and send out another $5.00 to names on the list, putting your name at number 5 again. 
+ eng-NG-31-150373-8805227 	92	7225	Then start posting again. 
+ eng-NG-31-150373-8805227 	93	7251	That's it! 
+ eng-NG-31-150373-8805227 	94	7262	Do you realize that thousands of honest people just like you all over the world are joining the internet and reading these articles everyday? 
+ eng-NG-31-150373-8805227 	95	7404	So can you afford $5.00 and see if it really works?? 
+ eng-NG-31-150373-8805227 	96	7457	I think so... 
+ eng-NG-31-150373-8805227 	97	7471	People have said, &quot;what if the plan is played out and no one sends you the money? 
+ eng-NG-31-150373-8805227 	98	7558	So what! 
+ eng-NG-31-150373-8805227 	99	7567	What are the chances of that happening when there are tons of new honest users who are  joining the internet and newsgroups everyday. 
+ eng-NG-31-150373-8805227 	100	7701	So, are willing to give it a try? 
+ eng-NG-31-150373-8805227 	101	7735	Estimates are about 20,000 to 50,000 new bulletin board users every day, with thousands of those joining the internet  itself. 
+ eng-NG-31-150373-8805227 	102	7862	Remember, please play FAIRLY! 
+ eng-NG-31-150373-8805227 	103	7892	This ensures a huge circle of wealth that grows with the internet audience!!! 
+ eng-NG-31-150373-8805227 	104	7970	Everyone benefits!!! 
+ eng-NG-31-150373-8805227 	105	7991	Remember to send the FIVE envelopes to the above addresses, in order to create the legal service. 
+ eng-NG-31-150373-8805227 	106	8089	At first I was to scared to try this, but once I researched it, I found that it is totally legal. 
+ eng-NG-31-150373-8805227 	107	8187	When you send the FIVE envelopes out, you create a service, a legal service. 
+ eng-NG-31-150373-8805227 	108	8264	The Internet audience is expanding all the time. 
+ eng-NG-31-150373-8805227 	109	8313	The audience is like an equity stock on the stock market, continuously going up. 
+ eng-NG-31-150373-8805227 	110	8394	If you still think this is a fraud, take a few minutes to check it out, then you'll start raking in the cash!!!!!! 
+ eng-NG-31-150373-8805227 	111	8510	Sales Spider - Access 10,000 Plus Leads Instantly  Absolutely Free! 
+ eng-NG-31-150373-8805227 	112	8578	http://salespider.com/signup.php?
+ eng-NG-31-150373-8805227 	113	8611	id=932011 
+ eng-NG-31-150373-8805227 	114	8622	Free Business Advertising - Advertise for Free. 
+ eng-NG-31-150373-8805227 	115	8670	Reach 1000s Instantly : http://salespider.com/signup.php?
+ eng-NG-31-150373-8805227 	116	8727	id=932011 
+ eng-NG-31-150373-10636474 	0	198	This post was written by eyesofgreen.
+ eng-NG-31-150373-10636474 	1	84	This post was written on 2007-08-13T19:03:54 .
+ eng-NG-31-150373-10636474 	2	159	Fun Easy and ONLY 5 dollars? 
+ eng-NG-31-150373-10636474 	3	321	MAKE QUICK LEGAL EASY MONEY!!!!!!!!!!!!!!!!!!!!!!
+ eng-NG-31-150373-10636474 	4	370	&quot; Turn $5.00 into $42,000, WITH HARDLY ANY WORK.... read this to find out how!!!! 
+ eng-NG-31-150373-10636474 	5	457	READING THIS COULD CHANGE YOUR LIFE!!!! 
+ eng-NG-31-150373-10636474 	6	497	I found this on a bulletin board and decided to try it. 
+ eng-NG-31-150373-10636474 	7	553	A little while back, I was browsing through newsgroups, just like you are now, and came across an article similar to this that said you could make thousands of cash within weeks with only an initial investment of $5.00!! 
+ eng-NG-31-150373-10636474 	8	774	So I thought, &quot;Yeah right, this must  be a scam&quot;, but like most of us, I was curious, so I kept reading. 
+ eng-NG-31-150373-10636474 	9	889	Before you get skeptical, just take a few minutes to fishish reading this. 
+ eng-NG-31-150373-10636474 	10	964	WITH THIS PLAN, YOU REALLY CAN MAKE TONS OF TOTALLY LEGAL, FAST AND EASY CASH MONEY!! 
+ eng-NG-31-150373-10636474 	11	1050	IT WORKS!!! 
+ eng-NG-31-150373-10636474 	12	1062	BUT YOU HAVE TO FOLLOW IT CAREFULLY FOR IT TO WORK CORRECTLY AND IN YOUR FAVOR!!!! 
+ eng-NG-31-150373-10636474 	13	1145	WITH ALL THE MONEY YOU ARE GONNA MAKE, YOU WILL SOON GET EVERTHING YOU'VE  ALWAYS DREAMED OF!!!! 
+ eng-NG-31-150373-10636474 	14	1242	Here's how it works. 
+ eng-NG-31-150373-10636474 	15	1263	All you do is send $1.00 to each of the 5 names and address stated in the article. 
+ eng-NG-31-150373-10636474 	16	1346	You then place your own name and address in the bottom of the list at #5, and post the article in at least 200 newsgroups. 
+ eng-NG-31-150373-10636474 	17	1469	(There are thousands.) 
+ eng-NG-31-150373-10636474 	18	1492	No catch, that was it. 
+ eng-NG-31-150373-10636474 	19	1515	So after thinking it over, and talking to a few people first, I thought about trying it. 
+ eng-NG-31-150373-10636474 	20	1604	I figured, what have I got to lose except 5 stamps and $5.00, right? 
+ eng-NG-31-150373-10636474 	21	1673	Like most of us I was a little skeptical and a little worried about the legal aspects of it all. 
+ eng-NG-31-150373-10636474 	22	1770	So I checked it out with the U.S. 
+ eng-NG-31-150373-10636474 	23	1804	Post Office (1-800-725-2161) and they confirmed that it is indeed legal! 
+ eng-NG-31-150373-10636474 	24	1877	Then I invested the measly $5.00. 
+ eng-NG-31-150373-10636474 	25	1911	Well, GUESS WHAT!!... 
+ eng-NG-31-150373-10636474 	26	1933	Within 7 days, I started getting money in the mail! 
+ eng-NG-31-150373-10636474 	27	1985	I was shocked! 
+ eng-NG-31-150373-10636474 	28	2000	I figured it would end soon, but the money just kept coming in. 
+ eng-NG-31-150373-10636474 	29	2064	In my first week, I made about $25.00. 
+ eng-NG-31-150373-10636474 	30	2103	By the end of the second week I had made a total of over $1,000! 
+ eng-NG-31-150373-10636474 	31	2168	In the third week I had over $10,000 and it's still growing. 
+ eng-NG-31-150373-10636474 	32	2229	This is now my fourth week and I have made a total of just over $42,000.00, and it's still coming in rapidly. 
+ eng-NG-31-150373-10636474 	33	2339	It's certainly worth $5.00, and 5 stamps. 
+ eng-NG-31-150373-10636474 	34	2381	By the way, I have spent more than that on the lottery in the last month!! 
+ eng-NG-31-150373-10636474 	35	2456	Let me tell you how this works and most importantly, why it works....also, make sure you print a copy of this article NOW, so you can get the information off of it as you  need it. 
+ eng-NG-31-150373-10636474 	36	2638	STEP 1: Get 5 separate pieces of paper and write the following on each piece of paper, &quot;PLEASE PUT ME ON YOUR MAILING LIST.
+ eng-NG-31-150373-10636474 	37	2766	&quot; Also, be sure to include your name and address. 
+ eng-NG-31-150373-10636474 	38	2821	Now, get 5 U.S. $1.00 bills and place ONE inside EACH of the 5 pieces of paper so the bill will not be seen through the envelope, to prevent thievery. 
+ eng-NG-31-150373-10636474 	39	2972	Next, place one paper in each of the 5 envelopes and seal them. 
+ eng-NG-31-150373-10636474 	40	3036	You should now have 5 sealed envelopes, each with a piece of paper stating the above phrase, your name and address, and a $1.00 bill. 
+ eng-NG-31-150373-10636474 	41	3170	What you are doing is creating a service by this. 
+ eng-NG-31-150373-10636474 	42	3220	THIS IS ABSOLUTELY LEGAL! 
+ eng-NG-31-150373-10636474 	43	3246	Mail the 5 envelopes to the following addresses: 
+ eng-NG-31-150373-10636474 	44	3296	:#1) CINDY  MCCLANAHAN 7656  SOMERSET LN. 
+ eng-NG-31-150373-10636474 	45	3338	MANASSAS, VA. 20111 
+ eng-NG-31-150373-10636474 	46	3359	: #2) AILENE  BESS P.O.BOX 24403 DETROIT, MI 48224 
+ eng-NG-31-150373-10636474 	47	3411	: #3) ILENE  ELLIS 10314 BERKSHIRE  ST. 
+ eng-NG-31-150373-10636474 	48	3451	DETROIT, MI 48224 
+ eng-NG-31-150373-10636474 	49	3470	: #4) GAYLE  MASCIOLI 18432  VANOWEN  ST. 
+ eng-NG-31-150373-10636474 	50	3512	RESEDA, CA  91335 
+ eng-NG-31-150373-10636474 	51	3531	#5) ANGELA  ROCKWELL P.O.BOX 146 FRANKFORT, ME  04438 
+ eng-NG-31-150373-10636474 	52	3586	STEP 2:   Now take the #1 name off the list that you see above, move the other names up (5 becomes 4, 4 becomes 3, etc...) and add YOUR Name as number 5 on the list. 
+ eng-NG-31-150373-10636474 	53	3752	STEP 3:   Change anything you need to, but try to keep this article as close to original as possible. 
+ eng-NG-31-150373-10636474 	54	3854	If you do not live in the U.S. or there is a foreign address, you must put an international stamp on your envelopes. 
+ eng-NG-31-150373-10636474 	55	3971	Now, post your amended article to at least 200 newsgroups. 
+ eng-NG-31-150373-10636474 	56	4030	(I think there are close to 24,000 groups in all.) 
+ eng-NG-31-150373-10636474 	57	4081	All you need is 200, but remember, the more you post, the more money you make! 
+ eng-NG-31-150373-10636474 	58	4161	: -----DIRECTIONS FOR HOW TO POST TO ON NEWSGROUP BULLETINS----- STEP 1: You do not need to re-type this entire letter to do your own posting. 
+ eng-NG-31-150373-10636474 	59	4304	Simply put your cursor at the beginning of this letter and drag your cursor to the bottom of this letter. 
+ eng-NG-31-150373-10636474 	60	4410	Then select 'copy' from the edit menu. 
+ eng-NG-31-150373-10636474 	61	4449	This will copy the entire letter into the computers temporary memory. 
+ eng-NG-31-150373-10636474 	62	4519	STEP 2: Open a blank 'notepad' or word processor file and place your cursor at the top of the blank page. 
+ eng-NG-31-150373-10636474 	63	4625	From the 'edit' menu select 'paste'. 
+ eng-NG-31-150373-10636474 	64	4662	This will paste a copy of the letter into notepad so that you can add your name to the list. 
+ eng-NG-31-150373-10636474 	65	4755	STEP 3: Save your new notepad file as a *.txt file. 
+ eng-NG-31-150373-10636474 	66	4807	If you want to do your postings in different sittings, you'll always have this file to go back to. 
+ eng-NG-31-150373-10636474 	67	4906	STEP 4: Use your internet provider and search engines to find various newsgroups (on-line forums, message boards, chat sites, discussions). 
+ eng-NG-31-150373-10636474 	68	5046	STEP 6: Visit these message boards and post this article as a new message by highlighting the text of this letter and selecting paste from the edit menu. 
+ eng-NG-31-150373-10636474 	69	5200	Fill in the Subject, and this will be the header that everyone sees as they scroll through the list of postings in a particular group. 
+ eng-NG-31-150373-10636474 	70	5335	Then click the post message button. 
+ eng-NG-31-150373-10636474 	71	5371	You're done with your first one! 
+ eng-NG-31-150373-10636474 	72	5404	Congratulations...THAT'S IT! 
+ eng-NG-31-150373-10636474 	73	5433	All you have to do is jump to different newsgroups and post away. 
+ eng-NG-31-150373-10636474 	74	5499	After you get the hang of it, it will only take about 30 seconds for each posting!! 
+ eng-NG-31-150373-10636474 	75	5583	**REMEMBER, THE MORE NEWSGROUPS YOU POST IN, THE MORE MONEY YOU WILL MAKE!!
+ eng-NG-31-150373-10636474 	76	5658	---BUT YOU HAVE TO POST A MINIMUM OF 200** That's it! 
+ eng-NG-31-150373-10636474 	77	5712	You will begin receiving money from around the world within days! 
+ eng-NG-31-150373-10636474 	78	5778	You may eventually want to rent a P.O. 
+ eng-NG-31-150373-10636474 	79	5817	Box due to the large amount of mail you will receive. 
+ eng-NG-31-150373-10636474 	80	5871	If you wish to stay anonymous, you can invent a name to use, as long as the postal service will deliver it. 
+ eng-NG-31-150373-10636474 	81	5979	**JUST MAKE SURE ALL THE ADDRESSES ARE CORRECT** ----Now the WHY part---- Out of 200 postings, say I receive only 5 replies (a very low example). 
+ eng-NG-31-150373-10636474 	82	6125	So then I made $5.00 with my name at #5 on the letter. 
+ eng-NG-31-150373-10636474 	83	6180	Now, each of the 5 persons who just sent me $1.00 make the MINIMUM 200 postings, each with my name at #5, and only 5 persons respond to each of the original 5, that is another $25.00. 
+ eng-NG-31-150373-10636474 	84	6364	Then those 25 each make 200 MINIMUM posts with my name at #4, and only 5 replies to each, and I will bring in an additional $125.00! 
+ eng-NG-31-150373-10636474 	85	6497	Now, those 125 persons turn around and post the MINIMUM 200 with my name at #3 and only receive 5 replies each, and I will make an additional $625.00! 
+ eng-NG-31-150373-10636474 	86	6648	OK, now here is the fun part. 
+ eng-NG-31-150373-10636474 	87	6678	Each of those 625 persons post a MINIMUM 200 letters with my name at #2, and they each only receive 5 replies, that just made me $3,125.00!!! 
+ eng-NG-31-150373-10636474 	88	6820	Those 3,125 persons will all deliver this message to 200 newsgroups with my name at #1, and if still 5 persons per 200 newsgroups react, I will receive an amazing $15,625,00! 
+ eng-NG-31-150373-10636474 	89	6995	With an original investment of only $5.00! 
+ eng-NG-31-150373-10636474 	90	7038	AMAZING! 
+ eng-NG-31-150373-10636474 	91	7047	When your name is no longer on the list, you just take the latest posting in the newsgroups, and send out another $5.00 to names on the list, putting your name at number 5 again. 
+ eng-NG-31-150373-10636474 	92	7226	Then start posting again. 
+ eng-NG-31-150373-10636474 	93	7252	That's it! 
+ eng-NG-31-150373-10636474 	94	7263	Do you realize that thousands of honest people just like you all over the world are joining the internet and reading these articles everyday? 
+ eng-NG-31-150373-10636474 	95	7405	So can you afford $5.00 and see if it really works?? 
+ eng-NG-31-150373-10636474 	96	7458	I think so... 
+ eng-NG-31-150373-10636474 	97	7472	People have said, &quot;what if the plan is played out and no one sends you the money? 
+ eng-NG-31-150373-10636474 	98	7559	So what! 
+ eng-NG-31-150373-10636474 	99	7568	What are the chances of that happening when there are tons of new honest users who are  joining the internet and newsgroups everyday. 
+ eng-NG-31-150373-10636474 	100	7702	So, are willing to give it a try? 
+ eng-NG-31-150373-10636474 	101	7736	Estimates are about 20,000 to 50,000 new bulletin board users every day, with thousands of those joining the internet  itself. 
+ eng-NG-31-150373-10636474 	102	7863	Remember, please play FAIRLY! 
+ eng-NG-31-150373-10636474 	103	7893	This ensures a huge circle of wealth that grows with the internet audience!!! 
+ eng-NG-31-150373-10636474 	104	7971	Everyone benefits!!! 
+ eng-NG-31-150373-10636474 	105	7992	Remember to send the FIVE envelopes to the above addresses, in order to create the legal service. 
+ eng-NG-31-150373-10636474 	106	8090	At first I was to scared to try this, but once I researched it, I found that it is totally legal. 
+ eng-NG-31-150373-10636474 	107	8188	When you send the FIVE envelopes out, you create a service, a legal service. 
+ eng-NG-31-150373-10636474 	108	8265	The Internet audience is expanding all the time. 
+ eng-NG-31-150373-10636474 	109	8314	The audience is like an equity stock on the stock market, continuously going up. 
+ eng-NG-31-150373-10636474 	110	8395	If you still think this is a fraud, take a few minutes to check it out, then you'll start raking in the cash!!!!!! 
+ eng-NG-31-150373-10636474 	111	8511	Sales Spider - Access 10,000 Plus Leads Instantly  Absolutely Free! 
+ eng-NG-31-150373-10636474 	112	8579	http://salespider.com/signup.php?
+ eng-NG-31-150373-10636474 	113	8612	id=932011 
+ eng-NG-31-150373-10636474 	114	8623	Free Business Advertising - Advertise for Free. 
+ eng-NG-31-150373-10636474 	115	8671	Reach 1000s Instantly : http://salespider.com/signup.php?
+ eng-NG-31-150373-10636474 	116	8728	id=932011 

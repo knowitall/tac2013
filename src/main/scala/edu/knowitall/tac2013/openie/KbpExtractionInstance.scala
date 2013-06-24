@@ -1,6 +1,7 @@
 package edu.knowitall.tac2013.openie
 
 import java.util.concurrent.atomic.AtomicInteger
+import edu.knowitall.tac2013.prep.ParsedKbpSentence
 
 class KbpExtractionInstance(val extr: KbpExtraction, val sent: ParsedKbpSentence)
 

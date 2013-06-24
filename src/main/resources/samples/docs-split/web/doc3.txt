@@ -1,0 +1,58 @@
+<DOC>
+<DOCID> eng-NG-31-150399-10636491 </DOCID>
+<DOCTYPE SOURCE="usenet"> USENET TEXT </DOCTYPE>
+<DATETIME> 2007-12-20T18:16:44 </DATETIME>
+<BODY>
+<HEADLINE>
+Tracking Affiliate Links With Google Website Optimizer
+</HEADLINE>
+<TEXT>
+<POST>
+<POSTER> travelhead &lt;joshwexelb...@gmail.com&gt; </POSTER>
+<POSTDATE> 2007-12-20T18:16:44 </POSTDATE>
+Hello!
+
+I've used GWO in the past with my clients, but I've never tried using
+it to track affiliate links.  Meaning, I have a link on my page that
+goes to a website on another domain. If someone clicks the link, it
+should be registered as a conversion event.
+
+I've research this a bit, and found a few posts describing some sort
+of a solution.
+
+I came upon this code:
+
+&lt;script&gt;
+if(typeof(urchinTracker)!='function')document.write('&lt;sc'+'ript
+src=&quot;'+
+'http'+(document.location.protocol=='https:'?'s://ssl':'://www')+
+'.google-analytics.com/urchin.js'+' &quot;&gt;&lt;/sc'+'ript&gt;')
+&lt;/script&gt;
+
+&lt;h2 align=&quot;center&quot;&gt;&lt;font face=&quot;Arial&quot;&gt;Click on this link&lt;a
+href=http://
+www.blah.com/payme onclick=&quot;_uacct=' UA-XXXXXXX-X'; urchinTracker('/
+XXXXXXXXX/goal'); return true;&quot;&gt;
+here&lt;/a&gt;!&lt;/font&gt;&lt;/h2&gt;
+
+I can see how it's using an onClick event, but I wasn't sure how that
+ties into GWO.
+
+For example, here's the link I want to track &lt;a href=&quot;http://
+www.keywordresearching.com/recommends/keycompete &quot;
+onClick=&quot;javascript:urchinTracker('/outgoing/
+keycompete/');&quot;&gt;KeyCompete&lt;/a&gt;
+
+I'm already using that link to track onClick events as a Goal for
+Google Analytics.
+
+Now I want to tie in GWO.
+
+Any ideas?
+
+Thanks!
+Joshua
+</POST>
+</TEXT>
+</BODY>
+</DOC>

@@ -8,6 +8,7 @@ import edu.knowitall.chunkedextractor.Relnoun
 import edu.knowitall.srlie.confidence.SrlConfidenceFunction.SrlConfidenceFunction
 import edu.knowitall.tool.chunk.ChunkedToken
 import edu.knowitall.chunkedextractor.ExtractionPart
+import edu.knowitall.tac2013.prep.ParsedKbpSentence
 
 case class KbpExtraction(
   val arg1: String,

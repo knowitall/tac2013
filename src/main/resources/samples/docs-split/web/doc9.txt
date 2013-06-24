@@ -1,0 +1,36 @@
+<DOC>
+<DOCID> eng-NG-31-150304-10636339 </DOCID>
+<DOCTYPE SOURCE="usenet"> USENET TEXT </DOCTYPE>
+<DATETIME> 2007-12-18T16:48:21 </DATETIME>
+<BODY>
+<HEADLINE>
+New Member
+</HEADLINE>
+<TEXT>
+<POST>
+<POSTER> Neoncyber2001 &lt;j...@cid-graphics.com&gt; </POSTER>
+<POSTDATE> 2007-12-18T16:48:21 </POSTDATE>
+Hello everyone!
+- My name is Joe Herbert and I have been very active in gaming and
+computer technology sense I was very young. I have graduated WarenTech
+(jefferson county vocational school) with a certification in Computer
+Programming and Technology and have worked as a professional QA Tech
+(tester) on several Activision game projects (still under NDA).
+Several years ago a friend and I had begun taking notes and writing up
+plans for just such a project! We unfortunately allowed ourselves to
+get destracted. We did not think we were ready for a project proposal.
+I was amazed when I learned that we were not the only ones to think of
+an open gaming platform. I would like to do what i can to help this
+project get going and would love to share some of the ideas that i had
+come upwith, aswell as some of the issues (that i have not seen
+addressed on the wiki) that i had faced when trying to come up with my
+own plans for an OGC.
+
+- I look forward to working with you all!
+Joe
+
+PS: Please forgive my spelling :)
+</POST>
+</TEXT>
+</BODY>
+</DOC>

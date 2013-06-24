@@ -1,0 +1,19 @@
+<DOC id="AFP_ENG_20090531.0011" type="story" >
+<HEADLINE>
+Rugby Union: International result - USA 10 Ireland 27
+</HEADLINE>
+<DATELINE>
+SANTA CLARA, California, May 31, 2009 (AFP)
+</DATELINE>
+<TEXT>
+<P>
+Result from Sunday's United States-Ireland rugby union international match:
+</P>
+<P>
+United States 10 Ireland 27
+</P>
+<P>
+H-t: 0-13
+</P>
+</TEXT>
+</DOC>

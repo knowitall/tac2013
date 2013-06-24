@@ -1,0 +1,29 @@
+<DOC>
+<DOCID> eng-NG-31-150320-8805223 </DOCID>
+<DOCTYPE SOURCE="usenet"> USENET TEXT </DOCTYPE>
+<DATETIME> 2007-09-26T12:16:00 </DATETIME>
+<BODY>
+<HEADLINE>
+Big Prize dev contest
+</HEADLINE>
+<TEXT>
+<POST>
+<POSTER> &quot;mjuri...@yahoo.com&quot; &lt;mjuri...@gmail.com&gt; </POSTER>
+<POSTDATE> 2007-09-26T12:16:00 </POSTDATE>
+Hello,
+
+We have announced a contest for any game developing teams out there.
+The prize includes:
+- $100 000 cash advance
+- paid game engine licence up to $1 million (any comercial game
+engine
+available)
+- standard dev team royalties from shipped title
+
+Estimated duration of the project until Nov 2008
+
+Martin
+</POST>
+</TEXT>
+</BODY>
+</DOC>
