@@ -49,6 +49,8 @@ class KbpDocProcessorSpec extends FlatSpec {
     
     for (doc <- parsedDoc.toList; kbpline <- doc.textLines) {
       val targetString = fileString.drop(kbpline.offset).take(kbpline.length)
+      val docId = doc.extractDocId.getOrElse(fail("Couldn't extract docId: %s".format(doc.docIdLine)))
+      if (docId.startsWith(" ") || docId.endsWith(" ")) fail("docId: \"%s\" should not start or end with whitespace.".format(docId))
       if (!kbpline.line.trim().isEmpty) {
         if (!targetString.equals(kbpline.line)) {
           System.err.println("ParsedDoc: error on docId=%s expected\\nactual\n%s\n%s".format(doc.docIdLine.line, targetString, kbpline.line))

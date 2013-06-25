@@ -128,7 +128,7 @@ class KbpProcessedDoc(
 
     if (str.startsWith("<DOCID>")) {
       // drop the tag and go until the closing tag.
-      Some(str.drop(7).takeWhile(_ != '<'))
+      Some(str.drop(8).takeWhile(_ != ' '))
     } else if (docIdPattern.matcher(str).find()) {
       // drop the <DOC ID=" part, and take until the closing quote.
       Some(str.drop(9).takeWhile(_ != '\"'))

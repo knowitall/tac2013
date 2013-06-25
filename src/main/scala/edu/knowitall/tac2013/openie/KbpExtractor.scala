@@ -31,6 +31,7 @@ object KbpExtractor {
     var inputFile = "stdin"
     var outputFile = "stdout"
     var parallel = false
+    var limitOpt = Option.empty[Int]
   }
   
   def getInput = if (Settings.inputFile.equals("stdin")) io.Source.stdin else io.Source.fromFile(Settings.inputFile)
@@ -42,6 +43,7 @@ object KbpExtractor {
       opt("inputFile", "ParsedKbpSentences for input, default stdinput", { s => Settings.inputFile = s })
       opt("outputFile", "KbpExtractionInstances output file, default stdout", { s => Settings.outputFile = s})
       opt("parallel", "Run over input in parallel, default false", { Settings.parallel = true })
+      intOpt("limit", "Max extractions to output", { i => Settings.limitOpt = Some(i) })
     }
     
     if (!parser.parse(args)) return
@@ -67,13 +69,16 @@ object KbpExtractor {
         val insts = sentences.flatMap { sent =>
           sentencesProcessed.getAndIncrement()
           val extrs = extractor.extract(sent)
-          extrs.map { 
-            extractionsProcessed.getAndIncrement()
-            extr => new KbpExtractionInstance(extr, sent) 
-          }
+          extractionsProcessed.addAndGet(extrs.size)
+          extrs
         }
-        val outStrings = insts map KbpExtractionInstance.write
-        outStrings foreach output.println
+        val outStrings = insts map KbpExtraction.write
+        val limited = Settings.limitOpt match {
+          case Some(limit) => outStrings.take(limit)
+          case None => outStrings
+          
+        }
+        limited foreach output.println
       }
     }
   }
@@ -92,14 +97,18 @@ object KbpExtractor {
       	    ParsedKbpSentence.read(line) 
       	  }
       	  val insts = parsed.flatMap { sent =>
-      	    extractor.extract(sent).map {
-      	      extractionsProcessed.getAndIncrement()
-      	      extr => new KbpExtractionInstance(extr, sent) 
-      	    }
+      	    val extrs = extractor.extract(sent)
+      	    extractionsProcessed.addAndGet(extrs.size)
+      	    extrs
       	  }
-      	  insts map KbpExtractionInstance.write
+      	  insts map KbpExtraction.write
       	}
-      	outStrings foreach output.println
+        val limited = Settings.limitOpt match {
+          case Some(limit) => outStrings.take(limit)
+          case None => outStrings
+          
+        }
+        limited foreach output.println
       }
     }
   }
@@ -139,7 +148,7 @@ class KbpRelnounExtractor(val relnoun: Relnoun = new Relnoun()) extends KbpExtra
     } catch {
       case e: Throwable => {
         System.err.println(
-          "Relnoun error #%d on input: %s".format(errorCounter.incrementAndGet(), parsedSentence.tokens))
+          "Relnoun error #%d on input: %s".format(errorCounter.incrementAndGet(), parsedSentence.dgraph.text))
         Seq.empty
       }
     }
@@ -157,7 +166,7 @@ class KbpSrlExtractor(
 
   override def extract(parsedSentence: ParsedKbpSentence): Seq[KbpExtraction] = {
 
-    val graph = DependencyGraph.deserialize(parsedSentence.dgraph)
+    val graph = parsedSentence.dgraph
 
     val srlInstances =
       try {
@@ -165,7 +174,7 @@ class KbpSrlExtractor(
       } catch {
         case e: Throwable =>
           System.err.println(
-            "SrlExtractor error #%d parsing input: %s".format(errorCounter.incrementAndGet(), parsedSentence.tokens))
+            "SrlExtractor error #%d parsing input: %s".format(errorCounter.incrementAndGet(), parsedSentence.dgraph.text))
           Seq.empty
       }
 

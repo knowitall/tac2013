@@ -17,15 +17,19 @@ class KbpSentenceParser() {
   val chunkerModel = OpenNlpChunker.loadDefaultModel
   val postagModel = OpenNlpPostagger.loadDefaultModel
   val tokenModel = OpenNlpTokenizer.loadDefaultModel
-  val chunkerLocal = new ThreadLocal[OpenNlpChunker] {
+  val postaggerLocal = new ThreadLocal[OpenNlpPostagger] {
     override def initialValue = {
       val tokenizer = new OpenNlpTokenizer(tokenModel)
-      val postagger = new OpenNlpPostagger(postagModel, tokenizer)
-      new OpenNlpChunker(chunkerModel, postagger)
+      new OpenNlpPostagger(postagModel, tokenizer)
+    }
+  }
+  val chunkerLocal = new ThreadLocal[OpenNlpChunker] {
+    override def initialValue = {
+      new OpenNlpChunker(chunkerModel, postaggerLocal.get)
     }
   }
   
-  lazy val parser = new ClearParser(new ClearPostagger())
+  lazy val parser = new ClearParser(new ClearPostagger(new OpenNlpTokenizer(tokenModel)))
   
   def isValid(kbpSentence: KbpSentence): Boolean = {
     kbpSentence.text.length <= 750
@@ -38,22 +42,17 @@ class KbpSentenceParser() {
     // chunks, then parse
     val chunker = chunkerLocal.get
     val chunked = chunker.chunk(kbpSentence.text) 
-    val dgraph = parser.dependencyGraph(kbpSentence.text).serialize
-    val tokens = chunked.map(_.string).mkString(" ")
+    // Synchronize because the OpenNlpTokenizer isn't threadsafe
+    val dgraph = parser.synchronized { parser.dependencyGraph(kbpSentence.text) }
     val postags = chunked.map(_.postag).mkString(" ")
-    val chunks = chunked.map(_.chunk).mkString(" ")
-    val offsets = chunked.map(_.offset).mkString(" ")
-    val startOffset = kbpSentence.offset.toString
+    val chunks = chunked.map(_.chunk)
     
     Some(
-        ParsedKbpSentence(
+        new ParsedKbpSentence(
             kbpSentence.docId, 
-            kbpSentence.sentNum.toString, 
-            kbpSentence.offset.toString, 
-            tokens, 
-            postags, 
+            kbpSentence.sentNum, 
+            kbpSentence.offset,  
             chunks, 
-            offsets, 
             dgraph))
     } catch {
       case e: Throwable =>
@@ -151,20 +150,21 @@ object KbpSentenceParser {
     val sentencer = Sentencer.defaultInstance
     val kbpProcessor = new KbpSentenceParser();
     
-    val docs = docSplitter.splitDocs(input)
-    val parsedDocs = docs flatMap docParser.process
-    val sentences = parsedDocs flatMap sentencer.convertToSentences
-    
-    val parsedSentences = sentences.grouped(batchSize).flatMap { sentenceGroup =>
-      sentenceGroup.par.flatMap { sentence =>
+    val docGroups = docSplitter.splitDocs(input).grouped(batchSize)
+
+    val parsedSentenceStrings = docGroups.flatMap { docs =>
+      val parsedDocs = docs.par flatMap docParser.process
+      val sentences = parsedDocs flatMap sentencer.convertToSentences
+      val parsedSentences = sentences.flatMap { sentence =>
         sentencesProcessed.incrementAndGet()
         kbpProcessor.parseKbpSentence(sentence)
       }
-    } 
+      parsedSentences.take(limit) map { parsed =>
+        ParsedKbpSentence.write(parsed)
+      }
+    }
     
-    parsedSentences.take(limit) map { parsed => 
-      ParsedKbpSentence.write(parsed)  
-    } foreach { string =>
+    parsedSentenceStrings foreach { string =>
       output.println(string)
     }
   }

@@ -16,8 +16,39 @@ class SentencerSpec extends FlatSpec {
     (KbpDocProcessor.getProcessor("forum"),"src/main/resources/samples/docs-split/forum")
   )
 
-  // Except for newlines being converted to spaces, should match exactly.
-  "The Sentencer" should "produce meaningful byte offsets" in {
+  // Remember to convert newlines to spaces, and run asciifier.
+  "The Sentencer" should "produce meaningful byte offsets with filtering" in {
+
+    corpora foreach {
+      case (docProcessor, sampleDir) => {
+        for (
+            file <- new File(sampleDir).listFiles;
+            rawDoc <- docSplitter.splitDocs(io.Source.fromFile(file, "UTF8"));
+            parsedDoc <- docProcessor.process(rawDoc).toList;
+            rawSentence <- sentencer.convertToSentences(parsedDoc);
+            s <- SentenceFilter.apply(rawSentence)
+         ) {
+          val fileString = DocSplitterSpec.fileString(file)
+          val byteString = fileString.drop(s.offset).take(s.length)
+          // skip the fabricated sentences. Offsets only line up for the entity in them.
+          if (!s.text.startsWith("This post was written")) {
+            
+            val str = util.Asciifier(byteString.replaceAll("\n", " "))
+            val exp = s.text
+            
+            def bytes(str: String) = str
+            if (!str.equals(exp)) {
+             System.err.println("\"%s\"".format(str))
+             System.err.println("\"%s\"".format(exp))
+             fail()
+            } 
+          }
+        }
+      }
+    }
+  }
+  
+    "The Sentencer" should "produce meaningful byte offsets without filtering" in {
 
     corpora foreach {
       case (docProcessor, sampleDir) => {
@@ -32,7 +63,7 @@ class SentencerSpec extends FlatSpec {
           // skip the fabricated sentences. Offsets only line up for the entity in them.
           if (!s.text.startsWith("This post was written")) {
             
-            val str = byteString.replaceAll("\n", " ")
+            val str =  byteString.replaceAll("\n", " ")
             val exp = s.text
             
             def bytes(str: String) = str

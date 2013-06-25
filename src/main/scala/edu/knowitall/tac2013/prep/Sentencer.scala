@@ -102,9 +102,21 @@ object Sentencer {
   
   def main(args: Array[String]): Unit = {
     
-    var inputFile = args(0)
-    var outputFile = args(1)
-    var corpus = args(2)
+    var inputFile = "."
+    var outputFile = "stdout"
+    var corpus = "."
+    var filter = false
+    
+    val parser = new OptionParser("TAC-2013 Sentencer") {
+      
+      arg("inputFile", "Input File.", { str => inputFile = str})
+      arg("corpus", "news, forum, or web.", { str => corpus = str})
+      opt("outputFile", "File for output, default stdout", { str => outputFile = str})
+      opt("filter", "Run sentences through SentenceFilter, default=false.", { filter = true })
+    }
+    
+    if (!parser.parse(args)) return
+    
     var news = corpus.equals("news")
     var forum = corpus.equals("forum")
     var web = corpus.equals("web")
@@ -119,10 +131,11 @@ object Sentencer {
     
     val docs = docSplitter.splitDocs(source)
     val parsedDocs = docs flatMap docParser.process
-    val sentences = parsedDocs foreach { doc =>
-      sentencer.convertToSentences(doc) foreach { s =>
+    val allSentences = parsedDocs flatMap sentencer.convertToSentences
+    val filteredSentences = if (filter) allSentences flatMap SentenceFilter.apply else allSentences
+    
+    filteredSentences foreach { s =>
         output.println(KbpSentence.write(s))
-      }
     }
   }
 }

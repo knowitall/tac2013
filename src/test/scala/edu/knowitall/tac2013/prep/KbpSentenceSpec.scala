@@ -44,7 +44,7 @@ class KbpSentenceSpec extends FlatSpec {
           val rawString = rawDoc.getString
           val sents = sentenceMap(docId)
           sents foreach { s =>
-            val extrString = rawString.drop(s.offset).take(s.text.length).replaceAll("\n", " ")
+            val extrString = util.Asciifier(rawString.drop(s.offset).take(s.text.length).replaceAll("\n", " "))
             if (!extrString.equals(s.text)) {
               System.err.println("\"%s\"".format(extrString))
               System.err.println("\"%s\"".format(s.text))
