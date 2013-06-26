@@ -21,10 +21,10 @@ object KbpQueryOutput {
         printedKbpSlotNames = printedKbpSlotNames :+ kbpSlotName
       }
       
-      writer.write("\tQuery Data:\t"+ "RelationTerms: "+kbpOpenIEData.OpenIERelationString
-          + "\t Arg2Begins: " + kbpOpenIEData.Arg2Begins + "\t Entity In: " +
-          kbpOpenIEData.EntityIn + "\t SlotFill In: " + kbpOpenIEData.SlotFillIn +
-          "\t Slot type: " + kbpOpenIEData.SlotType +"\n")
+      writer.write("\tQuery Data:\t"+ "RelationTerms: "+kbpOpenIEData.openIERelationString.getOrElse({""})
+          + "\t Arg2Begins: " + kbpOpenIEData.arg2Begins.getOrElse({""}) + "\t Entity In: " +
+          kbpOpenIEData.entityIn.getOrElse({""}) + "\t SlotFill In: " + kbpOpenIEData.slotFillIn.getOrElse({""}) +
+          "\t Slot type: " + kbpOpenIEData.slotType.getOrElse({""}) +"\n")
       
       writer.write("\tResults:\n")
       if (solrResultsArray.length ==0){

@@ -23,35 +23,38 @@ object QueryEntityForAllSlots {
         //make a query for each instance of relation data specifying where to search for the entity
         //string and what prepositions should be included in arg2, among other things
         
-        val qb = new QueryBuilder //solr query builder
-        val entityIn = relationData.EntityIn
-        if (entityIn.trim() == "arg1"){
-           qb.setArg1String(queryEntity)
+        //first check if the specifications in the KBPSlotToOpenIEData are valid
+        if(relationData.isValid()){
+	        val qb = new QueryBuilder //solr query builder
+	        val entityIn = relationData.entityIn.getOrElse({""})
+	        if (entityIn.trim() == "arg1"){
+	           qb.setArg1String(queryEntity)
+	        }
+	        else if (entityIn.trim() == "arg2"){
+	           qb.setArg2String(queryEntity)   
+	        }
+	        else{
+	           throw new Exception("entityIn containts invalid string")
+	        }
+	        qb.setRelString(relationData.openIERelationString.getOrElse({""}))
+	        val beginningOfArg2 = relationData.arg2Begins.getOrElse({""})
+	        if (beginningOfArg2 != ""){
+	          qb.setBeginningOfArg2String(relationData.arg2Begins.get)
+	        }
+	        val queryString = qb.getQueryString
+	        println(queryString)
+	        
+	        //issue query (don't cut off results yet)
+	        val listOfResultsMap = issueSolrQuery(queryString)
+	        
+	        //filter
+	        val listOfFilteredResultsMap = filterResults(listOfResultsMap,relationData,queryEntity)
+	        
+	        
+	        //construct tuple entry to go into results Array
+	        val t = (pair._1,relationData,listOfFilteredResultsMap)
+	        resultsArray = resultsArray :+ t
         }
-        else if (entityIn.trim() == "arg2"){
-           qb.setArg2String(queryEntity)   
-        }
-        else{
-           throw new Exception("entityIn containts invalid string")
-        }
-        qb.setRelString(relationData.OpenIERelationString)
-        val beginningOfArg2 = relationData.Arg2Begins
-        if (beginningOfArg2 != ""){
-          qb.setBeginningOfArg2String(relationData.Arg2Begins)
-        }
-        val queryString = qb.getQueryString
-        println(queryString)
-        
-        //issue query (don't cut off results yet)
-        val listOfResultsMap = issueSolrQuery(queryString)
-        
-        //filter
-        val listOfFilteredResultsMap = filterResults(listOfResultsMap,relationData)
-        
-        
-        //construct tuple entry to go into results Array
-        val t = (pair._1,relationData,listOfFilteredResultsMap)
-        resultsArray = resultsArray :+ t
       }
       
     }

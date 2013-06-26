@@ -6,7 +6,11 @@ import KBPSlotOpenIERelationTranslator.getPersonMap
 import QueryEntityForAllSlots.executeEntityQueryForAllSlots
 import KbpQueryOutput.printPersonOutput
 
+
+//Command line application object for running solr queries on all the slots
+//of a given entity and semantic type
 object FindSlotFills {
+  
   
   def main(args: Array[String]){
 
@@ -20,8 +24,11 @@ object FindSlotFills {
      
      if (semanticType == "organization"){
 	     val orgMap = getOrganizationMap()
-	     executeEntityQueryForAllSlots(entityName, orgMap.toMap)
+	     val arrayOfResults = executeEntityQueryForAllSlots(entityName, orgMap.toMap)
+	     printPersonOutput(arrayOfResults,args(2))
+
   	 }
+     
      else if (semanticType == "person"){
 	     val perMap = getPersonMap()
 	     val arrayOfResults = executeEntityQueryForAllSlots(entityName, perMap.toMap)
@@ -29,6 +36,8 @@ object FindSlotFills {
      }
      
      else{
+       
+       throw new IllegalArgumentException("Second Argument must be either 'person' or 'organization'")
        
      }
      
