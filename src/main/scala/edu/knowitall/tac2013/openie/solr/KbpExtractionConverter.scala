@@ -20,6 +20,7 @@ object KbpExtractionConverter {
       
       "relText",
       "relInterval",
+      "relTypes",
       
       "arg2Text",
       "arg2Interval",
@@ -48,7 +49,7 @@ object KbpExtractionConverter {
       val sentenceFields = Seq("docId", "sentNum", "sentOffset", "chunks", "dgraph").map(fieldMap(_))
       ParsedKbpSentence.read(sentenceFields) flatMap { sentence =>
         val arg1Fields = Seq("arg1Interval", "arg1Text",  "arg1WikiLink", "arg1Types").map(fieldMap(_))
-        val relFields = Seq("relInterval", "relText").map(fieldMap(_))
+        val relFields = Seq("relInterval", "relText", "relTypes").map(fieldMap(_))
         val arg2Fields = Seq("arg2Interval", "arg2Text", "arg2WikiLink", "arg2Types").map(fieldMap(_))
         val arg1Opt = KbpArgument.readHelper(arg1Fields, sentence)
         val relOpt = KbpRelation.readHelper(relFields, sentence)
@@ -87,6 +88,7 @@ object KbpExtractionConverter {
     
     val relText = extr.rel.originalText
     val relInterval = "%d %d".format(rel.tokenInterval.start, rel.tokenInterval.last)
+    val relTypes = extr.rel.types.mkString(" ")
     
     val arg2Text = extr.arg2.originalText
     val arg2Interval = "%d %d".format(arg2.tokenInterval.start, arg2.tokenInterval.last)
@@ -112,6 +114,7 @@ object KbpExtractionConverter {
     
     doc.addField("relText", relText)
     doc.addField("relInterval", relInterval)
+    doc.addField("relTypes", relTypes)
     
     doc.addField("arg2Text", arg2Text)
     doc.addField("arg2Interval", arg2Interval)

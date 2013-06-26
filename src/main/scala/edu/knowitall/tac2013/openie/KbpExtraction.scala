@@ -15,24 +15,25 @@ abstract class KbpRelation {
   def tokenInterval: Interval
   def originalText: String
   def tokens: Seq[ChunkedToken]
+  def types: Seq[String]
 }
 object KbpRelation {
   
-  val NUM_FIELDS = 2
+  val NUM_FIELDS = 3
   
   /** 
   * COLUMNS:  
-  * INTERVAL | ORIGINAL_TEXT
+  * INTERVAL | ORIGINAL_TEXT | TYPES
   */ 
   def writeHelper(rel: KbpRelation): Seq[String] = {
     val intervalString = "%d %d".format(rel.tokenInterval.start, rel.tokenInterval.last)
-    Seq(intervalString, rel.originalText)
+    Seq(intervalString, rel.originalText, rel.types.mkString(" "))
   }
   
   def readHelper(fields: Seq[String], sentence: ParsedKbpSentence): Option[KbpRelation] = {
     fields match {
-      case Seq(interval, original, _*) => {
-        readHelper(interval, original, sentence)
+      case Seq(interval, original, types, _*) => {
+        readHelper(interval, original, types, sentence)
       }
       case _ => None
     }
@@ -40,14 +41,15 @@ object KbpRelation {
   
   import KbpArgument.intervalRegex
   
-  private def readHelper(intervalString: String, originalTextString: String, sentence: ParsedKbpSentence): Option[KbpRelation] = {
+  private def readHelper(intervalString: String, originalTextString: String, typesString: String, sentence: ParsedKbpSentence): Option[KbpRelation] = {
     
     intervalString match {
       case intervalRegex(start, last) => {
         Some(new KbpRelation() {
           val tokenInterval = Interval.closed(start.toInt, last.toInt)
-          val originalText = originalTextString
+          def originalText = originalTextString
           def tokens = sentence.chunkedTokens.drop(tokenInterval.start).take(tokenInterval.length)
+          val types = typesString.split(" ").toSeq
         })
       }
       case _ => None
@@ -55,14 +57,16 @@ object KbpRelation {
   }
   
   def fromSrlRelation(rel: SrlExtraction.Relation, sentence: ParsedKbpSentence) = new KbpRelation() {
-    val tokenInterval = rel.span
-    val originalText = rel.text
-    val tokens = sentence.chunkedTokens.drop(tokenInterval.start).take(tokenInterval.length)
+    def tokenInterval = rel.span
+    def originalText = rel.text
+    def tokens = sentence.chunkedTokens.drop(tokenInterval.start).take(tokenInterval.length)
+    val types = Seq.empty[String]
   }
   def fromRelnounRelation(rel: ExtractionPart[Relnoun.Token]) = new KbpRelation() {
-    val tokenInterval = rel.interval
-    val originalText = rel.text
-    val tokens = rel.tokens
+    def tokenInterval = rel.interval
+    def originalText = rel.text
+    def tokens = rel.tokens
+    val types = Seq.empty[String]
   }
 }
 

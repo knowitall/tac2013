@@ -96,13 +96,6 @@ class ParsedKbpSentenceSpec extends FlatSpec {
     
 
     if (!fakeSentence) assert(original.length === rawSentence.length)
-    
-    if (!fakeSentence && !original.equals(rawSentence)) {
-      System.err.println("%s:%s".format(sentence.docId, sentence.startOffset))
-      System.err.println("orig: \"%s\"".format(original))
-      System.err.println("raw:  \"%s\"".format(rawSentence))
-      //fail()
-    }
   }
   
   def testTokens(sentence: ParsedKbpSentence, rawString: String): Unit = {
