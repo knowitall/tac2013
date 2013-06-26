@@ -37,7 +37,7 @@ object KbpExtractionConverter {
       "dgraph"
     )
     
-  def fromFieldMap(fieldMap: Map[String, String]): Option[KbpExtraction] = {
+  def fromFieldMap(fieldMap: Map[String, Any]): Option[KbpExtraction] = {
     
     if (!kbpExtractionFields.subsetOf(fieldMap.keySet)) {
       val missingFields = kbpExtractionFields.filter(f => !fieldMap.contains(f))
@@ -46,11 +46,11 @@ object KbpExtractionConverter {
       System.err.println(msg)
       None
     } else {
-      val sentenceFields = Seq("docId", "sentNum", "sentOffset", "chunks", "dgraph").map(fieldMap(_))
+      val sentenceFields = Seq("docId", "sentNum", "sentOffset", "chunks", "dgraph").map(fieldMap(_).asInstanceOf[String])
       ParsedKbpSentence.read(sentenceFields) flatMap { sentence =>
-        val arg1Fields = Seq("arg1Interval", "arg1Text",  "arg1WikiLink", "arg1Types").map(fieldMap(_))
-        val relFields = Seq("relInterval", "relText", "relTypes").map(fieldMap(_))
-        val arg2Fields = Seq("arg2Interval", "arg2Text", "arg2WikiLink", "arg2Types").map(fieldMap(_))
+        val arg1Fields = Seq("arg1Interval", "arg1Text",  "arg1WikiLink", "arg1Types").map(fieldMap(_).asInstanceOf[String])
+        val relFields = Seq("relInterval", "relText", "relTypes").map(fieldMap(_).asInstanceOf[String])
+        val arg2Fields = Seq("arg2Interval", "arg2Text", "arg2WikiLink", "arg2Types").map(fieldMap(_).asInstanceOf[String])
         val arg1Opt = KbpArgument.readHelper(arg1Fields, sentence)
         val relOpt = KbpRelation.readHelper(relFields, sentence)
         val arg2Opt = KbpArgument.readHelper(arg2Fields, sentence)
@@ -59,8 +59,8 @@ object KbpExtractionConverter {
           System.err.println(msg)
           None
         } else {
-          val confidence = fieldMap("confidence").toDouble
-          val extractor = fieldMap("extractor")
+          val confidence = fieldMap("confidence").asInstanceOf[Double]
+          val extractor = fieldMap("extractor").asInstanceOf[String]
           Some(new KbpExtraction(
             arg1 = arg1Opt.get,
             rel = relOpt.get,

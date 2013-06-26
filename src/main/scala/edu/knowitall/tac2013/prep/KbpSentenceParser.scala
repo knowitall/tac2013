@@ -70,102 +70,42 @@ object KbpSentenceParser {
   
   private val sentencesProcessed = new AtomicInteger(0)
   
+  def processXml(lines: Iterator[String], corpus: String): Iterator[ParsedKbpSentence] = {
+    val parser = new KbpSentenceParser
+    Sentencer.processXml(lines, corpus) flatMap parser.parseKbpSentence
+  }
+  
   def main(args: Array[String]): Unit = {
     
-    var webRaw  = Option.empty[String]
-    var newsRaw  = Option.empty[String]
-    var forumRaw = Option.empty[String] 
-    
+    var inputFile = ""
+    var corpus = ""
     var limit = Int.MaxValue
     var outputFile = "stdout"
-    var parallel = false
     
     val cliParser = new OptionParser() {
-      opt("webFile", "raw web xml", { str => webRaw = Some(str) })
-      opt("newsFile", "raw news xml", { str => newsRaw = Some(str) })
-      opt("forumFile", "raw forum xml", { str => forumRaw = Some(str) })
+      arg("inputFile", "inputFile", { str => inputFile = str })
+      arg("corpus", "news, forum, or web", { str => corpus = str })
       opt("outputFile", "File: ParsedKbpSentences, default stdout", { str => outputFile = str })
-      opt("parallel", "Run multithreaded? Default = no", { parallel = true })
       opt("limit", "Limit number of sentences output?", { str => limit = str.toInt })
     }
 
+    if (!cliParser.parse(args)) return 
+    
+    val input = io.Source.fromFile(inputFile, "UTF8")
+    val output = if (outputFile.equals("stdout")) System.out else new PrintStream(outputFile, "UTF8")
+    
     val nsTime = Timing.time {
-      if (cliParser.parse(args)) {
-
-        val inputCorpora =
-          Seq((newsRaw, "news"), (webRaw, "web"), (forumRaw, "forum"))
-            .flatMap {
-              case (input, corpora) => input match {
-                case Some(f) => Some(f, corpora)
-                case None => None
-              }
-            }
-
-        val output = if (outputFile.equals("stdout")) System.out else new PrintStream(outputFile, "UTF8")
-        
-        runMain(inputCorpora, output, parallel, limit)
+      
+      val parser = new KbpSentenceParser
+      
+      val sentencesGrouped = Sentencer.processXml(input.getLines, corpus).grouped(1000)
+      
+      sentencesGrouped foreach { sentenceGroup =>
+        sentenceGroup.par flatMap parser.parseKbpSentence map ParsedKbpSentence.write foreach output.println
       }
-
+      
     }
     val seconds = Timing.Seconds.format(nsTime)
     System.err.println("Processed %d sentences in %s.".format(sentencesProcessed.get, seconds))
-  }
-
-  def runMain(inputCorpora: Seq[(String, String)], output: PrintStream, parallel: Boolean, limit: Int): Unit = {
-    
-    inputCorpora foreach { case (file, name) => System.err.println("Parsing %s XML from %s".format(name, file)) }
-    
-    inputCorpora foreach { case (sample, corpus) =>
-      val source = Source.fromFile(sample)
-      if (parallel) runParallel(source, output, corpus, limit)
-      else run(source, output, corpus, limit)
-    }
-  }
-  
-  def run(input: Source, output: PrintStream, corpus: String, limit: Int): Unit = {
-    
-    val docSplitter = new DocSplitter()
-    val docParser = KbpDocProcessor.getProcessor(corpus)
-    val sentencer = Sentencer.defaultInstance
-    val kbpProcessor = new KbpSentenceParser();
-    
-    val docs = docSplitter.splitDocs(input)
-    val parsedDocs = docs flatMap docParser.process
-    val sentences = parsedDocs flatMap sentencer.convertToSentences
-    
-    val parsedKbpSentences = sentences flatMap kbpProcessor.parseKbpSentence
-    // take it to the limit (or take until the limit?)
-    parsedKbpSentences.take(limit) foreach { parsedKbpSentence =>
-      sentencesProcessed.incrementAndGet()
-      output.println(ParsedKbpSentence.write(parsedKbpSentence))
-    }
-  }
-  
-  val batchSize = 1000
-  
-  def runParallel(input: Source, output: PrintStream, corpus: String, limit: Int): Unit = {
-    
-    val docSplitter = new DocSplitter()
-    val docParser = KbpDocProcessor.getProcessor(corpus)
-    val sentencer = Sentencer.defaultInstance
-    val kbpProcessor = new KbpSentenceParser();
-    
-    val docGroups = docSplitter.splitDocs(input).grouped(batchSize)
-
-    val parsedSentenceStrings = docGroups.flatMap { docs =>
-      val parsedDocs = docs.par flatMap docParser.process
-      val sentences = parsedDocs flatMap sentencer.convertToSentences
-      val parsedSentences = sentences.flatMap { sentence =>
-        sentencesProcessed.incrementAndGet()
-        kbpProcessor.parseKbpSentence(sentence)
-      }
-      parsedSentences.take(limit) map { parsed =>
-        ParsedKbpSentence.write(parsed)
-      }
-    }
-    
-    parsedSentenceStrings foreach { string =>
-      output.println(string)
-    }
   }
 }

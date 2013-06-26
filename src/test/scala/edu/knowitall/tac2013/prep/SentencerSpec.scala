@@ -6,8 +6,7 @@ import java.io.File
 
 class SentencerSpec extends FlatSpec {
   
-  val docSplitter = new DocSplitter()
-  val sentencer = new Sentencer(new BreezeSentencer())
+  val sentencer = Sentencer.defaultInstance
   // tuple of (Parser for corpus, corpus sample/test file)
   // can add to this list to add new test sample files. 
   val corpora = Seq(
@@ -23,7 +22,7 @@ class SentencerSpec extends FlatSpec {
       case (docProcessor, sampleDir) => {
         for (
             file <- new File(sampleDir).listFiles;
-            rawDoc <- docSplitter.splitDocs(io.Source.fromFile(file, "UTF8"));
+            rawDoc <- DocSplitter(io.Source.fromFile(file, "UTF8").getLines);
             parsedDoc <- docProcessor.process(rawDoc).toList;
             rawSentence <- sentencer.convertToSentences(parsedDoc);
             s <- SentenceFilter.apply(rawSentence)
@@ -54,7 +53,7 @@ class SentencerSpec extends FlatSpec {
       case (docProcessor, sampleDir) => {
         for (
             file <- new File(sampleDir).listFiles;
-            rawDoc <- docSplitter.splitDocs(io.Source.fromFile(file, "UTF8"));
+            rawDoc <- DocSplitter(io.Source.fromFile(file, "UTF8").getLines);
             parsedDoc <- docProcessor.process(rawDoc).toList;
             s <- sentencer.convertToSentences(parsedDoc)
          ) {

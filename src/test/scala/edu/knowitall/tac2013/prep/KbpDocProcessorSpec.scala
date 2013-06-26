@@ -9,7 +9,6 @@ import java.nio.file.Path;
 
 class KbpDocProcessorSpec extends FlatSpec {
   
-  val docSplitter = new DocSplitter()
   val splitDocsDir = "src/main/resources/samples/docs-split/"
   val splitWebDocs = (splitDocsDir, "web")
   val splitNewsDocs= (splitDocsDir, "news")
@@ -36,7 +35,7 @@ class KbpDocProcessorSpec extends FlatSpec {
     
     val source = io.Source.fromFile(file)
     
-    val spliterator = docSplitter.splitDocs(source)
+    val spliterator = DocSplitter(source.getLines)
     require(spliterator.hasNext)
     
     val kbpDoc = spliterator.next()

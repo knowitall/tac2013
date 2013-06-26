@@ -8,7 +8,7 @@ import Sentencer._
 /**
  * Converts from KbpParsedDoc to KbpSentences
  */
-class Sentencer(val segmenter: Segmenter) {
+class Sentencer private (val segmenter: Segmenter) {
   
   private val errorCounter = new AtomicInteger(0)
   
@@ -100,6 +100,12 @@ object Sentencer {
   
   lazy val defaultInstance = new Sentencer(new BreezeSentencer())
   
+  def processXml(lines: Iterator[String], corpus: String): Iterator[KbpSentence] = {
+    KbpDocProcessor.processXml(lines, corpus).grouped(100) flatMap { docGroup =>
+      docGroup.par flatMap defaultInstance.convertToSentences flatMap SentenceFilter.apply
+    }
+  }
+  
   def main(args: Array[String]): Unit = {
     
     var inputFile = "."
@@ -122,14 +128,13 @@ object Sentencer {
     var web = corpus.equals("web")
     if (!news && !forum && !web) throw new IllegalArgumentException("Unknown corpus: %s".format(args(1)))
 
-    val docSplitter = new DocSplitter()
     val docParser = KbpDocProcessor.getProcessor(corpus)
     val sentencer = defaultInstance
     
     val source = io.Source.fromFile(inputFile)
     val output = if (outputFile.equals("stdout")) System.out else new java.io.PrintStream(outputFile)
     
-    val docs = docSplitter.splitDocs(source)
+    val docs = DocSplitter(source.getLines)
     val parsedDocs = docs flatMap docParser.process
     val allSentences = parsedDocs flatMap sentencer.convertToSentences
     val filteredSentences = if (filter) allSentences flatMap SentenceFilter.apply else allSentences
@@ -137,5 +142,8 @@ object Sentencer {
     filteredSentences foreach { s =>
         output.println(KbpSentence.write(s))
     }
+    
+    source.close()
+    output.close()
   }
 }

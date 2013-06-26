@@ -73,19 +73,20 @@ object SolrPopulator {
     val source =  io.Source.fromFile(inputFile, "UTF8")
     val extrs = if (inputExtrs) source.getLines flatMap KbpExtraction.read else loadFromXml(source, corpus)
     populate(extrs, solrUrl)
+    
+    source.close()
   }
   
   def loadFromXml(source: io.Source, corpus: String): Iterator[KbpExtraction] = {
     
     // Load pipeline components
-    val docSplitter = new DocSplitter()
     val docProcessor = KbpDocProcessor.getProcessor(corpus)
     val sentencer = Sentencer.defaultInstance
     val parser = new KbpSentenceParser()
     val extractor = new KbpCombinedExtractor()
 
     // Move data through the pipe in parallel.
-    docSplitter.splitDocs(source).grouped(100).flatMap { docs =>
+    DocSplitter(source.getLines).grouped(100).flatMap { docs =>
       
       val processedDocs = docs.par flatMap docProcessor.process
       val sentences = processedDocs flatMap sentencer.convertToSentences

@@ -32,6 +32,7 @@ object KbpExtractor {
     var outputFile = "stdout"
     var parallel = false
     var limitOpt = Option.empty[Int]
+    var inputRaw = false
   }
   
   def getInput = if (Settings.inputFile.equals("stdin")) io.Source.stdin else io.Source.fromFile(Settings.inputFile)
@@ -40,10 +41,11 @@ object KbpExtractor {
   def main(args: Array[String]): Unit = {
     
     val parser = new OptionParser("KbpExtractor") {
-      opt("inputFile", "ParsedKbpSentences for input, default stdinput", { s => Settings.inputFile = s })
+      opt("inputFile", "Raw XML or ParsedKbpSentences for input, default stdinput", { s => Settings.inputFile = s })
       opt("outputFile", "KbpExtractionInstances output file, default stdout", { s => Settings.outputFile = s})
       opt("parallel", "Run over input in parallel, default false", { Settings.parallel = true })
       intOpt("limit", "Max extractions to output", { i => Settings.limitOpt = Some(i) })
+      opt("inputRaw", "Input raw XML instead of ParsedKbpSentences.", { s => Settings.inputRaw = true})
     }
     
     if (!parser.parse(args)) return

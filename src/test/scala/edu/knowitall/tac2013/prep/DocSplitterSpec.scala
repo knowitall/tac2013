@@ -8,8 +8,7 @@ import java.nio.file.Path;
 
 
 class DocSplitterSpec extends FlatSpec {
-  
-  val docSplitter = new DocSplitter()
+
   val splitDocsDir = "src/main/resources/samples/docs-split/"
   val splitWebDocsDir = splitDocsDir + "web"
   val splitNewsDocsDir= splitDocsDir + "news"
@@ -33,7 +32,7 @@ class DocSplitterSpec extends FlatSpec {
     
     val source = io.Source.fromFile(file, "UTF8")
     
-    val spliterator = docSplitter.splitDocs(source)
+    val spliterator = DocSplitter(source.getLines)
     require(spliterator.hasNext)
     
     val kbpDoc = spliterator.next()

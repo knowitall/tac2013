@@ -26,8 +26,6 @@ class KbpSentenceSpec extends FlatSpec {
   
   "KbpSentences" should "have offsets that correctly key into source doc" in {
     
-    val docSplitter = new DocSplitter()
-    
     val sentenceMap = {
       val testSrcs = sentFiles map scala.io.Source.fromFile
       val lines = testSrcs.flatMap(_.getLines)
@@ -39,7 +37,7 @@ class KbpSentenceSpec extends FlatSpec {
       case (corpus, sample) => 
         val source = io.Source.fromFile(sample)
         val docProcessor = KbpDocProcessor.getProcessor(corpus)
-        val docSplitterator = docSplitter.splitDocs(source)
+        val docSplitterator = DocSplitter(source.getLines)
         for (rawDoc <- docSplitterator; parsedDoc <- docProcessor.process(rawDoc); docId <- parsedDoc.extractDocId) {
           val rawString = rawDoc.getString
           val sents = sentenceMap(docId)
@@ -52,6 +50,7 @@ class KbpSentenceSpec extends FlatSpec {
             }
           }
         }
+        source.close()
     }
   }
 }

@@ -148,7 +148,10 @@ class KbpExtraction(
   val confidence: Double,
   val extractor: String,
   val sentence: ParsedKbpSentence
-)
+) {
+  
+  def sentenceText = sentence.dgraph.text
+}
 
 object KbpExtraction {
   
@@ -156,7 +159,7 @@ object KbpExtraction {
   
   val tabRegex = "\t".r
   
-  def fromFieldMap(fieldMap: Map[String, String]) = solr.KbpExtractionConverter.fromFieldMap(fieldMap)
+  def fromFieldMap(fieldMap: Map[String, Any]) = solr.KbpExtractionConverter.fromFieldMap(fieldMap)
   
   def write(extr: KbpExtraction): String = {
     

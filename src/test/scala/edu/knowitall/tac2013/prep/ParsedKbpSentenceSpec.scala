@@ -26,8 +26,6 @@ class ParsedKbpSentenceSpec extends FlatSpec {
     cleaned
   }
   
-  val docSplitter = new DocSplitter()
-  
   "ParsedKbpSentences" should "deserialize then serialize to their original string" in {
     
     val testLines = parsedFiles map { f => io.Source.fromFile(f, "UTF8") } flatMap { _.getLines }
@@ -40,14 +38,13 @@ class ParsedKbpSentenceSpec extends FlatSpec {
   
   "ParsedKbpSentences" should "contain token offsets that correctly match file contents" in {
     
-    val docSplitter = new DocSplitter()
     //
     // group (rawdoc, parsedDoc, List[Sentence]):
     //
     
     // -- First, get list[List[RawDoc], Corpus]
     val rawDocs = corpora.zip(rawFiles) map { case (corpus, file) =>
-      val fileDocs = docSplitter.splitDocs(io.Source.fromFile(file, "UTF8").getLines)
+      val fileDocs = DocSplitter(io.Source.fromFile(file, "UTF8").getLines)
       (fileDocs, corpus)
     }
     

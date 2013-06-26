@@ -40,10 +40,15 @@ abstract class KbpDocProcessor() {
 object KbpDocProcessor {
 
   def getProcessor(corpus: String) = corpus match {
-    case "web" => new KbpWebDocProcessor()
-    case "news" => new KbpNewsDocProcessor()
-    case "forum" => new KbpForumDocProcessor()
+    case "web" => KbpWebDocProcessor
+    case "news" => KbpNewsDocProcessor
+    case "forum" => KbpForumDocProcessor
     case _ => throw new IllegalArgumentException("Unknown corpus type \"%s\"".format(corpus))
+  }
+  
+  def processXml(lines: Iterator[String], corpus: String): Iterator[KbpProcessedDoc] = {
+    
+    DocSplitter(lines) flatMap getProcessor(corpus).process
   }
 
   def main(args: Array[String]): Unit = {
@@ -52,23 +57,22 @@ object KbpDocProcessor {
     val outputFile = args(1)
     val corpus = args(2) // web, forum, or news
 
-    val docSplitter = new DocSplitter()
-    val docParser = getProcessor(corpus)
-
     val source = io.Source.fromFile(inputFile)
 
     val output = new java.io.PrintStream(outputFile, "UTF8")
 
-    val spliterator = docSplitter.splitDocs(source)
-
-    spliterator flatMap docParser.process foreach { parsedDoc =>
+    processXml(source.getLines, corpus) foreach { parsedDoc =>
       val text = parsedDoc.debugText
       output.println(text)
     }
+    
+    source.close()
+    output.close()
+    
   }
 }
 
-class KbpForumDocProcessor extends KbpDocProcessor {
+object KbpForumDocProcessor extends KbpDocProcessor {
   override def process(rawDoc: KbpRawDoc): Option[KbpProcessedDoc] = {
 
     var docIdLine = Option.empty[KbpDocLine]
@@ -87,7 +91,7 @@ class KbpForumDocProcessor extends KbpDocProcessor {
   }
 }
 
-class KbpNewsDocProcessor extends KbpDocProcessor {
+object KbpNewsDocProcessor extends KbpDocProcessor {
 
   override def process(rawDoc: KbpRawDoc): Option[KbpProcessedDoc] = {
 
@@ -112,7 +116,7 @@ class KbpNewsDocProcessor extends KbpDocProcessor {
   }
 }
 
-class KbpWebDocProcessor extends KbpDocProcessor {
+object KbpWebDocProcessor extends KbpDocProcessor {
 
   override def process(rawDoc: KbpRawDoc): Option[KbpProcessedDoc] = {
 
