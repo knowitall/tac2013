@@ -27,6 +27,7 @@ libraryDependencies ++= Seq(
 	"edu.washington.cs.knowitall.nlptools" % "nlptools-chunk-opennlp_2.10" % "2.4.2",
 	"edu.washington.cs.knowitall.nlptools" % "nlptools-parse-clear_2.10" % "2.4.2" excludeAll(ExclusionRule(organization = "com.googlecode.clearnlp")),
 	"edu.washington.cs.knowitall.srlie" %% "openie-srl" % "1.0.0-RC1" excludeAll(ExclusionRule(organization = "com.googlecode.clearnlp")),
+	"edu.washington.cs.knowitall.taggers" %% "taggers" % "0.1",
 	"net.liftweb" %% "lift-json" % "2.5-RC5",
 	"org.apache.solr" % "solr-solrj" % "4.3.0",
 	"edu.washington.cs.knowitall.chunkedextractor" %% "chunkedextractor" % "1.0.4",

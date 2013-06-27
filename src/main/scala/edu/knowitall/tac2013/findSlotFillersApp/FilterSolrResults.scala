@@ -89,6 +89,59 @@ object FilterSolrResults {
     }
   }
   
+  private def satisfiesSemanticFilter(relationData: KbpSlotToOpenIEData, kbpExtraction: KbpExtraction) : Boolean = {
+    
+    val slotType = relationData.slotType.getOrElse({""})
+    
+    val slotLocation = relationData.slotFillIn match {
+      case Some("arg1") => kbpExtraction.arg1.tokenInterval
+      case Some("arg2") => kbpExtraction.arg2.tokenInterval
+      case Some("relation") => kbpExtraction.rel.tokenInterval
+      case _ => return false
+    }
+    
+    
+    if(slotType == "Organization" || slotType =="Person" || slotType =="Stateorprovince" ||
+        slotType == "City" || slotType == "Country"){
+	    val sentence = kbpExtraction.sentence.dgraph.text
+	    val types = SemanticTaggers.useStandfordNERTagger(sentence)
+	    
+	    
+	    
+	    for (t <- types){
+	      if (t.interval().intersects(slotLocation)){
+		      slotType match {
+		        case "Organization" => {
+		          if (t.descriptor() == "StanfordORGANIZATION"){
+		            return true
+		          }
+		        }
+		        case "Person" => {
+		          if (t.descriptor() == "StanfordPERSON"){
+		            return true
+		          }
+		        }
+		        // default case will be location
+		        case _ => {
+		          if (t.descriptor() == "StanfordLOCATION"){
+		            return true
+		          }
+		        }
+		      }
+	      }
+	    }
+	    
+	    return false
+    }
+    else{
+      
+        return true
+      
+    }
+    
+    
+  }
+  
   //filters results from solr by calling helper methods that look at the KbpSlotToOpenIEData specifications and compare
   //that data with the results from solr to see if the relation is still a candidate
   //
@@ -102,7 +155,8 @@ object FilterSolrResults {
       
       if( satisfiesArg2PrepositionFilter(relationData,kbpExtraction) &&
           satisfiesEntityFilter(relationData,kbpExtraction,queryEntity) &&
-          satisfiesRelFilter(relationData,kbpExtraction)){
+          satisfiesRelFilter(relationData,kbpExtraction) &&
+          satisfiesSemanticFilter(relationData,kbpExtraction)){
         
           filteredResultsList = filteredResultsList ::: List(kbpExtraction)
           
