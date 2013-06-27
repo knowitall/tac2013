@@ -30,16 +30,16 @@ class QueryBuilder {
 	}
 	
 	def setArg1String(arg1: String){
-	  arg1String = "+arg1:\"" +arg1 + "\""
+	  arg1String = "+arg1Text:\"" +arg1 + "\""
 	}
 	def setRelString(rel: String){
-	  relString = "+rel:\"" +rel + "\""
+	  relString = "+relText:\"" +rel + "\""
 	}
 	def setArg2String(arg2: String){
-	  arg2String = "+arg2:\"" +arg2 + "\""
+	  arg2String = "+arg2Text:\"" +arg2 + "\""
 	}
 	
 	def setBeginningOfArg2String(beg: String){
-	  beginningOfArg2String = "+arg2:\"" + beg + "\"" 
+	  beginningOfArg2String = "+arg2Text:\"" + beg + "\"" 
 	}
 }

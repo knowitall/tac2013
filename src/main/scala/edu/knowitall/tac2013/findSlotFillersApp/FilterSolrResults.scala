@@ -1,11 +1,13 @@
 package edu.knowitall.tac2013.findSlotFillersApp
 
+import edu.knowitall.tac2013.openie.KbpExtraction
+
 object FilterSolrResults {
 
   //filter for arg2 beginning with proper preposition
-  private def satisfiesArg2PrepositionFilter(relationData: KbpSlotToOpenIEData, resultsMap: Map[String,Any] ): Boolean ={
+  private def satisfiesArg2PrepositionFilter(relationData: KbpSlotToOpenIEData, kbpExtraction: KbpExtraction ): Boolean ={
       if (relationData.arg2Begins.nonEmpty){
-	      val solrResultsArg2 = resultsMap("arg2")
+	      val solrResultsArg2 = kbpExtraction.arg2.originalText
 	      val arg2PrepositionString = relationData.arg2Begins.get.trim()
 	      
 	      if(solrResultsArg2.toString().toLowerCase().substring(0,arg2PrepositionString.length) == arg2PrepositionString.toLowerCase() ||
@@ -21,7 +23,7 @@ object FilterSolrResults {
       }
   }
   
-  private def satisfiesRelFilter(relationData: KbpSlotToOpenIEData, resultsMap: Map[String,Any] ): Boolean ={
+  private def satisfiesRelFilter(relationData: KbpSlotToOpenIEData, kbpExtraction: KbpExtraction ): Boolean ={
     
     if(relationData.isValid){
 	    
@@ -29,16 +31,12 @@ object FilterSolrResults {
 	    
 	    val relationTermsReversed =  relationTerms.reverse
 	    
-	    val relationTermsFromExtraction = resultsMap("rel").toString.trim().split(" ")
+	    val relationTermsFromExtraction = kbpExtraction.rel.originalText.trim().split(" ")
 	    
-//	    println("Filtering:")
-//	    println("Relation In Exctraction: " + resultsMap("rel"))
-//	    println("Relation should end with: " + relationTermsReversed)
 	    
 	    var count = 0 
 	    for(term <- relationTermsReversed){
 	      val sentenceWord = relationTermsFromExtraction(relationTermsFromExtraction.length-1-count)
-	     // println("Comparison: Term = " + term + " sentenceWord = " + sentenceWord)
 	      if( (term.toLowerCase() != sentenceWord.toLowerCase()) &&
 	          (term.toLowerCase() != sentenceWord.substring(1,sentenceWord.length-1).toLowerCase())){
 	         return false
@@ -55,11 +53,17 @@ object FilterSolrResults {
     }
   }
   
-  private def satisfiesEntityFilter(relationData: KbpSlotToOpenIEData, resultsMap: Map[String,Any], queryEntity: String ): Boolean ={
+  private def satisfiesEntityFilter(relationData: KbpSlotToOpenIEData, kbpExtraction: KbpExtraction, queryEntity: String ): Boolean ={
     
     if(relationData.isValid){
-	    val entityFromExtraction = resultsMap(relationData.entityIn.get.trim())
-	    val parseFromExtraction = resultsMap(relationData.entityIn.get+"_postag")
+      
+        val entityIn = relationData.entityIn.get.trim()
+        val entityFromExtraction = entityIn.toLowerCase() match{
+          case "arg1" => kbpExtraction.arg1.originalText
+          case "arg2" => kbpExtraction.arg2.originalText
+          case _ => throw new Exception("Poorly formatted entityIn field, should be arg1 or arg2")
+        }
+
 	    
 	    val entityFromExtractionSplit = entityFromExtraction.toString().split(" ")
 	    
@@ -88,19 +92,19 @@ object FilterSolrResults {
   //filters results from solr by calling helper methods that look at the KbpSlotToOpenIEData specifications and compare
   //that data with the results from solr to see if the relation is still a candidate
   //
-  def filterResults(resultsArray: Array[Map[String,Any]],relationData: KbpSlotToOpenIEData, queryEntity: String) : Array[Map[String,Any]] = {
+  def filterResults(resultsList: List[KbpExtraction],relationData: KbpSlotToOpenIEData, queryEntity: String) : List[KbpExtraction] = {
     
-    var filteredResultsArray = Array[Map[String,Any]]()
+    var filteredResultsList = List[KbpExtraction]()
     //loop over each solr result
-    for(solrResultsMap <- resultsArray){
+    for(kbpExtraction <- resultsList){
       
       
       
-      if( satisfiesArg2PrepositionFilter(relationData,solrResultsMap) &&
-          satisfiesEntityFilter(relationData,solrResultsMap,queryEntity) &&
-          satisfiesRelFilter(relationData,solrResultsMap)){
+      if( satisfiesArg2PrepositionFilter(relationData,kbpExtraction) &&
+          satisfiesEntityFilter(relationData,kbpExtraction,queryEntity) &&
+          satisfiesRelFilter(relationData,kbpExtraction)){
         
-          filteredResultsArray = filteredResultsArray :+ solrResultsMap
+          filteredResultsList = filteredResultsList ::: List(kbpExtraction)
           
       }
       
@@ -110,6 +114,6 @@ object FilterSolrResults {
     
     //sort array by confidence
     
-    filteredResultsArray
+    filteredResultsList
   }
 }

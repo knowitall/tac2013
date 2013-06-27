@@ -40,14 +40,16 @@ object KBPSlotOpenIERelationTranslator {
 			      val kbpOpenIEData = KbpSlotToOpenIEData.getKbpSlotToOpenIEDataInstance(csvDataArray(0).trim(),maxValue.trim(),
 			          csvDataArray(2).trim(),csvDataArray(3).trim(),csvDataArray(4).trim(),csvDataArray(5).trim(),csvDataArray(6).trim())
 			      
-			      if (KBP_OpenIEMap contains csvDataArray(0)){
-			         val KBP_OpenIEMapValueList = KBP_OpenIEMap(csvDataArray(0))
+			      val kbpSlotName = csvDataArray(0).trim()    
+			      
+			      if (KBP_OpenIEMap contains kbpSlotName){
+			         val KBP_OpenIEMapValueList = KBP_OpenIEMap(kbpSlotName)
 			         val KBP_OpenIEMapValueListPlusOneElement = kbpOpenIEData :: KBP_OpenIEMapValueList
-			         KBP_OpenIEMap += (csvDataArray(0) -> KBP_OpenIEMapValueListPlusOneElement)
+			         KBP_OpenIEMap += (kbpSlotName -> KBP_OpenIEMapValueListPlusOneElement)
 			      }
 			      else{
 			         val KBP_OpenIEMapValueList = List(kbpOpenIEData)
-			         KBP_OpenIEMap += (csvDataArray(0) -> KBP_OpenIEMapValueList)
+			         KBP_OpenIEMap += (kbpSlotName -> KBP_OpenIEMapValueList)
 			      }
 			    } 
       }
@@ -91,14 +93,16 @@ object KBPSlotOpenIERelationTranslator {
 			      val kbpOpenIEData = KbpSlotToOpenIEData.getKbpSlotToOpenIEDataInstance(csvDataArray(0).trim(),maxValue.trim(),
 			          csvDataArray(2).trim(),csvDataArray(3).trim(),csvDataArray(4).trim(),csvDataArray(5).trim(),csvDataArray(6).trim())
 			      
-			      if (KBP_OpenIEMap contains csvDataArray(0)){
-			         val KBP_OpenIEMapValueList = KBP_OpenIEMap(csvDataArray(0))
+			      val kbpSlotName = csvDataArray(0).trim()  
+			          
+			      if (KBP_OpenIEMap contains kbpSlotName){
+			         val KBP_OpenIEMapValueList = KBP_OpenIEMap(kbpSlotName)
 			         val KBP_OpenIEMapValueListPlusOneElement = kbpOpenIEData :: KBP_OpenIEMapValueList
-			         KBP_OpenIEMap += (csvDataArray(0) -> KBP_OpenIEMapValueListPlusOneElement)
+			         KBP_OpenIEMap += (kbpSlotName -> KBP_OpenIEMapValueListPlusOneElement)
 			      }
 			      else{
 			         val KBP_OpenIEMapValueList = List(kbpOpenIEData)
-			         KBP_OpenIEMap += (csvDataArray(0) -> KBP_OpenIEMapValueList)
+			         KBP_OpenIEMap += (kbpSlotName -> KBP_OpenIEMapValueList)
 			      }
 			    } 
       }

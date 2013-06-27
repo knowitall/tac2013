@@ -49,8 +49,13 @@ object FindSlotFillsServer extends App {
             </body></html>""") ~> Ok
       }
 
+      /***
+       * Handles the POST input to the server
+       */
       def handlePost(field1: String, field2: String) = {
-        ResponseString("Run output function here: field1=" + field1 + " and field2=" + field2) ~> Ok
+        
+        val s = FindSlotFills.runForServerOutput(field1,field2)
+        ResponseString(field1 + s) ~> Ok
       }
     }
 
