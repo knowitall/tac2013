@@ -1,0 +1,75 @@
+<DOC>
+<DOCID> eng-NG-31-150304-10636344 </DOCID>
+<DOCTYPE SOURCE="usenet"> USENET TEXT </DOCTYPE>
+<DATETIME> 2007-10-09T14:47:37 </DATETIME>
+<BODY>
+<HEADLINE>
+Roll Call!
+</HEADLINE>
+<TEXT>
+<POST>
+<POSTER> Per Ekström &lt;werti...@gmail.com&gt; </POSTER>
+<POSTDATE> 2007-10-09T14:47:37 </POSTDATE>
+Hi everyone!
+
+First off, I want to apologize. I've had some trouble with my money
+flow the last six weeks, and thus I haven't been able to get a stable
+net connection yet. Also, stuff keeps popping up that require my
+attention in the real world. So... :/ Hopefully, everything will have
+settled for good in a month or so, and then I can finally begin to
+work on the firmware for real.
+
+So, since the pace is slowly picking up again, here's a general roll
+call. Did everyone die, or are there people out there still? What's
+happening? If you want to help or think you can help in any way shape
+or form, please say so. And as for you guys, have you been doing some
+research and stuff? Report in, soldiers! ;)
+
+Also, it might be a good idea to meet in our MUC to decide how we're
+going to move forward and see where we are right now, so, meeting
+time! I'm suggesting a weekend in November sometime, anyone against
+that idea?
+
+I'm still interested in bringing this to reality, and I hope you guys
+are. :) Seeya!
+</POST>
+<POST>
+<POSTER> "Derick Eisenhardt" &lt;derick.eisenha...@gmail.com&gt; </POSTER>
+<POSTDATE> 2007-10-09T15:25:05 </POSTDATE>
+I'm still here too...but just like Wertigon, I keep finding life to get in
+the way. This project is taking much longer than I had ever expected, but
+that's okay. We'll get there eventually as long as we don't give up on this
+common dream of ours ;)
+
+- Derick
+
+On 10/9/07, Per Ekström &lt;werti ... @gmail.com&gt; wrote:
+
+<QUOTE PREVIOUSPOST="
+&gt; Hi everyone!
+
+&gt; First off, I want to apologize. I've had some trouble with my money
+&gt; flow the last six weeks, and thus I haven't been able to get a stable
+&gt; net connection yet. Also, stuff keeps popping up that require my
+&gt; attention in the real world. So... :/ Hopefully, everything will have
+&gt; settled for good in a month or so, and then I can finally begin to
+&gt; work on the firmware for real.
+
+&gt; So, since the pace is slowly picking up again, here's a general roll
+&gt; call. Did everyone die, or are there people out there still? What's
+&gt; happening? If you want to help or think you can help in any way shape
+&gt; or form, please say so. And as for you guys, have you been doing some
+&gt; research and stuff? Report in, soldiers! ;)
+
+&gt; Also, it might be a good idea to meet in our MUC to decide how we're
+&gt; going to move forward and see where we are right now, so, meeting
+&gt; time! I'm suggesting a weekend in November sometime, anyone against
+&gt; that idea?
+
+&gt; I'm still interested in bringing this to reality, and I hope you guys
+&gt; are. :) Seeya!
+">
+</POST>
+</TEXT>
+</BODY>
+</DOC>

@@ -1,0 +1,77 @@
+<DOC>
+<DOCID> eng-NG-31-150304-10636343 </DOCID>
+<DOCTYPE SOURCE="usenet"> USENET TEXT </DOCTYPE>
+<DATETIME> 2007-10-27T21:27:03 </DATETIME>
+<BODY>
+<HEADLINE>
+Meeting Nov 10th!
+</HEADLINE>
+<TEXT>
+<POST>
+<POSTER> Per Ekström &lt;werti...@gmail.com&gt; </POSTER>
+<POSTDATE> 2007-10-27T21:27:03 </POSTDATE>
+We're having a meeting Saturday November 10th at 2:00 PM UTC in our
+MUC, o ... @conference.jabber.se, here's the agenda:
+
+0. Roll Call
+1. Agenda Bashing
+2. Where are we now?
+3. How to move forward
+4. Delegate assignments
+5. Other
+6. Finish
+
+Everyone invited!
+</POST>
+<POST>
+<POSTER> "Derick Eisenhardt" &lt;derick.eisenha...@gmail.com&gt; </POSTER>
+<POSTDATE> 2007-10-28T02:09:11 </POSTDATE>
+I'm sorry to say I will not be able to make it, as I'll be out of town that
+weekend, but good luck guys!
+
+- Derick
+
+On 10/27/07, Per Ekström &lt;werti ... @gmail.com&gt; wrote:
+
+<QUOTE PREVIOUSPOST="
+&gt; We're having a meeting Saturday November 10th at 2:00 PM UTC in our
+&gt; MUC, o ... @conference.jabber.se, here's the agenda:
+
+&gt; 0. Roll Call
+&gt; 1. Agenda Bashing
+&gt; 2. Where are we now?
+&gt; 3. How to move forward
+&gt; 4. Delegate assignments
+&gt; 5. Other
+&gt; 6. Finish
+
+&gt; Everyone invited!
+">
+</POST>
+<POST>
+<POSTER> Per Ekström &lt;werti...@gmail.com&gt; </POSTER>
+<POSTDATE> 2007-11-10T13:06:25 </POSTDATE>
+Just a friendly reminder of the meeting today. :)
+
+- Per
+
+On Oct 27, 10:27 pm, Per Ekström &lt;werti ... @gmail.com&gt; wrote:
+
+<QUOTE PREVIOUSPOST="
+&gt; We're having a meeting Saturday November 10th at 2:00 PM UTC in our
+&gt; MUC, o ... @conference.jabber.se, here's the agenda:
+
+&gt; 0. Roll Call
+&gt; 1. Agenda Bashing
+&gt; 2. Where are we now?
+&gt; 3. How to move forward
+&gt; 4. Delegate assignments
+&gt; 5. Other
+&gt; 6. Finish
+
+&gt; Everyone invited!
+">
+</POST>
+</TEXT>
+</BODY>
+</DOC>

@@ -1,0 +1,20 @@
+<DOC>
+
+<DOCID> eng-NG-31-150379-10636475 </DOCID>
+<DOCTYPE SOURCE="usenet"> USENET TEXT </DOCTYPE>
+<DATETIME> 2007-10-22T10:31:03 </DATETIME>
+<BODY>
+
+<HEADLINE>
+2910 V3.1.1 RC2 firmware
+</HEADLINE>
+<TEXT>
+<POST>
+<POSTER> "jht...@gmail.com" &lt;jht...@gmail.com&gt; </POSTER>
+<POSTDATE> 2007-10-22T10:31:03 </POSTDATE>
+File Name 2910_3650.all
+http://draytek-vigor-2910-user-group.googlegroups.com/web/v2910_3650.all
+</POST>
+</TEXT>
+</BODY>
+</DOC>

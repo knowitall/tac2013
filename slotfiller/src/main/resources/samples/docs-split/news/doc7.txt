@@ -1,0 +1,36 @@
+<DOC id="AFP_ENG_20090531.0008" type="advis" >
+<HEADLINE>
+AFP sports schedule for Monday, June 1
+</HEADLINE>
+<DATELINE>
+Paris, June 1, 2009 (AFP)
+</DATELINE>
+<TEXT>
+AFP sports schedule for Monday, June 1:
+
+TENNIS
+
+Day nine of the French Open sees men's number two seed Roger Federer playing
+Tommy Haas, and women's number two seed Serena Williams playing Canadian
+Aleksandra Wozniak.
+
+Coverage by Dave James and Tom Williams
+
+Slug: Tennis-FRA-Open
+
+ATHLETICS
+
+Ethiopian Haile Gebrselassie is targeting a fifth world record at the Hengelo
+Grand Prix, that of the one-hour run.
+
+Slug: Athletics-NED
+
+CRICKET
+
+Build-up to ICC World Twenty20 in England which starts on Friday.
+
+See separate advisory.
+
+Slug: Cricket-ICC-T20
+</TEXT>
+</DOC>

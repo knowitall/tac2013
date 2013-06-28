@@ -1,0 +1,34 @@
+<DOC>
+<DOCID> eng-NG-31-150396-10636480 </DOCID>
+<DOCTYPE SOURCE="usenet"> USENET TEXT </DOCTYPE>
+<DATETIME> 2007-12-05T06:12:07 </DATETIME>
+<BODY>
+<HEADLINE>
+Powerful Internet Solutions
+</HEADLINE>
+<TEXT>
+<POST>
+<POSTER> "Miami Web design Florida" &lt;fuelpipes...@gmail.com&gt; </POSTER>
+<POSTDATE> 2007-12-05T06:12:07 </POSTDATE>
+Powerful Internet Solutions
+
+Professional Web Design and eCommerce Development Company
+
+Offering Web Design, eCommerce Solutions and Custom Web Development to Miami
+and Fort Lauderdale Area.
+Look over our Web Design and eCommerce Solutions Portfolio and see the
+diversity of our web design styles.
+
+For more details, visit our site:
+* http://www.fuelpipe.com* &lt; http://www.fuelpipe.com &gt;
+
+Phone:     (305) 921-9581
+Fax:     (954) 467-5411
+Email:     off ... @fuelpipe.com
+Address:     1314 East Las Olas Blvd.
+Fort Lauderdale FL 33301
+USA
+</POST>
+</TEXT>
+</BODY>
+</DOC>

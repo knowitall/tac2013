@@ -1,0 +1,52 @@
+<DOC>
+<DOCID> eng-NG-31-150304-8805222 </DOCID>
+<DOCTYPE SOURCE="usenet"> USENET TEXT </DOCTYPE>
+<DATETIME> 2007-09-19T14:05:00 </DATETIME>
+<BODY>
+<HEADLINE>
+New member - hello all!
+</HEADLINE>
+<TEXT>
+<POST>
+<POSTER> merlinwood &lt;WillsW...@gmail.com&gt; </POSTER>
+<POSTDATE> 2007-09-19T14:05:00 </POSTDATE>
+Hi, i'm new to the consortium and would like to ask a few questions.
+Firstly this is the first online project i've joined so this is all
+new to me. I've been reading some of the posts, and in addition derick
+mentioned in his email that your at the stage of trying to get a os/
+distro off the ground. Hows it going? What/have you many any decisions
+about it yet?
+</POST>
+<POST>
+<POSTER> Per Ekström &lt;werti...@gmail.com&gt; </POSTER>
+<POSTDATE> 2007-09-20T06:28:00 </POSTDATE>
+Hi merlinwood, and welcome to the OGC project!
+
+Right now things are going slow, mostly due to real life issues for me
+and the fact that we're such a small community. I'm hoping that I can
+pick up the pace in October sometime. Right now we haven't made too
+many decisions, nothing is set in stone, but the general idea is to
+develop a firmware that is capable of running OpenGL/AL and OIS
+(Object-oriented Input System). On top of that we'll put something we
+call the &quot;HomeUI&quot;, which is essentially a few modules with the same
+generic GUI, and we'll develop it in Python.
+
+Hopefully, this will take around six months to complete once I can get
+started. We're happy with any help we can get. :)
+
+- Per
+
+On Sep 19, 8:05 pm, merlinwood &lt;WillsW ... @gmail.com&gt; wrote:
+
+<QUOTE PREVIOUSPOST="
+&gt; Hi, i'm new to the consortium and would like to ask a few questions.
+&gt; Firstly this is the first online project i've joined so this is all
+&gt; new to me. I've been reading some of the posts, and in addition derick
+&gt; mentioned in his email that your at the stage of trying to get a os/
+&gt; distro off the ground. Hows it going? What/have you many any decisions
+&gt; about it yet?
+">
+</POST>
+</TEXT>
+</BODY>
+</DOC>
