@@ -56,12 +56,12 @@ object SolrPopulator {
   def main(args: Array[String]): Unit = {
     
     var inputExtrs = true
-    var inputFile = "."
+    var inputFile = "stdin"
     var solrUrl = "."
     var corpus = "."
     
     val parser = new OptionParser("SolrPopulator") {
-      arg("inputFile", "XML or KbpExtraction input file.", { s => inputFile = s})
+      opt("inputFile", "XML or KbpExtraction input file.", { s => inputFile = s})
       arg("solrUrl", "URL to Solr instance.", { s => solrUrl = s})
       opt("inputRaw", "Input is raw XML, not KbpExtractions.", { inputExtrs = false })
       opt("corpus", "For inputRaw, specifies corpus type (news, web, forum.", { s => corpus = s })
@@ -69,7 +69,7 @@ object SolrPopulator {
 
     if (!parser.parse(args)) return
     
-    val source =  io.Source.fromFile(inputFile, "UTF8")
+    val source =  if (inputFile.equals("stdin")) io.Source.stdin else io.Source.fromFile(inputFile, "UTF8")
     val extrs = if (inputExtrs) source.getLines flatMap KbpExtraction.read else loadFromXml(source, corpus)
     populate(extrs, solrUrl)
     

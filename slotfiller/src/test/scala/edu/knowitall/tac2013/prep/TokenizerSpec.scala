@@ -12,7 +12,7 @@ class TokenizerSpec extends FlatSpec {
 
   import KbpSentenceSpec._
   
-  import edu.knowitall.tac2013.preprocess.tac.ExtractSentencesAndTokenize.whitespace_charclass 
+  import util.Asciifier.whitespace_charclass 
   val wsPattern = Pattern.compile(whitespace_charclass)
   def fixWs(str: String): String = wsPattern.matcher(str).replaceAll(" ")
   
@@ -27,7 +27,7 @@ class TokenizerSpec extends FlatSpec {
   
   "A tokenizer" should "annotate tokens with correct character offsets" in {
     
-    val testSrcs = sentFiles map { f => scala.io.Source.fromFile(f, "UTF8") }
+    val testSrcs = sentFiles map { f => getClass.getResource(f) } map { res => scala.io.Source.fromURL(res, "UTF8") }
     val lines = testSrcs.flatMap(_.getLines.take(300))
     lines.foreach { line =>
       val sent = KbpSentence.read(line).get

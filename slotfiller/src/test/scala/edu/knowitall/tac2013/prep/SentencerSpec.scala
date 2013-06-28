@@ -10,9 +10,9 @@ class SentencerSpec extends FlatSpec {
   // tuple of (Parser for corpus, corpus sample/test file)
   // can add to this list to add new test sample files. 
   val corpora = Seq(
-    (KbpDocProcessor.getProcessor("web"),  "src/main/resources/samples/docs-split/web"),
-    (KbpDocProcessor.getProcessor("news"), "src/main/resources/samples/docs-split/news"),
-    (KbpDocProcessor.getProcessor("forum"),"src/main/resources/samples/docs-split/forum")
+    (KbpDocProcessor.getProcessor("web"),  "/samples/docs-split/web"),
+    (KbpDocProcessor.getProcessor("news"), "/samples/docs-split/news"),
+    (KbpDocProcessor.getProcessor("forum"),"/samples/docs-split/forum")
   )
 
   // Remember to convert newlines to spaces, and run asciifier.
@@ -21,13 +21,13 @@ class SentencerSpec extends FlatSpec {
     corpora foreach {
       case (docProcessor, sampleDir) => {
         for (
-            file <- new File(sampleDir).listFiles;
-            rawDoc <- DocSplitter(io.Source.fromFile(file, "UTF8").getLines);
+            url <- new File(getClass.getResource(sampleDir).getFile()).listFiles.map(_.toURL);
+            rawDoc <- DocSplitter(io.Source.fromURL(url, "UTF8").getLines);
             parsedDoc <- docProcessor.process(rawDoc).toList;
             rawSentence <- sentencer.convertToSentences(parsedDoc);
             s <- SentenceFilter.apply(rawSentence)
          ) {
-          val fileString = DocSplitterSpec.fileString(file)
+          val fileString = DocSplitterSpec.fileString(url)
           val byteString = fileString.drop(s.offset).take(s.length)
           // skip the fabricated sentences. Offsets only line up for the entity in them.
           if (!s.text.startsWith("This post was written")) {
@@ -52,12 +52,12 @@ class SentencerSpec extends FlatSpec {
     corpora foreach {
       case (docProcessor, sampleDir) => {
         for (
-            file <- new File(sampleDir).listFiles;
-            rawDoc <- DocSplitter(io.Source.fromFile(file, "UTF8").getLines);
+            url <- new File(getClass.getResource(sampleDir).getFile()).listFiles.map(_.toURL);
+            rawDoc <- DocSplitter(io.Source.fromURL(url, "UTF8").getLines);
             parsedDoc <- docProcessor.process(rawDoc).toList;
             s <- sentencer.convertToSentences(parsedDoc)
          ) {
-          val fileString = DocSplitterSpec.fileString(file)
+          val fileString = DocSplitterSpec.fileString(url)
           val byteString = fileString.drop(s.offset).take(s.length)
           // skip the fabricated sentences. Offsets only line up for the entity in them.
           if (!s.text.startsWith("This post was written")) {

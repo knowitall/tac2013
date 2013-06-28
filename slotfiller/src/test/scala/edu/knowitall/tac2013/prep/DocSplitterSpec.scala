@@ -9,7 +9,7 @@ import java.nio.file.Path;
 
 class DocSplitterSpec extends FlatSpec {
 
-  val splitDocsDir = "src/main/resources/samples/docs-split/"
+  val splitDocsDir = "samples/docs-split/"
   val splitWebDocsDir = splitDocsDir + "web"
   val splitNewsDocsDir= splitDocsDir + "news"
   val splitForumDocsDir=splitDocsDir + "forum"
@@ -18,19 +18,21 @@ class DocSplitterSpec extends FlatSpec {
   
   "DocSplitter" should "Tag lines with correct byte offsets" in {
     
-    val files = allDocsDirs.flatMap(dir => new File(dir).listFiles())
-    for (file <- files) {
+    val urls = allDocsDirs.flatMap { dir => 
+      new File(getClass.getClassLoader.getResource(dir).getFile()).listFiles.map(_.toURL)
+    }
+    for (url <- urls) {
       
-      testFile(file)
+      testFile(url)
     }
   }
   
   /*
    * Assumes that a file contains a single kbp doc
    */
-  def testFile(file: File): Unit = {
+  def testFile(url: java.net.URL): Unit = {
     
-    val source = io.Source.fromFile(file, "UTF8")
+    val source = io.Source.fromURL(url, "UTF8")
     
     val spliterator = DocSplitter(source.getLines)
     require(spliterator.hasNext)
@@ -39,7 +41,7 @@ class DocSplitterSpec extends FlatSpec {
     
     require(!spliterator.hasNext)
     
-    val fileString = DocSplitterSpec.fileString(file)
+    val fileString = DocSplitterSpec.fileString(url)
     
     assert(fileString.equals(kbpDoc.getString))
     
@@ -53,8 +55,8 @@ class DocSplitterSpec extends FlatSpec {
 
 object DocSplitterSpec {
    
-  def fileString(file: File): String = {
-    val path = Paths.get(file.getPath)
+  def fileString(url: java.net.URL): String = {
+    val path = Paths.get(url.getFile)
     new String(Files.readAllBytes(path), "UTF8");
   }
 }

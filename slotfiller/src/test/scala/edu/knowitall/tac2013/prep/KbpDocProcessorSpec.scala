@@ -9,31 +9,31 @@ import java.nio.file.Path;
 
 class KbpDocProcessorSpec extends FlatSpec {
   
-  val splitDocsDir = "src/main/resources/samples/docs-split/"
+  val splitDocsDir = "/samples/docs-split/"
   val splitWebDocs = (splitDocsDir, "web")
   val splitNewsDocs= (splitDocsDir, "news")
   val splitForumDocs=(splitDocsDir, "forum")
   
   val allDocsDirs = Seq(splitWebDocs, splitNewsDocs, splitForumDocs)
   
-  "DocSplitter" should "Tag lines with correct byte offsets" in {
+  "KbpDocProcessor" should "Tag lines with correct byte offsets" in {
     
-    val files = allDocsDirs.flatMap { case (dir, corpus) => 
-      new File(dir+corpus).listFiles().map(f => (f, KbpDocProcessor.getProcessor(corpus)))
+    val urls = allDocsDirs.flatMap { case (dir, corpus) => 
+      val resDir = new File(getClass.getResource(dir + corpus).getFile()).listFiles.map(_.toURL)
+      resDir map ( res => (res, KbpDocProcessor.getProcessor(corpus)) )
     }
+    for ((url, parser) <- urls) {
       
-    for ((file, parser) <- files) {
-      
-      testFile(file, parser)
+      testFile(url, parser)
     }
   }
   
   /*
    * Assumes that a file contains a single kbp doc
    */
-  def testFile(file: File, docParser: KbpDocProcessor): Unit = {
+  def testFile(url: java.net.URL, docParser: KbpDocProcessor): Unit = {
     
-    val source = io.Source.fromFile(file)
+    val source = io.Source.fromURL(url)
     
     val spliterator = DocSplitter(source.getLines)
     require(spliterator.hasNext)
@@ -44,7 +44,7 @@ class KbpDocProcessorSpec extends FlatSpec {
     
     val parsedDoc = docParser.process(kbpDoc)
     
-    val fileString = DocSplitterSpec.fileString(file)
+    val fileString = DocSplitterSpec.fileString(url)
     
     for (doc <- parsedDoc.toList; kbpline <- doc.textLines) {
       val targetString = fileString.drop(kbpline.offset).take(kbpline.length)

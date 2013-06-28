@@ -9,7 +9,7 @@ import java.nio.file.Path;
 
 class KbpExtractionSpec extends FlatSpec {
   
-  val splitDocsDir = "src/main/resources/samples/"
+  val splitDocsDir = "samples/"
   val splitWebDocsDir = splitDocsDir + "web"
   val splitNewsDocsDir= splitDocsDir + "news"
   val splitForumDocsDir=splitDocsDir + "forum"
@@ -19,7 +19,7 @@ class KbpExtractionSpec extends FlatSpec {
   
   "KbpExtractions" should "deserialize and then reserialize to original string" in {
     
-    val lines = allExtrsFiles map { f => io.Source.fromFile(f, "UTF8") } flatMap { _.getLines }
+    val lines = allExtrsFiles map { f => getClass.getClassLoader.getResource(f) } map { res => io.Source.fromURL(res, "UTF8") } flatMap { _.getLines }
     
     val extrs = lines map { line => (line, KbpExtraction.read(line)) }
     

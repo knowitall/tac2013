@@ -7,12 +7,12 @@ import edu.knowitall.tool.tokenize.Tokenizer
 
 class ParsedKbpSentenceSpec extends FlatSpec {  
   
-  val samplesDir = "src/main/resources/samples/"
+  val samplesDir = "/samples/"
   val corpora = Seq("news", "web", "forum")
   val parsedFiles = corpora.map { c => "%s%s%s".format(samplesDir, c, "-parsed.txt") }
   val rawFiles = corpora.map { c => "%s%s%s".format(samplesDir, c, "-xml.txt") }
   
-  import edu.knowitall.tac2013.preprocess.tac.ExtractSentencesAndTokenize.whitespace_charclass 
+  import util.Asciifier.whitespace_charclass 
   val wsPattern = Pattern.compile(whitespace_charclass)
   def fixWs(str: String): String = wsPattern.matcher(str).replaceAll(" ")
   
@@ -28,7 +28,7 @@ class ParsedKbpSentenceSpec extends FlatSpec {
   
   "ParsedKbpSentences" should "deserialize then serialize to their original string" in {
     
-    val testLines = parsedFiles map { f => io.Source.fromFile(f, "UTF8") } flatMap { _.getLines }
+    val testLines = parsedFiles map { f => getClass.getResource(f) } map { res => io.Source.fromURL(res, "UTF8") } flatMap { _.getLines }
     testLines.foreach { line =>
       val sent = ParsedKbpSentence.read(line).get
       val reserialized = ParsedKbpSentence.write(sent)
@@ -44,7 +44,9 @@ class ParsedKbpSentenceSpec extends FlatSpec {
     
     // -- First, get list[List[RawDoc], Corpus]
     val rawDocs = corpora.zip(rawFiles) map { case (corpus, file) =>
-      val fileDocs = DocSplitter(io.Source.fromFile(file, "UTF8").getLines)
+      val res = getClass.getResource(file)
+      val source = io.Source.fromURL(res, "UTF8").getLines
+      val fileDocs = DocSplitter(source)
       (fileDocs, corpus)
     }
     
@@ -64,7 +66,8 @@ class ParsedKbpSentenceSpec extends FlatSpec {
     
     // -- Third, get Map[DocID => List[ParsedSentence]]
     val parsedSentencesMap = corpora.zip(parsedFiles) flatMap { case (corpus, file) =>
-        io.Source.fromFile(file, "UTF8").getLines flatMap { l => ParsedKbpSentence.read(l) }
+      val url = getClass.getResource(file)
+        io.Source.fromURL(url, "UTF8").getLines flatMap { l => ParsedKbpSentence.read(l) }
     } groupBy (_.docId)
 
     for (
