@@ -56,9 +56,28 @@ object KbpExtractionConverter {
     } else {
       val sentenceFields = Seq("docId", "sentNum", "sentOffset", "chunks", "dgraph").map(fieldMap(_).asInstanceOf[String])
       ParsedKbpSentence.read(sentenceFields) flatMap { sentence =>
-        val arg1Fields = Seq("arg1Interval", "arg1Text",  "arg1WikiLink", "arg1Types").map(fieldMap(_).asInstanceOf[String])
-        val relFields = Seq("relInterval", "relText", "relTypes").map(fieldMap(_).asInstanceOf[String])
-        val arg2Fields = Seq("arg2Interval", "arg2Text", "arg2WikiLink", "arg2Types").map(fieldMap(_).asInstanceOf[String])
+        
+        val arg1Fields = Seq(
+            "arg1Interval", 
+            "arg1Text",  
+            "arg1WikiLinkName", 
+            "arg1WikiLinkFbid", 
+            "arg1WikiLinkNodeId", 
+            "arg1Types").map(fieldMap(_).asInstanceOf[String])
+            
+        val relFields = Seq(
+            "relInterval", 
+            "relText", 
+            "relTypes").map(fieldMap(_).asInstanceOf[String])
+            
+        val arg2Fields = Seq(
+            "arg1Interval", 
+            "arg1Text",  
+            "arg1WikiLinkName", 
+            "arg1WikiLinkFbid", 
+            "arg1WikiLinkNodeId", 
+            "arg1Types").map(fieldMap(_).asInstanceOf[String])
+            
         val arg1Opt = KbpArgument.readHelper(arg1Fields, sentence)
         val relOpt = KbpRelation.readHelper(relFields, sentence)
         val arg2Opt = KbpArgument.readHelper(arg2Fields, sentence)

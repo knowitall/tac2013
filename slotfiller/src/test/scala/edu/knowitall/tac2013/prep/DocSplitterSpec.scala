@@ -9,7 +9,7 @@ import java.nio.file.Path;
 
 class DocSplitterSpec extends FlatSpec {
 
-  val splitDocsDir = "samples/docs-split/"
+  val splitDocsDir = "/samples/docs-split/"
   val splitWebDocsDir = splitDocsDir + "web"
   val splitNewsDocsDir= splitDocsDir + "news"
   val splitForumDocsDir=splitDocsDir + "forum"
@@ -19,7 +19,7 @@ class DocSplitterSpec extends FlatSpec {
   "DocSplitter" should "Tag lines with correct byte offsets" in {
     
     val urls = allDocsDirs.flatMap { dir => 
-      new File(getClass.getClassLoader.getResource(dir).getFile()).listFiles.map(_.toURL)
+      new File(getClass.getResource(dir).getFile()).listFiles.map(_.toURL)
     }
     for (url <- urls) {
       

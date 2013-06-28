@@ -17,7 +17,7 @@ object SlotFillerBuild extends Build {
     scalaVersion <<= (crossScalaVersions) { versions => versions.head },
     publish := { },
     publishLocal := { }
-  ) aggregate(slotfiller, multir)
+  ) aggregate(slotfiller, multir, linker)
 
   // parent build definition
   val buildSettings = Defaults.defaultSettings ++ Seq (
@@ -33,8 +33,6 @@ object SlotFillerBuild extends Build {
   lazy val slotfiller = Project(id = "slotfiller", base = file("slotfiller"), settings = buildSettings ++ Seq(
     libraryDependencies ++= Seq(
     "edu.washington.cs.knowitall.taggers" %% "taggers" % "0.1",
-    "com.nicta" %% "scoobi" % "0.7.0-RC2-cdh3",
-    "edu.washington.cs.knowitall.openie" %% "openie-linker" % "1.0",
     "edu.washington.cs.knowitall.nlptools" % "nlptools-sentence-breeze_2.10" % "2.4.2" excludeAll(ExclusionRule(organization = "com.googlecode.clearnlp")),
     "com.googlecode.clearnlp" % "clearnlp-threadsafe" % "1.3.0-c",
     "net.databinder" %% "unfiltered-filter" % "0.6.8",
@@ -51,10 +49,17 @@ object SlotFillerBuild extends Build {
     "ch.qos.logback" % "logback-classic" % "1.0.9",
     "ch.qos.logback" % "logback-core" % "1.0.9"
     ),
+    resolvers ++= Seq("amateras-repo" at "http://amateras.sourceforge.jp/mvn/")
+  )).settings(net.virtualvoid.sbt.graph.Plugin.graphSettings: _*)
+
+  lazy val linker = Project(id = "linker", base = file("linker"), settings = buildSettings ++ Seq(
+    libraryDependencies ++= Seq(
+      "com.nicta" %% "scoobi" % "0.7.0-RC2-cdh3",
+      "edu.washington.cs.knowitall.openie" %% "openie-linker" % "1.0"
+    ),
     resolvers ++= Seq("nicta" at "http://nicta.github.com/scoobi/releases",
       "cloudera" at "https://repository.cloudera.com/content/repositories/releases",
-      "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
-      "amateras-repo" at "http://amateras.sourceforge.jp/mvn/"),
+      "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"),
     mergeStrategy in assembly <<= (mergeStrategy in assembly) { (old) =>
       {
         case x => {
@@ -64,7 +69,7 @@ object SlotFillerBuild extends Build {
         }
       }
     }
-  )).settings(net.virtualvoid.sbt.graph.Plugin.graphSettings: _*)
+  )).settings(net.virtualvoid.sbt.graph.Plugin.graphSettings: _*).dependsOn(slotfiller)
 
   lazy val multir = Project(id = "multir", base = file("multir"), settings = buildSettings ++ Seq(
     libraryDependencies ++= Seq("edu.stanford.nlp" % "stanford-corenlp" % "1.3.4")

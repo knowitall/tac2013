@@ -3,6 +3,7 @@ package edu.knowitall.tac2013.link
 import edu.knowitall.browser.entity.EntityLink
 import edu.knowitall.browser.entity.EntityLinker
 import edu.knowitall.tac2013.openie.KbpExtraction
+import edu.knowitall.tac2013.openie.KbpArgument
 import edu.knowitall.tac2013.openie.WikiLink
 import java.io.File
 import java.io.PrintStream
@@ -22,6 +23,16 @@ class KbpExtractionLinker private (val linker: EntityLinker, val wikiNodeMap: Ma
 
   val extractionsProcessed = new AtomicInteger(0)
   
+  def linkArg(arg: KbpArgument, context: Seq[String]): Option[EntityLink] = {
+    // Skip if arg does not contain a proper noun
+    if (arg.tokens.exists(_.isProperNoun)) {
+      val argString = arg.originalText
+      Option(linker.getBestEntity(argString, context))
+    } else {
+      None
+    }
+  }
+  
   /**
    * Returns a new KbpExtraction with (optionally) wikiLink fields
    * filled in.
@@ -29,11 +40,9 @@ class KbpExtractionLinker private (val linker: EntityLinker, val wikiNodeMap: Ma
   def linkExtraction(extr: KbpExtraction): KbpExtraction = {
     
     val context = Seq(extr.sentenceText)
-    val arg1String = extr.arg1.originalText
-    val arg2String = extr.arg2.originalText
     
-    val arg1Link = Option(linker.getBestEntity(arg1String, context))
-    val arg2Link = Option(linker.getBestEntity(arg2String, context))
+    val arg1Link = linkArg(extr.arg1, context)
+    val arg2Link = linkArg(extr.arg2, context)
     
     def toWikiLink(elink: EntityLink): WikiLink = {
       WikiLink(elink.entity.name, elink.entity.fbid, wikiNodeMap.get(elink.entity.name))

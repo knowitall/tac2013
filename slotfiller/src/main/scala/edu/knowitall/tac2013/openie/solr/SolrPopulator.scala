@@ -4,6 +4,7 @@ import org.apache.solr.client.solrj.impl.ConcurrentUpdateSolrServer
 import edu.knowitall.tac2013.openie._
 import edu.knowitall.tac2013.prep._
 import java.util.concurrent.atomic.AtomicInteger
+import edu.knowitall.tac2013.prep.util.FileUtils
 import scopt.OptionParser
 
 class SolrPopulator private (val solrServer: ConcurrentUpdateSolrServer) {
@@ -32,7 +33,11 @@ class SolrPopulator private (val solrServer: ConcurrentUpdateSolrServer) {
   
   private def populate(extrs: Iterator[KbpExtraction]): Unit = {
     
-    extrs foreach tryAddSingle
+    extrs.grouped(100) foreach { bigGroup =>
+      bigGroup.grouped(10).toSeq.par foreach { smallGroup =>
+        smallGroup foreach tryAddSingle
+      }
+    }
     solrServer.commit()
     solrServer.shutdown()
   }
@@ -56,12 +61,12 @@ object SolrPopulator {
   def main(args: Array[String]): Unit = {
     
     var inputExtrs = true
-    var inputFile = "stdin"
+    var inputPath = "stdin"
     var solrUrl = "."
     var corpus = "."
     
     val parser = new OptionParser("SolrPopulator") {
-      opt("inputFile", "XML or KbpExtraction input file.", { s => inputFile = s})
+      opt("inputPath", "XML or KbpExtraction input file or recursive dir.", { s => inputPath = s})
       arg("solrUrl", "URL to Solr instance.", { s => solrUrl = s})
       opt("inputRaw", "Input is raw XML, not KbpExtractions.", { inputExtrs = false })
       opt("corpus", "For inputRaw, specifies corpus type (news, web, forum.", { s => corpus = s })
@@ -69,14 +74,29 @@ object SolrPopulator {
 
     if (!parser.parse(args)) return
     
-    val source =  if (inputFile.equals("stdin")) io.Source.stdin else io.Source.fromFile(inputFile, "UTF8")
-    val extrs = if (inputExtrs) source.getLines flatMap KbpExtraction.read else loadFromXml(source, corpus)
+    val input =  {
+      if (inputPath.equals("stdin")) 
+        io.Source.stdin.getLines
+      else {
+        val files = FileUtils.getFilesRecursive(new java.io.File(inputPath))
+        val sources = files.map(f => io.Source.fromFile(f, "UTF8"))
+        FileUtils.getLines(sources)
+      }
+    }
+    val extrs = if (inputExtrs) loadFromKbpExtractions(input) else loadFromXml(input, corpus)
     populate(extrs, solrUrl)
     
-    source.close()
   }
   
-  def loadFromXml(source: io.Source, corpus: String): Iterator[KbpExtraction] = {
+  def loadFromKbpExtractions(input: Iterator[String]): Iterator[KbpExtraction] = {
+    input.grouped(1000).flatMap { bigGroup => 
+      bigGroup.grouped(10).toSeq.par.flatMap { smallGroup =>
+        smallGroup flatMap KbpExtraction.read  
+      }
+    }
+  }
+  
+  def loadFromXml(input: Iterator[String], corpus: String): Iterator[KbpExtraction] = {
     
     // Load pipeline components
     val docProcessor = KbpDocProcessor.getProcessor(corpus)
@@ -85,7 +105,7 @@ object SolrPopulator {
     val extractor = new KbpCombinedExtractor()
 
     // Move data through the pipe in parallel.
-    DocSplitter(source.getLines).grouped(100).flatMap { docs =>
+    DocSplitter(input).grouped(100).flatMap { docs =>
       
       val processedDocs = docs.par flatMap docProcessor.process
       val sentences = processedDocs flatMap sentencer.convertToSentences
