@@ -1,0 +1,119 @@
+<doc id="bolt-eng-DF-183-195681-7948521">
+<headline>
+Exclusive: Darpa Director Bolts Pentagon for Google
+</headline>
+<post author="denverbill" datetime="2012-03-12T15:43:00" id="p1">
+Source: wired.com
+
+Darpa director Regina Dugan will soon be stepping down from her position atop the Pentagons premiere research shop to take a job with Google. Dugan, whose controversial tenure at the agency lasted just under three years, was offered and accepted at senior executive position with the internet giant, according to Darpa spokesman Eric Mazzacone. She felt she couldnt say no to such an innovative company, he adds.
+
+Dugans emphasis on cybersecurity and next-generation manufacturing earned her strong support from the White House, winning her praise from the President and maintaining the agencys budget even during a period of relative austerity at the Pentagon. Her push into crowdsourcing and outreach to the hacker community were eye-openers in the often-closed world of military R&amp;D. Dugan also won over some military commanders by diverting some of her research cash from long-term, blue-sky projects to immediate battlefield concerns.
+
+Read more: <a href="http://www.wired.com/dangerroom/2012/03/dugan-darpa-google/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+wired%2Findex+">http://www.wired.com/dangerroom/2012/03/dugan-darpa-google/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+wired%2Findex+</a> (Wired%3A+Index+3+(Top+Stories+2))&amp;utm_content=Google+Feedfetch
+
+I must say this is a little disconcerting. Is she really, completely leaving Darpa? Will we ever know what she reports back? Darpa, the super secret spy agency, meet Google, the world's biggest database of personal information.
+</post>
+<post author="Ezlivin" datetime="2012-03-12T15:45:00" id="p2">
+1. How better to monitor the hoi polloi?
+
+I'm sure she'll never, ever report back to her handlers.
+
+After all, this is America.
+</post>
+<post author="Blue_Tires" datetime="2012-03-12T16:16:00" id="p3">
+8. Monitor? Hell, this is probably more like an un-official merger between the two
+
+But you won't read about this one in the WSJ...
+</post>
+<post author="The Blue Flower" datetime="2012-03-12T15:46:00" id="p4">
+2. Creepy, to say the least
+
+nt
+</post>
+<post author="Snake Alchemist" datetime="2012-03-12T15:47:00" id="p5">
+3. Have a feeling they paid a bit more. nt
+</post>
+<post author="RufusTFirefly" datetime="2012-03-12T15:51:00" id="p6">
+4. DARPA isn't a "super secret spy agency." I think you are confusing it with the NSA. n/t
+</post>
+<post author="christx30" datetime="2012-03-12T15:55:00" id="p7">
+6. DARPA is both
+
+amazing and creepy.
+<a href="http://www.extremetech.com/extreme/105117-inventing-our-world-darpas-top-inventions/1">http://www.extremetech.com/extreme/105117-inventing-our-world-darpas-top-inventions/1</a>
+</post>
+<post author="avaistheone1" datetime="2012-03-14T14:08:00" id="p8">
+11. Yes, it is both.
+
+You are correct. Thanks for your great link too.
+
+Darpa had been touted as a creative  yet controversial  research lab for space-age technology only once imaginable. Darpa has developed technologies used across the globe that can take away lives and, as seen with cutting-edge robotic limbs, practically create them.
+
+<a href="http://rt.com/usa/news/darpa-pentagon-google-defense-503/">http://rt.com/usa/news/darpa-pentagon-google-defense-503/</a>
+</post>
+<post author="yellowcanine" datetime="2012-03-14T14:29:00" id="p9">
+14. I think you are forgetting this.....
+
+<a href="http://en.wikipedia.org/wiki/Information_Awareness_Office">http://en.wikipedia.org/wiki/Information_Awareness_Office</a>
+
+The Information Awareness Office was a DARPA project which specialized in developing data collection and mining so it is easy to see why people might be concerned.
+
+<img src="http://upload.wikimedia.org/wikipedia/commons/6/6b/Total_Information_Awareness_--_system_diagram.gif"/>
+</post>
+<post author="onehandle" datetime="2012-03-12T15:54:00" id="p10">
+5. The Feds need to go after Google Now! Don't use their 'free' services, software, or devices.
+
+Google needs to be broken up.
+</post>
+<post author="LiberalArkie" datetime="2012-03-12T15:56:00" id="p11">
+7. Darpa is not a spy agency, it is a research group, like in inventing internet
+</post>
+<post author="midnight" datetime="2012-03-12T16:49:00" id="p12">
+9. Why was Regina's tenure so controversial?
+</post>
+<post author="Posteritatis" datetime="2012-03-14T14:25:00" id="p13">
+13. Because people reflexively assume DARPA is the NSA or something. (nt)
+</post>
+<post author="yellowcanine" datetime="2012-03-14T14:33:00" id="p14">
+15. Or maybe because they heard about this DARPA project.
+
+<img src="http://upload.wikimedia.org/wikipedia/commons/6/6b/Total_Information_Awareness_--_system_diagram.gif"/>
+</post>
+<post author="denverbill" datetime="2012-03-14T15:31:00" id="p15">
+18. Thanks. I could not remember the name of the program.
+
+I'd never heard of DARPA before TIA.
+
+--------------
+
+The Information Awareness Office (IAO) was established by the Defense Advanced Research Projects Agency (DARPA) in January 2002 to bring together several DARPA projects focused on applying surveillance and information technology to track and monitor terrorists and other asymmetric threats to national security, by achieving Total Information Awareness (TIA).
+
+This would be achieved by creating enormous computer databases to gather and store the personal information of everyone in the United States, including personal e-mails, social networks, credit card records, phone calls, medical records, and numerous other sources, without any requirement for a search warrant. This information would then be analyzed to look for suspicious activities, connections between individuals, and "threats". Additionally, the program included funding for biometric surveillance technologies that could identify and track individuals using surveillance cameras, and other methods.
+
+Following public criticism that the development and deployment of these technologies could potentially lead to a mass surveillance system, the IAO was defunded by Congress in 2003. However, several IAO projects continued to be funded, and merely run under different names.
+
+<a href="http://en.wikipedia.org/wiki/Information_Awareness_Office">http://en.wikipedia.org/wiki/Information_Awareness_Office</a>
+</post>
+<post author="Fool Count" datetime="2012-03-13T07:20:00" id="p16">
+10. Interesting. What do DARPA's and Google's research have in common?
+
+Answer: Self-driving vehicles. DARPA started it, Google reportedly advanced further than anybody towards making robotic cars
+a reality. There is a host of legal issues to be sorted before self-driving cars are allowed on public roads. Having a well-connected
+former government bureaucrat should be helpful.
+</post>
+<post author="Posteritatis" datetime="2012-03-14T14:24:00" id="p17">
+12. That's one hell of a coup for Google. (nt)
+</post>
+<post author="gratuitous" datetime="2012-03-14T14:38:00" id="p18">
+16. Is this from The Onion?
+
+A "period of relative austerity at the Pentagon"? <img src="http://www.democraticunderground.com/emoticons/wtf.gif"/>
+</post>
+<post author="Occulus" datetime="2012-03-14T15:06:00" id="p19">
+17. I watched "The Gamer" last night.
+
+I'm only a little weirded out by this article.
+
+....well, okay. Maybe more than a little.
+</post>
+</doc>

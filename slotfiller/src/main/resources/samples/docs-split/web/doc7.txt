@@ -1,0 +1,20 @@
+<DOC>
+<DOCID> eng-NG-31-150304-10636341 </DOCID>
+<DOCTYPE SOURCE="usenet"> USENET TEXT </DOCTYPE>
+<DATETIME> 2007-11-15T01:08:04 </DATETIME>
+<BODY>
+<HEADLINE>
+Chat Log from Saturday
+</HEADLINE>
+<TEXT>
+<POST>
+<POSTER> "Derick Eisenhardt" &lt;derick.eisenha...@gmail.com&gt; </POSTER>
+<POSTDATE> 2007-11-15T01:08:04 </POSTDATE>
+Chat log has finally been posted to the wiki:
+http://www.opengameconsole.org/wiki/index.php?title=1._MUC_meeting
+
+- Derick
+</POST>
+</TEXT>
+</BODY>
+</DOC>

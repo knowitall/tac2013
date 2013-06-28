@@ -1,0 +1,50 @@
+<DOC>
+<DOCID> eng-NG-31-150391-10636477 </DOCID>
+<DOCTYPE SOURCE="usenet"> USENET TEXT </DOCTYPE>
+<DATETIME> 2007-10-23T05:02:38 </DATETIME>
+<BODY>
+<HEADLINE>
+Hello all linux users!
+</HEADLINE>
+<TEXT>
+<POST>
+<POSTER> Dread Knight &lt;dk.v...@gmail.com&gt; </POSTER>
+<POSTDATE> 2007-10-23T05:02:38 </POSTDATE>
+Greetings!
+
+I'm an Ubuntu Gutsy user. Love google very much, too bad it sometimes
+leaves linux behind in the favor of Mac :\
+</POST>
+<POST>
+<POSTER> Gtr225 &lt;gtr...@gmail.com&gt; </POSTER>
+<POSTDATE> 2007-10-23T14:32:49 </POSTDATE>
+Well at least the got some programs for Linux. But I am still eagerly
+awaiting a Google Talk port to Linux.
+
+On Oct 23, 1:02 am, Dread Knight &lt;dk.v ... @gmail.com&gt; wrote:
+
+<QUOTE PREVIOUSPOST="
+&gt; Greetings!
+
+&gt; I'm an Ubuntu Gutsy user. Love google very much, too bad it sometimes
+&gt; leaves linux behind in the favor of Mac :\
+">
+</POST>
+<POST>
+<POSTER> Patrik Wallstrom &lt;pa...@blipp.com&gt; </POSTER>
+<POSTDATE> 2007-10-23T14:34:54 </POSTDATE>
+<QUOTE PREVIOUSPOST="
+On Tue, 23 Oct 2007, Gtr225 wrote:
+&gt; Well at least the got some programs for Linux. But I am still eagerly
+&gt; awaiting a Google Talk port to Linux.
+">
+
+Why not use Pidgin with your gtalk account? Google opened up XMPP
+usage not long after they released gtalk.
+
+--
+patrik_wallstrom-&gt;foodfight-&gt;pa ... @blipp.com-&gt;+46-733173956
+</POST>
+</TEXT>
+</BODY>
+</DOC>
