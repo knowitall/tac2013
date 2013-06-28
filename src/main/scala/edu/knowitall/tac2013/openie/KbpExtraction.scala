@@ -11,6 +11,19 @@ import edu.knowitall.chunkedextractor.ExtractionPart
 import edu.knowitall.tac2013.prep.ParsedKbpSentence
 import edu.knowitall.srlie.SrlExtraction
 
+case class WikiLink(val name: String, val fbid: String, val nodeId: Option[String]) {
+  def serialize = s"$name $fbid ${nodeId.getOrElse("-")}"
+}
+object WikiLink {
+  val deserializeRegex = "(.+) ([^\\s]+) ([^\\s]+)".r
+  def deserialize(str: String): WikiLink = {
+    str match {
+      case deserializeRegex(name, fbid, nodeIdRaw) => WikiLink(name, fbid, if (nodeIdRaw.equals('-')) None else Some(nodeIdRaw))
+      case _ => throw new RuntimeException(s"Unable to deserialize wikilink string: $str")
+    }
+  }
+}
+
 abstract class KbpRelation {
   def tokenInterval: Interval
   def originalText: String
@@ -74,23 +87,34 @@ abstract class KbpArgument {
   def tokenInterval: Interval
   def originalText: String
   def tokens: Seq[ChunkedToken]
-  def wikiLink: Option[String]
+  def wikiLink: Option[WikiLink]
   def types: Seq[String] // Seq[Type]?
+
+  def withLink(wlink: WikiLink): KbpArgument = {
+    val unlinked = this
+    new KbpArgument() {
+      def tokenInterval = unlinked.tokenInterval
+      def originalText = unlinked.originalText
+      def tokens = unlinked.tokens
+      val wikiLink = Some(wlink)
+      def types = unlinked.types
+    }
+  }
 }
 
 object KbpArgument {
   
   def fromSrlArgument(arg: SrlExtraction.Argument, sentence: ParsedKbpSentence) = new KbpArgument() {
-    val tokenInterval = arg.tokenInterval
-    val originalText = arg.text
-    val tokens = sentence.chunkedTokens.drop(tokenInterval.start).take(tokenInterval.length)
+    def tokenInterval = arg.tokenInterval
+    def originalText = arg.text
+    def tokens = sentence.chunkedTokens.drop(tokenInterval.start).take(tokenInterval.length)
     val wikiLink = None
     val types = Nil
   }
   def fromRelnounArgument(arg: ExtractionPart[Relnoun.Token]) = new KbpArgument() {
-    val tokenInterval = arg.interval
-    val originalText = arg.text
-    val tokens = arg.tokens
+    def tokenInterval = arg.interval
+    def originalText = arg.text
+    def tokens = arg.tokens
     val wikiLink = None
     val types = Nil
   }
@@ -103,7 +127,7 @@ object KbpArgument {
    */
   def writeHelper(arg: KbpArgument): Seq[String] = {
     val intervalString = "%d %d".format(arg.tokenInterval.start, arg.tokenInterval.last)
-    val wikiLinkString = arg.wikiLink.getOrElse("")
+    val wikiLinkString = arg.wikiLink.map(_.serialize).getOrElse("")
     val typeString = arg.types.mkString(" ")
     Seq(intervalString, arg.originalText, wikiLinkString, typeString)
   }
@@ -130,10 +154,10 @@ object KbpArgument {
       case intervalRegex(start, last) => {
         Some(new KbpArgument() {
           val tokenInterval = Interval.closed(start.toInt, last.toInt)
-          val originalText = originalTextString
-          val wikiLink = if (wikiLinkString.isEmpty()) None else Some(wikiLinkString)
+          def originalText = originalTextString
+          val wikiLink = if (wikiLinkString.isEmpty()) None else Some(WikiLink.deserialize(wikiLinkString))
           val types = typesString.split(" ").toSeq
-          val tokens = sentence.chunkedTokens.drop(tokenInterval.start).take(tokenInterval.length)
+          def tokens = sentence.chunkedTokens.drop(tokenInterval.start).take(tokenInterval.length)
         })
       }
       case _ => None

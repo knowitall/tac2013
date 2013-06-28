@@ -3,31 +3,10 @@ package edu.knowitall.tac2013.prep.util
 import java.text.Normalizer
 
 object Asciifier {
-  // hacked to return the string unmodified or partially cleaned in case the length changes -
-  // Normalizer seems to change the length sometimes.
-  def apply(string: String): String = {
-    var cleaned = string
-      for ((unicode, ascii) <- substitutions) {
-        cleaned = cleaned.replaceAll(unicode, ascii)
-      }
+  
+  def apply(string: String): String = string.map { char => substitutions.getOrElse(char, char) }
 
-    if (cleaned.length != string.length) return string
-    
-    // convert diacritics to a two-character form (NFD)
-    // http://docs.oracle.com/javase/tutorial/i18n/text/normalizerapi.html
-    val normalized = Normalizer.normalize(cleaned, Normalizer.Form.NFD)
-
-    if (normalized.length != cleaned.length) return cleaned
-    
-    // remove all characters that combine with the previous character
-    // to form a diacritic.  Also remove control characters.
-    // http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html
-    val decombined = normalized.replaceAll("[\\p{InCombiningDiacriticalMarks}\\p{Cntrl}]", "")
-
-    if (decombined.length != normalized.length) return normalized else return decombined
-  }
-
-  val substitutions = Set(
+  val substitutions = Seq(
       (0x00AB, '"'),
       (0x00AD, '-'),
       (0x00B4, '\''),
@@ -121,5 +100,5 @@ object Asciifier {
       (0x301C, '~'),
       (0x301D, '"'),
       (0x301E, '"'),
-      (0xFEFF, ' ')).map { case (unicode, ascii) => (unicode.toChar.toString, ascii.toString) }
+      (0xFEFF, ' ')).map { case (unicode, ascii) => (unicode.toChar, ascii) } toMap
 }

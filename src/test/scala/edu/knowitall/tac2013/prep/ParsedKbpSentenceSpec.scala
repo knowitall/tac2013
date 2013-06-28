@@ -16,7 +16,7 @@ class ParsedKbpSentenceSpec extends FlatSpec {
   val wsPattern = Pattern.compile(whitespace_charclass)
   def fixWs(str: String): String = wsPattern.matcher(str).replaceAll(" ")
   
-  val replaceChars = Map(("¥" -> " "), ("\n" -> " "))
+  val replaceChars = Map((";" -> ":"), ("¥" -> " "), ("\n" -> " "))
   
   def fixHack(str: String): String = {
     var cleaned = str

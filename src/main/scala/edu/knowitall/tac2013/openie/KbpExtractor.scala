@@ -13,6 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger
 import java.io.PrintStream
 import scopt.OptionParser
 import edu.knowitall.tac2013.prep.ParsedKbpSentence
+import edu.knowitall.tac2013.prep.KbpSentenceParser
 
 
 abstract class KbpExtractor {
@@ -33,27 +34,35 @@ object KbpExtractor {
     var parallel = false
     var limitOpt = Option.empty[Int]
     var inputRaw = false
+    var corpus = ""
   }
-  
-  def getInput = if (Settings.inputFile.equals("stdin")) io.Source.stdin else io.Source.fromFile(Settings.inputFile)
-  def getOutput = if (Settings.outputFile.equals("stdout")) System.out else new PrintStream(Settings.outputFile)
   
   def main(args: Array[String]): Unit = {
     
     val parser = new OptionParser("KbpExtractor") {
       opt("inputFile", "Raw XML or ParsedKbpSentences for input, default stdinput", { s => Settings.inputFile = s })
-      opt("outputFile", "KbpExtractionInstances output file, default stdout", { s => Settings.outputFile = s})
-      opt("parallel", "Run over input in parallel, default false", { Settings.parallel = true })
+      opt("outputFile", "KbpExtractionInstances output file, default stdout", { s => Settings.outputFile = s})    
+      opt("inputRaw", "Input raw XML instead of ParsedKbpSentences.", { Settings.inputRaw = true})
+      opt("corpus", "Corpus {web, news, forum} for raw input option.", { s => Settings.corpus = s })
       intOpt("limit", "Max extractions to output", { i => Settings.limitOpt = Some(i) })
-      opt("inputRaw", "Input raw XML instead of ParsedKbpSentences.", { s => Settings.inputRaw = true})
     }
     
     if (!parser.parse(args)) return
-    
-    val time = Timing.time {
-      if (Settings.parallel) runParallel() else run()
+    if (Settings.inputRaw && Settings.corpus.isEmpty()) {
+      System.err.println("Error: Must specify --corpus when using --inputRaw")
+      return
     }
     
+    val time = Timing.time {
+      def getInput = if (Settings.inputFile.equals("stdin")) io.Source.stdin else io.Source.fromFile(Settings.inputFile)
+      def getOutput = if (Settings.outputFile.equals("stdout")) System.out else new PrintStream(Settings.outputFile)
+      Resource.using(getInput) { input =>
+        Resource.using(getOutput) { output =>
+          run(input.getLines, output)
+        }
+      }
+    }
+
     val seconds = Timing.Seconds.format(time)
     System.out.flush()
     System.err.flush()
@@ -61,57 +70,38 @@ object KbpExtractor {
         "%d sentences, %d extractions processed in %s".format(
             sentencesProcessed.get, extractionsProcessed.get, seconds))
   }
-  
-  def run(): Unit = {
+
+  private val batchSize = 100
+
+  def run(inputLines: Iterator[String], output: PrintStream): Unit = {
     val extractor = new KbpCombinedExtractor()
-    
-    Resource.using(getInput) { input =>
-      Resource.using(getOutput) { output =>
-        val sentences = input.getLines.flatMap(str => ParsedKbpSentence.read(str))
-        val insts = sentences.flatMap { sent =>
-          sentencesProcessed.getAndIncrement()
-          val extrs = extractor.extract(sent)
-          extractionsProcessed.addAndGet(extrs.size)
-          extrs
-        }
-        val outStrings = insts map KbpExtraction.write
-        val limited = Settings.limitOpt match {
-          case Some(limit) => outStrings.take(limit)
-          case None => outStrings
-          
-        }
-        limited foreach output.println
-      }
+    val parsedSentences = {
+      if (Settings.inputRaw) 
+        KbpSentenceParser.processXml(inputLines, Settings.corpus) 
+      else 
+        inputLines flatMap { s => ParsedKbpSentence.read(s) }
     }
+    val outStrings = parsedSentences.grouped(batchSize).flatMap { batch =>
+      val insts = batch.par.flatMap { sent =>
+        val extrs = extractor.extract(sent)
+        sentencesProcessed.incrementAndGet()
+        extractionsProcessed.addAndGet(extrs.size)
+        bleat()
+        extrs
+      }
+      insts map KbpExtraction.write
+    }
+    val limited = Settings.limitOpt match {
+      case Some(limit) => outStrings.take(limit)
+      case None => outStrings
+
+    }
+    limited foreach output.println
   }
   
-  private val batchSize = 1000
-  
-  def runParallel(): Unit = {
-    val extractor = new KbpCombinedExtractor()
-    
-    Resource.using(getInput) { input =>
-      Resource.using(getOutput) { output =>
-      	val batches = input.getLines.grouped(batchSize)
-      	val outStrings = batches.flatMap { batch =>
-      	  val parsed = batch.par.flatMap { line =>
-      	  	sentencesProcessed.getAndIncrement()
-      	    ParsedKbpSentence.read(line) 
-      	  }
-      	  val insts = parsed.flatMap { sent =>
-      	    val extrs = extractor.extract(sent)
-      	    extractionsProcessed.addAndGet(extrs.size)
-      	    extrs
-      	  }
-      	  insts map KbpExtraction.write
-      	}
-        val limited = Settings.limitOpt match {
-          case Some(limit) => outStrings.take(limit)
-          case None => outStrings
-          
-        }
-        limited foreach output.println
-      }
+  def bleat() {
+    if (sentencesProcessed.get % 10000 == 0) {
+      System.err.println(s"${sentencesProcessed.get} sentences processed, yielding ${extractionsProcessed.get} extractions.")
     }
   }
 }
@@ -126,19 +116,6 @@ class KbpCombinedExtractor(
 }
 
 class KbpRelnounExtractor(val relnoun: Relnoun = new Relnoun()) extends KbpExtractor {
-
-//  val chunkerModel = OpenNlpChunker.loadDefaultModel
-//  val postagModel = OpenNlpPostagger.loadDefaultModel
-//  val tokenModel = OpenNlpTokenizer.loadDefaultModel
-//
-//  val chunkerLocal = new ThreadLocal[OpenNlpChunker] {
-//    override def initialValue = {
-//
-//      val tokenizer = new OpenNlpTokenizer(tokenModel)
-//      val postagger = new OpenNlpPostagger(postagModel, tokenizer)
-//      new OpenNlpChunker(chunkerModel, postagger)
-//    }
-//  }
 
   override def extract(parsedSentence: ParsedKbpSentence): Seq[KbpExtraction] = {
 
@@ -170,15 +147,15 @@ class KbpSrlExtractor(
 
     val graph = parsedSentence.dgraph
 
-    val srlInstances =
-      try {
-        this.synchronized { srl.apply(graph) }
-      } catch {
-        case e: Throwable =>
-          System.err.println(
-            "SrlExtractor error #%d parsing input: %s".format(errorCounter.incrementAndGet(), parsedSentence.dgraph.text))
-          Seq.empty
-      }
+    val srlInstances = try {
+      srl.apply(graph)
+    } catch {
+      case e: Throwable =>
+        System.err.println(
+          "SrlExtractor error #%d parsing input: %s".format(errorCounter.incrementAndGet(), parsedSentence.dgraph.text))
+        e.printStackTrace()
+        Seq.empty
+    }
 
     val kbpExtractions = srlInstances.flatMap { inst =>
       KbpExtraction.fromSrlInstance(inst, parsedSentence, confFunc)

@@ -19,8 +19,8 @@ object SentenceFilter {
     
     // throw the sentence away if there aren't many "words" -
     // it should have a few whitespace gaps.
-    if (wsRegex.findAllIn(text).length < 3) None
-    
+    if (sentence.text.length > 750) None
+    else if (wsRegex.findAllIn(text).length < 3) None
     else Some(clean(sentence))
   }  
   

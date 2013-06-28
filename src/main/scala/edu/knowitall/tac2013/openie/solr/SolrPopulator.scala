@@ -56,7 +56,6 @@ object SolrPopulator {
   def main(args: Array[String]): Unit = {
     
     var inputExtrs = true
-    def inputRaw = !inputExtrs
     var inputFile = "."
     var solrUrl = "."
     var corpus = "."
