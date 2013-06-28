@@ -10,6 +10,7 @@ import java.io.PrintStream
 import edu.knowitall.common.Resource.using
 import edu.knowitall.common.Timing
 import edu.knowitall.tac2013.prep.util.WikiMappingHelper
+import edu.knowitall.tac2013.prep.util.FileUtils
 import scopt.OptionParser
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -22,10 +23,10 @@ import java.util.concurrent.atomic.AtomicInteger
 class KbpExtractionLinker private (val linker: EntityLinker, val wikiNodeMap: Map[String, String]) {
 
   val extractionsProcessed = new AtomicInteger(0)
-  
-  def linkArg(arg: KbpArgument, context: Seq[String]): Option[EntityLink] = {
-    // Skip if arg does not contain a proper noun
-    if (arg.tokens.exists(_.isProperNoun)) {
+    
+  def linkArg(arg: KbpArgument, extr: KbpExtraction, context: Seq[String]): Option[EntityLink] = {
+    // Skip if arg does not contain a proper noun or if confidence is low.
+    if (extr.confidence > 0.5 && arg.tokens.exists(_.isProperNoun)) {
       val argString = arg.originalText
       Option(linker.getBestEntity(argString, context))
     } else {
@@ -41,8 +42,8 @@ class KbpExtractionLinker private (val linker: EntityLinker, val wikiNodeMap: Ma
     
     val context = Seq(extr.sentenceText)
     
-    val arg1Link = linkArg(extr.arg1, context)
-    val arg2Link = linkArg(extr.arg2, context)
+    val arg1Link = linkArg(extr.arg1, extr, context)
+    val arg2Link = linkArg(extr.arg2, extr, context)
     
     def toWikiLink(elink: EntityLink): WikiLink = {
       WikiLink(elink.entity.name, elink.entity.fbid, wikiNodeMap.get(elink.entity.name))
@@ -79,33 +80,33 @@ object KbpExtractionLinker {
     
     var baseDir = ""
     var mapFile = ""
-    var inputFile = ""
+    var inputPath = ""
     var output = System.out
     
     val parser = new OptionParser() {
       arg("baseDir", "Linker support file baseDir.", { baseDir = _ })
       arg("mapFile", "Wiki name to Kbp Node Id file.", { mapFile = _})
-      arg("inputFile", "KbpExtractions input file.", { inputFile = _ })
+      arg("inputFile", "KbpExtractions input file or recursive path.", { inputPath = _ })
       opt("outputFile", "File to which output will be written, default stdout.", { s => output = new PrintStream(s) })
     }
     
     if (!parser.parse(args)) return
 
-    run(baseDir, mapFile, inputFile, output)
+    run(baseDir, mapFile, inputPath, output)
   }
   
-  private def run(baseDir: String, mapFile: String, inputFile: String, output: java.io.PrintStream): Unit = {
+  private def run(baseDir: String, mapFile: String, inputPath: String, output: java.io.PrintStream): Unit = {
     
     val kbpLinker = getKbpLinker(new File(baseDir), new File(mapFile))
     
     val nsTime = Timing.time {
-      val input = io.Source.fromFile(inputFile, "UTF8")
-      val unlinkedExtractions = input.getLines flatMap KbpExtraction.read
+      val sources = FileUtils.getFilesRecursive(new File(inputPath)).map { f => io.Source.fromFile(f, "UTF8") }
+      val input = FileUtils.getLines(sources)
+      val unlinkedExtractions = input flatMap KbpExtraction.read
       val linkedExtractions = unlinkedExtractions map kbpLinker.linkExtraction
       linkedExtractions foreach { extr =>
         output.println(KbpExtraction.write(extr))
       }
-      input.close()
       output.close()
     }
     

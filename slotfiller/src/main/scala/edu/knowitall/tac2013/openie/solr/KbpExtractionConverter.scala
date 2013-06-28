@@ -71,12 +71,12 @@ object KbpExtractionConverter {
             "relTypes").map(fieldMap(_).asInstanceOf[String])
             
         val arg2Fields = Seq(
-            "arg1Interval", 
-            "arg1Text",  
-            "arg1WikiLinkName", 
-            "arg1WikiLinkFbid", 
-            "arg1WikiLinkNodeId", 
-            "arg1Types").map(fieldMap(_).asInstanceOf[String])
+            "arg2Interval", 
+            "arg2Text",  
+            "arg2WikiLinkName", 
+            "arg2WikiLinkFbid", 
+            "arg2WikiLinkNodeId", 
+            "arg2Types").map(fieldMap(_).asInstanceOf[String])
             
         val arg1Opt = KbpArgument.readHelper(arg1Fields, sentence)
         val relOpt = KbpRelation.readHelper(relFields, sentence)
