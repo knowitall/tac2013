@@ -54,29 +54,37 @@ object KbpExtractionConverter {
       System.err.println(msg)
       None
     } else {
+      
       val sentenceFields = Seq("docId", "sentNum", "sentOffset", "chunks", "dgraph").map(fieldMap(_).asInstanceOf[String])
+      
       ParsedKbpSentence.read(sentenceFields) flatMap { sentence =>
         
+        val arg1WikiLinkName = fieldMap("arg1WikiLinkName").asInstanceOf[String]
+        val arg1WikiField = if (!arg1WikiLinkName.isEmpty) {
+          s"${fieldMap("arg1WikiLinkName")} ${fieldMap("arg1WikiLinkFbid")} ${fieldMap("arg1WikiLinkNodeId")}"
+        } else ""
+        
         val arg1Fields = Seq(
-            "arg1Interval", 
-            "arg1Text",  
-            "arg1WikiLinkName", 
-            "arg1WikiLinkFbid", 
-            "arg1WikiLinkNodeId", 
-            "arg1Types").map(fieldMap(_).asInstanceOf[String])
+            fieldMap("arg1Interval"), 
+            fieldMap("arg1Text"),  
+            arg1WikiField, 
+            fieldMap("arg1Types")).map(_.asInstanceOf[String])
             
         val relFields = Seq(
             "relInterval", 
             "relText", 
             "relTypes").map(fieldMap(_).asInstanceOf[String])
+           
+        val arg2WikiLinkName = fieldMap("arg2WikiLinkName").asInstanceOf[String]
+        val arg2WikiField = if (!arg2WikiLinkName.isEmpty) {
+          s"${fieldMap("arg2WikiLinkName")} ${fieldMap("arg2WikiLinkFbid")} ${fieldMap("arg2WikiLinkNodeId")}"
+        } else ""          
             
         val arg2Fields = Seq(
-            "arg2Interval", 
-            "arg2Text",  
-            "arg2WikiLinkName", 
-            "arg2WikiLinkFbid", 
-            "arg2WikiLinkNodeId", 
-            "arg2Types").map(fieldMap(_).asInstanceOf[String])
+            fieldMap("arg2Interval"), 
+            fieldMap("arg2Text"),  
+            arg2WikiField, 
+            fieldMap("arg2Types")).map(_.asInstanceOf[String])
             
         val arg1Opt = KbpArgument.readHelper(arg1Fields, sentence)
         val relOpt = KbpRelation.readHelper(relFields, sentence)
@@ -126,12 +134,12 @@ object KbpExtractionConverter {
     val arg2WikiLinkNodeId = arg2.wikiLink.flatMap(_.nodeId).getOrElse("")
     val arg2Types = arg2.types.mkString(" ")
     
-    val confidence = "%.04f".format(extr.confidence)
+    val confidence = extr.confidence
     val extractor = extr.extractor
     
     val docId = sent.docId
-    val sentOffset = sent.startOffset
-    val sentNum = sent.sentNum
+    val sentOffset = sent.startOffset.toString
+    val sentNum = sent.sentNum.toString
     val chunks = sent.chunks.mkString(" ")
     val dgraph = sent.dgraph.serialize
     

@@ -5,7 +5,8 @@ import java.io.File
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.Path;
-
+import org.apache.solr.common.SolrInputDocument
+import scala.collection.JavaConverters._
 
 class KbpExtractionSpec extends FlatSpec {
   
@@ -19,7 +20,7 @@ class KbpExtractionSpec extends FlatSpec {
   
   "KbpExtractions" should "deserialize and then reserialize to original string" in {
     
-    val lines = allExtrsFiles map { f => getClass.getResource(f) } map { res => io.Source.fromURL(res, "UTF8") } flatMap { _.getLines }
+    val lines = allExtrsFiles.iterator map { f => getClass.getResource(f) } map { res => io.Source.fromURL(res, "UTF8") } flatMap { _.getLines }
     
     val extrs = lines map { line => (line, KbpExtraction.read(line)) }
     
@@ -27,6 +28,34 @@ class KbpExtractionSpec extends FlatSpec {
       val extrGet = extr.getOrElse(fail("Could not deserialize extraction:\n%s".format(line)))
       val reserialized = KbpExtraction.write(extrGet)
       assert(reserialized === line)
+    } 
+  }
+  
+  "KbpExtractions" should "convert to solr and back again" in {
+    
+    val lines = allExtrsFiles map { f => getClass.getResource(f) } map { res => io.Source.fromURL(res, "UTF8") } flatMap { _.getLines }
+    
+    val extrs = lines flatMap { line => KbpExtraction.read(line) }
+    
+    def solrDocToMap(doc: SolrInputDocument): Map[String, Any] = {
+      val fields = for (field <- doc.values.asScala) yield {
+        (field.getName(), field.getValue())
+      }
+      fields.toMap
+    }
+    
+    
+    extrs map { extr =>
+      val solrDoc = solr.KbpExtractionConverter.toSolrInputDocument(extr)
+      val fieldMap = solrDocToMap(solrDoc)
+      val reExtr = solr.KbpExtractionConverter.fromFieldMap(fieldMap).getOrElse {
+        val fieldMapStr = fieldMap.iterator.map { case (key, value) => s"$key -> ${value.toString}\n"}
+        fail("Could not deserialize extr from fieldMap:\n%s")
+      }
+      // tab-serialize since we don't have a strong .equals() on KbpExtraction
+      val extrSerialized = KbpExtraction.write(extr)
+      val reExtrSerialized = KbpExtraction.write(reExtr)
+      assert(extrSerialized === reExtrSerialized)
     } 
   }
 }

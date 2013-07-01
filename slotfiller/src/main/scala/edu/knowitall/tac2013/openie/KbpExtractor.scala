@@ -153,7 +153,6 @@ class KbpSrlExtractor(
       case e: Throwable =>
         System.err.println(
           "SrlExtractor error #%d parsing input: %s".format(errorCounter.incrementAndGet(), parsedSentence.dgraph.text))
-        e.printStackTrace()
         Seq.empty
     }
 

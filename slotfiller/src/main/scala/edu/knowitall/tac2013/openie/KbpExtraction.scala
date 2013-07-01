@@ -134,8 +134,8 @@ object KbpArgument {
   
   def readHelper(fields: Seq[String], sentence: ParsedKbpSentence): Option[KbpArgument] = {
     fields match {
-      case Seq(interval, original, wikiLink, types, _*) => {
-        readHelper(interval, original, wikiLink, types, sentence)
+      case Seq(interval, original, wikiLinkField, types, _*) => {
+        readHelper(interval, original, wikiLinkField, types, sentence)
       }
       case _ => None
     }
@@ -146,7 +146,7 @@ object KbpArgument {
   private def readHelper(
       intervalString: String, 
       originalTextString: String, 
-      wikiLinkString: String, 
+      wikiLinkFieldString: String,
       typesString: String,
       sentence: ParsedKbpSentence): Option[KbpArgument] = {
     
@@ -155,7 +155,11 @@ object KbpArgument {
         Some(new KbpArgument() {
           val tokenInterval = Interval.closed(start.toInt, last.toInt)
           def originalText = originalTextString
-          val wikiLink = if (wikiLinkString.isEmpty()) None else Some(WikiLink.deserialize(wikiLinkString))
+          val wikiLink = if (wikiLinkFieldString.isEmpty()) 
+            None 
+          else {
+            Some(WikiLink.deserialize(wikiLinkFieldString))
+          }
           val types = typesString.split(" ").toSeq
           def tokens = sentence.chunkedTokens.drop(tokenInterval.start).take(tokenInterval.length)
         })
