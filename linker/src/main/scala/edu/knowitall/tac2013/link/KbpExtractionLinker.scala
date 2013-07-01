@@ -11,6 +11,8 @@ import edu.knowitall.common.Resource.using
 import edu.knowitall.common.Timing
 import edu.knowitall.tac2013.prep.util.WikiMappingHelper
 import edu.knowitall.tac2013.prep.util.FileUtils
+import edu.knowitall.tac2013.prep.util.Line
+import edu.knowitall.tac2013.prep.util.LineReader
 import scopt.OptionParser
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -100,9 +102,9 @@ object KbpExtractionLinker {
     val kbpLinker = getKbpLinker(new File(baseDir), new File(mapFile))
     
     val nsTime = Timing.time {
-      val sources = FileUtils.getFilesRecursive(new File(inputPath)).map { f => io.Source.fromFile(f, "UTF8") }
-      val input = FileUtils.getLines(sources)
-      val unlinkedExtractions = input flatMap KbpExtraction.read
+      val readers = FileUtils.getFilesRecursive(new File(inputPath)).map { f => LineReader.fromFile(f, "UTF8") }
+      val input = FileUtils.getLines(readers)
+      val unlinkedExtractions = input flatMap { l => KbpExtraction.read(l.text) }
       val linkedExtractions = unlinkedExtractions map kbpLinker.linkExtraction
       linkedExtractions foreach { extr =>
         output.println(KbpExtraction.write(extr))

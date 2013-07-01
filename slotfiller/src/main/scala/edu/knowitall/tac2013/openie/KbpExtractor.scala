@@ -14,6 +14,8 @@ import java.io.PrintStream
 import scopt.OptionParser
 import edu.knowitall.tac2013.prep.ParsedKbpSentence
 import edu.knowitall.tac2013.prep.KbpSentenceParser
+import edu.knowitall.tac2013.prep.util.Line
+import edu.knowitall.tac2013.prep.util.LineReader
 
 
 abstract class KbpExtractor {
@@ -54,11 +56,11 @@ object KbpExtractor {
     }
     
     val time = Timing.time {
-      def getInput = if (Settings.inputFile.equals("stdin")) io.Source.stdin else io.Source.fromFile(Settings.inputFile)
+      def getInput = if (Settings.inputFile.equals("stdin")) LineReader.stdin else LineReader.fromFile(Settings.inputFile, "UTF8")
       def getOutput = if (Settings.outputFile.equals("stdout")) System.out else new PrintStream(Settings.outputFile)
       Resource.using(getInput) { input =>
         Resource.using(getOutput) { output =>
-          run(input.getLines, output)
+          run(input, output)
         }
       }
     }
@@ -73,13 +75,13 @@ object KbpExtractor {
 
   private val batchSize = 100
 
-  def run(inputLines: Iterator[String], output: PrintStream): Unit = {
+  def run(lines: Iterator[Line], output: PrintStream): Unit = {
     val extractor = new KbpCombinedExtractor()
     val parsedSentences = {
       if (Settings.inputRaw) 
-        KbpSentenceParser.processXml(inputLines, Settings.corpus) 
+        KbpSentenceParser.processXml(lines, Settings.corpus) 
       else 
-        inputLines flatMap { s => ParsedKbpSentence.read(s) }
+        lines flatMap { s => ParsedKbpSentence.read(s.text) }
     }
     val outStrings = parsedSentences.grouped(batchSize).flatMap { batch =>
       val insts = batch.par.flatMap { sent =>

@@ -3,6 +3,7 @@ package edu.knowitall.tac2013.prep
 import org.scalatest._
 import edu.knowitall.tool.sentence.BreezeSentencer
 import java.io.File
+import util.LineReader
 
 class SentencerSpec extends FlatSpec {
   
@@ -22,7 +23,7 @@ class SentencerSpec extends FlatSpec {
       case (docProcessor, sampleDir) => {
         for (
             url <- new File(getClass.getResource(sampleDir).getFile()).listFiles.map(_.toURL);
-            rawDoc <- DocSplitter(io.Source.fromURL(url, "UTF8").getLines);
+            rawDoc <- new DocSplitter(LineReader.fromURL(url, "UTF8"));
             parsedDoc <- docProcessor.process(rawDoc).toList;
             rawSentence <- sentencer.convertToSentences(parsedDoc);
             s <- SentenceFilter.apply(rawSentence)
@@ -53,7 +54,7 @@ class SentencerSpec extends FlatSpec {
       case (docProcessor, sampleDir) => {
         for (
             url <- new File(getClass.getResource(sampleDir).getFile()).listFiles.map(_.toURL);
-            rawDoc <- DocSplitter(io.Source.fromURL(url, "UTF8").getLines);
+            rawDoc <- new DocSplitter(LineReader.fromURL(url, "UTF8"));
             parsedDoc <- docProcessor.process(rawDoc).toList;
             s <- sentencer.convertToSentences(parsedDoc)
          ) {

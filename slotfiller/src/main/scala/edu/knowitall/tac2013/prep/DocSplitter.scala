@@ -5,28 +5,23 @@ import edu.knowitall.common.Resource
 import java.util.LinkedList
 import java.util.regex.Pattern
 import scala.collection.JavaConverters._
+import util.LineReader
+import util.Line
+import java.io.PrintStream
 
 /**
  * Reads KBP corpus and provides an iterator over
  * document elements (<DOC>) in the corpus.
  */
-object DocSplitter {
+class DocSplitter(lines: Iterator[Line]) extends Iterator[KbpRawDoc] {
   
   import java.io.PrintStream
   
   private val docCloseTag = Pattern.compile("\\s*(</DOC>|</doc>)\\s*")
   
-  def apply(lines: Iterator[String]) = splitDocs(lines)
+  def hasNext = lines.hasNext
   
-  def splitDocs(lines: Iterator[String]) = new Iterator[KbpRawDoc] {
-    
-    def hasNext = lines.hasNext
-    
-    // getNextDoc may not be thread safe
-    def next = this.synchronized { getNextDoc(lines) }
-  }
-  
-  private def getNextDoc(lines: Iterator[String]): KbpRawDoc = {
+  def next: KbpRawDoc = {
     
     val lineBuffer = new LinkedList[KbpDocLine]()
     
@@ -36,15 +31,18 @@ object DocSplitter {
     
     while (!done && lines.hasNext) {
       
-      val nextLine = lines.next() + "\n"
-      if (docCloseTag.matcher(nextLine).matches()) done = true
-      lineBuffer.add(new KbpDocLine(nextLine, offset))
-      offset = offset + nextLine.length
+      val nextLine = lines.next()
+      val fullLineString = nextLine.text + nextLine.terminator
+      if (docCloseTag.matcher(fullLineString).matches()) done = true
+      lineBuffer.add(new KbpDocLine(fullLineString, offset))
+      offset = offset + fullLineString.length
     }
+    
     new KbpRawDoc(lineBuffer.asScala.toList)
   }
-  
-  
+}
+
+object DocSplitter {
   
   def main(args: Array[String]) {
     
@@ -56,8 +54,8 @@ object DocSplitter {
     
     var numDocs = 0
     
-    val source = io.Source.fromFile(inputFile, "UTF8")	
-    val docSpliterator = splitDocs(source.getLines).take(docsToSplit)
+    val lineReader = LineReader.fromFile(inputFile, "UTF8")
+    val docSpliterator = new DocSplitter(lineReader).take(docsToSplit)
     
     docSpliterator.foreach { kbpDoc =>
       val output = new PrintStream("%s/doc%d.txt".format(outputDir, numDocs), "UTF8")
@@ -65,7 +63,7 @@ object DocSplitter {
       numDocs += 1
     }
     
-    source.close()
+    lineReader.close()
   }
   
   

@@ -21,13 +21,13 @@ object FileUtils {
    *  Lazily flatten the lines from an iterator of sources while
    *  closing sources as they become empty.
    */
-  def getLines(sources: Iterator[Source]): Iterator[String] = {
-    val iter = new Iterator[Iterator[String]]() {
-      def hasNext = sources.hasNext
-      def next = new Iterator[String]() {
-        val source = sources.next()
+  def getLines(readers: Iterator[LineReader]): Iterator[Line] = {
+    val iter = new Iterator[Iterator[Line]]() {
+      def hasNext = readers.hasNext
+      def next = new Iterator[Line]() {
+        val source = readers.next()
         var closed = false
-        val lines = source.getLines
+        val lines = source
         def hasNext = { // lines.hasNext will fail if source is closed.
           if (closed)
             false
@@ -47,3 +47,4 @@ object FileUtils {
     iter.flatten
   }
 }
+

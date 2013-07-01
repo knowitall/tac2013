@@ -37,8 +37,8 @@ object WikiMappingHelper {
   
   def run(files: Iterator[File], output: PrintStream): Unit = {
     
-    val inputSources = files map { f => io.Source.fromFile(f, "UTF8") }
-    val inputLines = FileUtils.getLines(inputSources)
+    val inputSources = files map { f => LineReader.fromFile(f, "UTF8") }
+    val inputLines = FileUtils.getLines(inputSources).map(_.text)
     
     val entityInfos = inputLines.grouped(10000).flatMap { case bigGroup =>
       val smallGroups = bigGroup.grouped(100).toSeq

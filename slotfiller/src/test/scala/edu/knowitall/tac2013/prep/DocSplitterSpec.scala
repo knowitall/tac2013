@@ -5,7 +5,7 @@ import java.io.File
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.Path;
-
+import util.LineReader
 
 class DocSplitterSpec extends FlatSpec {
 
@@ -32,9 +32,8 @@ class DocSplitterSpec extends FlatSpec {
    */
   def testFile(url: java.net.URL): Unit = {
     
-    val source = io.Source.fromURL(url, "UTF8")
-    
-    val spliterator = DocSplitter(source.getLines)
+    val lineReader = LineReader.fromURL(url, "UTF8")
+    val spliterator = new DocSplitter(lineReader)
     require(spliterator.hasNext)
     
     val kbpDoc = spliterator.next()
@@ -49,7 +48,7 @@ class DocSplitterSpec extends FlatSpec {
       val targetString = fileString.drop(kbpline.offset).take(kbpline.length)
       assert(targetString.equals(kbpline.line), "Not equal:\n%s\n%s".format(targetString, kbpline.line))
     }
-    source.close()
+    lineReader.close()
   }
 }
 

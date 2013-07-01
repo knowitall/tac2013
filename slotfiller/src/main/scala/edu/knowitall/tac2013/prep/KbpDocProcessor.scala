@@ -4,6 +4,8 @@ import java.util.regex.Pattern
 import java.util.LinkedList
 import java.util.concurrent.atomic.AtomicInteger
 import scala.collection.JavaConverters._
+import util._
+import java.io.File
 
 /**
  * Converts KbpRawDocs into KbpProcessedDocs,
@@ -46,9 +48,13 @@ object KbpDocProcessor {
     case _ => throw new IllegalArgumentException("Unknown corpus type \"%s\"".format(corpus))
   }
   
-  def processXml(lines: Iterator[String], corpus: String): Iterator[KbpProcessedDoc] = {
+  def processXml(lines: Iterator[Line], corpus: String): Iterator[KbpProcessedDoc] = {
     
-    DocSplitter(lines) flatMap getProcessor(corpus).process
+    val docSplitter = new DocSplitter(lines)
+    
+    val processor = getProcessor(corpus)
+    
+    docSplitter flatMap processor.process
   }
 
   def main(args: Array[String]): Unit = {
@@ -57,16 +63,15 @@ object KbpDocProcessor {
     val outputFile = args(1)
     val corpus = args(2) // web, forum, or news
 
-    val source = io.Source.fromFile(inputFile)
-
     val output = new java.io.PrintStream(outputFile, "UTF8")
 
-    processXml(source.getLines, corpus) foreach { parsedDoc =>
+    val input = LineReader.fromFile(inputFile, "UTF8")
+    
+    processXml(input, corpus) foreach { parsedDoc =>
       val text = parsedDoc.debugText
       output.println(text)
     }
     
-    source.close()
     output.close()
     
   }

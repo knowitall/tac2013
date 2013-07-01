@@ -1,6 +1,7 @@
 package edu.knowitall.tac2013.prep
 
 import org.scalatest._
+import util.LineReader
 
 object KbpSentenceSpec {
   val samplesDir = "/samples/"
@@ -35,9 +36,9 @@ class KbpSentenceSpec extends FlatSpec {
 
     corpora.zip(rawFiles) foreach {
       case (corpus, sample) => 
-        val source = io.Source.fromURL(getClass.getResource(sample), "UTF8")
+        val lineReader = LineReader.fromURL(getClass.getResource(sample), "UTF8")
         val docProcessor = KbpDocProcessor.getProcessor(corpus)
-        val docSplitterator = DocSplitter(source.getLines)
+        val docSplitterator = new DocSplitter(lineReader)
         for (rawDoc <- docSplitterator; parsedDoc <- docProcessor.process(rawDoc); docId <- parsedDoc.extractDocId) {
           val rawString = rawDoc.getString
           val sents = sentenceMap(docId)
@@ -50,7 +51,7 @@ class KbpSentenceSpec extends FlatSpec {
             }
           }
         }
-        source.close()
+        lineReader.close()
     }
   }
 }

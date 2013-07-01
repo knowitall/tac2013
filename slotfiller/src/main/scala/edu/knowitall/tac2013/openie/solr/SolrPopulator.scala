@@ -6,6 +6,8 @@ import edu.knowitall.tac2013.prep._
 import java.util.concurrent.atomic.AtomicInteger
 import edu.knowitall.tac2013.prep.util.FileUtils
 import scopt.OptionParser
+import edu.knowitall.tac2013.prep.util.Line
+import edu.knowitall.tac2013.prep.util.LineReader
 
 class SolrPopulator private (val solrServer: ConcurrentUpdateSolrServer) {
 
@@ -76,11 +78,11 @@ object SolrPopulator {
     
     val input =  {
       if (inputPath.equals("stdin")) 
-        io.Source.stdin.getLines
+        LineReader.stdin
       else {
         val files = FileUtils.getFilesRecursive(new java.io.File(inputPath))
-        val sources = files.map(f => io.Source.fromFile(f, "UTF8"))
-        FileUtils.getLines(sources)
+        val readers = files.map(f => LineReader.fromFile(f, "UTF8"))
+        FileUtils.getLines(readers)
       }
     }
     val extrs = if (inputExtrs) loadFromKbpExtractions(input) else loadFromXml(input, corpus)
@@ -88,15 +90,15 @@ object SolrPopulator {
     
   }
   
-  def loadFromKbpExtractions(input: Iterator[String]): Iterator[KbpExtraction] = {
+  def loadFromKbpExtractions(input: Iterator[Line]): Iterator[KbpExtraction] = {
     input.grouped(1000).flatMap { bigGroup => 
       bigGroup.grouped(10).toSeq.par.flatMap { smallGroup =>
-        smallGroup flatMap KbpExtraction.read  
+        smallGroup flatMap { l => KbpExtraction.read(l.text) }  
       }
     }
   }
   
-  def loadFromXml(input: Iterator[String], corpus: String): Iterator[KbpExtraction] = {
+  def loadFromXml(input: Iterator[Line], corpus: String): Iterator[KbpExtraction] = {
     
     // Load pipeline components
     val docProcessor = KbpDocProcessor.getProcessor(corpus)
@@ -105,7 +107,7 @@ object SolrPopulator {
     val extractor = new KbpCombinedExtractor()
 
     // Move data through the pipe in parallel.
-    DocSplitter(input).grouped(100).flatMap { docs =>
+    new DocSplitter(input).grouped(100).flatMap { docs =>
       
       val processedDocs = docs.par flatMap docProcessor.process
       val sentences = processedDocs flatMap sentencer.convertToSentences

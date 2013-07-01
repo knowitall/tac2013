@@ -4,6 +4,7 @@ import org.scalatest._
 import edu.knowitall.tool.parse.graph.DependencyGraph
 import java.util.regex.Pattern
 import edu.knowitall.tool.tokenize.Tokenizer
+import util.LineReader
 
 class ParsedKbpSentenceSpec extends FlatSpec {  
   
@@ -45,8 +46,8 @@ class ParsedKbpSentenceSpec extends FlatSpec {
     // -- First, get list[List[RawDoc], Corpus]
     val rawDocs = corpora.zip(rawFiles) map { case (corpus, file) =>
       val res = getClass.getResource(file)
-      val source = io.Source.fromURL(res, "UTF8").getLines
-      val fileDocs = DocSplitter(source)
+      val lineReader = LineReader.fromURL(res, "UTF8")
+      val fileDocs = new DocSplitter(lineReader)
       (fileDocs, corpus)
     }
     

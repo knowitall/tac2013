@@ -4,6 +4,8 @@ import java.util.concurrent.atomic.AtomicInteger
 import java.util.regex.Pattern
 import edu.knowitall.tool.segment.Segmenter
 import Sentencer._
+import util.Line
+import util.LineReader
 
 /**
  * Converts from KbpParsedDoc to KbpSentences
@@ -100,7 +102,7 @@ object Sentencer {
   
   lazy val defaultInstance = new Sentencer(new BreezeSentencer())
   
-  def processXml(lines: Iterator[String], corpus: String): Iterator[KbpSentence] = {
+  def processXml(lines: Iterator[Line], corpus: String): Iterator[KbpSentence] = {
     KbpDocProcessor.processXml(lines, corpus) flatMap defaultInstance.convertToSentences flatMap SentenceFilter.apply
   }
   
@@ -129,10 +131,10 @@ object Sentencer {
     val docParser = KbpDocProcessor.getProcessor(corpus)
     val sentencer = defaultInstance
     
-    val source = io.Source.fromFile(inputFile)
+    val lineReader = LineReader.fromFile(inputFile, "UTF8")
     val output = if (outputFile.equals("stdout")) System.out else new java.io.PrintStream(outputFile)
     
-    val docs = DocSplitter(source.getLines)
+    val docs = new DocSplitter(lineReader)
     val parsedDocs = docs flatMap docParser.process
     val allSentences = parsedDocs flatMap sentencer.convertToSentences
     val filteredSentences = if (filter) allSentences flatMap SentenceFilter.apply else allSentences
@@ -141,7 +143,7 @@ object Sentencer {
         output.println(KbpSentence.write(s))
     }
     
-    source.close()
+    lineReader.close()
     output.close()
   }
 }

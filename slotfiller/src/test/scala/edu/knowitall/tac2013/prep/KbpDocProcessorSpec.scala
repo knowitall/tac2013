@@ -5,7 +5,7 @@ import java.io.File
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.Path;
-
+import util.LineReader
 
 class KbpDocProcessorSpec extends FlatSpec {
   
@@ -33,9 +33,9 @@ class KbpDocProcessorSpec extends FlatSpec {
    */
   def testFile(url: java.net.URL, docParser: KbpDocProcessor): Unit = {
     
-    val source = io.Source.fromURL(url)
+    val lineReader = LineReader.fromURL(url, "UTF8")
     
-    val spliterator = DocSplitter(source.getLines)
+    val spliterator = new DocSplitter(lineReader)
     require(spliterator.hasNext)
     
     val kbpDoc = spliterator.next()
@@ -57,6 +57,6 @@ class KbpDocProcessorSpec extends FlatSpec {
         }
       }
     }
-    source.close()
+    lineReader.close()
   }
 }

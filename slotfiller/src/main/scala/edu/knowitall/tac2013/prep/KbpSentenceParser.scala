@@ -15,6 +15,8 @@ import java.util.concurrent.atomic.AtomicInteger
 import scala.Option.option2Iterable
 import scala.collection.JavaConverters._
 import util.FileUtils
+import util.LineReader
+import util.Line
 
 class KbpSentenceParser() {
 
@@ -66,7 +68,7 @@ object KbpSentenceParser {
   
   private val sentencesProcessed = new AtomicInteger(0)
   
-  def processXml(lines: Iterator[String], corpus: String): Iterator[ParsedKbpSentence] = {
+  def processXml(lines: Iterator[Line], corpus: String): Iterator[ParsedKbpSentence] = {
     val parser = new KbpSentenceParser
     val groupedSentences = Sentencer.processXml(lines, corpus).grouped(100)
     groupedSentences.flatMap { group =>
@@ -100,7 +102,7 @@ object KbpSentenceParser {
       else new PrintStream(Settings.outputFile, "UTF8")
     }
     
-    val inputSources = FileUtils.getFilesRecursive(new File(Settings.inputFile)) map { f => io.Source.fromFile(f, "UTF8") }
+    val inputSources = FileUtils.getFilesRecursive(new File(Settings.inputFile)) map { f => LineReader.fromFile(f, "UTF8") }
 
     val nsTime = Timing.time {
       val parser = new KbpSentenceParser
