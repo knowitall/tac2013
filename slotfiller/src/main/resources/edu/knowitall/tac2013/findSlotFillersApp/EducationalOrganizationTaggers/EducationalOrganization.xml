@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taggers>
+    <NormalizedNpHeadwordTagger descriptor="EducationalOrganization">
+        <keywords>
+            <keyword>school</keyword>
+            <keyword>college</keyword>
+            <keyword>university</keyword>
+            <keyword>alma mater</keyword>
+            <keyword>kindergarten</keyword>
+            <keyword>police academy</keyword>
+            <keyword>military academy</keyword>
+            <keyword>naval academy</keyword>
+            <keyword>air force academy</keyword>
+            <keyword>airforce academy</keyword>
+            <keyword>madrasa</keyword>
+            <keyword>madrasah</keyword>
+            <keyword>pesantran</keyword>
+            <keyword>pesantren</keyword>
+            <keyword>seminary</keyword>
+            <keyword>polytechnic</keyword>
+            <keyword>conservatory</keyword>
+            <keyword>preschool</keyword>
+        </keywords>
+    </NormalizedNpHeadwordTagger>
+</taggers>

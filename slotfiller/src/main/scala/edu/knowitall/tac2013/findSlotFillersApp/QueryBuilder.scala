@@ -33,7 +33,11 @@ class QueryBuilder {
 	  arg1String = "+arg1Text:\"" +arg1 + "\""
 	}
 	def setRelString(rel: String){
-	  relString = "+relText:\"" +rel + "\""
+	  //for now we will erase any mention of <JobTitle> when specifying the query,
+	  //and rely on the tagger semantic filter to choose extractions where a job title
+	  //is present
+	  val noJobTitle = rel.replace("<JobTitle>", "")
+	  relString = "+relText:\"" + noJobTitle + "\""
 	}
 	def setArg2String(arg2: String){
 	  arg2String = "+arg2Text:\"" +arg2 + "\""

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taggers>
+	<CaseInsensitiveKeywordTagger descriptor="Religion">
+		<keywords>
+			<keyword>ADVENTIST</keyword>
+			<keyword>Amish</keyword>
+			<keyword>Anglican</keyword>
+			<keyword>Baha'I</keyword>
+			<keyword>Baptist</keyword>
+			<keyword>buddhism</keyword>
+			<keyword>Buddhist</keyword>
+			<keyword>Catholic</keyword>
+			<keyword>catholicism</keyword>
+			<keyword>Christian</keyword>
+			<keyword>Confucianism</keyword>
+			<keyword>Congregational</keyword>
+			<keyword>Congregationalist</keyword>
+			<keyword>Episcopal</keyword>
+			<keyword>Episcopalian</keyword>
+			<keyword>Evangelical</keyword>
+			<keyword>Evangelical-Lutheran</keyword>
+			<keyword>hindu</keyword>
+			<keyword>hinduism</keyword>
+			<keyword>Islam</keyword>
+			<keyword>Islamism</keyword>
+			<keyword>Jewish</keyword>
+			<keyword>judaism</keyword>
+			<keyword>Lutheran</keyword>
+			<keyword>Lutheranism</keyword>
+			<keyword>Mennonite</keyword>
+			<keyword>Methodist</keyword>
+			<keyword>Mormon</keyword>
+			<keyword>mormonism</keyword>
+			<keyword>Paganism</keyword>
+			<keyword>Pentecostal</keyword>
+			<keyword>Presbyterian</keyword>
+			<keyword>presbyterianism</keyword>
+			<keyword>protestant</keyword>
+			<keyword>protestantism</keyword>
+			<keyword>Roman-Catholic</keyword>
+			<keyword>scientology</keyword>
+			<keyword>Shinto</keyword>
+			<keyword>sikhism</keyword>
+			<keyword>taoism</keyword>
+			<keyword>Unitarian</keyword>
+			<keyword>Unitarianism</keyword>
+			<keyword>Unitarian-Universalism</keyword>
+			<keyword>Wicca</keyword>
+			<keyword>zen</keyword>
+			<keyword>Zen-Buddhism</keyword>
+			<keyword>zoroastrianism</keyword>
+		</keywords>
+	</CaseInsensitiveKeywordTagger>
+</taggers>
+
