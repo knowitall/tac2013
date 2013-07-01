@@ -298,7 +298,7 @@ object KbpQueryOutput {
   
   def printFormattedOutputForKBPQuery(mapOfResults: Map[String,List[(KbpSlotToOpenIEData,List[KbpExtraction])]], filePath: String, kbpQuery: KBPQuery){
     
-    val writer = new PrintWriter(new File(filePath))
+    val writer = new FileWriter(new File(filePath),true)
     
     //iterate over every slot type
     for(kbpSlot <- SlotTypes.getSlotTypesList(kbpQuery.entityType)){
@@ -391,7 +391,7 @@ object KbpQueryOutput {
 	        		    fillerOffsetString,entityOffsetString,justificationOffsetString,kbpExtraction.confidence).mkString("\t") + "\n")
 	        }
 	        //case no answer was found
-	        case None => {writer.write(Iterator("queryID",kbpSlot,"runID","NIL").mkString("\t") + "\n")}
+	        case None => {writer.write(Iterator(kbpQuery.id,kbpSlot,runID,"NIL").mkString("\t") + "\n")}
 	      }
 	      
 	      

@@ -4,6 +4,7 @@ import QueryEntityForAllSlots.executeEntityQueryForAllSlots
 import KBPSlotOpenIERelationTranslator.getOrganizationMap
 import KBPSlotOpenIERelationTranslator.getPersonMap
 import KbpQueryOutput.printFormattedOutputForKBPQuery
+import java.io._
 
 object KBPQueryExecutor {
   
@@ -36,17 +37,32 @@ object KBPQueryExecutor {
     }
   }
   
+  def executeKbpQueries(kbpQueryList: List[KBPQuery], outputPath:String){
+     
+    
+     //delete output file before appending to it
+     val f =  new File(outputPath)
+     if(f.exists()){
+       f.delete()
+     }
+    
+    for(kbpQuery <- kbpQueryList){
+      executeKbpQuery(kbpQuery,outputPath)
+    }
+  }
+  
     
   def main(args: Array[String]){
 
      assert(args.length == 2, 
-         "there should be two arguments: path to KBP query Files, path for outputFile")
+         "there should be two arguments: path to KBP query File, path to the output File")
          
      val KBPQueryPath = args(0)
      val outputPath = args(1)
      
-     val kbpQuery = KBPQuery.parseKBPQuery(KBPQueryPath)
-     executeKbpQuery(kbpQuery,outputPath)    
+     
+     val kbpQueryList = KBPQuery.parseKBPQueries(KBPQueryPath)
+     executeKbpQueries(kbpQueryList,outputPath)    
   }
          
      
