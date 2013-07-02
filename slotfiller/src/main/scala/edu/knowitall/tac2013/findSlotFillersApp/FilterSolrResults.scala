@@ -10,16 +10,15 @@ object FilterSolrResults {
 	      val solrResultsArg2 = kbpExtraction.arg2.originalText
 	      val arg2PrepositionString = relationData.arg2Begins.get.trim()
 	      
-	      if(solrResultsArg2.toString().toLowerCase().substring(0,arg2PrepositionString.length) == arg2PrepositionString.toLowerCase() ||
-	          solrResultsArg2.toString().toLowerCase().substring(1,arg2PrepositionString.length+1) == arg2PrepositionString.toLowerCase())
-	        true
+	      if(solrResultsArg2.toString().toLowerCase().substring(0,arg2PrepositionString.length) == arg2PrepositionString.toLowerCase())
+	        return true
 	      
       	  else{
-            false
+            return false
           }
       }
       else{
-        true
+        return true
       }
   }
   
@@ -37,8 +36,7 @@ object FilterSolrResults {
 	    var count = 0 
 	    for(term <- relationTermsReversed){
 	      val sentenceWord = relationTermsFromExtraction(relationTermsFromExtraction.length-1-count)
-	      if( (term.toLowerCase() != sentenceWord.toLowerCase()) &&
-	          (term.toLowerCase() != sentenceWord.substring(1,sentenceWord.length-1).toLowerCase())){
+	      if (term.toLowerCase() != sentenceWord.toLowerCase()){
 	         return false
 	      }
 	      count = count +1
@@ -100,12 +98,12 @@ object FilterSolrResults {
       case _ => return false
     }
    
-    val sentence = kbpExtraction.sentence.dgraph.text
+    val chunkedSentence = kbpExtraction.sentence.chunkedTokens
 
     
     if(slotType == "Organization" || slotType =="Person" || slotType =="Stateorprovince" ||
         slotType == "City" || slotType == "Country"){
-	    val types = SemanticTaggers.useStandfordNERTagger(sentence)
+	    val types = SemanticTaggers.useStandfordNERTagger(chunkedSentence)
 	    
 	    
 	    
@@ -137,7 +135,7 @@ object FilterSolrResults {
     
     else if(slotType == "School"){
       
-        val types = SemanticTaggers.useEducationalOrganizationTagger(sentence)
+        val types = SemanticTaggers.useEducationalOrganizationTagger(chunkedSentence)
         
         for(t <- types){
           if (t.interval().intersects(slotLocation)) return true
@@ -150,7 +148,7 @@ object FilterSolrResults {
     
     else if(slotType == "JobTitle"){
       
-        val types = SemanticTaggers.useJobTitleTagger(sentence)
+        val types = SemanticTaggers.useJobTitleTagger(chunkedSentence)
         
         for(t <- types){
           if (t.interval().intersects(slotLocation)) return true
@@ -163,7 +161,7 @@ object FilterSolrResults {
     
     else if(slotType == "Nationality"){
       
-        val types = SemanticTaggers.useNationalityTagger(sentence)
+        val types = SemanticTaggers.useNationalityTagger(chunkedSentence)
         
         for(t <- types){
           if (t.interval().intersects(slotLocation)) return true
@@ -176,7 +174,7 @@ object FilterSolrResults {
     
     else if(slotType == "Religion"){
       
-        val types = SemanticTaggers.useReligionTagger(sentence)
+        val types = SemanticTaggers.useReligionTagger(chunkedSentence)
         
         for(t <- types){
           if (t.interval().intersects(slotLocation)) return true
@@ -187,7 +185,7 @@ object FilterSolrResults {
       
     }
     else if (slotType == "Date"){
-        val types = SemanticTaggers.useDateTagger(sentence)
+        val types = SemanticTaggers.useDateTagger(chunkedSentence)
         
         for(t <- types){
           if (t.interval().intersects(slotLocation)) return true

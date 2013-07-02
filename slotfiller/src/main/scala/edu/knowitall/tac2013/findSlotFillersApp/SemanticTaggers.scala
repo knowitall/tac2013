@@ -53,11 +53,9 @@ object SemanticTaggers {
     TaggerCollection.fromPath(url.getPath())
   }
   
-  def useStandfordNERTagger(sentence: String): List[Type] = {
-      val chunker = new OpenNlpChunker();
-	  val morpha = new MorphaStemmer();
-	  
-	  val chunkedSentence = chunker.chunk(sentence)
+  private val morpha = new MorphaStemmer();
+  
+  def useStandfordNERTagger(chunkedSentence: Seq[ChunkedToken]): List[Type] = {
 	  var tokens = List[Lemmatized[ChunkedToken]]()
 	  for (token <- chunkedSentence) {
 	        val lemma = morpha.lemmatizeToken(token);
@@ -67,11 +65,8 @@ object SemanticTaggers {
 	  types.toList
   }
   
-  def useJobTitleTagger(sentence: String): List[Type] = {
-      val chunker = new OpenNlpChunker();
-	  val morpha = new MorphaStemmer();
+  def useJobTitleTagger(chunkedSentence: Seq[ChunkedToken]): List[Type] = {
 	  
-	  val chunkedSentence = chunker.chunk(sentence)
 	  var tokens = List[Lemmatized[ChunkedToken]]()
 	  for (token <- chunkedSentence) {
 	        val lemma = morpha.lemmatizeToken(token);
@@ -81,11 +76,8 @@ object SemanticTaggers {
 	  types.toList
   }
   
-  def useNationalityTagger(sentence: String): List[Type] = {
-      val chunker = new OpenNlpChunker();
-	  val morpha = new MorphaStemmer();
+  def useNationalityTagger(chunkedSentence: Seq[ChunkedToken]): List[Type] = {
 	  
-	  val chunkedSentence = chunker.chunk(sentence)
 	  var tokens = List[Lemmatized[ChunkedToken]]()
 	  for (token <- chunkedSentence) {
 	        val lemma = morpha.lemmatizeToken(token);
@@ -95,11 +87,8 @@ object SemanticTaggers {
 	  types.toList
   }
   
-  def useEducationalOrganizationTagger(sentence: String): List[Type] = {
-      val chunker = new OpenNlpChunker();
-	  val morpha = new MorphaStemmer();
+  def useEducationalOrganizationTagger(chunkedSentence: Seq[ChunkedToken]): List[Type] = {
 	  
-	  val chunkedSentence = chunker.chunk(sentence)
 	  var tokens = List[Lemmatized[ChunkedToken]]()
 	  for (token <- chunkedSentence) {
 	        val lemma = morpha.lemmatizeToken(token);
@@ -109,11 +98,8 @@ object SemanticTaggers {
 	  types.toList
   }
   
-  def useReligionTagger(sentence: String): List[Type] = {
-      val chunker = new OpenNlpChunker();
-	  val morpha = new MorphaStemmer();
+  def useReligionTagger(chunkedSentence: Seq[ChunkedToken]): List[Type] = {
 	  
-	  val chunkedSentence = chunker.chunk(sentence)
 	  var tokens = List[Lemmatized[ChunkedToken]]()
 	  for (token <- chunkedSentence) {
 	        val lemma = morpha.lemmatizeToken(token);
@@ -123,11 +109,8 @@ object SemanticTaggers {
 	  types.toList
   }
   
-  def useDateTagger(sentence: String): List[Type] = {
-      val chunker = new OpenNlpChunker();
-	  val morpha = new MorphaStemmer();
+  def useDateTagger(chunkedSentence: Seq[ChunkedToken]): List[Type] = {
 	  
-	  val chunkedSentence = chunker.chunk(sentence)
 	  var tokens = List[Lemmatized[ChunkedToken]]()
 	  for (token <- chunkedSentence) {
 	        val lemma = morpha.lemmatizeToken(token);
