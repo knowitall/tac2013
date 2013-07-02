@@ -11,24 +11,25 @@ object KbpQueryOutput {
   
   val runID = "UWashington-1"
   
-  def printUnformattedOutput(mapOfResults: Map[String,List[(KbpSlotToOpenIEData,List[KbpExtraction])]], filePath: String, kbpQueryEntityType: KBPQueryEntityType){
+  def printUnformattedOutput(mapOfResults: Map[String,SlotCandidateSet], filePath: String, kbpQueryEntityType: KBPQueryEntityType){
     
     val writer = new PrintWriter(new File(filePath))
+    //iterate over all possible slot names
     for(kbpSlot <- SlotTypes.getSlotTypesList(kbpQueryEntityType)){
       
       if(mapOfResults.contains(kbpSlot)){
 	      val kbpSlotName = kbpSlot
-	      val listOfQueries = mapOfResults(kbpSlot)
+	      val slotCandidateSet = mapOfResults(kbpSlot)
 	      
 	      //only return up to 20 solr Results
 	      //val solrResultsArray = result._2._2.slice(0,20)
 	      
 	      writer.write("KBP SLOT NAME: " + kbpSlotName + "\n")
 	      
-	      for(slotQuery <- listOfQueries){
+	      for(slotQuery <- slotCandidateSet.candidateSets){
 	      
-		      val kbpOpenIEData = slotQuery._1
-		      val solrResultsList = slotQuery._2.slice(0,20)
+		      val kbpOpenIEData = slotQuery.pattern
+		      val candidateExtractionsList = slotQuery.candidateExtractions.slice(0,20)
 		      
 		      writer.write("\tQuery Data:\t"+ "RelationTerms: "+kbpOpenIEData.openIERelationString.getOrElse({""})
 		          + "\t Arg2Begins: " + kbpOpenIEData.arg2Begins.getOrElse({""}) + "\t Entity In: " +
@@ -36,16 +37,16 @@ object KbpQueryOutput {
 		          "\t Slot type: " + kbpOpenIEData.slotType.getOrElse({""}) +"\n")
 		      
 		      writer.write("\tResults:\n")
-		      if (solrResultsList.length ==0){
+		      if (candidateExtractionsList.length ==0){
 		        writer.write("\t\tNil" + "\n")
 		      }
 		      
 		      
-		      for (solrResult <- solrResultsList){
+		      for (candidateExtraction <- candidateExtractionsList){
 		        
-		        writer.write("\t\targ1: " + solrResult.arg1.originalText + "\t rel: " + solrResult.rel.originalText + 
-		            "\t arg2: " + solrResult.arg2.originalText + "\t docID: " + solrResult.sentence.docId +
-		            "\t confidence: " + solrResult.confidence + "\t sentence: " + solrResult.sentence.dgraph.text + "\n\n")
+		        writer.write("\t\targ1: " + candidateExtraction.kbpExtraction.arg1.originalText + "\t rel: " + candidateExtraction.kbpExtraction.rel.originalText + 
+		            "\t arg2: " + candidateExtraction.kbpExtraction.arg2.originalText + "\t docID: " + candidateExtraction.kbpExtraction.sentence.docId +
+		            "\t confidence: " + candidateExtraction.kbpExtraction.confidence + "\t sentence: " + candidateExtraction.kbpExtraction.sentence.dgraph.text + "\n\n")
 		
 		
 		      }
@@ -65,41 +66,41 @@ object KbpQueryOutput {
   /*
    * Overloaded to return a string for server usage
    */
-  def printUnformattedOutput(mapOfResults: Map[String,List[(KbpSlotToOpenIEData,List[KbpExtraction])]], kbpQueryEntityType: KBPQueryEntityType):String = {
+  def printUnformattedOutput(mapOfResults: Map[String,SlotCandidateSet], kbpQueryEntityType: KBPQueryEntityType):String = {
     
     val sb = new StringBuilder()
     for(kbpSlot <- SlotTypes.getSlotTypesList(kbpQueryEntityType)){
       
       if(mapOfResults.contains(kbpSlot)){
 	      val kbpSlotName = kbpSlot
-	      val listOfQueries = mapOfResults(kbpSlot)
+	      val slotCandidateSet = mapOfResults(kbpSlot)
 	      
 	      //only return up to 20 solr Results
 	      //val solrResultsArray = result._2._2.slice(0,20)
 	      
 	      sb.append("KBP SLOT NAME: " + kbpSlotName + "\n")
 	      
-	      for(slotQuery <- listOfQueries){
+	      for(slotQuery <- slotCandidateSet.candidateSets){
 	      
-		      val kbpOpenIEData = slotQuery._1
-		      val solrResultsList = slotQuery._2.slice(0,20)
+		      val kbpOpenIEData = slotQuery.pattern
+		      val candidateExtractionsList = slotQuery.candidateExtractions.slice(0,20)
 		      
-		      sb.append("\tQuery Data:\t"+ "RelationTerms: "+kbpOpenIEData.openIERelationString.getOrElse({""})
+		       sb.append("\tQuery Data:\t"+ "RelationTerms: "+kbpOpenIEData.openIERelationString.getOrElse({""})
 		          + "\t Arg2Begins: " + kbpOpenIEData.arg2Begins.getOrElse({""}) + "\t Entity In: " +
 		          kbpOpenIEData.entityIn.getOrElse({""}) + "\t SlotFill In: " + kbpOpenIEData.slotFillIn.getOrElse({""}) +
 		          "\t Slot type: " + kbpOpenIEData.slotType.getOrElse({""}) +"\n")
 		      
-		      sb.append("\tResults:\n")
-		      if (solrResultsList.length ==0){
-		        sb.append("\t\tNil" + "\n")
+		       sb.append("\tResults:\n")
+		      if (candidateExtractionsList.length ==0){
+		         sb.append("\t\tNil" + "\n")
 		      }
 		      
 		      
-		      for (solrResult <- solrResultsList){
+		      for (candidateExtraction <- candidateExtractionsList){
 		        
-		        sb.append("\t\targ1: " + solrResult.arg1.originalText + "\t rel: " + solrResult.rel.originalText + 
-		            "\t arg2: " + solrResult.arg2.originalText + "\t docID: " + solrResult.sentence.docId +
-		            "\t confidence: " + solrResult.confidence + "\t sentence: " + solrResult.sentence.dgraph.text + "\n\n")
+		         sb.append("\t\targ1: " + candidateExtraction.kbpExtraction.arg1.originalText + "\t rel: " + candidateExtraction.kbpExtraction.rel.originalText + 
+		            "\t arg2: " + candidateExtraction.kbpExtraction.arg2.originalText + "\t docID: " + candidateExtraction.kbpExtraction.sentence.docId +
+		            "\t confidence: " + candidateExtraction.kbpExtraction.confidence + "\t sentence: " + candidateExtraction.kbpExtraction.sentence.dgraph.text + "\n\n")
 		
 		
 		      }
@@ -118,7 +119,7 @@ object KbpQueryOutput {
   
   
   
-  def printFormattedOutput(mapOfResults: Map[String,List[(KbpSlotToOpenIEData,List[KbpExtraction])]], filePath: String, kbpQueryEntityType: KBPQueryEntityType){
+  def printFormattedOutput(mapOfResults: Map[String,SlotCandidateSet], filePath: String, kbpQueryEntityType: KBPQueryEntityType){
     
     val writer = new PrintWriter(new File(filePath))
     
@@ -134,63 +135,51 @@ object KbpQueryOutput {
         
     	  
 	      val kbpSlotName = kbpSlot
-	      val listOfQueries = mapOfResults(kbpSlot)
+	      val slotCandidateSet = mapOfResults(kbpSlot)
 	      
-	      //for now assume every slot is single valued, use a
-	      //separate filter method to choose best answer
-	      
-	      var possibleAnswers = List[(KbpSlotToOpenIEData,List[KbpExtraction])]()
-	      for(slotQuery <- listOfQueries){
-	      
-		      val kbpOpenIEData = slotQuery._1
-		      val solrResultsList = slotQuery._2.slice(0,20)
-		      
-		      val t = (kbpOpenIEData,solrResultsList)
-		      
-		      possibleAnswers = possibleAnswers ::: List(t)	
-		      
-	      }
-	      
-	      val bestAnswer = chooseBest(possibleAnswers)
-	      
-	      bestAnswer match{
-	        //case an answer was found
-	        case Some((queryData,kbpExtraction)) => {
-	        		val slotFiller = {
-	        		  if(queryData.slotFillIn.get.toLowerCase().trim() == "arg1"){
-	        		    kbpExtraction.arg1.originalText
-	        		  }
-	        		  else if(queryData.slotFillIn.get.toLowerCase().trim() == "arg2"){
-	        		    kbpExtraction.arg2.originalText
-	        		  }
-	        		}
-	        		
-	        		val fillerOffset = {
-	        		  if(queryData.slotFillIn.get.toLowerCase().trim() == "arg1"){
-	        		    kbpExtraction.arg1.tokenInterval
-	        		  }
-	        		  else if(queryData.slotFillIn.get.toLowerCase().trim() == "arg2"){
-	        		    kbpExtraction.arg2.tokenInterval
-	        		  }
-	        		}
-	        		
-	        		val entityOffset = {
-	        		  if(queryData.entityIn.get.toLowerCase().trim() == "arg1"){
-	        		    kbpExtraction.arg1.tokenInterval
-	        		  }
-	        		  else if(queryData.entityIn.get.toLowerCase().trim() == "arg2"){
-	        		    kbpExtraction.arg2.tokenInterval
-	        		  }
-	        		} 
 
-	        		writer.write(Iterator("queryID",kbpSlot,"runID",kbpExtraction.sentence.docId,slotFiller,
-	        		    fillerOffset,entityOffset,kbpExtraction.rel.tokenInterval,kbpExtraction.confidence).mkString("\t") + "\n")
-	        }
-	        //case no answer was found
-	        case None => {writer.write(Iterator("queryID",kbpSlot,"runID","NIL").mkString("\t") + "\n")}
+	      
+	      val bestAnswerExtractions = slotCandidateSet.rankedAnswers
+	      
+	      if(!bestAnswerExtractions.isEmpty){
+	        val bestAnswerExtraction = bestAnswerExtractions.head
+	        val queryData = bestAnswerExtraction.pattern
+        	    val slotFiller = {
+        		  if(queryData.slotFillIn.get.toLowerCase().trim() == "arg1"){
+        		    bestAnswerExtraction.kbpExtraction.arg1.originalText
+        		  }
+        		  else if(queryData.slotFillIn.get.toLowerCase().trim() == "arg2"){
+        		    bestAnswerExtraction.kbpExtraction.arg2.originalText
+        		  }
+        		}
+        		
+        		val fillerOffset = {
+        		  if(queryData.slotFillIn.get.toLowerCase().trim() == "arg1"){
+        		    bestAnswerExtraction.kbpExtraction.arg1.tokenInterval
+        		  }
+        		  else if(queryData.slotFillIn.get.toLowerCase().trim() == "arg2"){
+        		    bestAnswerExtraction.kbpExtraction.arg2.tokenInterval
+        		  }
+        		}
+        		
+        		val entityOffset = {
+        		  if(queryData.entityIn.get.toLowerCase().trim() == "arg1"){
+        		    bestAnswerExtraction.kbpExtraction.arg1.tokenInterval
+        		  }
+        		  else if(queryData.entityIn.get.toLowerCase().trim() == "arg2"){
+        		    bestAnswerExtraction.kbpExtraction.arg2.tokenInterval
+        		  }
+        		} 
+
+        		writer.write(Iterator("queryID",kbpSlot,"runID",bestAnswerExtraction.kbpExtraction.sentence.docId,slotFiller,
+        		    fillerOffset,entityOffset,bestAnswerExtraction.kbpExtraction.rel.tokenInterval,
+        		    bestAnswerExtraction.kbpExtraction.confidence).mkString("\t") + "\n")
+	        
+	        
 	      }
-	      
-	      
+	      else{
+	        writer.write(Iterator("queryID",kbpSlot,"runID","NIL").mkString("\t") + "\n")
+	      }
       }
       
       else{
@@ -210,7 +199,7 @@ object KbpQueryOutput {
   /**
    * Overloaded to return a string for server usage
    */
-  def printFormattedOutput(mapOfResults: Map[String,List[(KbpSlotToOpenIEData,List[KbpExtraction])]], kbpQueryEntityType: KBPQueryEntityType): String = {
+  def printFormattedOutput(mapOfResults: Map[String,SlotCandidateSet], kbpQueryEntityType: KBPQueryEntityType): String = {
     
     val sb = new StringBuilder()
     
@@ -226,63 +215,51 @@ object KbpQueryOutput {
         
     	  
 	      val kbpSlotName = kbpSlot
-	      val listOfQueries = mapOfResults(kbpSlot)
+	      val slotCandidateSet = mapOfResults(kbpSlot)
 	      
-	      //for now assume every slot is single valued, use a
-	      //separate filter method to choose best answer
-	      
-	      var possibleAnswers = List[(KbpSlotToOpenIEData,List[KbpExtraction])]()
-	      for(slotQuery <- listOfQueries){
-	      
-		      val kbpOpenIEData = slotQuery._1
-		      val solrResultsList = slotQuery._2.slice(0,20)
-		      
-		      val t = (kbpOpenIEData,solrResultsList)
-		      
-		      possibleAnswers = possibleAnswers ::: List(t)	
-		      
-	      }
-	      
-	      val bestAnswer = chooseBest(possibleAnswers)
-	      
-	      bestAnswer match{
-	        //case an answer was found
-	        case Some(answer) => {
-	        		val slotFiller = {
-	        		  if(answer._1.slotFillIn.get.toLowerCase().trim() == "arg1"){
-	        		    answer._2.arg1.originalText
-	        		  }
-	        		  else if(answer._1.slotFillIn.get.toLowerCase().trim() == "arg2"){
-	        		    answer._2.arg2.originalText
-	        		  }
-	        		}
-	        		
-	        		val fillerOffset = {
-	        		  if(answer._1.slotFillIn.get.toLowerCase().trim() == "arg1"){
-	        		    answer._2.arg1.tokenInterval
-	        		  }
-	        		  else if(answer._1.slotFillIn.get.toLowerCase().trim() == "arg2"){
-	        		    answer._2.arg2.tokenInterval
-	        		  }
-	        		}
-	        		
-	        		val entityOffset = {
-	        		  if(answer._1.entityIn.get.toLowerCase().trim() == "arg1"){
-	        		    answer._2.arg1.tokenInterval
-	        		  }
-	        		  else if(answer._1.entityIn.get.toLowerCase().trim() == "arg2"){
-	        		    answer._2.arg2.tokenInterval
-	        		  }
-	        		} 
 
-	        		sb.append(Iterator("queryID",kbpSlot,"runID",answer._2.sentence.docId,slotFiller,
-	        		    fillerOffset,entityOffset,answer._2.rel.tokenInterval,answer._2.confidence).mkString("\t") + "\n")
-	        }
-	        //case no answer was found
-	        case None => {sb.append(Iterator("queryID",kbpSlot,"runID","NIL").mkString("\t") + "\n")}
+	      
+	      val bestAnswerExtractions = slotCandidateSet.rankedAnswers
+	      
+	      if(!bestAnswerExtractions.isEmpty){
+	        val bestAnswerExtraction = bestAnswerExtractions.head
+	        val queryData = bestAnswerExtraction.pattern
+        	    val slotFiller = {
+        		  if(queryData.slotFillIn.get.toLowerCase().trim() == "arg1"){
+        		    bestAnswerExtraction.kbpExtraction.arg1.originalText
+        		  }
+        		  else if(queryData.slotFillIn.get.toLowerCase().trim() == "arg2"){
+        		    bestAnswerExtraction.kbpExtraction.arg2.originalText
+        		  }
+        		}
+        		
+        		val fillerOffset = {
+        		  if(queryData.slotFillIn.get.toLowerCase().trim() == "arg1"){
+        		    bestAnswerExtraction.kbpExtraction.arg1.tokenInterval
+        		  }
+        		  else if(queryData.slotFillIn.get.toLowerCase().trim() == "arg2"){
+        		    bestAnswerExtraction.kbpExtraction.arg2.tokenInterval
+        		  }
+        		}
+        		
+        		val entityOffset = {
+        		  if(queryData.entityIn.get.toLowerCase().trim() == "arg1"){
+        		    bestAnswerExtraction.kbpExtraction.arg1.tokenInterval
+        		  }
+        		  else if(queryData.entityIn.get.toLowerCase().trim() == "arg2"){
+        		    bestAnswerExtraction.kbpExtraction.arg2.tokenInterval
+        		  }
+        		} 
+
+        		sb.append(Iterator("queryID",kbpSlot,"runID",bestAnswerExtraction.kbpExtraction.sentence.docId,slotFiller,
+        		    fillerOffset,entityOffset,bestAnswerExtraction.kbpExtraction.rel.tokenInterval,
+        		    bestAnswerExtraction.kbpExtraction.confidence).mkString("\t") + "\n")
+	        
+	        
 	      }
-	      
-	      
+	      else{
+	        sb.append(Iterator("queryID",kbpSlot,"runID","NIL").mkString("\t") + "\n")
+	      }
       }
       
       else{
@@ -296,7 +273,7 @@ object KbpQueryOutput {
     sb.toString
   }
   
-  def printFormattedOutputForKBPQuery(mapOfResults: Map[String,List[(KbpSlotToOpenIEData,List[KbpExtraction])]], filePath: String, kbpQuery: KBPQuery){
+  def printFormattedOutputForKBPQuery(mapOfResults: Map[String,SlotCandidateSet], filePath: String, kbpQuery: KBPQuery){
     
     val writer = new FileWriter(new File(filePath),true)
     
@@ -312,46 +289,34 @@ object KbpQueryOutput {
         
     	  
 	      val kbpSlotName = kbpSlot
-	      val listOfQueries = mapOfResults(kbpSlot)
+	      val slotCandidateSet = mapOfResults(kbpSlot)
 	      
 	      //for now assume every slot is single valued, use a
 	      //separate filter method to choose best answer
 	      
-	      var possibleAnswers = List[(KbpSlotToOpenIEData,List[KbpExtraction])]()
-	      for(slotQuery <- listOfQueries){
+	      val bestAnswerExtractions = slotCandidateSet.rankedAnswers
 	      
-		      val kbpOpenIEData = slotQuery._1
-		      val solrResultsList = slotQuery._2.slice(0,20)
-		      
-		      val t = (kbpOpenIEData,solrResultsList)
-		      
-		      possibleAnswers = possibleAnswers ::: List(t)	
-		      
-	      }
-	      
-	      val bestAnswer = chooseBest(possibleAnswers)
-	      
-	      bestAnswer match{
-	        //case an answer was found
-	        case Some((queryData,kbpExtraction)) => {
+	      if(!bestAnswerExtractions.isEmpty){
+	        val bestAnswerExtraction = bestAnswerExtractions.head
+	        val queryData = bestAnswerExtraction.pattern
 	        		val slotFiller = {
 	        		  if(queryData.slotFillIn.get.toLowerCase().trim() == "arg1"){
-	        		    kbpExtraction.arg1.originalText
+	        		    bestAnswerExtraction.kbpExtraction.arg1.originalText
 	        		  }
 	        		  else if(queryData.slotFillIn.get.toLowerCase().trim() == "arg2"){
-	        		    kbpExtraction.arg2.originalText
+	        		    bestAnswerExtraction.kbpExtraction.arg2.originalText
 	        		  }
 	        		}
 	        		
 	        		val fillerOffsetInterval = {
 	        		  if(queryData.slotFillIn.get.toLowerCase().trim() == "arg1"){
-	        		    kbpExtraction.arg1.tokenInterval
+	        		    bestAnswerExtraction.kbpExtraction.arg1.tokenInterval
 	        		  }
 	        		  else if(queryData.slotFillIn.get.toLowerCase().trim() == "arg2"){
-	        		    kbpExtraction.arg2.tokenInterval
+	        		    bestAnswerExtraction.kbpExtraction.arg2.tokenInterval
 	        		  }
 	        		  else if(queryData.slotFillIn.get.toLowerCase().trim() == "relation"){
-	        		    kbpExtraction.rel.tokenInterval
+	        		    bestAnswerExtraction.kbpExtraction.rel.tokenInterval
 	        		  }
 	        		  else{
 	        		    throw new Exception("slotFillIn specification should only be arg1, arg2, or relation")
@@ -360,10 +325,10 @@ object KbpQueryOutput {
 	        		
 	        		val entityOffsetInterval = {
 	        		  if(queryData.entityIn.get.toLowerCase().trim() == "arg1"){
-	        		    kbpExtraction.arg1.tokenInterval
+	        		    bestAnswerExtraction.kbpExtraction.arg1.tokenInterval
 	        		  }
 	        		  else if(queryData.entityIn.get.toLowerCase().trim() == "arg2"){
-	        		    kbpExtraction.arg2.tokenInterval
+	        		    bestAnswerExtraction.kbpExtraction.arg2.tokenInterval
 	        		  }
 	        		  else{
 	        		    throw new Exception("entityIn specification should only be arg1 or arg2")
@@ -372,7 +337,7 @@ object KbpQueryOutput {
 	        		
 	   
 
-	        		val startOffset = kbpExtraction.sentence.startOffset
+	        		val startOffset = bestAnswerExtraction.kbpExtraction.sentence.startOffset
 	        		
 	        		val fillerOffsetStart = startOffset + fillerOffsetInterval.start
 	        		val fillerOffsetEnd = startOffset + fillerOffsetInterval.end
@@ -382,16 +347,19 @@ object KbpQueryOutput {
 	        		val entityOffsetEnd = startOffset + entityOffsetInterval.end
 	        		val entityOffsetString = entityOffsetStart.toString + "-" + entityOffsetEnd.toString()
 	        		
-	        		val justificationOffsetStart = startOffset + kbpExtraction.arg1.tokenInterval.start
-	        		val justificationOffsetEnd = startOffset + kbpExtraction.arg2.tokenInterval.end
+	        		val justificationOffsetStart = startOffset + bestAnswerExtraction.kbpExtraction.arg1.tokenInterval.start
+	        		val justificationOffsetEnd = startOffset + bestAnswerExtraction.kbpExtraction.arg2.tokenInterval.end
 	        		val justificationOffsetString = justificationOffsetStart.toString() +"-" + justificationOffsetEnd.toString()
 	        		
 	        		
-	        		writer.write(Iterator(kbpQuery.id,kbpSlot,runID,kbpExtraction.sentence.docId,slotFiller,
-	        		    fillerOffsetString,entityOffsetString,justificationOffsetString,kbpExtraction.confidence).mkString("\t") + "\n")
-	        }
-	        //case no answer was found
-	        case None => {writer.write(Iterator(kbpQuery.id,kbpSlot,runID,"NIL").mkString("\t") + "\n")}
+	        		writer.write(Iterator(kbpQuery.id,kbpSlot,runID,bestAnswerExtraction.kbpExtraction.sentence.docId,slotFiller,
+	        		    fillerOffsetString,entityOffsetString,justificationOffsetString,bestAnswerExtraction.kbpExtraction.confidence).mkString("\t") + "\n")
+	        
+	        
+	      }
+	      else{
+	        //no answer found
+	        writer.write(Iterator(kbpQuery.id,kbpSlot,runID,"NIL").mkString("\t") + "\n")
 	      }
 	      
 	      

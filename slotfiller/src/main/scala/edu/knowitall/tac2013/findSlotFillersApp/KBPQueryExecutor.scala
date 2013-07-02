@@ -5,6 +5,7 @@ import KBPSlotOpenIERelationTranslator.getOrganizationMap
 import KBPSlotOpenIERelationTranslator.getPersonMap
 import KbpQueryOutput.printFormattedOutputForKBPQuery
 import java.io._
+import SlotFillReranker.chooseBestTest
 
 object KBPQueryExecutor {
   
@@ -20,8 +21,16 @@ object KBPQueryExecutor {
           filteredOrgMap += (slot -> orgMap(slot))
         }
         val results = executeEntityQueryForAllSlots(kbpQuery.name,filteredOrgMap)
-         printFormattedOutputForKBPQuery(results,outputPath,kbpQuery)       
+        
+        var slotCandidateSetMap = Map[String,SlotCandidateSet]()
+	    for( x <- results.keys){
+	        slotCandidateSetMap += ( x -> new SlotCandidateSet(kbpQuery.name,results(x)));
+	        slotCandidateSetMap(x).setRankedAnswers(chooseBestTest(slotCandidateSetMap(x).candidateSets));
+	    }
+        
+         printFormattedOutputForKBPQuery(slotCandidateSetMap,outputPath,kbpQuery)       
       }
+      
       case KBPQueryEntityType.PER => {
         val perMap = getPersonMap()
         
@@ -31,7 +40,14 @@ object KBPQueryExecutor {
           filteredPerMap += (slot -> perMap(slot))
         }
         val results = executeEntityQueryForAllSlots(kbpQuery.name,filteredPerMap)
-        printFormattedOutputForKBPQuery(results,outputPath,kbpQuery)
+        
+        var slotCandidateSetMap = Map[String,SlotCandidateSet]()
+	    for( x <- results.keys){
+	        slotCandidateSetMap += ( x -> new SlotCandidateSet(kbpQuery.name,results(x)));
+	        slotCandidateSetMap(x).setRankedAnswers(chooseBestTest(slotCandidateSetMap(x).candidateSets));
+	    }
+        
+        printFormattedOutputForKBPQuery(slotCandidateSetMap,outputPath,kbpQuery)
       }
       case _ => throw new Exception("Entity Type must be person or organization")
     }

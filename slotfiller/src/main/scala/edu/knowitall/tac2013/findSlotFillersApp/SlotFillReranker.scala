@@ -36,5 +36,27 @@ object SlotFillReranker {
   
     
   }
-
+  
+  def chooseBestTest(candidateSets: List[CandidateSet]) : List[CandidateExtraction] = {
+    var maxConfidence = -1.0
+    var bestChoice = Option.empty[CandidateExtraction]
+    for (candidateSet <- candidateSets){
+      
+      for (extr <- candidateSet.candidateExtractions){
+        if(extr.kbpExtraction.confidence > maxConfidence){
+          maxConfidence = extr.kbpExtraction.confidence
+          bestChoice = Some(extr)
+        }
+        
+      }
+ 
+    }
+    
+    if(maxConfidence == -1.0){
+      List.empty[CandidateExtraction]
+    }
+    else{
+      List(bestChoice.get)
+    }
+  }
 }

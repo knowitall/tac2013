@@ -7,6 +7,7 @@ import QueryEntityForAllSlots.executeEntityQueryForAllSlots
 import QueryEntityForAllSlots.executeEntityQueryForAllSlotsWithoutFilter
 import KbpQueryOutput.printUnformattedOutput
 import KbpQueryOutput.printFormattedOutput
+import SlotFillReranker.chooseBestTest
 
 
 //Command line application object for running solr queries on all the slots
@@ -27,16 +28,34 @@ object FindSlotFills {
      if (semanticType == "organization"){
 	     val orgMap = getOrganizationMap()
 	     val mapOfResults = executeEntityQueryForAllSlots(entityName, orgMap.toMap)
-	     printUnformattedOutput(mapOfResults,args(2),KBPQueryEntityType.ORG)
-	     printFormattedOutput(mapOfResults,args(2),KBPQueryEntityType.ORG)
+	     
+	     // rank candidate extractions and build a map from slot names to SlotCandidateSet
+	     var slotCandidateSetMap = Map[String,SlotCandidateSet]()
+	     for( x <- mapOfResults.keys){
+	        slotCandidateSetMap += ( x -> new SlotCandidateSet(entityName,mapOfResults(x)));
+	        slotCandidateSetMap(x).setRankedAnswers(chooseBestTest(slotCandidateSetMap(x).candidateSets));
+	     }
+	     
+	     
+	     printUnformattedOutput(slotCandidateSetMap,args(2),KBPQueryEntityType.ORG)
+	     printFormattedOutput(slotCandidateSetMap,args(2),KBPQueryEntityType.ORG)
 
   	 }
      
      else if (semanticType == "person"){
 	     val perMap = getPersonMap()
 	     val mapOfResults = executeEntityQueryForAllSlots(entityName, perMap.toMap)
-	     printUnformattedOutput(mapOfResults,args(2),KBPQueryEntityType.PER)
-	     printFormattedOutput(mapOfResults,args(2),KBPQueryEntityType.PER)
+	     
+	     // rank candidate extractions and build a map from slot names to SlotCandidateSet
+	     var slotCandidateSetMap = Map[String,SlotCandidateSet]()
+	     for( x <- mapOfResults.keys){
+	        slotCandidateSetMap += ( x -> new SlotCandidateSet(entityName,mapOfResults(x)));
+	        slotCandidateSetMap(x).setRankedAnswers(chooseBestTest(slotCandidateSetMap(x).candidateSets));
+	     }
+	     
+	     
+	     printUnformattedOutput(slotCandidateSetMap,args(2),KBPQueryEntityType.PER)
+	     printFormattedOutput(slotCandidateSetMap,args(2),KBPQueryEntityType.PER)
      }
      
      else{
@@ -58,13 +77,24 @@ object FindSlotFills {
 	     val orgMap = getOrganizationMap()
 	     val mapOfResults = executeEntityQueryForAllSlots(entityName, orgMap.toMap)
 	     val unfilteredMapOfResults = executeEntityQueryForAllSlotsWithoutFilter(entityName, orgMap.toMap)
+	     
+	     //build a map from slot names to SlotCandidateSet
+	     var filteredSlotCandidateSetMap = Map[String,SlotCandidateSet]()
+	     for( x <- mapOfResults.keys){
+	        filteredSlotCandidateSetMap += ( x -> new SlotCandidateSet(entityName,mapOfResults(x)))
+	     }
+	     var unFilteredSlotCandidateSetMap = Map[String,SlotCandidateSet]()
+	     for( x <- unfilteredMapOfResults.keys){
+	        unFilteredSlotCandidateSetMap += ( x -> new SlotCandidateSet(entityName,unfilteredMapOfResults(x)))
+	     }
+	     
 	     return (
 	     "\n-----------------------------------------\nUNFILTERED RESULTS\n--------------------------------------\n\n" +
-	     printUnformattedOutput(unfilteredMapOfResults,KBPQueryEntityType.ORG) + 
+	     printUnformattedOutput(unFilteredSlotCandidateSetMap,KBPQueryEntityType.ORG) + 
 	     "\n-----------------------------------------\nFILTERED RESULTS\n--------------------------------------\n\n" +
-	     printUnformattedOutput(mapOfResults,KBPQueryEntityType.ORG) + 
+	     printUnformattedOutput(filteredSlotCandidateSetMap,KBPQueryEntityType.ORG) + 
 	     "\n-----------------------------------------\nFORMATTED RESULTS\n--------------------------------------\n\n" +
-	     printFormattedOutput(mapOfResults,KBPQueryEntityType.ORG) 
+	     printFormattedOutput(filteredSlotCandidateSetMap,KBPQueryEntityType.ORG) 
 	     )
 
   	 }
@@ -73,13 +103,27 @@ object FindSlotFills {
 	     val perMap = getPersonMap()
 	     val mapOfResults = executeEntityQueryForAllSlots(entityName, perMap.toMap)
 	     val unfilteredMapOfResults = executeEntityQueryForAllSlotsWithoutFilter(entityName, perMap.toMap)
+	     
+	     
+	     //build a map from slot names to SlotCandidateSet
+	     var filteredSlotCandidateSetMap = Map[String,SlotCandidateSet]()
+	     for( x <- mapOfResults.keys){
+	        filteredSlotCandidateSetMap += ( x -> new SlotCandidateSet(entityName,mapOfResults(x)));
+	        filteredSlotCandidateSetMap(x).setRankedAnswers(chooseBestTest(filteredSlotCandidateSetMap(x).candidateSets));
+	     }
+	     var unFilteredSlotCandidateSetMap = Map[String,SlotCandidateSet]()
+	     for( x <- unfilteredMapOfResults.keys){
+	        unFilteredSlotCandidateSetMap += ( x -> new SlotCandidateSet(entityName,unfilteredMapOfResults(x)))
+	     }
+	     
+	     
 	     return (
 	     "\n-----------------------------------------\nUNFILTERED RESULTS\n--------------------------------------\n\n" +
-	     printUnformattedOutput(unfilteredMapOfResults,KBPQueryEntityType.PER) + 
+	     printUnformattedOutput(unFilteredSlotCandidateSetMap,KBPQueryEntityType.PER) + 
 	     "\n-----------------------------------------\nFILTERED RESULTS\n--------------------------------------\n\n" +
-	     printUnformattedOutput(mapOfResults,KBPQueryEntityType.PER) + 
+	     printUnformattedOutput(filteredSlotCandidateSetMap,KBPQueryEntityType.PER) + 
 	     "\n-----------------------------------------\nFORMATTED RESULTS\n--------------------------------------\n\n" +
-	     printFormattedOutput(mapOfResults,KBPQueryEntityType.PER) 
+	     printFormattedOutput(filteredSlotCandidateSetMap,KBPQueryEntityType.PER) 
 	     )
      }
      

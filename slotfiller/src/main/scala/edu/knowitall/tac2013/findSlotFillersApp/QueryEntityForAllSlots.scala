@@ -12,14 +12,14 @@ object QueryEntityForAllSlots {
   //takes entity string and map from KBP slot strings to Open IE relation strings and runs queries
   //to our solr instance for every type of OpenIERelation
   def executeEntityQueryForAllSlots(queryEntity: String, KBPOpenIERelationMap: Map[String,List[KbpSlotToOpenIEData]]):
-    Map[String,List[(KbpSlotToOpenIEData,List[KbpExtraction])]] ={
+    Map[String,List[CandidateSet]] ={
     
     //var resultsList = List[(String,KbpSlotToOpenIEData,List[KbpExtraction])]()
-    var resultsMap = Map[String,List[(KbpSlotToOpenIEData,List[KbpExtraction])]]()
+    var resultsMap = Map[String,List[CandidateSet]]()
     //for every relevant slot 
     for( pair <- KBPOpenIERelationMap){
       
-      var resultsList = List[(KbpSlotToOpenIEData,List[KbpExtraction])]()
+      var resultsList = List[CandidateSet]()
       //for every different query formulation
       for(relationData <- pair._2){
         
@@ -48,15 +48,15 @@ object QueryEntityForAllSlots {
 	        println(queryString)
 	        
 	        //issue query (don't cut off results yet)
-	        val listOfResults = issueSolrQuery(queryString)
+	        val listOfResults = issueSolrQuery(queryString,CandidateType.REGULAR,relationData)
 	        
 	        //filter
 	        val listOfFilteredResults = filterResults(listOfResults,relationData,queryEntity)
 	        
 	        
 	        //construct tuple entry to go into results Array
-	        val t = (relationData,listOfFilteredResults)
-	        resultsList = resultsList ::: List(t)
+	        val cs = new CandidateSet(relationData,listOfFilteredResults)
+	        resultsList = resultsList ::: List(cs)
         }
       }
       
@@ -73,14 +73,14 @@ object QueryEntityForAllSlots {
   //takes entity string and map from KBP slot strings to Open IE relation strings and runs queries
   //to our solr instance for every type of OpenIERelation, this method uses no filters, this is for debugging purposes
   def executeEntityQueryForAllSlotsWithoutFilter(queryEntity: String, KBPOpenIERelationMap: Map[String,List[KbpSlotToOpenIEData]]):
-    Map[String,List[(KbpSlotToOpenIEData,List[KbpExtraction])]] ={
+    Map[String,List[CandidateSet]] ={
     
     //var resultsList = List[(String,KbpSlotToOpenIEData,List[KbpExtraction])]()
-    var resultsMap = Map[String,List[(KbpSlotToOpenIEData,List[KbpExtraction])]]()
+    var resultsMap = Map[String,List[CandidateSet]]()
     //for every relevant slot 
     for( pair <- KBPOpenIERelationMap){
       
-      var resultsList = List[(KbpSlotToOpenIEData,List[KbpExtraction])]()
+      var resultsList = List[CandidateSet]()
       //for every different query formulation
       for(relationData <- pair._2){
         
@@ -109,15 +109,10 @@ object QueryEntityForAllSlots {
 	        println(queryString)
 	        
 	        //issue query (don't cut off results yet)
-	        val listOfResults = issueSolrQuery(queryString)
-	        
-	        //filter
-	        //val listOfFilteredResults = filterResults(listOfResults,relationData,queryEntity)
-	        
-	        
-	        //construct tuple entry to go into results Array
-	        val t = (relationData,listOfResults)
-	        resultsList = resultsList ::: List(t)
+	        val listOfResults = issueSolrQuery(queryString,CandidateType.REGULAR,relationData)
+
+	        val cs = new CandidateSet(relationData,listOfResults)
+	        resultsList = resultsList ::: List(cs)
         }
       }
       
