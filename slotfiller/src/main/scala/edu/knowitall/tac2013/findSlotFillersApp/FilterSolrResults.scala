@@ -5,7 +5,9 @@ import edu.knowitall.tac2013.openie.KbpExtraction
 object FilterSolrResults {
 
   //filter for arg2 beginning with proper preposition
-  private def satisfiesArg2PrepositionFilter(relationData: KbpSlotToOpenIEData, kbpExtraction: KbpExtraction ): Boolean ={
+  private def satisfiesArg2PrepositionFilter(relationData: KbpSlotToOpenIEData, candidateExtraction: CandidateExtraction ): Boolean ={
+    
+      val kbpExtraction = candidateExtraction.kbpExtraction
       if (relationData.arg2Begins.nonEmpty){
 	      val solrResultsArg2 = kbpExtraction.arg2.originalText
 	      val arg2PrepositionString = relationData.arg2Begins.get.trim()
@@ -22,26 +24,43 @@ object FilterSolrResults {
       }
   }
   
-  private def satisfiesRelFilter(relationData: KbpSlotToOpenIEData, kbpExtraction: KbpExtraction ): Boolean ={
+  private def satisfiesRelFilter(relationData: KbpSlotToOpenIEData, candidateExtraction: CandidateExtraction ): Boolean ={
     
+    val kbpExtraction = candidateExtraction.kbpExtraction
     if(relationData.isValid){
-	    
-	    val relationTerms = relationData.openIERelationString.get.trim().split(" ")
-	    
-	    val relationTermsReversed =  relationTerms.reverse
-	    
-	    val relationTermsFromExtraction = kbpExtraction.rel.originalText.trim().split(" ")
-	    
-	    
-	    var count = 0 
-	    for(term <- relationTermsReversed){
-	      val sentenceWord = relationTermsFromExtraction(relationTermsFromExtraction.length-1-count)
-	      if (term.toLowerCase() != sentenceWord.toLowerCase()){
-	         return false
-	      }
-	      count = count +1
+      
+      if(!relationData.openIERelationString.get.contains("<JobTitle>")){
+		    
+		    val relationTerms = relationData.openIERelationString.get.trim().split(" ")
+		    
+		    val relationTermsReversed =  relationTerms.reverse
+		    
+		    val relationTermsFromExtraction = kbpExtraction.rel.originalText.trim().split(" ")
+		    
+		    
+		    var count = 0 
+		    for(term <- relationTermsReversed){
+		      val sentenceWord = relationTermsFromExtraction(relationTermsFromExtraction.length-1-count)
+		      if ((term.toLowerCase() != sentenceWord.toLowerCase()) &&
+		          (term.replace("[", "").replace("]", "").toLowerCase() != sentenceWord.replace("[", "").replace("]", "").toLowerCase())){
+		         return false
+		      }
+		      count = count +1
+		    }
+		    return true
 	    }
-	    true
+      else{
+        val chunkedSentence = kbpExtraction.sentence.chunkedTokens
+        val types = SemanticTaggers.useJobTitleTagger(chunkedSentence)
+        val relLocation = kbpExtraction.rel.tokenInterval
+        
+        for(t <- types){
+          if(t.interval().intersects(relLocation)){
+            return true
+          }
+        }
+        return false
+      }
     }
     
     else{
@@ -51,46 +70,53 @@ object FilterSolrResults {
     }
   }
   
-  private def satisfiesEntityFilter(relationData: KbpSlotToOpenIEData, kbpExtraction: KbpExtraction, queryEntity: String ): Boolean ={
+  private def satisfiesEntityFilter(relationData: KbpSlotToOpenIEData, candidateExtraction: CandidateExtraction, queryEntity: String ): Boolean ={
     
-    if(relationData.isValid){
-      
-        val entityIn = relationData.entityIn.get.trim()
-        val entityFromExtraction = entityIn.toLowerCase() match{
-          case "arg1" => kbpExtraction.arg1.originalText
-          case "arg2" => kbpExtraction.arg2.originalText
-          case _ => throw new Exception("Poorly formatted entityIn field, should be arg1 or arg2")
-        }
-
-	    
-	    val entityFromExtractionSplit = entityFromExtraction.toString().split(" ")
-	    
-	    val queryEntityReversedSplit = queryEntity.trim().split(" ").reverse
-	    
-	    var count = 0
-	    for(term <- queryEntityReversedSplit){
-	      val extractionWord = entityFromExtractionSplit(entityFromExtractionSplit.length-1-count)
-	      if(term.toLowerCase() != extractionWord.toLowerCase()){
-	          //(term.toLowerCase() != extractionWord.substring(1,extractionWord.length-1).toLowerCase())){
-	         return false
-	      }
+    val kbpExtraction = candidateExtraction.kbpExtraction
+    val candidateType = candidateExtraction.candidateType
+    if(candidateType == CandidateType.REGULAR){
+	    if(relationData.isValid){
 	      
-	      count = count + 1
+	        val entityIn = relationData.entityIn.get.trim()
+	        val entityFromExtraction = entityIn.toLowerCase() match{
+	          case "arg1" => kbpExtraction.arg1.originalText
+	          case "arg2" => kbpExtraction.arg2.originalText
+	          case _ => throw new Exception("Poorly formatted entityIn field, should be arg1 or arg2")
+	        }
+	
+		    
+		    val entityFromExtractionSplit = entityFromExtraction.toString().split(" ")
+		    
+		    val queryEntityReversedSplit = queryEntity.trim().split(" ").reverse
+		    
+		    var count = 0
+		    for(term <- queryEntityReversedSplit){
+		      val extractionWord = entityFromExtractionSplit(entityFromExtractionSplit.length-1-count)
+		      if(term.toLowerCase() != extractionWord.toLowerCase()){
+		          //(term.toLowerCase() != extractionWord.substring(1,extractionWord.length-1).toLowerCase())){
+		         return false
+		      }
+		      
+		      count = count + 1
+		    }
+		    
+		    true
 	    }
+	    else{
 	    
-	    true
+	      throw new Exception("KbpSlotToOpenIEData instance is not valid.")
+	      false
+	    }
     }
     else{
-    
-      throw new Exception("KbpSlotToOpenIEData instance is not valid.")
-      false
+      true
     }
   }
   
-  private def satisfiesSemanticFilter(relationData: KbpSlotToOpenIEData, kbpExtraction: KbpExtraction) : Boolean = {
+  private def satisfiesSemanticFilter(relationData: KbpSlotToOpenIEData, candidateExtraction: CandidateExtraction) : Boolean = {
     
     val slotType = relationData.slotType.getOrElse({""})
-    
+    val kbpExtraction = candidateExtraction.kbpExtraction
     val slotLocation = relationData.slotFillIn match {
       case Some("arg1") => kbpExtraction.arg1.tokenInterval
       case Some("arg2") => kbpExtraction.arg2.tokenInterval
@@ -215,10 +241,10 @@ object FilterSolrResults {
       
       
       
-      if( satisfiesArg2PrepositionFilter(relationData,candidateExtraction.kbpExtraction) &&
-          satisfiesEntityFilter(relationData,candidateExtraction.kbpExtraction,queryEntity) &&
-          satisfiesRelFilter(relationData,candidateExtraction.kbpExtraction) &&
-          satisfiesSemanticFilter(relationData,candidateExtraction.kbpExtraction)){
+      if( satisfiesArg2PrepositionFilter(relationData,candidateExtraction) &&
+          satisfiesEntityFilter(relationData,candidateExtraction,queryEntity) &&
+          satisfiesRelFilter(relationData,candidateExtraction) &&
+          satisfiesSemanticFilter(relationData,candidateExtraction)){
         
           filteredResultsList = filteredResultsList ::: List(candidateExtraction)
           

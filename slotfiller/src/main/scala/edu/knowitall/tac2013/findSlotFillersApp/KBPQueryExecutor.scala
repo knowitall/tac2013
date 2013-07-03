@@ -20,7 +20,7 @@ object KBPQueryExecutor {
         for(slot <- kbpQuery.slotsToFill){
           filteredOrgMap += (slot -> orgMap(slot))
         }
-        val results = executeEntityQueryForAllSlots(kbpQuery.name,filteredOrgMap)
+        val results = executeEntityQueryForAllSlots(kbpQuery.name,filteredOrgMap,kbpQuery.id)
         
         var slotCandidateSetMap = Map[String,SlotCandidateSet]()
 	    for( x <- results.keys){
@@ -39,7 +39,7 @@ object KBPQueryExecutor {
         for(slot <- kbpQuery.slotsToFill){
           filteredPerMap += (slot -> perMap(slot))
         }
-        val results = executeEntityQueryForAllSlots(kbpQuery.name,filteredPerMap)
+        val results = executeEntityQueryForAllSlots(kbpQuery.name,filteredPerMap,kbpQuery.id)
         
         var slotCandidateSetMap = Map[String,SlotCandidateSet]()
 	    for( x <- results.keys){

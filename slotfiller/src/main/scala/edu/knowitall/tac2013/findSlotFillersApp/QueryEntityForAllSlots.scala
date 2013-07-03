@@ -11,7 +11,7 @@ object QueryEntityForAllSlots {
   
   //takes entity string and map from KBP slot strings to Open IE relation strings and runs queries
   //to our solr instance for every type of OpenIERelation
-  def executeEntityQueryForAllSlots(queryEntity: String, KBPOpenIERelationMap: Map[String,List[KbpSlotToOpenIEData]]):
+  def executeEntityQueryForAllSlots(queryEntity: String, KBPOpenIERelationMap: Map[String,List[KbpSlotToOpenIEData]], nodeID: String = ""):
     Map[String,List[CandidateSet]] ={
     
     //var resultsList = List[(String,KbpSlotToOpenIEData,List[KbpExtraction])]()
@@ -29,29 +29,26 @@ object QueryEntityForAllSlots {
         //first check if the specifications in the KBPSlotToOpenIEData are valid
         if(relationData.isValid()){
 	        val qb = new QueryBuilder //solr query builder
-	        val entityIn = relationData.entityIn.getOrElse({""})
-	        if (entityIn.trim() == "arg1"){
-	           qb.setArg1String(queryEntity)
-	        }
-	        else if (entityIn.trim() == "arg2"){
-	           qb.setArg2String(queryEntity)   
-	        }
-	        else{
-	           throw new Exception("entityIn contains invalid string")
-	        }
-	        qb.setRelString(relationData.openIERelationString.getOrElse({""}))
-	        val beginningOfArg2 = relationData.arg2Begins.getOrElse({""})
-	        if (beginningOfArg2 != ""){
-	          qb.setBeginningOfArg2String(relationData.arg2Begins.get)
-	        }
+	        qb.buildQuery(relationData,queryEntity)
 	        val queryString = qb.getQueryString
+	        
 	        println(queryString)
 	        
 	        //issue query (don't cut off results yet)
 	        val listOfResults = issueSolrQuery(queryString,CandidateType.REGULAR,relationData)
+	        var combinedListOfResults : Option[List[CandidateExtraction]] = None
+	        
+	        //issue an entity link query too if it was given
+	        if(nodeID != ""){
+		        val qbLink = new QueryBuilder
+		        qbLink.buildLinkedQuery(relationData,nodeID)
+		        val linkQueryString = qbLink.getQueryString
+		        println(linkQueryString)
+		        combinedListOfResults = Some(listOfResults ::: issueSolrQuery(linkQueryString,CandidateType.LINKED,relationData))
+	        }
 	        
 	        //filter
-	        val listOfFilteredResults = filterResults(listOfResults,relationData,queryEntity)
+	        val listOfFilteredResults = filterResults(combinedListOfResults.getOrElse(listOfResults),relationData,queryEntity)
 	        
 	        
 	        //construct tuple entry to go into results Array
@@ -72,7 +69,7 @@ object QueryEntityForAllSlots {
   
   //takes entity string and map from KBP slot strings to Open IE relation strings and runs queries
   //to our solr instance for every type of OpenIERelation, this method uses no filters, this is for debugging purposes
-  def executeEntityQueryForAllSlotsWithoutFilter(queryEntity: String, KBPOpenIERelationMap: Map[String,List[KbpSlotToOpenIEData]]):
+  def executeEntityQueryForAllSlotsWithoutFilter(queryEntity: String, KBPOpenIERelationMap: Map[String,List[KbpSlotToOpenIEData]], nodeID: String = ""):
     Map[String,List[CandidateSet]] ={
     
     //var resultsList = List[(String,KbpSlotToOpenIEData,List[KbpExtraction])]()
@@ -90,28 +87,30 @@ object QueryEntityForAllSlots {
         //first check if the specifications in the KBPSlotToOpenIEData are valid
         if(relationData.isValid()){
 	        val qb = new QueryBuilder //solr query builder
-	        val entityIn = relationData.entityIn.getOrElse({""})
-	        if (entityIn.trim() == "arg1"){
-	           qb.setArg1String(queryEntity)
-	        }
-	        else if (entityIn.trim() == "arg2"){
-	           qb.setArg2String(queryEntity)   
-	        }
-	        else{
-	           throw new Exception("entityIn contains invalid string")
-	        }
-	        qb.setRelString(relationData.openIERelationString.getOrElse({""}))
-	        val beginningOfArg2 = relationData.arg2Begins.getOrElse({""})
-	        if (beginningOfArg2 != ""){
-	          qb.setBeginningOfArg2String(relationData.arg2Begins.get)
-	        }
+	        qb.buildQuery(relationData,queryEntity)
 	        val queryString = qb.getQueryString
+	        
 	        println(queryString)
 	        
 	        //issue query (don't cut off results yet)
 	        val listOfResults = issueSolrQuery(queryString,CandidateType.REGULAR,relationData)
-
-	        val cs = new CandidateSet(relationData,listOfResults)
+	        var combinedListOfResults : Option[List[CandidateExtraction]] = None
+	        
+	        //issue an entity link query too if it was given
+	        if(nodeID != ""){
+		        val qbLink = new QueryBuilder
+		        qbLink.buildLinkedQuery(relationData,nodeID)
+		        val linkQueryString = qbLink.getQueryString
+		        println(linkQueryString)
+		        combinedListOfResults = Some(listOfResults ::: issueSolrQuery(linkQueryString,CandidateType.LINKED,relationData))
+	        }
+	        
+	        //filter
+	        //val listOfFilteredResults = filterResults(combinedListOfResults.getOrElse(listOfResults),relationData,queryEntity)
+	        
+	        
+	        //construct tuple entry to go into results Array
+	        val cs = new CandidateSet(relationData,combinedListOfResults.getOrElse(listOfResults))
 	        resultsList = resultsList ::: List(cs)
         }
       }

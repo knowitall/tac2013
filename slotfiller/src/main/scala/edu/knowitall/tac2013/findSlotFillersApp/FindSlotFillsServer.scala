@@ -54,7 +54,23 @@ object FindSlotFillsServer extends App {
        */
       def handlePost(field1: String, field2: String) = {
         
-        val s = FindSlotFills.runForServerOutput(field1,field2)
+        val field1Split = field1.split(" ")
+        var entityString = field1
+        var nodeId = ""
+        if(field1Split.length > 1){
+          var  isNodeId = false
+          for( c <- field1Split(field1Split.length-1)){
+            if(c.isValidInt){
+              isNodeId = true
+            }
+          }
+          if(isNodeId){
+            nodeId = field1Split(field1Split.length-1)
+            entityString = field1.substring(0,field1.size - nodeId.size)
+          }
+        }
+        val s = FindSlotFills.runForServerOutput(entityString,field2,nodeId)
+        
         ResponseString(field1 + s) ~> Ok
       }
     }

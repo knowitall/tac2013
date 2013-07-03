@@ -65,7 +65,7 @@ object FindSlotFills {
      }
   }
   
-    def runForServerOutput(field1: String, field2:String): String = {
+    def runForServerOutput(field1: String, field2:String, nodeId:String =""): String = {
 
 
          
@@ -75,13 +75,14 @@ object FindSlotFills {
      
      if (semanticType == "organization"){
 	     val orgMap = getOrganizationMap()
-	     val mapOfResults = executeEntityQueryForAllSlots(entityName, orgMap.toMap)
-	     val unfilteredMapOfResults = executeEntityQueryForAllSlotsWithoutFilter(entityName, orgMap.toMap)
+	     val mapOfResults = executeEntityQueryForAllSlots(entityName, orgMap.toMap,nodeId)
+	     val unfilteredMapOfResults = executeEntityQueryForAllSlotsWithoutFilter(entityName, orgMap.toMap,nodeId)
 	     
 	     //build a map from slot names to SlotCandidateSet
 	     var filteredSlotCandidateSetMap = Map[String,SlotCandidateSet]()
 	     for( x <- mapOfResults.keys){
 	        filteredSlotCandidateSetMap += ( x -> new SlotCandidateSet(entityName,mapOfResults(x)))
+	        filteredSlotCandidateSetMap(x).setRankedAnswers(chooseBestTest(filteredSlotCandidateSetMap(x).candidateSets));
 	     }
 	     var unFilteredSlotCandidateSetMap = Map[String,SlotCandidateSet]()
 	     for( x <- unfilteredMapOfResults.keys){
@@ -101,8 +102,8 @@ object FindSlotFills {
      
      else if (semanticType == "person"){
 	     val perMap = getPersonMap()
-	     val mapOfResults = executeEntityQueryForAllSlots(entityName, perMap.toMap)
-	     val unfilteredMapOfResults = executeEntityQueryForAllSlotsWithoutFilter(entityName, perMap.toMap)
+	     val mapOfResults = executeEntityQueryForAllSlots(entityName, perMap.toMap,nodeId)
+	     val unfilteredMapOfResults = executeEntityQueryForAllSlotsWithoutFilter(entityName, perMap.toMap,nodeId)
 	     
 	     
 	     //build a map from slot names to SlotCandidateSet
