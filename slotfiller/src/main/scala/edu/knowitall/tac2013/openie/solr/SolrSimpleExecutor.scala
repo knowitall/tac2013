@@ -3,12 +3,31 @@ package edu.knowitall.tac2013.openie.solr
 import scopt.OptionParser
 import jp.sf.amateras.solr.scala.SolrClient
 import edu.knowitall.tac2013.openie.KbpExtraction
+import jp.sf.amateras.solr.scala.Order
 
 /**
  * A simple class for querying solr and dumping results to stdout.
  */
+class SolrSimpleExecutor private (val client: SolrClient, val maxResults: Int) {
+  
+  def this(solrUrl: String, maxResults: Int) = this(new SolrClient(solrUrl), maxResults)
+  
+  def query(queryString: String): Response = {
+    
+    val query = client.query(queryString)
+    val result = query.sortBy("confidence", Order.desc).rows(maxResults).getResultAsMap()
+    val numResults = result.numFound
+    Response(numResults, result.documents.flatMap { fieldMap =>
+      KbpExtraction.fromFieldMap(fieldMap)
+    })
+  }
+}
+
+case class Response(numResults: Long, results: Seq[KbpExtraction])
+
 object SolrSimpleExecutor {
 
+  
   def main(args: Array[String]): Unit = {
     
     var solrUrl = ""

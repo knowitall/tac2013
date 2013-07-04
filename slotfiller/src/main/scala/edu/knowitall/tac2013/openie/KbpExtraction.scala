@@ -24,12 +24,15 @@ object WikiLink {
   }
 }
 
-abstract class KbpRelation {
+abstract class KbpExtractionField {
   def tokenInterval: Interval
   def originalText: String
   def tokens: Seq[ChunkedToken]
   def types: Seq[String]
 }
+
+abstract class KbpRelation extends KbpExtractionField
+
 object KbpRelation {
   
   val NUM_FIELDS = 3
@@ -83,12 +86,9 @@ object KbpRelation {
   }
 }
 
-abstract class KbpArgument {
-  def tokenInterval: Interval
-  def originalText: String
-  def tokens: Seq[ChunkedToken]
+abstract class KbpArgument extends KbpExtractionField {
+  
   def wikiLink: Option[WikiLink]
-  def types: Seq[String] // Seq[Type]?
 
   def withLink(wlink: WikiLink): KbpArgument = {
     val unlinked = this

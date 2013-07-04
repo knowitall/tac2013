@@ -9,7 +9,7 @@ import scala.xml.XML
 
 class KBPQuery (val id: String, val name: String, val doc: String,
     val begOffset: Int, val endOffset: Int, val entityType: KBPQueryEntityType,
-    val nodeId: String, val slotsToFill: Set[String]){
+    val nodeId: Option[String], val slotsToFill: Set[String]){
 
 }
 
@@ -17,6 +17,11 @@ object KBPQuery {
 
   import KBPQueryEntityType._
 
+  // fabricate a KBPQuery for just an entity name (for testing)
+  def forEntityName(name: String, entityType: KBPQueryEntityType, nodeId: Option[String] = None): KBPQuery = {
+    new KBPQuery("TEST", name, "NULL", -1, -1, entityType, nodeId, SlotTypes.getSlotTypesList(entityType).toSet)
+  }
+  
   //parses a single query from an XML file, will not work if there are more than one query in the XML file
   def parseKBPQuery(pathToFile: String): KBPQuery = {
     
@@ -47,7 +52,8 @@ object KBPQuery {
       case "PER" => PER
       case _ => throw new IllegalArgumentException("improper 'enttype' value in xml doc")
     }
-    val nodeIDText = queryXML.\\("nodeid").text
+    val nodeIDText = queryXML.\\("nodeid").text.trim()
+    val nodeId = if (nodeIDText.isEmpty()) None else Some(nodeIDText)
     val ignoreText = queryXML.\\("ignore").text
     val ignoreSlots = ignoreText.split(" ").toSet[String]
     
@@ -65,7 +71,7 @@ object KBPQuery {
     
     
 
-    new KBPQuery(idText,nameText,docIDText,begInt,endInt,entityType,nodeIDText,slotsToFill)
+    new KBPQuery(idText,nameText,docIDText,begInt,endInt,entityType,nodeId,slotsToFill)
   }
   
   private def parseSingleKBPQueryFromXML(queryXML: scala.xml.Node): KBPQuery = {
@@ -89,7 +95,8 @@ object KBPQuery {
       case "PER" => PER
       case _ => throw new IllegalArgumentException("improper 'enttype' value in xml doc")
     }
-    val nodeIDText = queryXML.\\("nodeid").text
+    val nodeIDText = queryXML.\\("nodeid").text.trim()
+    val nodeId = if (nodeIDText.isEmpty) None else Some(nodeIDText)
     val ignoreText = queryXML.\\("ignore").text
     val ignoreSlots = ignoreText.split(" ").toSet[String]
     
@@ -104,7 +111,7 @@ object KBPQuery {
         SlotTypes.getPersonSlotTypesSet &~ ignoreSlots
       }
     }
-    new KBPQuery(idText,nameText,docIDText,begInt,endInt,entityType,nodeIDText,slotsToFill)
+    new KBPQuery(idText,nameText,docIDText,begInt,endInt,entityType,nodeId,slotsToFill)
   }
   
 

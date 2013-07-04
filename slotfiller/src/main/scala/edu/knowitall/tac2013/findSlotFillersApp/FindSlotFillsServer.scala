@@ -49,28 +49,29 @@ object FindSlotFillsServer extends App {
             </body></html>""") ~> Ok
       }
 
-      /***
+      /**
+       * *
        * Handles the POST input to the server
        */
       def handlePost(field1: String, field2: String) = {
-        
+
         val field1Split = field1.split(" ")
         var entityString = field1
         var nodeId = ""
-        if(field1Split.length > 1){
-          var  isNodeId = false
-          for( c <- field1Split(field1Split.length-1)){
-            if(c.isValidInt){
+        if (field1Split.length > 1) {
+          var isNodeId = false
+          for (c <- field1Split(field1Split.length - 1)) {
+            if (c.isValidInt) {
               isNodeId = true
             }
           }
-          if(isNodeId){
-            nodeId = field1Split(field1Split.length-1)
-            entityString = field1.substring(0,field1.size - nodeId.size)
+          if (isNodeId) {
+            nodeId = field1Split(field1Split.length - 1)
+            entityString = field1.substring(0, field1.size - nodeId.size)
           }
         }
-        val s = FindSlotFills.runForServerOutput(entityString,field2,nodeId)
-        
+        val s = FindSlotFills.runForServerOutput(entityString, field2, if (nodeId.nonEmpty) Some(nodeId) else None)
+
         ResponseString(field1 + s) ~> Ok
       }
     }

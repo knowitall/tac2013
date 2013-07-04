@@ -5,12 +5,12 @@ import edu.knowitall.tac2013.openie.KbpExtraction
 object SlotFillReranker {
   
   
-  def chooseBest(possibleAnswers: List[(KbpSlotToOpenIEData,List[KbpExtraction])]): Option[(KbpSlotToOpenIEData,KbpExtraction)] = {
+  def chooseBest(possibleAnswers: List[(SlotPattern,List[KbpExtraction])]): Option[(SlotPattern,KbpExtraction)] = {
      var maxConfidence = -1.0
      
      if(possibleAnswers.length > 0){
        
-         var bestChoice = Option.empty[(KbpSlotToOpenIEData,KbpExtraction)]
+         var bestChoice = Option.empty[(SlotPattern,KbpExtraction)]
          
 		 for(ansSet <- possibleAnswers){
 		   
