@@ -2,61 +2,39 @@ package edu.knowitall.tac2013.findSlotFillersApp
 
 import edu.knowitall.tac2013.openie.KbpExtraction
 
+/**
+ * Finds fills given candidates for a particular slot.
+ */
 object SlotFillReranker {
-  
-  
-  def chooseBest(possibleAnswers: List[(SlotPattern,List[KbpExtraction])]): Option[(SlotPattern,KbpExtraction)] = {
-     var maxConfidence = -1.0
-     
-     if(possibleAnswers.length > 0){
-       
-         var bestChoice = Option.empty[(SlotPattern,KbpExtraction)]
-         
-		 for(ansSet <- possibleAnswers){
-		   
-		   for(ans <- ansSet._2){
-			   if(ans.confidence > maxConfidence){
-			     maxConfidence = ans.confidence
-			     bestChoice = Some((ansSet._1,ans))
-			   }
-		   }
-		 }
-		 
-		 if(maxConfidence == -1.0){
-		   None
-		 }
-		 else{
-		   bestChoice
-		 }
-     }
-     else{
-       
-       None
-     }
-  
+
+  /*
+   * Requires that all candidates (if any) are for the same slot.
+   */
+  def findAnswers(kbpQuery: KBPQuery, slotCandidates: Seq[Candidate]): Seq[Candidate] = {
     
-  }
-  
-  def chooseBestTest(candidateSets: List[CandidateSet]) : List[CandidateExtraction] = {
-    var maxConfidence = -1.0
-    var bestChoice = Option.empty[CandidateExtraction]
-    for (candidateSet <- candidateSets){
+    if (slotCandidates.isEmpty) List.empty
+    
+    else {
       
-      for (extr <- candidateSet.candidateExtractions){
-        if(extr.kbpExtraction.confidence > maxConfidence){
-          maxConfidence = extr.kbpExtraction.confidence
-          bestChoice = Some(extr)
+      val slot = slotCandidates.head.pattern.slotName
+      val maxAnswers = slotCandidates.head.pattern.maxValues
+      
+      require(maxAnswers.isDefined)
+      require(slotCandidates.forall(_.pattern.slotName.equals(slot)))
+      require(slotCandidates.forall(_.pattern.maxValues == maxAnswers))
+      
+      // group results by their tuple key
+      val groups = slotCandidates.groupBy(_.extractionKey)
+      
+      // rank best result from each group according to a confidence measure
+      // in descending order
+      val bestResults = groups.values.flatMap({ extractions =>
+        extractions.headOption map { headExtr =>
+          (headExtr, headExtr.extr.confidence + (extractions.size  * 0.1))
         }
-        
-      }
- 
-    }
-    
-    if(maxConfidence == -1.0){
-      List.empty[CandidateExtraction]
-    }
-    else{
-      List(bestChoice.get)
+      }).toSeq.sortBy(-_._2)
+      
+      bestResults.map(_._1).take(maxAnswers.get)
     }
   }
 }

@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.nio.file.Path;
 import org.apache.solr.common.SolrInputDocument
 import scala.collection.JavaConverters._
+import edu.knowitall.tac2013.solr.KbpExtractionConverter
 
 class KbpExtractionSpec extends FlatSpec {
   
@@ -46,9 +47,9 @@ class KbpExtractionSpec extends FlatSpec {
     
     
     extrs map { extr =>
-      val solrDoc = solr.KbpExtractionConverter.toSolrInputDocument(extr)
+      val solrDoc = KbpExtractionConverter.toSolrInputDocument(extr)
       val fieldMap = solrDocToMap(solrDoc)
-      val reExtr = solr.KbpExtractionConverter.fromFieldMap(fieldMap).getOrElse {
+      val reExtr = KbpExtractionConverter.fromFieldMap(fieldMap).getOrElse {
         val fieldMapStr = fieldMap.iterator.map { case (key, value) => s"$key -> ${value.toString}\n"}
         fail("Could not deserialize extr from fieldMap:\n%s")
       }

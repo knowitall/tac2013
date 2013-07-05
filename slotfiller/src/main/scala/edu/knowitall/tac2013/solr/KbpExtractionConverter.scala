@@ -1,4 +1,4 @@
-package edu.knowitall.tac2013.openie.solr
+package edu.knowitall.tac2013.solr
 
 import org.apache.solr.common.SolrInputDocument
 import edu.knowitall.tac2013.openie._

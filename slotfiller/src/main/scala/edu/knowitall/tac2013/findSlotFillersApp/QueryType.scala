@@ -1,7 +1,7 @@
 package edu.knowitall.tac2013.findSlotFillersApp
 
 
-object CandidateType extends Enumeration{
-  type CandidateType = Value
+object QueryType extends Enumeration {
+  type QueryType = Value
   val REGULAR, LINKED, COREF, INFERRED = Value
 }

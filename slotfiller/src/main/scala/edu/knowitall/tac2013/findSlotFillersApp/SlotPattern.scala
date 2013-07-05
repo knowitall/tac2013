@@ -5,7 +5,7 @@ import io.Source
 import KBPQueryEntityType._
 
 // many of these variables can be empty like ""
-class SlotPattern private (
+case class SlotPattern private (
   val slotName: String,
   val maxValues: Option[Int],
   val openIERelationString: Option[String],
@@ -16,16 +16,17 @@ class SlotPattern private (
 
   import SlotPattern.requireTrimmed
 
-  requireTrimmed(kbpSlotName)
+  requireTrimmed(slotName)
   openIERelationString foreach requireTrimmed
   arg2Begins foreach requireTrimmed
   entityIn foreach requireTrimmed
   slotFillIn foreach requireTrimmed
   slotType foreach requireTrimmed
+  
+  require(slotName.startsWith("per:") || slotName.startsWith("org:"))
 
-  @deprecated
-  def kbpSlotName = slotName
-
+  val entityType: KBPQueryEntityType = if (slotName.startsWith("per:")) PER else ORG
+  
   def isValid(): Boolean = {
     if (openIERelationString.nonEmpty && maxValues.nonEmpty &&
       entityIn.nonEmpty && slotFillIn.nonEmpty) {
@@ -34,6 +35,11 @@ class SlotPattern private (
       false
     }
   }
+  
+  def debugString = "RelationTerms: " + openIERelationString.getOrElse({ "" }) +
+        "\t Arg2Begins: " + arg2Begins.getOrElse({ "" }) + "\t Entity In: " +
+        entityIn.getOrElse({ "" }) + "\t SlotFill In: " + slotFillIn.getOrElse({ "" }) +
+        "\t Slot type: " + slotType.getOrElse({ "" }) + "\n"
 }
 
 object SlotPattern {

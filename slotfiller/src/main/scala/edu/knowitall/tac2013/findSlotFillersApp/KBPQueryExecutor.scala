@@ -1,57 +1,24 @@
 package edu.knowitall.tac2013.findSlotFillersApp
 
-import QueryEntityForAllSlots.executeQueryForAllSlots
 import KbpQueryOutput.printFormattedOutputForKBPQuery
 import java.io._
-import SlotFillReranker.chooseBestTest
+import edu.knowitall.tac2013.solr.query.SolrQueryExecutor
 
 object KBPQueryExecutor {
 
   def executeKbpQuery(kbpQuery: KBPQuery, outputPath: String) {
-    kbpQuery.entityType match {
-      case KBPQueryEntityType.ORG => {
+    
+    val qExec = SolrQueryExecutor.defaultInstance
 
-        val filteredOrgMap = {
-          val orgMap = SlotPattern.organizationPatterns
-          orgMap.filter {
-            case (slotname, patterns) =>
-              kbpQuery.slotsToFill.contains(slotname)
-          }
-        }
+    val slots = SlotPattern.patternsForQuery(kbpQuery).keySet
 
-        val results = executeQueryForAllSlots(kbpQuery, filteredOrgMap, kbpQuery.nodeId)
+    val filteredCandidates = slots map { slot => (slot, qExec.executeQuery(kbpQuery, slot)) } toMap
 
-        var slotCandidateSetMap = Map[String, SlotCandidateSet]()
-        for (x <- results.keys) {
-          slotCandidateSetMap += (x -> new SlotCandidateSet(kbpQuery.name, results(x)));
-          slotCandidateSetMap(x).setRankedAnswers(chooseBestTest(slotCandidateSetMap(x).candidateSets));
-        }
-
-        printFormattedOutputForKBPQuery(slotCandidateSetMap, outputPath, kbpQuery)
-      }
-
-      case KBPQueryEntityType.PER => {
-
-        val filteredPerMap = {
-          val perMap = SlotPattern.personPatterns
-          perMap.filter {
-            case (slotname, patterns) =>
-              kbpQuery.slotsToFill.contains(slotname)
-          }
-        }
-
-        val results = executeQueryForAllSlots(kbpQuery, filteredPerMap, kbpQuery.nodeId)
-
-        var slotCandidateSetMap = Map[String, SlotCandidateSet]()
-        for (x <- results.keys) {
-          slotCandidateSetMap += (x -> new SlotCandidateSet(kbpQuery.name, results(x)));
-          slotCandidateSetMap(x).setRankedAnswers(chooseBestTest(slotCandidateSetMap(x).candidateSets));
-        }
-
-        printFormattedOutputForKBPQuery(slotCandidateSetMap, outputPath, kbpQuery)
-      }
-      case _ => throw new Exception("Entity Type must be person or organization")
-    }
+    val bestAnswers = filteredCandidates map { case (slot, slotCandidates) => 
+      (slot, SlotFillReranker.findAnswers(kbpQuery, slotCandidates)) 
+    } toMap
+    
+    printFormattedOutputForKBPQuery(filteredCandidates, bestAnswers, outputPath, kbpQuery)
   }
 
   def executeKbpQueries(kbpQueryList: List[KBPQuery], outputPath: String) {
@@ -78,5 +45,4 @@ object KBPQueryExecutor {
     val kbpQueryList = KBPQuery.parseKBPQueries(KBPQueryPath)
     executeKbpQueries(kbpQueryList, outputPath)
   }
-
 }

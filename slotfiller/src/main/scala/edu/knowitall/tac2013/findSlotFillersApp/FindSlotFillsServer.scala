@@ -14,6 +14,8 @@ import unfiltered.response.Ok
 import unfiltered.response.ResponseString
 import org.slf4j.LoggerFactory
 import unfiltered.filter.Planify
+import unfiltered.response.ResponseStreamer
+import unfiltered.response.ResponseWriter
 
 object FindSlotFillsServer extends App {
   val logger = LoggerFactory.getLogger(this.getClass)
@@ -70,9 +72,10 @@ object FindSlotFillsServer extends App {
             entityString = field1.substring(0, field1.size - nodeId.size)
           }
         }
-        val s = FindSlotFills.runForServerOutput(entityString, field2, if (nodeId.nonEmpty) Some(nodeId) else None)
-
-        ResponseString(field1 + s) ~> Ok
+        val slotOutputs = FindSlotFills.runForServerOutput(entityString, field2, if (nodeId.nonEmpty) Some(nodeId) else None)
+        val allOutput = slotOutputs.mkString
+        
+        ResponseString(field1 + allOutput) ~> Ok
       }
     }
 

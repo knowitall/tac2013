@@ -1,9 +1,10 @@
-package edu.knowitall.tac2013.openie.solr
+package edu.knowitall.tac2013.solr.populate
 
 import scopt.OptionParser
 import jp.sf.amateras.solr.scala.SolrClient
 import edu.knowitall.tac2013.openie.KbpExtraction
 import jp.sf.amateras.solr.scala.Order
+import scala.Option.option2Iterable
 
 /**
  * A simple class for querying solr and dumping results to stdout.
