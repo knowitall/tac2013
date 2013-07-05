@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taggers>
+    <CaseInsensitiveKeywordTagger descriptor="Crime">
+        <keywords>
+			<keyword>Careless driving</keyword>
+			<keyword>Cutting Through Private Property</keyword>
+			<keyword>Defective Head / Brake Light</keyword>
+			<keyword>Disregard warning signs or barricades</keyword>
+			<keyword>Disregarded no passing zone</keyword>
+			<keyword>Disregarded turn marks at intersection</keyword>
+			<keyword>Double Parking</keyword>
+			<keyword>Driving a non registered vehicle.</keyword>
+			<keyword>Driving a vehicle in the opposite (wrong) direction.</keyword>
+			<keyword>Driving on Closed Road</keyword>
+			<keyword>Driving on Sidewalk</keyword>
+			<keyword>Driving on Unpaved Property</keyword>
+			<keyword>Driving Through Funeral Procession</keyword>
+			<keyword>Driving with suspended license</keyword>
+			<keyword>Driving without a license</keyword>
+			<keyword>Driving without lights--when required</keyword>
+			<keyword>DUI</keyword>
+			<keyword>DWI</keyword>
+			<keyword>Excessive Vehicle Noise</keyword>
+			<keyword>Expired driver license</keyword>
+			<keyword>Fail to use due care for pedestrian</keyword>
+			<keyword>Failure to obey traffic direction of local authority.</keyword>
+			<keyword>Failure to Stop</keyword>
+			<keyword>Failure to Yield</keyword>
+			<keyword>Failure to Yield to Emergency Vehicle</keyword>
+			<keyword>Following too Close</keyword>
+			<keyword>Illegal racing</keyword>
+			<keyword>Impeding Traffic</keyword>
+			<keyword>Improper Backing</keyword>
+			<keyword>Improper Lane Use</keyword>
+			<keyword>Improper Passing</keyword>
+			<keyword>Improper Turn</keyword>
+			<keyword>Improper turn at traffic light</keyword>
+			<keyword>Improper U-Turn</keyword>
+			<keyword>Insufficient Speed</keyword>
+			<keyword>Leaving Scene of Accident</keyword>
+			<keyword>Hit and Run</keyword>
+			<keyword>Moving against traffic</keyword>
+			<keyword>No Helmet (Motorcycles)</keyword>
+			<keyword>Obstructing Traffic</keyword>
+			<keyword>Obstruction of Roadway</keyword>
+			<keyword>Operating after revocation of license</keyword>
+			<keyword>Parked blocking a driveway</keyword>
+			<keyword>Parked facing against direction of traffic</keyword>
+			<keyword>Parked in a bus stop</keyword>
+			<keyword>Parked on the sidewalk</keyword>
+			<keyword>Parked too close to the corner</keyword>
+			<keyword>Parking in a No Parking Zone</keyword>
+			<keyword>Parking in Front of a Hydrant</keyword>
+			<keyword>Ran stop sign</keyword>
+			<keyword>Reckless driving</keyword>
+			<keyword>Refusing to Stop for Officer</keyword>
+			<keyword>Running red light.</keyword>
+			<keyword>Speeding</keyword>
+			<keyword>Tailgating</keyword>
+			<keyword>Turned left from wrong lane</keyword>
+			<keyword>Turned right from wrong lane</keyword>
+			<keyword>Unsafe lane change</keyword>
+			<keyword>Unsafe start from parked, stopped or standing position</keyword>
+			<keyword>Use wireless device while driving</keyword>
+			<keyword>Driving under influence of drugs</keyword>
+			<keyword>Drug Cultivation</keyword>
+			<keyword>Drug Distribution / Trafficking</keyword>
+			<keyword>Drug possession with intent to deliver</keyword>
+			<keyword>Illegal sale of a controlled substance</keyword>
+			<keyword>Narcotic Drug Use</keyword>
+			<keyword>Narcotic Manufacturing</keyword>
+			<keyword>Possession of Drug Paraphernalia</keyword>
+			<keyword>Possession of narcotic with intent to distribute</keyword>
+			<keyword>Possession of narcotics</keyword>
+			<keyword>Possession with Intent to Sell</keyword>
+			<keyword>Using a weapon during a drug trafficking offense</keyword>
+			<keyword>Using the telephone to facilitate a drug sale</keyword>
+			<keyword>Aggravated assault with motor vehicle</keyword>
+			<keyword>Aggravated Assault, Battery</keyword>
+			<keyword>Assault causing bodily harm</keyword>
+			<keyword>Assault on a police officer</keyword>
+			<keyword>Assault with a Deadly Weapon</keyword>
+			<keyword>Assault with a weapon</keyword>
+			<keyword>Assault with Intent to Commit a Felony</keyword>
+			<keyword>Assault with intent to resist arrest</keyword>
+			<keyword>Assault with intent to rob</keyword>
+			<keyword>Domestic Assault</keyword>
+			<keyword>Simple assault</keyword>
+			<keyword>Vehicular Assault</keyword>
+			<keyword>Armed Robbery</keyword>
+			<keyword>Auto Theft/GTA</keyword>
+			<keyword>Burglary</keyword>
+			<keyword>Embezzlement</keyword>
+			<keyword>Identity Theft</keyword>
+			<keyword>Insurance Fraud</keyword>
+			<keyword>Looting</keyword>
+			<keyword>Piracy</keyword>
+			<keyword>Receiving stolen property</keyword>
+			<keyword>Robbery</keyword>
+			<keyword>Strong Armed Robbery</keyword>
+			<keyword>Tax Evasion / Fraud</keyword>
+			<keyword>Telemarketing Fraud</keyword>
+			<keyword>Theft / Larceny</keyword>
+			<keyword>Wire Fraud</keyword>
+			<keyword>Adultery</keyword>
+			<keyword>Aggravated indecent assault</keyword>
+			<keyword>Attempted Rape</keyword>
+			<keyword>Child molestation</keyword>
+			<keyword>Child Pornography</keyword>
+			<keyword>Disseminating photos or films of children engaged in sex acts</keyword>
+			<keyword>Gross indecency</keyword>
+			<keyword>Indecent assault</keyword>
+			<keyword>Indecent Exposure</keyword>
+			<keyword>Prostitution</keyword>
+			<keyword>Rape</keyword>
+			<keyword>Sexual Assault</keyword>
+			<keyword>Carrying a Concealed Weapon</keyword>
+			<keyword>Displaying a Firearm</keyword>
+			<keyword>Firearms trafficking</keyword>
+			<keyword>Possessing a Stolen Firearm</keyword>
+			<keyword>Possessing a weapon for unlawful purposes</keyword>
+			<keyword>Possession during commission of a crime</keyword>
+			<keyword>Possession of a weapon</keyword>
+			<keyword>Possession of Firearm by Felon</keyword>
+			<keyword>Possession of Illegal Firearm</keyword>
+			<keyword>Reckless Use of Weapon</keyword>
+			<keyword>Unlawful concealment</keyword>
+			<keyword>Unlawful Discharge of a Firearm</keyword>
+			<keyword>Unlawful import and export of weapons</keyword>
+			<keyword>Unlawful sale of a weapon</keyword>
+			<keyword>Using a Weapon in a Threatening Manner</keyword>
+			<keyword>Abandonment an Animal</keyword>
+			<keyword>Abduction</keyword>
+			<keyword>Aiding</keyword>
+			<keyword>Abetting</keyword>
+			<keyword>Arson</keyword>
+			<keyword>Assault</keyword>
+			<keyword>Battery</keyword>
+			<keyword>Attempted Murder</keyword>
+			<keyword>Bribery</keyword>
+			<keyword>Child Abuse</keyword>
+			<keyword>Child Endangerment</keyword>
+			<keyword>Child Neglect</keyword>
+			<keyword>Conspiracy</keyword>
+			<keyword>Contributing to Delinquency of Minor</keyword>
+			<keyword>Credit Card Fraud</keyword>
+			<keyword>Criminal Mischief</keyword>
+			<keyword>Criminal trespassing</keyword>
+			<keyword>Destruction of Government Property</keyword>
+			<keyword>Destruction of Private Property</keyword>
+			<keyword>Destruction of Public Property</keyword>
+			<keyword>Disorderly Conduct</keyword>
+			<keyword>Disturbing Peace</keyword>
+			<keyword>Fail and Refuse to Furnish Proof of Age and ID</keyword>
+			<keyword>Failure to obey lawful order</keyword>
+			<keyword>Fireworks Discharge</keyword>
+			<keyword>Fleeing and Evading</keyword>
+			<keyword>Forgery</keyword>
+			<keyword>Gambling</keyword>
+			<keyword>Harassment</keyword>
+			<keyword>Homicide</keyword>
+			<keyword>Intercepting electronic and oral communications</keyword>
+			<keyword>Intimidation of Witness</keyword>
+			<keyword>Involuntary Manslaughter</keyword>
+			<keyword>Kidnapping</keyword>
+			<keyword>Manslaughter</keyword>
+			<keyword>Money Laundering</keyword>
+			<keyword>Perjury</keyword>
+			<keyword>Public Drunkenness</keyword>
+			<keyword>Public Endangerment</keyword>
+			<keyword>Racketeering</keyword>
+			<keyword>Reckless endangerment</keyword>
+			<keyword>Resisting Arrest</keyword>
+			<keyword>Resist or Obstruct an Officer</keyword>
+			<keyword>Risking or causing a catastrophe</keyword>
+			<keyword>Sale of Tobacco Product to Minor</keyword>
+			<keyword>Stalking</keyword>
+			<keyword>Terroristic threats</keyword>
+			<keyword>Threats</keyword>
+			<keyword>Underage drinking</keyword>
+			<keyword>Underage Possession of Alcohol</keyword>
+			<keyword>Unlawful Assembly</keyword>
+			<keyword>Unlawful restraint</keyword>
+			<keyword>Vehicular Homicide</keyword>
+			<keyword>Violation of Restraining Order</keyword>
+			<keyword>Wire Tapping</keyword>
+		</keywords>
+	</CaseInsensitiveKeywordTagger>
+</taggers>

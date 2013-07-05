@@ -60,10 +60,11 @@ object FindSlotFillsServer extends App {
         val field1Split = field1.split(" ")
         var entityString = field1
         var nodeId = ""
-        if (field1Split.length > 1) {
-          var isNodeId = false
-          for (c <- field1Split(field1Split.length - 1)) {
-            if (c.isValidInt) {
+
+        if(field1Split.length > 1){
+          var  isNodeId = false
+          for( c <- field1Split(field1Split.length-1)){
+            if(c.isDigit){
               isNodeId = true
             }
           }

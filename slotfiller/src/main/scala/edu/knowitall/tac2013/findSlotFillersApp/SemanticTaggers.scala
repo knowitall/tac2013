@@ -7,6 +7,7 @@ import edu.knowitall.tool.stem.MorphaStemmer
 import edu.knowitall.tool.stem.Lemmatized
 import edu.knowitall.tool.chunk.ChunkedToken
 import scala.io.Source
+import edu.knowitall.tac2013.openie.KbpExtraction
 
 object SemanticTaggers {
 
@@ -48,6 +49,20 @@ object SemanticTaggers {
 
   private val DateTagger = {
     val resourcePath = "/edu/knowitall/tac2013/findSlotFillersApp/DateTaggers"
+    val url = getClass.getResource(resourcePath)
+    require(url != null, "Could not find resource: " + resourcePath)
+    TaggerCollection.fromPath(url.getPath())
+  }
+  
+  private val CrimeTagger = {
+    val resourcePath = "/edu/knowitall/tac2013/findSlotFillersApp/CrimeTaggers"
+    val url = getClass.getResource(resourcePath)
+    require(url != null, "Could not find resource: " + resourcePath)
+    TaggerCollection.fromPath(url.getPath())
+  }
+  
+  private val IntegerTagger = {
+    val resourcePath = "/edu/knowitall/tac2013/findSlotFillersApp/IntegerTaggers"
     val url = getClass.getResource(resourcePath)
     require(url != null, "Could not find resource: " + resourcePath)
     TaggerCollection.fromPath(url.getPath())
@@ -119,5 +134,85 @@ object SemanticTaggers {
     val types = scala.collection.JavaConversions.asScalaIterable(DateTagger.tag(scala.collection.JavaConversions.asJavaList(tokens)))
     types.toList
   }
+  
+  def useCrimeTagger(chunkedSentence: Seq[ChunkedToken]): List[Type] = {
+
+    var tokens = List[Lemmatized[ChunkedToken]]()
+    for (token <- chunkedSentence) {
+      val lemma = morpha.lemmatizeToken(token);
+      tokens = tokens ::: List(lemma)
+    }
+    val types = scala.collection.JavaConversions.asScalaIterable(CrimeTagger.tag(scala.collection.JavaConversions.asJavaList(tokens)))
+    types.toList
+  }
+  
+  def useIntegerTagger(chunkedSentence: Seq[ChunkedToken]): List[Type] = {
+
+    var tokens = List[Lemmatized[ChunkedToken]]()
+    for (token <- chunkedSentence) {
+      val lemma = morpha.lemmatizeToken(token);
+      tokens = tokens ::: List(lemma)
+    }
+    val types = scala.collection.JavaConversions.asScalaIterable(IntegerTagger.tag(scala.collection.JavaConversions.asJavaList(tokens)))
+    types.toList
+  }
+  
+  def getTagTypes(extr: KbpExtraction, pattern: SlotPattern): List[Type] = {
+    
+    
+      val sent = extr.sentence.chunkedTokens
+      val slotType = pattern.slotType.getOrElse({ "" })
+      val slotLocation = pattern.slotFillIn match {
+      case Some("arg1") => extr.arg1.tokenInterval
+      case Some("arg2") => extr.arg2.tokenInterval
+      case Some("relation") => extr.rel.tokenInterval
+      case _ => throw new Exception("slot Location must be arg1, arg2, or relation")
+    }
+      
+      var typeList = List[Type]()
+      
+      if (slotType == "Organization" || slotType == "Person" || slotType == "Stateorprovince" ||
+      slotType == "City" || slotType == "Country") {
+        
+        val types = SemanticTaggers.useStandfordNERTagger(sent)
+        typeList = typeList ::: types
+
+    } else if (slotType == "School") {
+
+      val types = SemanticTaggers.useEducationalOrganizationTagger(sent)
+      typeList = typeList ::: types
+
+      
+    } else if (slotType == "JobTitle") {
+
+      val types = SemanticTaggers.useJobTitleTagger(sent)
+      typeList = typeList ::: types
+
+    } else if (slotType == "Nationality") {
+
+      val types = SemanticTaggers.useNationalityTagger(sent)
+      typeList = typeList ::: types
+
+    } else if (slotType == "Religion") {
+
+      val types = SemanticTaggers.useReligionTagger(sent)
+      typeList = typeList ::: types
+
+    } else if (slotType == "Date") {
+      val types = SemanticTaggers.useDateTagger(sent)
+      typeList = typeList ::: types
+
+    } else if (slotType == "ProperNoun"){
+      //need to figure out what to do for general ProperNoun semantic filter
+
+    }  else if ((slotType =="<integer>-year-old") || (slotType == "Integer")){
+      val types = SemanticTaggers.useIntegerTagger(sent)
+      typeList = typeList ::: types
+      
+    }
+      
+    typeList
+  }
+
 
 }

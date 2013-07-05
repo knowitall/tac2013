@@ -103,7 +103,7 @@ object FilterSolrResults {
   private def satisfiesSemanticFilter(candidate: Candidate): Boolean = {
 
     val pattern = candidate.pattern
-    
+    val types = candidate.types
     val slotType = pattern.slotType.getOrElse({ "" })
     val slotLocation = pattern.slotFillIn match {
       case Some("arg1") => candidate.extr.arg1.tokenInterval
@@ -116,7 +116,6 @@ object FilterSolrResults {
 
     if (slotType == "Organization" || slotType == "Person" || slotType == "Stateorprovince" ||
       slotType == "City" || slotType == "Country") {
-      val types = SemanticTaggers.useStandfordNERTagger(chunkedSentence)
 
       for (t <- types) {
         if (t.interval().intersects(slotLocation)) {
@@ -143,9 +142,7 @@ object FilterSolrResults {
 
       return false
     } else if (slotType == "School") {
-
-      val types = SemanticTaggers.useEducationalOrganizationTagger(chunkedSentence)
-
+      
       for (t <- types) {
         if (t.interval().intersects(slotLocation)) return true
 
@@ -155,7 +152,6 @@ object FilterSolrResults {
 
     } else if (slotType == "JobTitle") {
 
-      val types = SemanticTaggers.useJobTitleTagger(chunkedSentence)
 
       for (t <- types) {
         if (t.interval().intersects(slotLocation)) return true
@@ -166,7 +162,6 @@ object FilterSolrResults {
 
     } else if (slotType == "Nationality") {
 
-      val types = SemanticTaggers.useNationalityTagger(chunkedSentence)
 
       for (t <- types) {
         if (t.interval().intersects(slotLocation)) return true
@@ -177,7 +172,7 @@ object FilterSolrResults {
 
     } else if (slotType == "Religion") {
 
-      val types = SemanticTaggers.useReligionTagger(chunkedSentence)
+
 
       for (t <- types) {
         if (t.interval().intersects(slotLocation)) return true
@@ -187,7 +182,6 @@ object FilterSolrResults {
       return false
 
     } else if (slotType == "Date") {
-      val types = SemanticTaggers.useDateTagger(chunkedSentence)
 
       for (t <- types) {
         if (t.interval().intersects(slotLocation)) return true
@@ -196,7 +190,22 @@ object FilterSolrResults {
 
       return false
 
+    } else if (slotType == "ProperNoun"){
+      //need to figure out what to do for general ProperNoun semantic filter
+      
+      return true
+    }  else if ((slotType =="<integer>-year-old") || (slotType == "Integer")){
+
+      for (t <- types) {
+        if (t.interval().intersects(slotLocation)) return true
+
+      }
+
+      return false
+      
     } else {
+    
+    
 
       return true
 

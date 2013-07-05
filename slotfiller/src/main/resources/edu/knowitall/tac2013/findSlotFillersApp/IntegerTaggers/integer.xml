@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taggers>
+    <PatternTagger descriptor="Integer">
+        <variable name="english">(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|fourty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|billion|trillion|quadrillion)</variable>
+      <patterns>
+          <pattern>[string='${english}']*</pattern>
+          <pattern>[pos='cd' &amp; !string='.*[\/-].*']</pattern>
+      </patterns>
+    </PatternTagger>
+</taggers>

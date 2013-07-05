@@ -42,7 +42,8 @@ object KbpQueryOutput {
           for (candidate <- topCandidates) {
             sb.append("\t\targ1: " + candidate.extr.arg1.originalText + "\t rel: " + candidate.extr.rel.originalText +
               "\t arg2: " + candidate.extr.arg2.originalText + "\t docID: " + candidate.extr.sentence.docId +
-              "\t confidence: " + candidate.extr.confidence + "\t sentence: " + candidate.extr.sentence.dgraph.text + "\n")
+              "\t confidence: " + candidate.extr.confidence + "\t sentence: " + candidate.extr.sentence.dgraph.text  + 
+               "\t trimFill: " + candidate.trimmedFill.trimmedFillString + "\n" )
           }
           sb.append("\n")
         }
@@ -95,7 +96,7 @@ object KbpQueryOutput {
           kbpSlot,
           "runID",
           bestAnswer.extr.sentence.docId,
-          bestAnswer.fillField.originalText,
+          bestAnswer.trimmedFill.trimmedFillString,
           bestAnswer.fillOffsetString,
           bestAnswer.entityOffsetString,
           bestAnswer.relOffsetString,

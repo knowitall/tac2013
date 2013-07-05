@@ -6,7 +6,9 @@ import edu.knowitall.tac2013.openie.KbpExtraction
 import edu.knowitall.tac2013.findSlotFillersApp.Candidate
 import edu.knowitall.tac2013.findSlotFillersApp.KBPQuery
 import edu.knowitall.tac2013.findSlotFillersApp.SlotPattern
+import edu.knowitall.taggers.Type
 import scala.Option.option2Iterable
+import edu.knowitall.tac2013.findSlotFillersApp.SemanticTaggers.getTagTypes
 
 class SolrQueryExecutor(val solrClient: SolrClient) {
   
@@ -29,7 +31,8 @@ class SolrQueryExecutor(val solrClient: SolrClient) {
     
     // wrap with Candidate
     kbpExtrs.map { extr =>
-      new Candidate(kbpSolrQuery.pattern, kbpSolrQuery.resultType, extr)
+      new Candidate(kbpSolrQuery.pattern, kbpSolrQuery.resultType, extr, 
+          getTagTypes(extr,kbpSolrQuery.pattern))
     }
   }
   
