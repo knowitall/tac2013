@@ -1,16 +1,38 @@
 package edu.knowitall.tac2013.findSlotFillersApp
 
-import QueryType._
+import edu.knowitall.tac2013.solr.query.SolrQueryType._
 import edu.knowitall.tac2013.openie.KbpExtraction
 import edu.knowitall.tac2013.openie.KbpArgument
 import edu.knowitall.tac2013.openie.KbpExtractionField
 import edu.knowitall.tac2013.openie.WikiLink
+import edu.knowitall.tac2013.solr.query.SolrQuery
 import edu.knowitall.tool.chunk.ChunkedToken
 import edu.knowitall.taggers.Type
 import edu.knowitall.collection.immutable.Interval
 
-class Candidate(val pattern: SlotPattern, val queryType: QueryType, val extr: KbpExtraction, val types: List[Type]) {
+class TrimmedFill(val string: String, val interval: Interval)
 
+class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, val types: List[Type]) {
+
+  def pattern = solrQuery.pattern 
+  def queryType = solrQuery.queryType
+
+  def debugString = {
+    
+    val trimLinkString = fillField.wikiLink match {
+      case Some(wikiLink) => " [" + wikiLink.nodeId.getOrElse(wikiLink.fbid) + "]"
+      case None => ""
+    }
+    
+    val trimString = trimmedFill.string + trimLinkString
+    
+    "fill: " + trimString + "\tentity: " + entityField.debugString +
+    "\trel: " + extr.rel.debugString + "\t docID: " + extr.sentence.docId +
+      "\tconf: " + extr.confidence + "\t sent: " + extr.sentence.dgraph.text
+  }
+  
+  def deduplicationKey: String = Seq(extractionKey, extr.sentence.dgraph.text).mkString(" ")
+  
   /**
    * Concatenates tokens from (arg1, rel, arg2) which are nouns, pronouns, or verbs
    * If arg1 or arg2 is linked, uses fbid for that field instead.
@@ -22,13 +44,13 @@ class Candidate(val pattern: SlotPattern, val queryType: QueryType, val extr: Kb
     }
 
     def argKey(arg: KbpArgument) = arg.wikiLink match {
-      case Some(WikiLink(name, fbid, nodeIdOpt)) => fbid
+      case Some(wikiLink) => wikiLink.fbid
       case None => tokenKey(arg.tokens)
     }
 
-    val arg1Key = argKey(extr.arg1)
-    val relKey = tokenKey(extr.rel.tokens)
-    val arg2Key = argKey(extr.arg2)
+    val arg1Key = extr.arg1.originalText // argKey(extr.arg1)
+    val relKey = extr.rel.originalText
+    val arg2Key = extr.arg2.originalText // argKey(extr.arg2)
 
     Seq(arg1Key, relKey, arg2Key).mkString(", ")
   }
@@ -47,13 +69,25 @@ class Candidate(val pattern: SlotPattern, val queryType: QueryType, val extr: Kb
     case _ => throw new RuntimeException("Invalid slotFillIn for pattern: %s".format(pattern.debugString))
   }
   
-  def offsetString(field: KbpExtractionField): String = {
+  def offsetString(interval: Interval): String = "[%d-%d]".format(interval.start, interval.last)
+  
+  def offsetString(fill: TrimmedFill): String = offsetString(getOffset(trimmedFill))
+  
+  def offsetString(field: KbpExtractionField): String = offsetString(getOffset(field))
+  
+  def getOffset(fill: TrimmedFill): Interval = {
     val startOffset = extr.sentence.startOffset
-    val firstToken = field.tokens.minBy(_.offset)
-    val lastToken = field.tokens.maxBy(t => t.offset + t.string.length - 1)
-    "%d-%d".format(firstToken.offset + startOffset, lastToken.offset + lastToken.string.length + startOffset - 1)
+    val firstToken = extr.sentence.chunkedTokens(fill.interval).minBy(_.offset)
+    val lastToken = extr.sentence.chunkedTokens(fill.interval).maxBy(t => t.offset + t.string.length)
+    Interval.closed(firstToken.offset + startOffset, lastToken.offset + lastToken.string.length + startOffset)
   }
   
+  def getOffset(field: KbpExtractionField): Interval = {
+    val startOffset = extr.sentence.startOffset
+    val firstToken = field.tokens.minBy(_.offset)
+    val lastToken = field.tokens.maxBy(t => t.offset + t.string.length)
+    Interval.closed(firstToken.offset + startOffset, lastToken.offset + lastToken.string.length + startOffset)
+  }
   
   private def basicTrim(str: String, interval: Interval): TrimmedFill = {    
     val noChangeTrimmedFill = new TrimmedFill(str,interval)
@@ -104,14 +138,25 @@ class Candidate(val pattern: SlotPattern, val queryType: QueryType, val extr: Kb
     }
   }
   
-  class TrimmedFill(val trimmedFillString: String, val trimmedFillInterval: Interval)
   
   
-  val entityOffsetString = offsetString(entityField)
+  lazy val entityOffsetInterval = getOffset(entityField)
   
-  val fillOffsetString = offsetString(fillField)
+  lazy val fillOffsetInterval = getOffset(fillField)
   
-  val relOffsetString = offsetString(extr.rel)
+  lazy val relOffsetInterval = getOffset(extr.rel)
   
-  val trimmedFill = getTrimmedFill()
+  lazy val justificationInterval =  {
+     Interval.span(Iterable(entityOffsetInterval, fillOffsetInterval, relOffsetInterval)) 
+  }
+  
+  lazy val entityOffsetString = offsetString(entityField)
+  
+  lazy val fillOffsetString = offsetString(trimmedFill)
+  
+  lazy val relOffsetString = offsetString(extr.rel)
+  
+  lazy val justificationOffsetString = offsetString(justificationInterval)
+  
+  lazy val trimmedFill = getTrimmedFill()
 }

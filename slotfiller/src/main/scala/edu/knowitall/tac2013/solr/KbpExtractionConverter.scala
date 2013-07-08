@@ -19,6 +19,7 @@ object KbpExtractionConverter {
     "arg1WikiLinkName",
     "arg1WikiLinkFbid",
     "arg1WikiLinkNodeId",
+    // arg1WikiLinkScore // not required yet for backwards compatibility.
     "arg1Types",
     
     // rel fields
@@ -32,6 +33,7 @@ object KbpExtractionConverter {
     "arg2WikiLinkName",
     "arg2WikiLinkFbid",
     "arg2WikiLinkNodeId",
+    // arg2WikiLinkScore
     "arg2Types",
 
     // per-extraction fields
@@ -61,7 +63,11 @@ object KbpExtractionConverter {
         
         val arg1WikiLinkName = fieldMap("arg1WikiLinkName").asInstanceOf[String]
         val arg1WikiField = if (!arg1WikiLinkName.isEmpty) {
-          s"${fieldMap("arg1WikiLinkName")} ${fieldMap("arg1WikiLinkFbid")} ${fieldMap("arg1WikiLinkNodeId")}"
+          val fields = Seq(
+            fieldMap("arg1WikiLinkName"),
+            fieldMap("arg1WikiLinkFbid"),
+            fieldMap("arg1WikiLinkNodeId")) ++ fieldMap.get("arg1WikiLinkScore") // optionally get link score
+          fields.mkString(" ")
         } else ""
         
         val arg1Fields = Seq(
@@ -74,10 +80,14 @@ object KbpExtractionConverter {
             "relInterval", 
             "relText", 
             "relTypes").map(fieldMap(_).asInstanceOf[String])
-           
+
         val arg2WikiLinkName = fieldMap("arg2WikiLinkName").asInstanceOf[String]
         val arg2WikiField = if (!arg2WikiLinkName.isEmpty) {
-          s"${fieldMap("arg2WikiLinkName")} ${fieldMap("arg2WikiLinkFbid")} ${fieldMap("arg2WikiLinkNodeId")}"
+          val fields = Seq(
+            fieldMap("arg2WikiLinkName"),
+            fieldMap("arg2WikiLinkFbid"),
+            fieldMap("arg2WikiLinkNodeId")) ++ fieldMap.get("arg2WikiLinkScore")
+          fields.mkString(" ")
         } else ""          
             
         val arg2Fields = Seq(
@@ -121,6 +131,7 @@ object KbpExtractionConverter {
     val arg1WikiLinkName = arg1.wikiLink.map(_.name).getOrElse("")
     val arg1WikiLinkFbid = arg1.wikiLink.map(_.fbid).getOrElse("")
     val arg1WikiLinkNodeId = arg1.wikiLink.flatMap(_.nodeId).getOrElse("")
+    val arg1WikiLinkScore = arg1.wikiLink.map(_.score).filter(_ > 0).map("%.03f".format(_)).getOrElse("")
     val arg1Types = arg1.types.mkString(" ")
     
     val relText = extr.rel.originalText
@@ -132,6 +143,7 @@ object KbpExtractionConverter {
     val arg2WikiLinkName = arg2.wikiLink.map(_.name).getOrElse("")
     val arg2WikiLinkFbid = arg2.wikiLink.map(_.fbid).getOrElse("")
     val arg2WikiLinkNodeId = arg2.wikiLink.flatMap(_.nodeId).getOrElse("")
+    val arg2WikiLinkScore = arg2.wikiLink.map(_.score).filter(_ > 0).map("%.03f".format(_)).getOrElse("")
     val arg2Types = arg2.types.mkString(" ")
     
     val confidence = extr.confidence
@@ -151,6 +163,7 @@ object KbpExtractionConverter {
     doc.addField("arg1WikiLinkName", arg1WikiLinkName)
     doc.addField("arg1WikiLinkFbid", arg1WikiLinkFbid)
     doc.addField("arg1WikiLinkNodeId", arg1WikiLinkNodeId)
+    doc.addField("arg1WikiLinkScore", arg1WikiLinkScore)
     doc.addField("arg1Types", arg1Types)
     
     doc.addField("relText", relText)
@@ -162,6 +175,7 @@ object KbpExtractionConverter {
     doc.addField("arg2WikiLinkName", arg2WikiLinkName)
     doc.addField("arg2WikiLinkFbid", arg2WikiLinkFbid)
     doc.addField("arg2WikiLinkNodeId", arg2WikiLinkNodeId)
+    doc.addField("arg2WikiLinkScore", arg2WikiLinkScore)
     doc.addField("arg2Types", arg2Types)
     
     doc.addField("confidence", confidence)
@@ -173,7 +187,7 @@ object KbpExtractionConverter {
     doc.addField("chunks", chunks)
     doc.addField("dgraph", dgraph)
     
-    assert(kbpExtractionFields.equals(doc.getFieldNames().asScala.toSet))
+    assert(kbpExtractionFields.subsetOf(doc.getFieldNames().asScala.toSet))
     
     doc
   }

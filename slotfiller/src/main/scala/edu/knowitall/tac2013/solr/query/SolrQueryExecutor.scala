@@ -4,6 +4,7 @@ import jp.sf.amateras.solr.scala._
 import edu.knowitall.tac2013.findSlotFillersApp.FilterSolrResults.filterResults
 import edu.knowitall.tac2013.openie.KbpExtraction
 import edu.knowitall.tac2013.findSlotFillersApp.Candidate
+import edu.knowitall.tac2013.findSlotFillersApp.Slot
 import edu.knowitall.tac2013.findSlotFillersApp.KBPQuery
 import edu.knowitall.tac2013.findSlotFillersApp.SlotPattern
 import edu.knowitall.taggers.Type
@@ -12,9 +13,11 @@ import edu.knowitall.tac2013.findSlotFillersApp.SemanticTaggers.getTagTypes
 
 class SolrQueryExecutor(val solrClient: SolrClient) {
   
+  val queryCounter = new java.util.concurrent.atomic.AtomicInteger
+  
   def this(url: String) = this(new SolrClient(url))
   
-  private def issueSolrQuery(kbpSolrQuery: SolrQuery): List[Candidate] = {
+  private def issueSolrQuery(kbpSolrQuery: SolrQuery): Seq[Candidate] = {
     
     println(kbpSolrQuery.queryString)
     
@@ -31,36 +34,31 @@ class SolrQueryExecutor(val solrClient: SolrClient) {
     
     // wrap with Candidate
     kbpExtrs.map { extr =>
-      new Candidate(kbpSolrQuery.pattern, kbpSolrQuery.resultType, extr, 
+      new Candidate(queryCounter.getAndIncrement, kbpSolrQuery, extr, 
           getTagTypes(extr,kbpSolrQuery.pattern))
     }
   }
   
   //takes entity string and map from KBP slot strings to Open IE relation strings and runs queries
-  //to our solr instance for every type of OpenIERelation
-  def executeQuery(kbpQuery: KBPQuery, slot: String): Seq[Candidate] = {
-
-    val unfilteredCandidates = executeUnfilteredQuery(kbpQuery, slot)
-
-    val filteredCandidateSets = filterResults(unfilteredCandidates, kbpQuery.name)
-
-    filteredCandidateSets
-  }
-
-  //takes entity string and map from KBP slot strings to Open IE relation strings and runs queries
   //to our solr instance for every type of OpenIERelation, this method uses no filters, this is for debugging purposes
-  def executeUnfilteredQuery(kbpQuery: KBPQuery, slot: String): Seq[Candidate] = {
+  def executeUnfilteredQuery(kbpQuery: KBPQuery, slot: Slot): Seq[Candidate] = {
 
-    val patterns = SlotPattern.patternsForQuery(kbpQuery)(slot)
+    val patterns = slot.patterns
 
     val solrQueries = patterns.flatMap { pattern => 
       val queryBuilder = new SolrQueryBuilder(pattern, kbpQuery)
       queryBuilder.getQueries 
     }
     
-    val allResults = solrQueries.flatMap { q => issueSolrQuery(q) }
+    val allResults = solrQueries.flatMap { q => issueSolrQuery(q) } toSeq
     
-    allResults
+    // deduplicate identical extractions
+    val deduplicated = allResults.groupBy(_.deduplicationKey).map { case (key, duplicates) =>
+      // duplicates should all be same, i.e. same confidence, etc... but explicitly take highest conf anyways.
+      duplicates.maxBy(_.extr.confidence)
+    } toSeq
+    
+    deduplicated
   }
 }
 

@@ -25,7 +25,9 @@ class KbpExtractionSpec extends FlatSpec {
     
     val extrs = lines map { line => (line, KbpExtraction.read(line)) }
     
-    extrs map { case (line, extr) =>
+    require(extrs.size > 10)
+    
+    extrs foreach { case (line, extr) =>
       val extrGet = extr.getOrElse(fail("Could not deserialize extraction:\n%s".format(line)))
       val reserialized = KbpExtraction.write(extrGet)
       assert(reserialized === line)
@@ -46,7 +48,7 @@ class KbpExtractionSpec extends FlatSpec {
     }
     
     
-    extrs map { extr =>
+    extrs foreach { extr =>
       val solrDoc = KbpExtractionConverter.toSolrInputDocument(extr)
       val fieldMap = solrDocToMap(solrDoc)
       val reExtr = KbpExtractionConverter.fromFieldMap(fieldMap).getOrElse {

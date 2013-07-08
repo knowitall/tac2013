@@ -1,24 +1,26 @@
 package edu.knowitall.tac2013.findSlotFillersApp
 
-import KbpQueryOutput.printFormattedOutputForKBPQuery
 import java.io._
 import edu.knowitall.tac2013.solr.query.SolrQueryExecutor
+import edu.knowitall.tac2013.findSlotFillersApp.FilterSolrResults.filterResults
 
 object KBPQueryExecutor {
 
-  def executeKbpQuery(kbpQuery: KBPQuery, outputPath: String) {
+  def executeKbpQuery(kbpQuery: KBPQuery, outFmt: OutputFormatter): Unit = {
     
     val qExec = SolrQueryExecutor.defaultInstance
 
-    val slots = SlotPattern.patternsForQuery(kbpQuery).keySet
+    val slots = kbpQuery.slotsToFill
 
-    val filteredCandidates = slots map { slot => (slot, qExec.executeQuery(kbpQuery, slot)) } toMap
+    val unfiltered = slots map { slot => (slot, qExec.executeUnfilteredQuery(kbpQuery, slot)) } toMap
+    
+    val filteredCandidates = slots map { slot => (slot, filterResults(unfiltered(slot), kbpQuery.name)) } toMap
 
-    val bestAnswers = filteredCandidates map { case (slot, slotCandidates) => 
-      (slot, SlotFillReranker.findAnswers(kbpQuery, slotCandidates)) 
+    val bestAnswers = slots map { slot => 
+      (slot, new SlotFillReranker(outFmt).findSlotAnswers(slot, kbpQuery, filteredCandidates(slot))) 
     } toMap
     
-    printFormattedOutputForKBPQuery(filteredCandidates, bestAnswers, outputPath, kbpQuery)
+    outFmt.printAnswers(bestAnswers, kbpQuery)
   }
 
   def executeKbpQueries(kbpQueryList: List[KBPQuery], outputPath: String) {
@@ -29,9 +31,14 @@ object KBPQueryExecutor {
       f.delete()
     }
 
+    val output = new PrintStream(outputPath)
+
+    val outFmt = OutputFormatter.default
+    
     for (kbpQuery <- kbpQueryList) {
-      executeKbpQuery(kbpQuery, outputPath)
+      output.print(executeKbpQuery(kbpQuery, outFmt))
     }
+    output.close()
   }
 
   def main(args: Array[String]) {

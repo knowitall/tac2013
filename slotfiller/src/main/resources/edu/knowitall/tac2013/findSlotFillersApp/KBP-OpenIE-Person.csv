@@ -83,19 +83,19 @@ per:country_of_birth,1,born,in,arg1,arg2,Country
 per:stateorprovince_of_birth,1,born,in,arg1,arg2,Stateorprovince
 ,,,,,,
 per:cities_of_residence,9,lived,in,arg1,arg2,City
-per:cities_of_residence,,came,from,arg1,arg2,City
-per:cities_of_residence,,be,from,arg1,arg2,City
-per:cities_of_residence,,grew up,in,arg1,arg2,City
+per:cities_of_residence,9,came,from,arg1,arg2,City
+per:cities_of_residence,9,be,from,arg1,arg2,City
+per:cities_of_residence,9,grew up,in,arg1,arg2,City
 ,,,,,,
 per:countries_of_residence,9,lived,in,arg1,arg2,Country
-per:countries_of_residence,,came,from,arg1,arg2,Country
-per:countries_of_residence,,be,from,arg1,arg2,Country
-per:countries_of_residence,,grew up,in,arg1,arg2,Country
+per:countries_of_residence,9,came,from,arg1,arg2,Country
+per:countries_of_residence,9,be,from,arg1,arg2,Country
+per:countries_of_residence,9,grew up,in,arg1,arg2,Country
 ,,,,,,
 per:statesorprovinces_of_residence,9,lived,in,arg1,arg2,Stateorprovince
-per:statesorprovinces_of_residence,,came,from,arg1,arg2,Stateorprovince
-per:statesorprovinces_of_residence,,be,from,arg1,arg2,Stateorprovince
-per:statesorprovinces_of_residence,,grew up,in,arg1,arg2,Stateorprovince
+per:statesorprovinces_of_residence,9,came,from,arg1,arg2,Stateorprovince
+per:statesorprovinces_of_residence,9,be,from,arg1,arg2,Stateorprovince
+per:statesorprovinces_of_residence,9,grew up,in,arg1,arg2,Stateorprovince
 ,,,,,,
 per:religion,1,be,,arg1,arg2,Religion
 ,,,,,,

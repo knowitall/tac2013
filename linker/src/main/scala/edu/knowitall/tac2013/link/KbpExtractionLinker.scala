@@ -48,7 +48,7 @@ class KbpExtractionLinker private (val linker: EntityLinker, val wikiNodeMap: Ma
     val arg2Link = linkArg(extr.arg2, extr, context)
     
     def toWikiLink(elink: EntityLink): WikiLink = {
-      WikiLink(elink.entity.name, elink.entity.fbid, wikiNodeMap.get(elink.entity.name))
+      WikiLink(elink.entity.name, elink.entity.fbid, wikiNodeMap.get(elink.entity.name), elink.score)
     }
 
     extractionsProcessed.incrementAndGet()

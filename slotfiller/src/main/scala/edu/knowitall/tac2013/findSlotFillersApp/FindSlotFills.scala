@@ -1,8 +1,6 @@
 
 package edu.knowitall.tac2013.findSlotFillersApp
 
-import KbpQueryOutput.printUnformattedOutput
-import KbpQueryOutput.printFormattedOutput
 import KBPQueryEntityType._
 import edu.knowitall.tac2013.solr.query.SolrQueryExecutor
 import java.io.PrintStream
@@ -11,16 +9,18 @@ import scopt.OptionParser
 //Command line application object for running solr queries on all the slots
 //of a given entity and semantic type
 object FindSlotFills {
-
+  
   def main(args: Array[String]): Unit = {
 
     var entityName = ""
     var entityType = ""
+    var slotStrings = ""
     var output = System.out
     
     val parser = new OptionParser() {
       arg("entity name", "The entity's name.", { name => entityName = name })
       arg("entity type", "either organization or person.", { typ => entityType = typ })
+      opt("slots", "Specific slots to fill, default = all, comma separated", { slotStrings = _ })
       opt("outputFile", "File name for output. (default stdout)", { file => output = new PrintStream(file) })
     }
     
@@ -29,14 +29,14 @@ object FindSlotFills {
     println(entityName)
     println(entityType)
 
-    val outputLines = runForServerOutput(entityName, args(1))   
+    val slots = slotStrings.split(",").map(_.trim).filter(_.nonEmpty).toSet
     
-    outputLines foreach output.println
+    runForServerOutput(entityName, entityType, slots, System.out)
     
     if (output != System.out) output.close()
   }
 
-  def runForServerOutput(rawName: String, entityTypeString: String, nodeId: Option[String] = None): Seq[String] = {
+  def runForServerOutput(rawName: String, entityTypeString: String, overrideSlotNames: Set[String], output: PrintStream): Unit = {
 
     val entityName = rawName.replace("_", " ").trim()
     val entityType = entityTypeString.trim() match {
@@ -44,29 +44,35 @@ object FindSlotFills {
       case "person" => PER
       case _ => throw new IllegalArgumentException("Second Argument must be either 'person' or 'organization'")
     }
+    val overrideSlots = overrideSlotNames map Slot.fromName
 
-    val kbpQuery = KBPQuery.forEntityName(entityName, entityType)
+    val kbpQuery = if (overrideSlotNames.isEmpty) {
+      KBPQuery.forEntityName(entityName, entityType)
+    } else {
+      KBPQuery.forEntityName(entityName, entityType).withOverrideSlots(overrideSlots)
+    }
+    
+    val fmt = new OutputFormatter(output)
     
     val queryExecutor = SolrQueryExecutor.defaultInstance
     
-    val slots = SlotPattern.patternsForQuery(kbpQuery).keySet
+    val unfilteredSlotCandidateSets = kbpQuery.slotsToFill.map { slot => 
+      (slot, queryExecutor.executeUnfilteredQuery(kbpQuery, slot)) 
+    } toMap
     
-    val unfilteredSlotCandidateSets = slots.map { slot => (slot, queryExecutor.executeUnfilteredQuery(kbpQuery, slot)) } toMap
+    
+    fmt.printUnfilteredResults(unfilteredSlotCandidateSets, kbpQuery)
     
     val slotCandidateSets = unfilteredSlotCandidateSets map { case (slot, candidates) => 
       (slot -> FilterSolrResults.filterResults(candidates, entityName)) 
     }
     
+    fmt.printFilteredResults(slotCandidateSets, kbpQuery)
+    
     val slotBestAnswers = slotCandidateSets map { case (slot, patternCandidates) =>
-      (slot -> SlotFillReranker.findAnswers(kbpQuery, patternCandidates))  
+      (slot -> new SlotFillReranker(fmt).findSlotAnswers(slot, kbpQuery, patternCandidates))  
     }
-
-    Seq(
-      "\n-----------------------------------------\nUNFILTERED RESULTS\n--------------------------------------\n\n",
-      printUnformattedOutput(unfilteredSlotCandidateSets, kbpQuery.entityType),
-      "\n-----------------------------------------\nFILTERED RESULTS\n--------------------------------------\n\n",
-      printUnformattedOutput(slotCandidateSets, kbpQuery.entityType),
-      "\n-----------------------------------------\nFORMATTED RESULTS\n--------------------------------------\n\n",
-      printFormattedOutput(slotCandidateSets, slotBestAnswers, kbpQuery.entityType))
+    
+    fmt.printAnswers(slotBestAnswers, kbpQuery)
   }
 }

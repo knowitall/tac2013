@@ -1,6 +1,7 @@
 package edu.knowitall.tac2013.experiment
 
 import edu.knowitall.tac2013.findSlotFillersApp.SlotPattern
+import edu.knowitall.tac2013.findSlotFillersApp.Slot
 import edu.knowitall.tac2013.solr.query.SolrQueryBuilder
 import edu.knowitall.tac2013.findSlotFillersApp.KBPQuery
 import edu.knowitall.tac2013.solr.populate.SolrSimpleExecutor
@@ -17,12 +18,8 @@ class PatternStats(val solrExec: SolrSimpleExecutor) {
   
   def run() {
 
-    val orgPatterns = SlotPattern.organizationPatterns
-    val perPatterns = SlotPattern.personPatterns
-
-    val perPatternStats = perPatterns.iterator.toSeq map {
-      case (slotname, patterns) =>
-        patternStats(slotname, patterns, samplePers)
+    val perPatternStats = Slot.personSlots.toSeq.map { perSlot =>
+        patternStats(perSlot.name, perSlot.patterns, samplePers)
     }
 
     reportResults(perPatternStats)
@@ -30,10 +27,10 @@ class PatternStats(val solrExec: SolrSimpleExecutor) {
     println()
     println()
         
-    val orgPatternStats = orgPatterns.iterator.toSeq map {
-      case (slotname, patterns) =>
-        patternStats(slotname, patterns, sampleOrgs)
+    val orgPatternStats = Slot.orgSlots.toSeq.map { perSlot =>
+        patternStats(perSlot.name, perSlot.patterns, samplePers)
     }
+
     
     reportResults(orgPatternStats)    
   }

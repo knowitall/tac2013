@@ -12,14 +12,18 @@ import edu.knowitall.tac2013.prep.ParsedKbpSentence
 import edu.knowitall.tac2013.solr.KbpExtractionConverter
 import edu.knowitall.srlie.SrlExtraction
 
-case class WikiLink(val name: String, val fbid: String, val nodeId: Option[String]) {
-  def serialize = s"$name $fbid ${nodeId.getOrElse("-")}"
+case class WikiLink(val name: String, val fbid: String, val nodeId: Option[String], val score: Double = -1) {
+  def serialize = {
+    if (score == -1) Seq(name, fbid, nodeId.getOrElse("-")).mkString(" ")
+    else Seq(name, fbid, nodeId.getOrElse("-"), "%.03f".format(score)).mkString(" ")
+  }
 }
 object WikiLink {
-  val deserializeRegex = "(.+) ([^\\s]+) ([^\\s]+)".r
+  val deserializeRegex = "(.+) ([^\\s]+) ([^\\s]+)\\s?([0-9]+\\.[0-9]+)?".r
   def deserialize(str: String): WikiLink = {
     str match {
-      case deserializeRegex(name, fbid, nodeIdRaw) => WikiLink(name, fbid, if (nodeIdRaw.equals('-')) None else Some(nodeIdRaw))
+      case deserializeRegex(name, fbid, nodeIdRaw, null) => WikiLink(name, fbid, if (nodeIdRaw == "-") None else Some(nodeIdRaw))
+      case deserializeRegex(name, fbid, nodeIdRaw, score) => WikiLink(name, fbid, if (nodeIdRaw == "-") None else Some(nodeIdRaw), score.toDouble)
       case _ => throw new RuntimeException(s"Unable to deserialize wikilink string: $str")
     }
   }
@@ -30,9 +34,16 @@ abstract class KbpExtractionField {
   def originalText: String
   def tokens: Seq[ChunkedToken]
   def types: Seq[String]
+  def wikiLink: Option[WikiLink]
+  
+  def debugString: String
+  def tokenString = tokens.map(_.string).mkString(" ")
 }
 
-abstract class KbpRelation extends KbpExtractionField
+abstract class KbpRelation extends KbpExtractionField {
+  def wikiLink = None
+  def debugString = originalText + types.mkString(", ")
+}
 
 object KbpRelation {
   
@@ -100,6 +111,11 @@ abstract class KbpArgument extends KbpExtractionField {
       val wikiLink = Some(wlink)
       def types = unlinked.types
     }
+  }
+  
+  def debugString = {
+    if (!wikiLink.isDefined) originalText + types.mkString(", ")
+    else originalText + " [" + wikiLink.get.nodeId.getOrElse(wikiLink.get.fbid) + "]" + types.mkString(", ") 
   }
 }
 

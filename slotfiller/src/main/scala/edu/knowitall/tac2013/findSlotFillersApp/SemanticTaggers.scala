@@ -12,63 +12,29 @@ import edu.knowitall.tac2013.openie.KbpExtraction
 object SemanticTaggers {
 
   //point taggers to relevant xml files
-  private val StanfordNERTagger = {
-    val resourcePath = "/edu/knowitall/tac2013/findSlotFillersApp/StanfordNERTaggers"
-    val url = getClass.getResource(resourcePath)
-    require(url != null, "Could not find resource: " + resourcePath)
-    TaggerCollection.fromPath(url.getPath())
-  }
+  private lazy val StanfordNERTagger = loadTagger("/edu/knowitall/tac2013/findSlotFillersApp/StanfordNERTaggers")
 
-  private val EducationalOrganizationTagger = {
-    val resourcePath = "/edu/knowitall/tac2013/findSlotFillersApp/EducationalOrganizationTaggers"
-    val url = getClass.getResource(resourcePath)
-    require(url != null, "Could not find resource: " + resourcePath)
-    TaggerCollection.fromPath(url.getPath())
-  }
+  private lazy val EducationalOrganizationTagger = loadTagger("/edu/knowitall/tac2013/findSlotFillersApp/EducationalOrganizationTaggers")
 
-  private val NationalityTagger = {
-    val resourcePath = "/edu/knowitall/tac2013/findSlotFillersApp/NationalityTaggers"
-    val url = getClass.getResource(resourcePath)
-    require(url != null, "Could not find resource: " + resourcePath)
-    TaggerCollection.fromPath(url.getPath())
-  }
+  private lazy val NationalityTagger = loadTagger("/edu/knowitall/tac2013/findSlotFillersApp/NationalityTaggers")
 
-  private val ReligionTagger = {
-    val resourcePath = "/edu/knowitall/tac2013/findSlotFillersApp/ReligionTaggers"
-    val url = getClass.getResource(resourcePath)
-    require(url != null, "Could not find resource: " + resourcePath)
-    TaggerCollection.fromPath(url.getPath())
-  }
+  private lazy val ReligionTagger = loadTagger("/edu/knowitall/tac2013/findSlotFillersApp/ReligionTaggers")
 
-  private val JobTitleTagger = {
-    val resourcePath = "/edu/knowitall/tac2013/findSlotFillersApp/JobTitleTaggers"
-    val url = getClass.getResource(resourcePath)
-    require(url != null, "Could not find resource: " + resourcePath)
-    TaggerCollection.fromPath(url.getPath())
-  }
+  private lazy val JobTitleTagger = loadTagger("/edu/knowitall/tac2013/findSlotFillersApp/JobTitleTaggers")
 
-  private val DateTagger = {
-    val resourcePath = "/edu/knowitall/tac2013/findSlotFillersApp/DateTaggers"
-    val url = getClass.getResource(resourcePath)
-    require(url != null, "Could not find resource: " + resourcePath)
-    TaggerCollection.fromPath(url.getPath())
-  }
+  private lazy val DateTagger = loadTagger("/edu/knowitall/tac2013/findSlotFillersApp/DateTaggers")
   
-  private val CrimeTagger = {
-    val resourcePath = "/edu/knowitall/tac2013/findSlotFillersApp/CrimeTaggers"
-    val url = getClass.getResource(resourcePath)
-    require(url != null, "Could not find resource: " + resourcePath)
-    TaggerCollection.fromPath(url.getPath())
-  }
+  private lazy val CrimeTagger = loadTagger("/edu/knowitall/tac2013/findSlotFillersApp/CrimeTaggers")
   
-  private val IntegerTagger = {
-    val resourcePath = "/edu/knowitall/tac2013/findSlotFillersApp/IntegerTaggers"
+  private lazy val IntegerTagger = loadTagger("/edu/knowitall/tac2013/findSlotFillersApp/IntegerTaggers")
+  
+  private def loadTagger(resourcePath: String) = {
     val url = getClass.getResource(resourcePath)
     require(url != null, "Could not find resource: " + resourcePath)
     TaggerCollection.fromPath(url.getPath())
   }
 
-  private val morpha = new MorphaStemmer();
+  private val morpha = new MorphaStemmer()
 
   def useStandfordNERTagger(chunkedSentence: Seq[ChunkedToken]): List[Type] = {
     var tokens = List[Lemmatized[ChunkedToken]]()
