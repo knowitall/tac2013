@@ -18,13 +18,35 @@ case class WikiLink(val name: String, val fbid: String, val nodeId: Option[Strin
     else Seq(name, fbid, nodeId.getOrElse("-"), "%.03f".format(score)).mkString(" ")
   }
 }
+
 object WikiLink {
-  val deserializeRegex = "(.+) ([^\\s]+) ([^\\s]+)\\s?([0-9]+\\.[0-9]+)?".r
+  
+  private val doubleRegex = "([-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?)".r
+  
+  def parseDouble(s: String) = {
+    s match {
+      case doubleRegex(num, _) => Some(num.toDouble)
+      case _ => None
+    }
+  }
+  
   def deserialize(str: String): WikiLink = {
-    str match {
-      case deserializeRegex(name, fbid, nodeIdRaw, null) => WikiLink(name, fbid, if (nodeIdRaw == "-") None else Some(nodeIdRaw))
-      case deserializeRegex(name, fbid, nodeIdRaw, score) => WikiLink(name, fbid, if (nodeIdRaw == "-") None else Some(nodeIdRaw), score.toDouble)
-      case _ => throw new RuntimeException(s"Unable to deserialize wikilink string: $str")
+    val split = str.split(" ")
+    val score = parseDouble(split.last)
+
+    if (split.length >= 4 && score.isDefined) {
+      val nodeIdString = split(split.length - 2)
+      val nodeId = if (nodeIdString == "-") None else Some(nodeIdString)
+      WikiLink(split.dropRight(3).mkString(" "), split(split.length - 3), nodeId, score.get)
+      
+    } else if (split.length >= 3) {
+      // no score field - nodeId is last.
+      val nodeIdString = split.last
+      val nodeId = if (nodeIdString == "-") None else Some(nodeIdString)
+      WikiLink(split.dropRight(3).mkString(" "), split(split.length - 2), nodeId, -1)
+    }
+    else {
+      throw new RuntimeException("Could not parse wikilink: %s".format(str))
     }
   }
 }

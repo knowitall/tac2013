@@ -18,15 +18,15 @@ class OutputFormatter(out: PrintStream) {
   
   val doubleSpace = false
   
-  val detailedCandidates = true
-  val detailedAnswers = true
+  val detailedCandidates = false
+  val detailedAnswers = false
   
   
   val printUnfiltered = false
-  val printFiltered = true
+  val printFiltered = false
   
   val maxGroups = 15
-  val printGroups = true
+  val printGroups = false
   val detailedGroups = true
   
   val indentStr: String = Seq.fill(indentSize)(' ').mkString
@@ -102,10 +102,12 @@ class OutputFormatter(out: PrintStream) {
   def printAnswers(bestAnswers: Map[Slot, Seq[Candidate]], kbpQuery: KBPQuery): Unit = {
 
     val detailed = if (detailedAnswers) "DEBUG " else ""
-    
-    println(0, "")
-    println(0, s"------------------- $detailed FORMATTED SLOT FILLS -------------------")
-    println(0, "")
+
+    if (detailedAnswers) {
+      println(0, "")
+      println(0, s"------------------- $detailed FORMATTED SLOT FILLS -------------------")
+      println(0, "")
+    }
     
     //iterate over every slot type
     for (kbpSlot <- kbpQuery.slotsToFill) yield {

@@ -12,16 +12,16 @@ case class Slot(name: String, slotType: Option[String], maxResults: Int, pattern
 object Slot {
   
   private def requireResource(urlString: String): URL = {
-    val url = urlString.getClass.getResource(urlString)
-    require(url != null, "Could not find resource: " + url)
+    val url = getClass.getResource(urlString)
+    require(url != null, "Could not find resource: " + urlString)
     url
   }
   
   private val personResource = "/edu/knowitall/tac2013/findSlotFillersApp/PersonSlotTypes.txt"
-  private val personUrl = requireResource(personResource) 
-  private val personPatternUrl = requireResource(SlotPattern.personPatternResource)
-  private val organizationResource = "/edu/knowitall/tac2013/findSlotFillersApp/OrganizationSlotTypes.txt"
-  private val organizationUrl = requireResource(organizationResource)
+  private def personUrl = requireResource(personResource) 
+  private def personPatternUrl = requireResource(SlotPattern.personPatternResource)
+  private def organizationResource = "/edu/knowitall/tac2013/findSlotFillersApp/OrganizationSlotTypes.txt"
+  private def organizationUrl = requireResource(organizationResource)
   private val organizationPatternUrl = requireResource(SlotPattern.organizationPatternResource)
 
   private def loadSlots(slotUrl: URL, patternUrl: URL, slotPrefix: String): Set[Slot] = {
@@ -59,11 +59,11 @@ object Slot {
   }
   
   
-  val personSlots = loadSlots(personUrl, personPatternUrl, "per:")
+  lazy val personSlots = loadSlots(personUrl, personPatternUrl, "per:")
 
-  val orgSlots = loadSlots(organizationUrl, organizationPatternUrl, "org:")
+  lazy val orgSlots = loadSlots(organizationUrl, organizationPatternUrl, "org:")
 
-  val allSlots = personSlots ++ orgSlots
+  lazy val allSlots = personSlots ++ orgSlots
   
   def fromName(name: String) = 
     allSlots.find(_.name == name).getOrElse { throw new RuntimeException("Invalid slot name: " + name) }

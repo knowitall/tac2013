@@ -63,10 +63,14 @@ object KbpExtractionConverter {
         
         val arg1WikiLinkName = fieldMap("arg1WikiLinkName").asInstanceOf[String]
         val arg1WikiField = if (!arg1WikiLinkName.isEmpty) {
-          val fields = Seq(
-            fieldMap("arg1WikiLinkName"),
-            fieldMap("arg1WikiLinkFbid"),
-            fieldMap("arg1WikiLinkNodeId")) ++ fieldMap.get("arg1WikiLinkScore") // optionally get link score
+          val fields = {
+            val nodeIdField = fieldMap("arg1WikiLinkNodeId").asInstanceOf[String]
+            val nodeId = if (nodeIdField.nonEmpty) nodeIdField else "-"
+            Seq(
+              arg1WikiLinkName,
+              fieldMap("arg1WikiLinkFbid"),
+              nodeId) ++ fieldMap.get("arg1WikiLinkScore") // optionally get link score
+          }
           fields.mkString(" ")
         } else ""
         
@@ -83,12 +87,16 @@ object KbpExtractionConverter {
 
         val arg2WikiLinkName = fieldMap("arg2WikiLinkName").asInstanceOf[String]
         val arg2WikiField = if (!arg2WikiLinkName.isEmpty) {
-          val fields = Seq(
-            fieldMap("arg2WikiLinkName"),
-            fieldMap("arg2WikiLinkFbid"),
-            fieldMap("arg2WikiLinkNodeId")) ++ fieldMap.get("arg2WikiLinkScore")
+          val fields = {
+            val nodeIdField = fieldMap("arg2WikiLinkNodeId").asInstanceOf[String]
+            val nodeId = if (nodeIdField.nonEmpty) nodeIdField else "-"
+            Seq(
+              arg2WikiLinkName,
+              fieldMap("arg2WikiLinkFbid"),
+              nodeId) ++ fieldMap.get("arg2WikiLinkScore") // optionally get link score
+          }
           fields.mkString(" ")
-        } else ""          
+        } else ""         
             
         val arg2Fields = Seq(
             fieldMap("arg2Interval"), 

@@ -33,10 +33,10 @@ object KBPQueryExecutor {
 
     val output = new PrintStream(outputPath)
 
-    val outFmt = OutputFormatter.default
+    val outFmt = new OutputFormatter(output)
     
     for (kbpQuery <- kbpQueryList) {
-      output.print(executeKbpQuery(kbpQuery, outFmt))
+      executeKbpQuery(kbpQuery, outFmt)
     }
     output.close()
   }

@@ -92,12 +92,12 @@ class SlotFillReranker(fmt: OutputFormatter) {
   
   def mergePairwise(groups: Map[String, Seq[Candidate]], pairEqTest: (String, String) => Boolean): Map[String, Seq[Candidate]] = {
     
-    var groupKeysDescSize = groups.toSeq.sortBy(-_._2.size).map(_._1)
     var mergedGroups = groups
     
     // for each key in trimGroups, see if it is a substring of another.
     var changed = true
     while (changed) {
+      val groupKeysDescSize = mergedGroups.toSeq.sortBy(-_._2.size).map(_._1)
       val allKeyPairs = groupKeysDescSize.flatMap { key1 =>
         groupKeysDescSize.map(key2 => (key1, key2)) 
       }

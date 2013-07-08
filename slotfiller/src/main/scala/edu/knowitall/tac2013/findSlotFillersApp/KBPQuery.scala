@@ -57,7 +57,7 @@ object KBPQuery {
       case _ => throw new IllegalArgumentException("improper 'enttype' value in xml doc")
     }
     val nodeIDText = queryXML.\\("nodeid").text.trim()
-    val nodeId = if (nodeIDText.isEmpty()) None else Some(nodeIDText)
+    val nodeId = if (nodeIDText.isEmpty() || nodeIDText.startsWith("NIL")) None else Some(nodeIDText)
     val ignoreText = queryXML.\\("ignore").text
     val ignoreSlots = {
       val ignoreNames = ignoreText.split(" ").toSet
@@ -102,7 +102,7 @@ object KBPQuery {
       case _ => throw new IllegalArgumentException("improper 'enttype' value in xml doc")
     }
     val nodeIDText = queryXML.\\("nodeid").text.trim()
-    val nodeId = if (nodeIDText.isEmpty) None else Some(nodeIDText)
+    val nodeId = if (nodeIDText.isEmpty || nodeIDText.startsWith("NIL")) None else Some(nodeIDText)
     val ignoreText = queryXML.\\("ignore").text
     val ignoreSlots = {
       val ignoreNames = ignoreText.split(" ").toSet
