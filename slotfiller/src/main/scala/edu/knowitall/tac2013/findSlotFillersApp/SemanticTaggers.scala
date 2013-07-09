@@ -177,7 +177,8 @@ object SemanticTaggers {
       
     }
       
-    typeList
+    //this gives types in left to right order
+    typeList.reverse
   }
 
 

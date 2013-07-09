@@ -105,6 +105,7 @@ object FilterSolrResults {
 
     val pattern = candidate.pattern
     val types = candidate.types
+    val trimmedFill = candidate.trimmedFill
     val slotType = pattern.slotType.getOrElse({ "" })
     val slotLocation = pattern.slotFillIn match {
       case Some("arg1") => candidate.extr.arg1.tokenInterval
@@ -134,7 +135,21 @@ object FilterSolrResults {
             // default case will be location
             case _ => {
               if (t.descriptor() == "StanfordLOCATION") {
-                return true
+            	    if(slotType == "Country"){
+            	    	if(TipsterData.countries.contains(t.text().toLowerCase())) {
+            	    	  return true
+            	    	}
+            	    }
+            	    if(slotType == "City"){
+            	    	if(TipsterData.cities.contains(t.text().toLowerCase())){
+            	    	  return true
+            	    	}
+            	    }
+            	    if(slotType == "Stateorprovince"){
+            	    	if(TipsterData.stateOrProvinces.contains(t.text().toLowerCase())) {
+            	    	  return true
+            	    	}
+            	    }
               }
             }
           }

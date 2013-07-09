@@ -20,7 +20,9 @@ object KBPQueryExecutor {
       (slot, new SlotFillReranker(outFmt).findSlotAnswers(slot, kbpQuery, filteredCandidates(slot))) 
     } toMap
     
-    outFmt.printAnswers(bestAnswers, kbpQuery)
+    val smoothedSlotBestAnswers = SlotFillConsistency.makeConsistent(bestAnswers)
+    
+    outFmt.printAnswers(smoothedSlotBestAnswers, kbpQuery)
   }
 
   def executeKbpQueries(kbpQueryList: List[KBPQuery], outputPath: String) {

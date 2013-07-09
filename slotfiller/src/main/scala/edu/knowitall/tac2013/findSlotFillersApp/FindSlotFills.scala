@@ -37,7 +37,7 @@ object FindSlotFills {
   }
 
   def runForServerOutput(rawName: String, entityTypeString: String, overrideSlotNames: Set[String], output: PrintStream): Unit = {
-
+    
     val entityName = rawName.replace("_", " ").trim()
     val entityType = entityTypeString.trim() match {
       case "organization" => ORG
@@ -73,6 +73,8 @@ object FindSlotFills {
       (slot -> new SlotFillReranker(fmt).findSlotAnswers(slot, kbpQuery, patternCandidates))  
     }
     
-    fmt.printAnswers(slotBestAnswers, kbpQuery)
+    val smoothedSlotBestAnswers = SlotFillConsistency.makeConsistent(slotBestAnswers)
+    
+    fmt.printAnswers(smoothedSlotBestAnswers, kbpQuery)
   }
 }

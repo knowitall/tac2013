@@ -7,6 +7,16 @@ import edu.knowitall.common.Resource
 
 case class Slot(name: String, slotType: Option[String], maxResults: Int, patterns: Seq[SlotPattern]) {
   require(name == name.trim)
+  
+  def isLocation = if(name.contains("city") || name.contains("country") || name.contains("stateorprovince") ||
+      name.contains("cities") || name.contains("countries") || name.contains("states")) true else false
+  def isCountry = if(name.contains("country")) true else false
+  def isCity = if(name.contains("city")) true else false
+  def isStateOrProvince = if(name.contains("stateorprovince")) true else false
+  def isCountryList = if(name.contains("countries")) true else false
+  def isCityList = if(name.contains("cities")) true else false
+  def isStateOrProvinceList = if(name.contains("states")) true else false
+  def isList = if(maxResults > 1) true else false
 }
 
 object Slot {
