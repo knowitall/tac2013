@@ -46,4 +46,5 @@ object TipsterData {
   lazy val countries = countrySet.toSet
   lazy val stateOrProvinces = stateOrProvinceSet.toSet
   
+  
 }

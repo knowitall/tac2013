@@ -1,6 +1,7 @@
 package edu.knowitall.tac2013.findSlotFillersApp
 
 import edu.knowitall.tac2013.openie.KbpExtraction
+import edu.knowitall.tac2013.findSlotFillersApp.LocationHelper.findLocationTaggedType
 import edu.knowitall.tac2013.solr.query.SolrQueryType._
 import edu.knowitall.tac2013.solr.query.SolrQueryType
 
@@ -134,23 +135,16 @@ object FilterSolrResults {
             }
             // default case will be location
             case _ => {
-              if (t.descriptor() == "StanfordLOCATION") {
-            	    if(slotType == "Country"){
-            	    	if(TipsterData.countries.contains(t.text().toLowerCase())) {
-            	    	  return true
-            	    	}
-            	    }
-            	    if(slotType == "City"){
-            	    	if(TipsterData.cities.contains(t.text().toLowerCase())){
-            	    	  return true
-            	    	}
-            	    }
-            	    if(slotType == "Stateorprovince"){
-            	    	if(TipsterData.stateOrProvinces.contains(t.text().toLowerCase())) {
-            	    	  return true
-            	    	}
-            	    }
+              //if trimmed Fill does not exist then the Candidate
+              //constructor has filtered out this extraction
+              val typesInSlotFill = types.filter(t => (t.interval().intersects(slotLocation)))
+              if(findLocationTaggedType(typesInSlotFill,slotType).isDefined){
+                return true
               }
+              else{
+                return false
+              }
+
             }
           }
         }

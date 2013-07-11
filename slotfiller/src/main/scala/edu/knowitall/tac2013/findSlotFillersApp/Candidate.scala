@@ -9,6 +9,7 @@ import edu.knowitall.tac2013.solr.query.SolrQuery
 import edu.knowitall.tool.chunk.ChunkedToken
 import edu.knowitall.taggers.Type
 import edu.knowitall.collection.immutable.Interval
+import edu.knowitall.tac2013.findSlotFillersApp.LocationHelper.findLocationTaggedType
 
 class TrimmedFill(val string: String, val interval: Interval)
 
@@ -121,80 +122,15 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
   }
   
   // intersectingTypes can't be empty when called
-  private def chooseBestInterval (intersectingTypes: List[Type]): Type ={
+  private def chooseBestInterval (intersectingTypes: List[Type]): Option[Type] ={
     val slotType = pattern.slotType.getOrElse("")
     if(slotType == "Country" || slotType == "Stateorprovince" ||
       slotType == "City"){
-      
-        if(slotType == "Country"){
-          //first check for a type that only matches country otherwise choose rightmost
-          for(t <- intersectingTypes.reverse){
-            if(t.descriptor() =="StanfordLOCATION"){
-              if(TipsterData.countries.contains(t.text().toLowerCase()) &&
-                  !TipsterData.cities.contains(t.text().toLowerCase()) &&
-                  !TipsterData.stateOrProvinces.contains(t.text().toLowerCase())){
-            	  	return t
-                 }
-              }
-          }
-          // iterate backwards through the list looking for first mention of a country..
-          for(t <- intersectingTypes.reverse){
-            if(t.descriptor()=="StanfordLOCATION"){
-	            if(TipsterData.countries.contains(t.text().toLowerCase())){
-	              return t
-	            }
-            }
-          }
-        }
-        
-        else if(slotType == "Stateorprovince"){
-          //first check for a type that only matches state or province otherwise choose rightmost
-          for(t <- intersectingTypes.reverse){
-            if(t.descriptor() =="StanfordLOCATION"){
-              if(TipsterData.stateOrProvinces.contains(t.text().toLowerCase()) &&
-                  !TipsterData.cities.contains(t.text().toLowerCase()) &&
-                  !TipsterData.countries.contains(t.text().toLowerCase())){
-            	  	return t
-                 }
-              }
-          }
-
-          // iterate backwards through the list looking for first mention of a state or province
-          for(t <- intersectingTypes.reverse){
-            if(t.descriptor()=="StanfordLOCATION"){
-	            if(TipsterData.stateOrProvinces.contains(t.text().toLowerCase())){
-	              return t
-	            }
-            }
-          }
-        }
-        
-        //city
-        else{
-          //first check for a type that only matches city otherwise choose leftmost
-          for(t <- intersectingTypes){
-            if(t.descriptor() =="StanfordLOCATION"){
-              if(TipsterData.cities.contains(t.text().toLowerCase()) &&
-                  !TipsterData.stateOrProvinces.contains(t.text().toLowerCase()) &&
-                  !TipsterData.countries.contains(t.text().toLowerCase())){
-            	  	return t
-                 }
-              }
-          }
-          // iterate forwards through the list looking for first mention of a city
-          for(t <- intersectingTypes){
-            if(t.descriptor()=="StanfordLOCATION"){
-	              return t
-            }
-          }
-        }
-      
-      //if the program makes it this far just return the head
-      intersectingTypes.head
+      findLocationTaggedType(intersectingTypes,slotType)
     }
     else{
       // return first type in list
-      intersectingTypes.head
+      Some(intersectingTypes.head)
     }
   }
   
@@ -216,7 +152,12 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
       }
       if(!intersectingTypes.isEmpty){
         val bestInterval = chooseBestInterval(intersectingTypes)
-        return basicTrim(bestInterval.text(),bestInterval.interval())
+        if(bestInterval.isDefined){
+           return basicTrim(bestInterval.get.text(),bestInterval.get.interval())
+        }
+        else{
+          return basicTrim(fillField.originalText,fillField.tokenInterval)
+        }
       }
       else{
         return basicTrim(fillField.originalText,fillField.tokenInterval)
