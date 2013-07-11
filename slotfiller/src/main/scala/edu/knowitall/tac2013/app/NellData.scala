@@ -1,4 +1,4 @@
-package edu.knowitall.tac2013.findSlotFillersApp
+package edu.knowitall.tac2013.app
 
 case class NellData(val name: String, val cityProbability: Option[Double],
     val stateOrProvinceProbability: Option[Double], val countryProbability: Option[Double]){
