@@ -1,4 +1,4 @@
-package edu.knowitall.tac2013.findSlotFillersApp
+package edu.knowitall.tac2013.app
 
 import edu.knowitall.tac2013.openie.KbpExtraction
 
@@ -37,7 +37,7 @@ class SlotFillReranker(fmt: OutputFormatter) {
       //fmt.printFillGroups("Merged and grouped:", slot, groups)
       
       // rank extractions my trimFill frequency * trimFill length
-      val rankedAnswers = groups.iterator.toSeq.sortBy(-_._2.size).map { case (key, candidates) =>
+      val rankedAnswers = groups.iterator.toSeq.sortBy(p => -Candidate.groupScore(p._2)).map { case (key, candidates) =>
         val trimGroups = candidates.groupBy(_.trimmedFill.string)
         val sortedTrimGroups = trimGroups.toSeq.sortBy { case (trim, candidates) => -trim.length * candidates.size } 
         val sortedCandidates = sortedTrimGroups.flatMap { case (trim, candidates) => candidates }
@@ -46,9 +46,18 @@ class SlotFillReranker(fmt: OutputFormatter) {
       
       fmt.printFillGroups("Merged and grouped with best answers first", slot, rankedAnswers.toMap)
       
-      val bestAnswers = rankedAnswers.map(_._2.head)
+      // if non-singletons are present, only use them.
+      val bestAnswers = if (rankedAnswers.head._2.size > 1) {
+        val noSingletons = rankedAnswers.takeWhile{ case (trim, candidates) => candidates.size > 1}
+        val confThreshold = noSingletons.takeWhile { case (trim, candidates) => Candidate.groupScore(candidates) > 0.75 }
+        confThreshold.take(maxAnswers)
+      } else {
+        // singletons only
+        val confThreshold = rankedAnswers.takeWhile { case (trim, candidates) => Candidate.groupScore(candidates) > 0.75 }
+        confThreshold.take(maxAnswers)
+      }
       
-      bestAnswers.take(maxAnswers)
+      bestAnswers.map { case (trim, candidates) => candidates.head }
     }
   }
   

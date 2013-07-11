@@ -1,4 +1,4 @@
-package edu.knowitall.tac2013.findSlotFillersApp
+package edu.knowitall.tac2013.app
 
 import edu.knowitall.tac2013.openie.KbpExtraction
 import edu.knowitall.tac2013.findSlotFillersApp.LocationHelper.findLocationTaggedType

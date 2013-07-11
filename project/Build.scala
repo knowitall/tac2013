@@ -1,5 +1,6 @@
 import sbt._
 import Keys._
+import PlayProject._
 
 import sbtassembly.Plugin._
 import AssemblyKeys._
@@ -17,15 +18,15 @@ object SlotFillerBuild extends Build {
     scalaVersion <<= (crossScalaVersions) { versions => versions.head },
     publish := { },
     publishLocal := { }
-  ) aggregate(slotfiller, multir, linker)
+  ) aggregate(slotfiller, multir, linker, webapp)
 
   // parent build definition
   val buildSettings = Defaults.defaultSettings ++ Seq (
     organization := buildOrganization,
     version := buildVersion,
     scalaVersion := "2.10.2",
-    fork in run := true,
-    fork in Test := true,
+    Keys.fork in run := true,
+    Keys.fork in Test := true,
     javaOptions in Test += "-Xmx8G",
     javaOptions in run += "-Xmx8G",
     resolvers ++= Seq(
@@ -79,5 +80,6 @@ object SlotFillerBuild extends Build {
     libraryDependencies ++= Seq("edu.stanford.nlp" % "stanford-corenlp" % "1.3.4")
   )).settings(net.virtualvoid.sbt.graph.Plugin.graphSettings: _*)
 
+  lazy val webapp = play.Project("webapp", "0.0", path = file("webapp"), settings = buildSettings).dependsOn(slotfiller)
 }
 

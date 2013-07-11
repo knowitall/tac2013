@@ -1,4 +1,4 @@
-package edu.knowitall.tac2013.findSlotFillersApp
+package edu.knowitall.tac2013.app
 
 import edu.knowitall.tac2013.solr.query.SolrQueryType._
 import edu.knowitall.tac2013.openie.KbpExtraction
@@ -70,7 +70,7 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
     case _ => throw new RuntimeException("Invalid slotFillIn for pattern: %s".format(pattern.debugString))
   }
   
-  def offsetString(interval: Interval): String = "[%d-%d]".format(interval.start, interval.last)
+  def offsetString(interval: Interval): String = "%d-%d".format(interval.start, interval.last)
   
   def offsetString(fill: TrimmedFill): String = offsetString(getOffset(trimmedFill))
   
@@ -186,4 +186,17 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
   lazy val justificationOffsetString = offsetString(justificationInterval)
   
   lazy val trimmedFill = getTrimmedFill()
+}
+
+object Candidate {
+  
+  type Candidates = Seq[Candidate]
+  
+  def groupScore(candidates: Candidates): Double = {
+    
+    require(candidates.nonEmpty, "Invalid argument, empty candidates.")
+    
+    1 - candidates.map(c => 1 - c.extr.confidence).reduce(_ * _)
+  }
+  
 }

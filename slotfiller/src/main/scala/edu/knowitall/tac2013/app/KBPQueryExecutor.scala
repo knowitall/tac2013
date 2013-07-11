@@ -1,8 +1,8 @@
-package edu.knowitall.tac2013.findSlotFillersApp
+package edu.knowitall.tac2013.app
 
 import java.io._
 import edu.knowitall.tac2013.solr.query.SolrQueryExecutor
-import edu.knowitall.tac2013.findSlotFillersApp.FilterSolrResults.filterResults
+import edu.knowitall.tac2013.app.FilterSolrResults.filterResults
 
 object KBPQueryExecutor {
 

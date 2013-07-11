@@ -1,4 +1,4 @@
-package edu.knowitall.tac2013.findSlotFillersApp
+package edu.knowitall.tac2013.app
 
 import edu.knowitall.common.Resource
 import io.Source

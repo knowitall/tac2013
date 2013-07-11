@@ -1,0 +1,44 @@
+@(results: ResultSet, q: Query, query: Option[AdvancedQuery])
+
+<p>
+<div>
+@query match{
+  case Some(query) => { <b>Query:</b> @query.queryString (<a href="@routes.Application.evaluate(query.groupBy.toString, query.queryString.replaceAll("\\+", "%2B"))">evaluate</a>) }
+  case None => { }
+}
+</div>
+<div><b>Number of groups:</b> @results.groups.size</div>
+<div><b>Number of instances:</b> @results.instanceCount</div>
+</p>
+@for((result, i) <- results.groups.zipWithIndex) {
+  <div id="group-title-@i" class="group-title">
+    <h4>
+      @if(result.instances.size>1){
+        <a href="#" onclick="javascript:$('#group-container-@i').toggle(); return false;"><span id="group-title">@{i+1}. @result.title</span> <span style="font-weight:normal;">(<span id="group-count">@result.instances.size</span>)</span></a></h4>
+      }else{
+        <span id="group-title">@{i+1}. @result.title</span> <span style="font-weight:normal;">(<span id="group-count">@result.instances.size</span>)</span></h4>
+      }
+    <a class="open-close"></a>
+  </div>
+
+  <div id="group-outer-@i" class="resultgroup-list">
+    @for(instance <- result.instances.headOption) {
+    <div id="resultgroup-list">
+      <span id="arg1" class="result-arg1">@instance.arg1String</span>
+      <span id="rel" class="result-relation">@instance.relString</span>
+      <span id="arg2" class="result-arg2">@instance.arg2String</span>
+      <a id="source" target="_blank" href="@routes.Application.sentences(instance.arg1String, instance.relString, instance.arg2String, q.corpus, q.extractor)">(<span id="count">@instance.count</span>)</a>
+    </div>
+    }
+  <div id="group-container-@i" style="display: none;">
+    @for(instance <- result.instances.tail) {
+    <div id="resultgroup-list">
+      <span id="arg1" class="result-arg1">@instance.arg1String</span>
+      <span id="rel" class="result-relation">@instance.relString</span>
+      <span id="arg2" class="result-arg2">@instance.arg2String</span>
+      <a id="source" target="_blank" href="@routes.Application.sentences(instance.arg1String, instance.relString, instance.arg2String, q.corpus, q.extractor)">(<span id="count">@instance.count</span>)</a>
+    </div>
+    }
+  </div>
+  </div>
+}

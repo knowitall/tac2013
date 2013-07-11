@@ -1,6 +1,6 @@
-package edu.knowitall.tac2013.findSlotFillersApp
+package edu.knowitall.tac2013.app
 
-import edu.knowitall.tac2013.findSlotFillersApp.KBPQueryEntityType._
+import edu.knowitall.tac2013.app.KBPQueryEntityType._
 //import scala.io._
 import scala.xml.XML
 

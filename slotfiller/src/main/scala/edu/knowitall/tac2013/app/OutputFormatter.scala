@@ -1,15 +1,23 @@
-package edu.knowitall.tac2013.findSlotFillersApp
+package edu.knowitall.tac2013.app
 
 import scala.io._
 import java.io._
 import edu.knowitall.tac2013.solr.query.SolrQuery
 import edu.knowitall.tac2013.openie.KbpExtraction
-import edu.knowitall.tac2013.findSlotFillersApp.KBPQueryEntityType._
+import edu.knowitall.tac2013.app.KBPQueryEntityType._
 import edu.knowitall.collection.immutable.Interval
 
 
-class OutputFormatter(out: PrintStream) {
-
+case class OutputFormatter(
+    val out: PrintStream, 
+    val printUnfiltered: Boolean = false, 
+    val printFiltered: Boolean = false, 
+    val detailedCandidates: Boolean = true,
+    val printGroups: Boolean = true,
+    val detailedGroups: Boolean = true,
+    val printAnswers: Boolean = true,
+    val detailedAnswers: Boolean = true) {
+  
   val runID = "UWashington-1"
  
   val indentSize = 4
@@ -18,16 +26,7 @@ class OutputFormatter(out: PrintStream) {
   
   val doubleSpace = false
   
-  val detailedCandidates = false
-  val detailedAnswers = false
-  
-  
-  val printUnfiltered = false
-  val printFiltered = false
-  
   val maxGroups = 15
-  val printGroups = false
-  val detailedGroups = true
   
   val indentStr: String = Seq.fill(indentSize)(' ').mkString
   
@@ -99,7 +98,7 @@ class OutputFormatter(out: PrintStream) {
   /**
    * Overloaded to return a string for server usage
    */
-  def printAnswers(bestAnswers: Map[Slot, Seq[Candidate]], kbpQuery: KBPQuery): Unit = {
+  def printAnswers(bestAnswers: Map[Slot, Seq[Candidate]], kbpQuery: KBPQuery): Unit = if (printAnswers) {
 
     val detailed = if (detailedAnswers) "DEBUG " else ""
 
@@ -130,14 +129,13 @@ class OutputFormatter(out: PrintStream) {
         
         val fields = Iterator(
           kbpQuery.id,
-          kbpQuery.name,
           slot.name,
           runID,
           bestAnswer.extr.sentence.docId,
           bestAnswer.trimmedFill.string,
           bestAnswer.fillOffsetString,
           bestAnswer.entityOffsetString,
-          bestAnswer.relOffsetString,
+          bestAnswer.justificationOffsetString,
           bestAnswer.extr.confidence)
         
         out.println(fields.mkString("\t"))
@@ -181,15 +179,19 @@ class OutputFormatter(out: PrintStream) {
     val sortedGroups = groups.iterator.toSeq.sortBy(-_._2.size)
     val truncatedGroups = sortedGroups.take(maxGroups)
     val numTruncated = groups.keys.size - maxGroups
+    val groupScore = groups map { case (key, candidates) => (key, "%.02f".format(Candidate.groupScore(candidates))) }
+    // the keys we actually display with size info
+    val displayKeys = groups map { case (key, candidates) => (key, s"$key(${groupScore(key)},${candidates.size})") }
     
-    val maxKeyLength = truncatedGroups.map(_._1.length).max
+    val maxKeyLength = displayKeys.values.map(_.length).max  
     val pad: String = Seq.fill(maxKeyLength + 1)(' ').mkString
     def padStr(str: String): String = str + Seq.fill(maxKeyLength - str.length + 1)(' ').mkString
 
     if (detailedGroups) {
       truncatedGroups.foreach {
         case (key, candidates) =>
-          println(0, padStr(key) + candidates.head.debugString)
+          val displayKey = displayKeys(key)
+          println(0, padStr(displayKey) + candidates.head.debugString)
           candidates.tail.foreach { candidate =>
             println(0, pad + candidate.debugString)
           }
@@ -198,7 +200,8 @@ class OutputFormatter(out: PrintStream) {
       
     } else {
       truncatedGroups.foreach { case (key, candidates) =>
-        println(0, "%s (%d)".format(padStr(key), candidates.size))
+        val displayKey = displayKeys(key)
+        println(0, "%s (%d)".format(padStr(displayKey), candidates.size))
       }
     }
     if (numTruncated > 0) println(0, s"($numTruncated groups truncated)")

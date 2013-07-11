@@ -1,8 +1,8 @@
 package edu.knowitall.tac2013.solr.query
 
 import edu.knowitall.tac2013.solr.query.SolrQueryType._
-import edu.knowitall.tac2013.findSlotFillersApp.KBPQuery
-import edu.knowitall.tac2013.findSlotFillersApp.SlotPattern
+import edu.knowitall.tac2013.app.KBPQuery
+import edu.knowitall.tac2013.app.SlotPattern
 import scala.Option.option2Iterable
 
 case class SolrQuery(val queryString: String, val queryType: SolrQueryType, val pattern: SlotPattern)

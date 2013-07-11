@@ -1,9 +1,9 @@
 package edu.knowitall.tac2013.experiment
 
-import edu.knowitall.tac2013.findSlotFillersApp.SlotPattern
-import edu.knowitall.tac2013.findSlotFillersApp.Slot
+import edu.knowitall.tac2013.app.SlotPattern
+import edu.knowitall.tac2013.app.Slot
 import edu.knowitall.tac2013.solr.query.SolrQueryBuilder
-import edu.knowitall.tac2013.findSlotFillersApp.KBPQuery
+import edu.knowitall.tac2013.app.KBPQuery
 import edu.knowitall.tac2013.solr.populate.SolrSimpleExecutor
 
 /**

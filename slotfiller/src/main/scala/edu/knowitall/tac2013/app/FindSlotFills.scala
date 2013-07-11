@@ -1,5 +1,5 @@
 
-package edu.knowitall.tac2013.findSlotFillersApp
+package edu.knowitall.tac2013.app
 
 import KBPQueryEntityType._
 import edu.knowitall.tac2013.solr.query.SolrQueryExecutor
@@ -8,7 +8,8 @@ import scopt.OptionParser
 
 //Command line application object for running solr queries on all the slots
 //of a given entity and semantic type
-object FindSlotFills {
+class FindSlotFills(val queryExecutor: SolrQueryExecutor) {
+  def this(url: String) = this(new SolrQueryExecutor(url))
   
   def main(args: Array[String]): Unit = {
 
@@ -31,12 +32,12 @@ object FindSlotFills {
 
     val slots = slotStrings.split(",").map(_.trim).filter(_.nonEmpty).toSet
     
-    runForServerOutput(entityName, entityType, slots, System.out)
+    runForServerOutput(entityName, None, entityType, slots, new OutputFormatter(System.out))
     
     if (output != System.out) output.close()
   }
 
-  def runForServerOutput(rawName: String, entityTypeString: String, overrideSlotNames: Set[String], output: PrintStream): Unit = {
+  def runForServerOutput(rawName: String, nodeId: Option[String], entityTypeString: String, overrideSlotNames: Set[String], fmt: OutputFormatter): Unit = {
     
     val entityName = rawName.replace("_", " ").trim()
     val entityType = entityTypeString.trim() match {
@@ -47,14 +48,10 @@ object FindSlotFills {
     val overrideSlots = overrideSlotNames map Slot.fromName
 
     val kbpQuery = if (overrideSlotNames.isEmpty) {
-      KBPQuery.forEntityName(entityName, entityType)
+      KBPQuery.forEntityName(entityName, entityType, nodeId)
     } else {
-      KBPQuery.forEntityName(entityName, entityType).withOverrideSlots(overrideSlots)
+      KBPQuery.forEntityName(entityName, entityType, nodeId).withOverrideSlots(overrideSlots)
     }
-    
-    val fmt = new OutputFormatter(output)
-    
-    val queryExecutor = SolrQueryExecutor.defaultInstance
     
     val unfilteredSlotCandidateSets = kbpQuery.slotsToFill.map { slot => 
       (slot, queryExecutor.executeUnfilteredQuery(kbpQuery, slot)) 

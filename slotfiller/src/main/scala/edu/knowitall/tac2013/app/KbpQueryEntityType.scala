@@ -1,4 +1,4 @@
-package edu.knowitall.tac2013.findSlotFillersApp
+package edu.knowitall.tac2013.app
 
 object KBPQueryEntityType extends Enumeration{
   type KBPQueryEntityType = Value

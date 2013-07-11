@@ -1,15 +1,15 @@
 package edu.knowitall.tac2013.solr.query
 
 import jp.sf.amateras.solr.scala._
-import edu.knowitall.tac2013.findSlotFillersApp.FilterSolrResults.filterResults
+import edu.knowitall.tac2013.app.FilterSolrResults.filterResults
 import edu.knowitall.tac2013.openie.KbpExtraction
-import edu.knowitall.tac2013.findSlotFillersApp.Candidate
-import edu.knowitall.tac2013.findSlotFillersApp.Slot
-import edu.knowitall.tac2013.findSlotFillersApp.KBPQuery
-import edu.knowitall.tac2013.findSlotFillersApp.SlotPattern
+import edu.knowitall.tac2013.app.Candidate
+import edu.knowitall.tac2013.app.Slot
+import edu.knowitall.tac2013.app.KBPQuery
+import edu.knowitall.tac2013.app.SlotPattern
 import edu.knowitall.taggers.Type
 import scala.Option.option2Iterable
-import edu.knowitall.tac2013.findSlotFillersApp.SemanticTaggers.getTagTypes
+import edu.knowitall.tac2013.app.SemanticTaggers.getTagTypes
 
 class SolrQueryExecutor(val solrClient: SolrClient) {
   
