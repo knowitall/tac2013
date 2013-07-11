@@ -9,7 +9,7 @@ import edu.knowitall.tac2013.solr.query.SolrQuery
 import edu.knowitall.tool.chunk.ChunkedToken
 import edu.knowitall.taggers.Type
 import edu.knowitall.collection.immutable.Interval
-import edu.knowitall.tac2013.findSlotFillersApp.LocationHelper.findLocationTaggedType
+import edu.knowitall.tac2013.app.LocationHelper.findLocationTaggedType
 
 class TrimmedFill(val string: String, val interval: Interval)
 

@@ -61,7 +61,7 @@ class FindSlotFills(val queryExecutor: SolrQueryExecutor) {
     fmt.printUnfilteredResults(unfilteredSlotCandidateSets, kbpQuery)
     
     val slotCandidateSets = unfilteredSlotCandidateSets map { case (slot, candidates) => 
-      (slot -> FilterSolrResults.filterResults(candidates, entityName)) 
+      (slot -> FilterSolrResults.filterResults(candidates, kbpQuery)) 
     }
     
     fmt.printFilteredResults(slotCandidateSets, kbpQuery)

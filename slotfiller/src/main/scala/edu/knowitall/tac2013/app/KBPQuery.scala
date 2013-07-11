@@ -1,6 +1,7 @@
 package edu.knowitall.tac2013.app
 
 import edu.knowitall.tac2013.app.KBPQueryEntityType._
+import edu.knowitall.tac2013.solr.query.SolrHelper
 //import scala.io._
 import scala.xml.XML
 
@@ -15,6 +16,9 @@ case class KBPQuery (val id: String, val name: String, val doc: String,
    * Return a new KBPQuery with different slots to fill.
    */
   def withOverrideSlots(slots: Set[Slot]): KBPQuery = this.copy(slotsToFill = slots)
+  
+  lazy val docIdToSentNumDocIdPairMap = SolrHelper.getDocIDMapToSentNumsForEntityNameAndNodeID(name, nodeId)
+  lazy val docIds = docIdToSentNumDocIdPairMap.keySet.toList
 }
 
 object KBPQuery {

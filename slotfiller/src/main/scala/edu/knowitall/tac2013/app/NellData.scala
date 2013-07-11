@@ -2,6 +2,30 @@ package edu.knowitall.tac2013.app
 
 case class NellData(val name: String, val cityProbability: Option[Double],
     val stateOrProvinceProbability: Option[Double], val countryProbability: Option[Double]){
+  
+  lazy val highestProbabilityIsCity = {
+	  val x = Seq(cityProbability,stateOrProvinceProbability,countryProbability).flatten
+	  if(cityProbability.getOrElse({0.0}) >= x.max){
+	    true
+	  }
+	  else false
+  }
+  
+  lazy val highestProbabilityIsCountry = {
+	  val x = Seq(cityProbability,stateOrProvinceProbability,countryProbability).flatten
+	  if(countryProbability.getOrElse({0.0}) >= x.max){
+	    true
+	  }
+	  else false
+  }
+  
+  lazy val highestProbabilityIsStateOrProvince = {
+	  val x = Seq(cityProbability,stateOrProvinceProbability,countryProbability).flatten
+	  if(stateOrProvinceProbability.getOrElse({0.0}) >= x.max){
+	    true
+	  }
+	  else false
+  }
 }
 
 
@@ -31,7 +55,8 @@ object NellData {
       var stateOrProvinceProbability: Option[Double] = None
       
       
-      //read semantic types
+      //read semantic types		      val firstTag = locationTypesInSlotFill.head
+
       for(tpPair <- typeProbabilityPairs){
         val tpPairData = tpPair.split(" ")
         val semanticTypeName = tpPairData(0).trim().toLowerCase()
@@ -79,8 +104,9 @@ object NellData {
   lazy val stateOrProvinceNameSet = stateOrProvinces.map(f => f.name)
   
   def getNellData(str: String): Option[NellData] = {
-    if(nellMap.contains(str)) Some(nellMap(str)) else None
+    if(nellMap.contains(str.toLowerCase().trim())) Some(nellMap(str.toLowerCase().trim())) else None
   }
+
 
   
   

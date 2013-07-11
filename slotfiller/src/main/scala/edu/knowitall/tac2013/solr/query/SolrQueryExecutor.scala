@@ -45,6 +45,11 @@ class SolrQueryExecutor(val solrClient: SolrClient) {
 
     val patterns = slot.patterns
 
+    val wikiID = kbpQuery.id match{
+      case "" => None
+      case _ => Some(kbpQuery.id)
+    }
+    
     val solrQueries = patterns.flatMap { pattern => 
       val queryBuilder = new SolrQueryBuilder(pattern, kbpQuery)
       queryBuilder.getQueries 

@@ -1,7 +1,7 @@
 package edu.knowitall.tac2013.app
 
 import edu.knowitall.tac2013.openie.KbpExtraction
-import edu.knowitall.tac2013.findSlotFillersApp.LocationHelper.findLocationTaggedType
+import edu.knowitall.tac2013.app.LocationHelper.findLocationTaggedType
 import edu.knowitall.tac2013.solr.query.SolrQueryType._
 import edu.knowitall.tac2013.solr.query.SolrQueryType
 
@@ -62,9 +62,10 @@ object FilterSolrResults {
     }
   }
 
-  private def satisfiesEntityFilter(queryEntity: String)(candidate: Candidate): Boolean = {
+  private def satisfiesEntityFilter(kbpQuery: KBPQuery)(candidate: Candidate): Boolean = {
 
     val pattern = candidate.pattern
+    val queryEntity = kbpQuery.name
     
     if (candidate.queryType == SolrQueryType.REGULAR) {
       if (pattern.isValid) {
@@ -97,7 +98,30 @@ object FilterSolrResults {
         throw new Exception("KbpSlotToOpenIEData instance is not valid.")
         false
       }
-    } else {
+    }
+    else if (candidate.queryType == SolrQueryType.COREF){
+      //filter out if the entity slot contains a wikiLinkNodeID
+      candidate.pattern.entityIn.getOrElse({""}) match {
+        case "arg1" => { if(candidate.extr.arg1.wikiLink.isDefined) return false}
+        case "arg2" => { if(candidate.extr.arg2.wikiLink.isDefined) return false}
+      }
+      
+      //filter out if there is no mention of the target entity in the current sentence or the preceeding two sentences
+      val sentencesWhereEntityIsMentioned = kbpQuery.docIdToSentNumDocIdPairMap(candidate.extr.sentence.docId).map(x => x._2)
+      val thisSentenceNum = candidate.extr.sentence.sentNum
+      val sentenceRange = thisSentenceNum-2 to thisSentenceNum
+      for(sentenceNum <- sentencesWhereEntityIsMentioned){
+        if(sentenceRange.contains(sentenceNum)){
+          return true
+        }
+      }
+      
+      //if there is no sentence with a mention of the entity in the specified range
+      //around the coref extraction then the candidate extraction should be filtered out.
+      false
+    }
+    
+    else {
       true
     }
   }
@@ -226,11 +250,11 @@ object FilterSolrResults {
   //filters results from solr by calling helper methods that look at the KbpSlotToOpenIEData specifications and compare
   //that data with the results from solr to see if the relation is still a candidate
   //
-  def filterResults(unfiltered: Seq[Candidate], queryEntity: String): Seq[Candidate] = {
+  def filterResults(unfiltered: Seq[Candidate], kbpQuery: KBPQuery): Seq[Candidate] = {
     
     def combinedFilter(candidate: Candidate) = (
             satisfiesArg2PrepositionFilter(candidate) &&
-            satisfiesEntityFilter(queryEntity)(candidate) &&
+            satisfiesEntityFilter(kbpQuery)(candidate) &&
             satisfiesRelFilter(candidate) &&
             satisfiesSemanticFilter(candidate))
     

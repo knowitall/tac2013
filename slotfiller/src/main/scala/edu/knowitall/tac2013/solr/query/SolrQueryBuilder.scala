@@ -58,6 +58,11 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery) {
     }
   }
   
+  
+  def getDocIdConstraint(docId: String): Option[String] = {
+    Some("+docId:\"%s\"".format(docId))
+  }
+  
   private def getQueryString(fields: Seq[String]) = {
     
     val nonEmptyFields = fields.filter(_.nonEmpty)
@@ -86,8 +91,29 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery) {
     }
   }
   
+  val corefQueries: Option[Seq[SolrQuery]] = {
+    
+    if(!pattern.isValid || kbpQuery.docIds.isEmpty){
+      None
+    }
+    else{
+      val seqOfCorefQueries = 
+      for(docId <- kbpQuery.docIds) yield {
+    	val queryFields = Seq(getDocIdConstraint(docId),relTextConstraint,arg2StartConstraint).flatten
+    	val query = SolrQuery(getQueryString(queryFields), SolrQueryType.COREF, pattern)
+    	query
+      }
+      Some(seqOfCorefQueries)
+    }
+  }
+  
   val getQueries: Seq[SolrQuery] = {
 
-    regularQuery.toSeq ++ linkedQuery
+    if(corefQueries.isDefined){
+      regularQuery.toSeq ++ linkedQuery ++ corefQueries.get
+    }
+    else{
+      regularQuery.toSeq ++ linkedQuery
+    }
   }
 }
