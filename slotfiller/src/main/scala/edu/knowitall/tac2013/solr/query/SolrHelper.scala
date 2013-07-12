@@ -17,8 +17,9 @@ object SolrHelper {
       (r("docId").toString,r("sentNum").toString().toInt)
     }
     val docIdMapListOfSentNums = docSentNumPairs.groupBy(x => x._1)
-    docIdMapListOfSentNums
-    
+    val constrainedMap = docIdMapListOfSentNums.filter(p => (p._2.length > 2))
+    val sortedMap = constrainedMap.toList.sortBy(_._2.length)(Ordering[Int].reverse).take(20).toMap
+    sortedMap
   }
 
 }

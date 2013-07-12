@@ -7,8 +7,9 @@ import scala.Option.option2Iterable
 
 case class SolrQuery(val queryString: String, val queryType: SolrQueryType, val pattern: SlotPattern)
 
-class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery) {
+class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val corefOn: Boolean) {
 
+  def this(pattern: SlotPattern, kbpQuery: KBPQuery) = this(pattern, kbpQuery ,false)
   val arg1TextConstraint: Option[String] = {
     pattern.entityIn match {
       case Some("arg1") => Some("+arg1Text:\"%s\"".format(kbpQuery.name))
@@ -93,17 +94,22 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery) {
   
   val corefQueries: Option[Seq[SolrQuery]] = {
     
-    if(!pattern.isValid || kbpQuery.docIds.isEmpty){
-      None
+    if(corefOn){
+	    if(!pattern.isValid || kbpQuery.docIds.isEmpty){
+	      None
+	    }
+	    else{
+	      val seqOfCorefQueries = 
+	      for(docId <- kbpQuery.docIds) yield {
+	    	val queryFields = Seq(getDocIdConstraint(docId),relTextConstraint,arg2StartConstraint).flatten
+	    	val query = SolrQuery(getQueryString(queryFields), SolrQueryType.COREF, pattern)
+	    	query
+	      }
+	      Some(seqOfCorefQueries)
+	    }
     }
     else{
-      val seqOfCorefQueries = 
-      for(docId <- kbpQuery.docIds) yield {
-    	val queryFields = Seq(getDocIdConstraint(docId),relTextConstraint,arg2StartConstraint).flatten
-    	val query = SolrQuery(getQueryString(queryFields), SolrQueryType.COREF, pattern)
-    	query
-      }
-      Some(seqOfCorefQueries)
+      None
     }
   }
   

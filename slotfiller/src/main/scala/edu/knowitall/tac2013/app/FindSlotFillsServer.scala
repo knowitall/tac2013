@@ -53,7 +53,8 @@ object FindSlotFillsServer extends App {
             req.parameterValues("pg").headOption,
             req.parameterValues("dg").headOption,
             req.parameterValues("pa").headOption,
-            req.parameterValues("da").headOption)
+            req.parameterValues("da").headOption,
+            req.parameterValues("cf").headOption)
         case req @ GET(Path(Seg(Nil))) =>
           ResponseString("""<html>
               <h1>KnowItAll Slot Fill Test Server</h1>
@@ -74,6 +75,8 @@ object FindSlotFillsServer extends App {
               <input type="checkbox" name="dc" value="true" checked>Detailed filtered/unfiltered output?<br/>
               <input type="checkbox" name="pg" value="true" checked>Print merged answer groups? <input type="checkbox" name="dg" value="true" checked>Detailed?<br/>
               <input type="checkbox" name="pa" value="true" checked>Print answers? <input type="checkbox" name="da" value="true" checked>Detailed?<br/>
+              Query Options:<br/>
+              <input type="checkbox" name="cf" value="true" checked>Coref<br/>
               <input type="submit"/>
             </form>
             </body></html>""") ~> Ok
@@ -94,7 +97,8 @@ object FindSlotFillsServer extends App {
           pg: Option[String], // print groups?
           dg: Option[String], // detailed groups?
           pa: Option[String], // print answers?
-          da: Option[String]) = { // detailed answers?
+          da: Option[String],  // detailed answers?
+          cf: Option[String]) = { //coref?
 
         val nodeId = if (nodeIdStr.nonEmpty) Some(nodeIdStr) else None
         
@@ -107,6 +111,7 @@ object FindSlotFillsServer extends App {
         val detailedGroups = dg.nonEmpty
         val printAnswers = pa.nonEmpty
         val detailedAnswers = da.nonEmpty
+        val corefOn = cf.nonEmpty
 
         def getFormatter(out: PrintStream) = new OutputFormatter(out,
           printUnfiltered = printUnfiltered,
@@ -122,7 +127,7 @@ object FindSlotFillsServer extends App {
           def stream(os: OutputStream) = {
             val printStream = new PrintStream(os)
             try {
-              new FindSlotFills(corpusUrl).runForServerOutput(entityString, nodeId, typ, slotsSplit, getFormatter(printStream))
+              new FindSlotFills(corpusUrl,corefOn).runForServerOutput(entityString, nodeId, typ, slotsSplit, getFormatter(printStream))
             } catch {
               case e: Throwable => {
                 e.printStackTrace(printStream)

@@ -9,7 +9,7 @@ import scopt.OptionParser
 //Command line application object for running solr queries on all the slots
 //of a given entity and semantic type
 class FindSlotFills(val queryExecutor: SolrQueryExecutor) {
-  def this(url: String) = this(new SolrQueryExecutor(url))
+  def this(url: String, corefOn: Boolean) = this(new SolrQueryExecutor(url,corefOn))
   
   def main(args: Array[String]): Unit = {
 
