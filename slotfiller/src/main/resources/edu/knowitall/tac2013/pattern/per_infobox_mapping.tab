@@ -1,0 +1,938 @@
+Infobox 125cc rider:Birthdate	per:age
+Infobox 125cc rider:Birthdate	per:date_of_birth
+Infobox 125cc rider:Birthplace	per:country_of_birth
+Infobox 125cc rider:Birthplace	per:stateorprovince_of_birth
+Infobox 125cc rider:Birthplace	per:city_of_birth
+Infobox 125cc rider:Current team	per:member_of
+Infobox 125cc rider:Name	per:alternate_names
+Infobox 125cc rider:Nationality	per:origin
+Infobox 125cc rider:Nicknames	per:alternate_names
+Infobox 250cc rider:Birthdate	per:age
+Infobox 250cc rider:Birthdate	per:date_of_birth
+Infobox 250cc rider:Birthplace	per:country_of_birth
+Infobox 250cc rider:Birthplace	per:stateorprovince_of_birth
+Infobox 250cc rider:Birthplace	per:city_of_birth
+Infobox 250cc rider:Current team	per:member_of
+Infobox 250cc rider:Name	per:alternate_names
+Infobox 250cc rider:Nationality	per:origin
+Infobox 250cc rider:Nicknames	per:alternate_names
+Infobox ASP Surfer:birthdate	per:age
+Infobox ASP Surfer:birthdate	per:date_of_birth
+Infobox ASP Surfer:birthplace	per:country_of_birth
+Infobox ASP Surfer:birthplace	per:stateorprovince_of_birth
+Infobox ASP Surfer:birthplace	per:city_of_birth
+Infobox ASP Surfer:residence	per:countries_of_residence
+Infobox ASP Surfer:residence	per:states_or_provinces_of_residence
+Infobox ASP Surfer:residence	per:cities_of_residence
+Infobox Actor:Age	per:age
+Infobox Actor:Alias	per:alternate_names
+Infobox Actor:Birth_name	per:alternate_names
+Infobox Actor:Born	per:age
+Infobox Actor:Born	per:date_of_birth
+Infobox Actor:Born	per:country_of_birth
+Infobox Actor:Born	per:stateorprovince_of_birth
+Infobox Actor:Born	per:city_of_birth
+Infobox Actor:Family	per:children
+Infobox Actor:Family	per:other_family
+Infobox Actor:Family	per:parents
+Infobox Actor:Family	per:siblings
+Infobox Actor:Name	per:alternate_names
+Infobox Actor:Nickname	per:alternate_names
+Infobox Actor:Occupation	per:title
+Infobox Actor:Profession	per:title
+Infobox Actor:Sopose(s)	per:spouse
+Infobox Actor:also known as	per:alternate_names
+Infobox Actor:birtdate	per:age
+Infobox Actor:birtdate	per:date_of_birth
+Infobox Actor:birth date	per:age
+Infobox Actor:birth date	per:date_of_birth
+Infobox Actor:birth name	per:alternate_names
+Infobox Actor:birth place	per:country_of_birth
+Infobox Actor:birth place	per:stateorprovince_of_birth
+Infobox Actor:birth place	per:city_of_birth
+Infobox Actor:birth_date	per:age
+Infobox Actor:birth_date	per:date_of_birth
+Infobox Actor:birth_name	per:alternate_names
+Infobox Actor:birth_place	per:country_of_birth
+Infobox Actor:birth_place	per:stateorprovince_of_birth
+Infobox Actor:birth_place	per:city_of_birth
+Infobox Actor:birthdate	per:age
+Infobox Actor:birthdate	per:date_of_birth
+Infobox Actor:birthname	per:alternate_names
+Infobox Actor:birthplace	per:country_of_birth
+Infobox Actor:birthplace	per:stateorprovince_of_birth
+Infobox Actor:birthplace	per:city_of_birth
+Infobox Actor:bithplace	per:country_of_birth
+Infobox Actor:bithplace	per:stateorprovince_of_birth
+Infobox Actor:bithplace	per:city_of_birth
+Infobox Actor:burthname	per:alternate_names
+Infobox Actor:children	per:children
+Infobox Actor:date of birth	per:age
+Infobox Actor:date of birth	per:date_of_birth
+Infobox Actor:date_birth	per:age
+Infobox Actor:date_birth	per:date_of_birth
+Infobox Actor:death_date	per:age
+Infobox Actor:death_date	per:date_of_death
+Infobox Actor:death_place	per:country_of_death
+Infobox Actor:death_place	per:stateorprovince_of_death
+Infobox Actor:death_place	per:city_of_death
+Infobox Actor:deathcause	per:cause_of_death
+Infobox Actor:deathdate	per:age
+Infobox Actor:deathdate	per:date_of_death
+Infobox Actor:deathplace	per:country_of_death
+Infobox Actor:deathplace	per:stateorprovince_of_death
+Infobox Actor:deathplace	per:city_of_death
+Infobox Actor:deathplae	per:country_of_death
+Infobox Actor:deathplae	per:stateorprovince_of_death
+Infobox Actor:deathplae	per:city_of_death
+Infobox Actor:domesticpartner	per:spouse
+Infobox Actor:education	per:schools_attended
+Infobox Actor:ethnicity	per:origin
+Infobox Actor:full name	per:alternate_names
+Infobox Actor:home_town	per:countries_of_residence
+Infobox Actor:home_town	per:states_or_provinces_of_residence
+Infobox Actor:home_town	per:cities_of_residence
+Infobox Actor:name	per:alternate_names
+Infobox Actor:nationality	per:origin
+Infobox Actor:nickname	per:alternate_names
+Infobox Actor:occupation	per:title
+Infobox Actor:occuption	per:title
+Infobox Actor:origin	per:origin
+Infobox Actor:origin	per:countries_of_residence
+Infobox Actor:origin	per:states_or_provinces_of_residence
+Infobox Actor:origin	per:cities_of_residence
+Infobox Actor:other names	per:alternate_names
+Infobox Actor:other_names	per:alternate_names
+Infobox Actor:othername	per:alternate_names
+Infobox Actor:othername (s)	per:alternate_names
+Infobox Actor:othername(s)	per:alternate_names
+Infobox Actor:othernames	per:alternate_names
+Infobox Actor:parents	per:parents
+Infobox Actor:parter	per:spouse
+Infobox Actor:party	per:member_of
+Infobox Actor:place_birth	per:country_of_birth
+Infobox Actor:place_birth	per:stateorprovince_of_birth
+Infobox Actor:place_birth	per:city_of_birth
+Infobox Actor:previous_occupation	per:title
+Infobox Actor:pseudonym	per:alternate_names
+Infobox Actor:relatives	per:other_family
+Infobox Actor:relatives	per:siblings
+Infobox Actor:religion	per:religion
+Infobox Actor:residence	per:countries_of_residence
+Infobox Actor:residence	per:states_or_provinces_of_residence
+Infobox Actor:residence	per:cities_of_residence
+Infobox Actor:spouse	per:spouse
+Infobox Actor:spouse(s)	per:spouse
+Infobox Actor:spouses	per:spouse
+Infobox Actor:stage/screen name	per:alternate_names
+Infobox Arabperson:bdate	per:age
+Infobox Arabperson:bdate	per:date_of_birth
+Infobox Arabperson:ddate	per:age
+Infobox Arabperson:ddate	per:date_of_death
+Infobox Arabperson:known	per:title
+Infobox Arabperson:livedwhere	per:countries_of_residence
+Infobox Arabperson:livedwhere	per:states_or_provinces_of_residence
+Infobox Arabperson:livedwhere	per:cities_of_residence
+Infobox Arabperson:livenow	per:countries_of_residence
+Infobox Arabperson:livenow	per:states_or_provinces_of_residence
+Infobox Arabperson:livenow	per:cities_of_residence
+Infobox Arabperson:name	per:alternate_names
+Infobox Archbishop of Canterbury:Full name	per:alternate_names
+Infobox Archbishop of Canterbury:birth_date	per:age
+Infobox Archbishop of Canterbury:birth_date	per:date_of_birth
+Infobox Archbishop of Canterbury:birth_name	per:alternate_names
+Infobox Archbishop of Canterbury:birth_place	per:country_of_birth
+Infobox Archbishop of Canterbury:birth_place	per:stateorprovince_of_birth
+Infobox Archbishop of Canterbury:birth_place	per:city_of_birth
+Infobox Archbishop of Canterbury:birthplace	per:country_of_birth
+Infobox Archbishop of Canterbury:birthplace	per:stateorprovince_of_birth
+Infobox Archbishop of Canterbury:birthplace	per:city_of_birth
+Infobox Archbishop of Canterbury:death_date	per:age
+Infobox Archbishop of Canterbury:death_date	per:date_of_death
+Infobox Archbishop of Canterbury:death_place	per:country_of_death
+Infobox Archbishop of Canterbury:death_place	per:stateorprovince_of_death
+Infobox Archbishop of Canterbury:death_place	per:city_of_death
+Infobox Archbishop of Canterbury:deathplace	per:country_of_death
+Infobox Archbishop of Canterbury:deathplace	per:stateorprovince_of_death
+Infobox Archbishop of Canterbury:deathplace	per:city_of_death
+Infobox Archbishop of York:alma_mater	per:schools_attended
+Infobox Archbishop of York:birth_date	per:age
+Infobox Archbishop of York:birth_date	per:date_of_birth
+Infobox Archbishop of York:birth_name	per:alternate_names
+Infobox Archbishop of York:birth_place	per:country_of_birth
+Infobox Archbishop of York:birth_place	per:stateorprovince_of_birth
+Infobox Archbishop of York:birth_place	per:city_of_birth
+Infobox Archbishop of York:birthplace	per:country_of_birth
+Infobox Archbishop of York:birthplace	per:stateorprovince_of_birth
+Infobox Archbishop of York:birthplace	per:city_of_birth
+Infobox Archbishop of York:death_date	per:age
+Infobox Archbishop of York:death_date	per:date_of_death
+Infobox Archbishop of York:death_place	per:country_of_death
+Infobox Archbishop of York:death_place	per:stateorprovince_of_death
+Infobox Archbishop of York:death_place	per:city_of_death
+Infobox Archbishop of York:deathplace	per:country_of_death
+Infobox Archbishop of York:deathplace	per:stateorprovince_of_death
+Infobox Archbishop of York:deathplace	per:city_of_death
+Infobox Archbishop of York:name	per:alternate_names
+Infobox Archbishop of York:nationality	per:origin
+Infobox Archbishop of York:other_post	per:title
+Infobox Archbishop of York:religion	per:religion
+Infobox Artist:Alias	per:alternate_names
+Infobox Artist:Born	per:age
+Infobox Artist:Born	per:date_of_birth
+Infobox Artist:Born	per:country_of_birth
+Infobox Artist:Born	per:stateorprovince_of_birth
+Infobox Artist:Born	per:city_of_birth
+Infobox Artist:Lives in	per:countries_of_residence
+Infobox Artist:Lives in	per:states_or_provinces_of_residence
+Infobox Artist:Lives in	per:cities_of_residence
+Infobox Artist:Name	per:alternate_names
+Infobox Artist:Nationality	per:origin
+Infobox Artist:affiliations	per:member_of
+Infobox Artist:age at death	per:age
+Infobox Artist:alias	per:alternate_names
+Infobox Artist:aliases	per:alternate_names
+Infobox Artist:also known as	per:alternate_names
+Infobox Artist:associations	per:member_of
+Infobox Artist:birth_date	per:age
+Infobox Artist:birth_date	per:date_of_birth
+Infobox Artist:birth_place	per:country_of_birth
+Infobox Artist:birth_place	per:stateorprovince_of_birth
+Infobox Artist:birth_place	per:city_of_birth
+Infobox Artist:birthdate	per:age
+Infobox Artist:birthdate	per:date_of_birth
+Infobox Artist:birthname	per:alternate_names
+Infobox Artist:birthplace	per:country_of_birth
+Infobox Artist:birthplace	per:stateorprovince_of_birth
+Infobox Artist:birthplace	per:city_of_birth
+Infobox Artist:death_date	per:age
+Infobox Artist:death_date	per:date_of_death
+Infobox Artist:death_place	per:country_of_death
+Infobox Artist:death_place	per:stateorprovince_of_death
+Infobox Artist:death_place	per:city_of_death
+Infobox Artist:deathdate	per:age
+Infobox Artist:deathdate	per:date_of_death
+Infobox Artist:deathplace	per:country_of_death
+Infobox Artist:deathplace	per:stateorprovince_of_death
+Infobox Artist:deathplace	per:city_of_death
+Infobox Artist:died at age of	per:age
+Infobox Artist:education	per:schools_attended
+Infobox Artist:ethnicity	per:origin
+Infobox Artist:known_for	per:title
+Infobox Artist:location	per:countries_of_residence
+Infobox Artist:location	per:states_or_provinces_of_residence
+Infobox Artist:location	per:cities_of_residence
+Infobox Artist:name	per:alternate_names
+Infobox Artist:nationality	per:origin
+Infobox Artist:occupation	per:title
+Infobox Artist:profession	per:title
+Infobox Artist:resides	per:countries_of_residence
+Infobox Artist:resides	per:states_or_provinces_of_residence
+Infobox Artist:resides	per:cities_of_residence
+Infobox Artist:spouse	per:spouse
+Infobox Artist:spouse(s)	per:spouse
+Infobox Artist:training	per:schools_attended
+Infobox Astronaut:branch	per:employee_of
+Infobox Astronaut:current_occupation	per:employee_of
+Infobox Astronaut:current_occupation	per:title
+Infobox Astronaut:date_birth	per:age
+Infobox Astronaut:date_birth	per:date_of_birth
+Infobox Astronaut:date_death	per:age
+Infobox Astronaut:date_death	per:date_of_death
+Infobox Astronaut:ethnicity	per:origin
+Infobox Astronaut:name	per:alternate_names
+Infobox Astronaut:nationality	per:origin
+Infobox Astronaut:native_name	per:alternate_names
+Infobox Astronaut:occupation	per:title
+Infobox Astronaut:offspring	per:children
+Infobox Astronaut:place_birth	per:country_of_birth
+Infobox Astronaut:place_birth	per:stateorprovince_of_birth
+Infobox Astronaut:place_birth	per:city_of_birth
+Infobox Astronaut:place_death	per:country_of_death
+Infobox Astronaut:place_death	per:stateorprovince_of_death
+Infobox Astronaut:place_death	per:city_of_death
+Infobox Astronaut:previous_occupation	per:title
+Infobox Astronaut:rank	per:employee_of
+Infobox Astronaut:rank	per:title
+Infobox Astronaut:selection	per:member_of
+Infobox Astronaut:type	per:title
+Infobox Athlete:alias	per:alternate_names
+Infobox Athlete:birthdate	per:age
+Infobox Athlete:birthdate	per:date_of_birth
+Infobox Athlete:birthplace	per:country_of_birth
+Infobox Athlete:birthplace	per:stateorprovince_of_birth
+Infobox Athlete:birthplace	per:city_of_birth
+Infobox Athlete:club	per:member_of
+Infobox Athlete:country	per:origin
+Infobox Athlete:datebirth	per:age
+Infobox Athlete:datebirth	per:date_of_birth
+Infobox Athlete:datedeath	per:age
+Infobox Athlete:datedeath	per:date_of_death
+Infobox Athlete:deathdate	per:age
+Infobox Athlete:deathdate	per:date_of_death
+Infobox Athlete:deathplace	per:country_of_death
+Infobox Athlete:deathplace	per:stateorprovince_of_death
+Infobox Athlete:deathplace	per:city_of_death
+Infobox Athlete:fullname	per:alternate_names
+Infobox Athlete:name	per:alternate_names
+Infobox Athlete:nationality	per:origin
+Infobox Athlete:nickname	per:alternate_names
+Infobox Athlete:placebirth	per:country_of_birth
+Infobox Athlete:placebirth	per:stateorprovince_of_birth
+Infobox Athlete:placebirth	per:city_of_birth
+Infobox Athlete:playername	per:alternate_names
+Infobox Athlete:residence	per:countries_of_residence
+Infobox Athlete:residence	per:states_or_provinces_of_residence
+Infobox Athlete:residence	per:cities_of_residence
+Infobox Austrian Royalty:children	per:children
+Infobox Austrian Royalty:date of birth	per:age
+Infobox Austrian Royalty:date of birth	per:date_of_birth
+Infobox Austrian Royalty:date of death	per:age
+Infobox Austrian Royalty:date of death	per:date_of_death
+Infobox Austrian Royalty:father	per:parents
+Infobox Austrian Royalty:full name	per:alternate_names
+Infobox Austrian Royalty:issue	per:children
+Infobox Austrian Royalty:mother	per:parents
+Infobox Austrian Royalty:name	per:alternate_names
+Infobox Austrian Royalty:other_names	per:alternate_names
+Infobox Austrian Royalty:place of birth	per:country_of_birth
+Infobox Austrian Royalty:place of birth	per:stateorprovince_of_birth
+Infobox Austrian Royalty:place of birth	per:city_of_birth
+Infobox Austrian Royalty:place of death	per:country_of_death
+Infobox Austrian Royalty:place of death	per:stateorprovince_of_death
+Infobox Austrian Royalty:place of death	per:city_of_death
+Infobox Austrian Royalty:spouse	per:spouse
+Infobox Austrian Royalty:title	per:employee_of
+Infobox Austrian Royalty:title	per:title
+Infobox Austrian Royalty:titles	per:employee_of
+Infobox Austrian Royalty:titles	per:title
+Infobox Belgian Royalty:birth_date	per:age
+Infobox Belgian Royalty:birth_date	per:date_of_birth
+Infobox Belgian Royalty:birth_place	per:country_of_birth
+Infobox Belgian Royalty:birth_place	per:stateorprovince_of_birth
+Infobox Belgian Royalty:birth_place	per:city_of_birth
+Infobox Belgian Royalty:date of birth	per:age
+Infobox Belgian Royalty:date of birth	per:date_of_birth
+Infobox Belgian Royalty:date of death	per:age
+Infobox Belgian Royalty:date of death	per:date_of_death
+Infobox Belgian Royalty:father	per:parents
+Infobox Belgian Royalty:full name	per:alternate_names
+Infobox Belgian Royalty:issue	per:children
+Infobox Belgian Royalty:mother	per:parents
+Infobox Belgian Royalty:name	per:alternate_names
+Infobox Belgian Royalty:othertitles	per:employee_of
+Infobox Belgian Royalty:othertitles	per:title
+Infobox Belgian Royalty:place of birth	per:country_of_birth
+Infobox Belgian Royalty:place of birth	per:stateorprovince_of_birth
+Infobox Belgian Royalty:place of birth	per:city_of_birth
+Infobox Belgian Royalty:place of death	per:country_of_death
+Infobox Belgian Royalty:place of death	per:stateorprovince_of_death
+Infobox Belgian Royalty:place of death	per:city_of_death
+Infobox Belgian Royalty:spouse	per:spouse
+Infobox Bishop of York:birth_date	per:age
+Infobox Bishop of York:birth_date	per:date_of_birth
+Infobox Bishop of York:death_date	per:age
+Infobox Bishop of York:death_date	per:date_of_death
+Infobox Bishop of York:name	per:alternate_names
+Infobox Bishop:alma_mater	per:schools_attended
+Infobox Bishop:birth_date	per:age
+Infobox Bishop:birth_date	per:date_of_birth
+Infobox Bishop:birth_name	per:alternate_names
+Infobox Bishop:birth_place	per:country_of_birth
+Infobox Bishop:birth_place	per:stateorprovince_of_birth
+Infobox Bishop:birth_place	per:city_of_birth
+Infobox Bishop:birthplace	per:country_of_birth
+Infobox Bishop:birthplace	per:stateorprovince_of_birth
+Infobox Bishop:birthplace	per:city_of_birth
+Infobox Bishop:bishop_of	per:title
+Infobox Bishop:children	per:children
+Infobox Bishop:death_date	per:age
+Infobox Bishop:death_date	per:date_of_death
+Infobox Bishop:death_place	per:country_of_death
+Infobox Bishop:death_place	per:stateorprovince_of_death
+Infobox Bishop:death_place	per:city_of_death
+Infobox Bishop:deathplace	per:country_of_death
+Infobox Bishop:deathplace	per:stateorprovince_of_death
+Infobox Bishop:deathplace	per:city_of_death
+Infobox Bishop:diocese	per:employee_of
+Infobox Bishop:diocese	per:countries_of_residence
+Infobox Bishop:diocese	per:states_or_provinces_of_residence
+Infobox Bishop:diocese	per:cities_of_residence
+Infobox Bishop:name	per:alternate_names
+Infobox Bishop:nationality	per:origin
+Infobox Bishop:occupation	per:title
+Infobox Bishop:parents	per:parents
+Infobox Bishop:profession	per:title
+Infobox Bishop:province	per:employee_of
+Infobox Bishop:religion	per:religion
+Infobox Bishop:residence	per:countries_of_residence
+Infobox Bishop:residence	per:states_or_provinces_of_residence
+Infobox Bishop:residence	per:cities_of_residence
+Infobox Bishop:spouse	per:spouse
+Infobox Bishop:title	per:title
+Infobox Bourbon-Parma Royalty:birth_date	per:age
+Infobox Bourbon-Parma Royalty:birth_date	per:date_of_birth
+Infobox Bourbon-Parma Royalty:date of birth	per:age
+Infobox Bourbon-Parma Royalty:date of birth	per:date_of_birth
+Infobox Bourbon-Parma Royalty:date of death	per:age
+Infobox Bourbon-Parma Royalty:date of death	per:date_of_death
+Infobox Bourbon-Parma Royalty:father	per:parents
+Infobox Bourbon-Parma Royalty:full name	per:alternate_names
+Infobox Bourbon-Parma Royalty:issue	per:children
+Infobox Bourbon-Parma Royalty:mother	per:parents
+Infobox Bourbon-Parma Royalty:name	per:alternate_names
+Infobox Bourbon-Parma Royalty:other_names	per:alternate_names
+Infobox Bourbon-Parma Royalty:place of birth	per:country_of_birth
+Infobox Bourbon-Parma Royalty:place of birth	per:stateorprovince_of_birth
+Infobox Bourbon-Parma Royalty:place of birth	per:city_of_birth
+Infobox Bourbon-Parma Royalty:place of death	per:country_of_death
+Infobox Bourbon-Parma Royalty:place of death	per:stateorprovince_of_death
+Infobox Bourbon-Parma Royalty:place of death	per:city_of_death
+Infobox Bourbon-Parma Royalty:spouse	per:spouse
+Infobox Bourbon-Parma Royalty:title	per:employee_of
+Infobox Bourbon-Parma Royalty:title	per:title
+Infobox Boxer:Religion	per:religion
+Infobox Boxer:birth name	per:alternate_names
+Infobox Boxer:birth_date	per:age
+Infobox Boxer:birth_date	per:date_of_birth
+Infobox Boxer:birth_place	per:country_of_birth
+Infobox Boxer:birth_place	per:stateorprovince_of_birth
+Infobox Boxer:birth_place	per:city_of_birth
+Infobox Boxer:death_date	per:age
+Infobox Boxer:death_date	per:date_of_death
+Infobox Boxer:death_place	per:country_of_death
+Infobox Boxer:death_place	per:stateorprovince_of_death
+Infobox Boxer:death_place	per:city_of_death
+Infobox Boxer:home	per:countries_of_residence
+Infobox Boxer:home	per:states_or_provinces_of_residence
+Infobox Boxer:home	per:cities_of_residence
+Infobox Boxer:hometown	per:countries_of_residence
+Infobox Boxer:hometown	per:states_or_provinces_of_residence
+Infobox Boxer:hometown	per:cities_of_residence
+Infobox Boxer:name	per:alternate_names
+Infobox Boxer:nationality	per:origin
+Infobox Boxer:nickname	per:alternate_names
+Infobox Boxer:realname	per:alternate_names
+Infobox Breton Royalty:date of birth	per:age
+Infobox Breton Royalty:date of birth	per:date_of_birth
+Infobox Breton Royalty:date of death	per:age
+Infobox Breton Royalty:date of death	per:date_of_death
+Infobox Breton Royalty:father	per:parents
+Infobox Breton Royalty:issue	per:children
+Infobox Breton Royalty:mother	per:parents
+Infobox Breton Royalty:name	per:alternate_names
+Infobox Breton Royalty:spouse	per:spouse
+Infobox Breton Royalty:title	per:employee_of
+Infobox Breton Royalty:title	per:title
+Infobox Breton Royalty:titles	per:employee_of
+Infobox Breton Royalty:titles	per:title
+Infobox British Royalty:birth_place	per:country_of_birth
+Infobox British Royalty:birth_place	per:stateorprovince_of_birth
+Infobox British Royalty:birth_place	per:city_of_birth
+Infobox British Royalty:consort	per:spouse
+Infobox British Royalty:date of birth	per:age
+Infobox British Royalty:date of birth	per:date_of_birth
+Infobox British Royalty:date of death	per:age
+Infobox British Royalty:date of death	per:date_of_death
+Infobox British Royalty:father	per:parents
+Infobox British Royalty:full name	per:alternate_names
+Infobox British Royalty:grandmother	per:other_family
+Infobox British Royalty:issue	per:children
+Infobox British Royalty:mother	per:parents
+Infobox British Royalty:name	per:alternate_names
+Infobox British Royalty:occupation	per:employee_of
+Infobox British Royalty:occupation	per:title
+Infobox British Royalty:othertitles	per:employee_of
+Infobox British Royalty:othertitles	per:title
+Infobox British Royalty:partners	per:spouse
+Infobox British Royalty:place of birth	per:country_of_birth
+Infobox British Royalty:place of birth	per:stateorprovince_of_birth
+Infobox British Royalty:place of birth	per:city_of_birth
+Infobox British Royalty:place of death	per:country_of_death
+Infobox British Royalty:place of death	per:stateorprovince_of_death
+Infobox British Royalty:place of death	per:city_of_death
+Infobox British Royalty:residence	per:countries_of_residence
+Infobox British Royalty:residence	per:states_or_provinces_of_residence
+Infobox British Royalty:residence	per:cities_of_residence
+Infobox British Royalty:spouse	per:spouse
+Infobox British Royalty:tertiary education	per:schools_attended
+Infobox British Royalty:title	per:employee_of
+Infobox British Royalty:title	per:title
+Infobox British Royalty:titles	per:employee_of
+Infobox British Royalty:titles	per:title
+Infobox CanadianMP:alma_mater	per:schools_attended
+Infobox CanadianMP:birth_date	per:age
+Infobox CanadianMP:birth_date	per:date_of_birth
+Infobox CanadianMP:birth_place	per:country_of_birth
+Infobox CanadianMP:birth_place	per:stateorprovince_of_birth
+Infobox CanadianMP:birth_place	per:city_of_birth
+Infobox CanadianMP:children	per:children
+Infobox CanadianMP:constituency	per:employee_of
+Infobox CanadianMP:death_date	per:age
+Infobox CanadianMP:death_date	per:date_of_death
+Infobox CanadianMP:death_place	per:country_of_death
+Infobox CanadianMP:death_place	per:stateorprovince_of_death
+Infobox CanadianMP:death_place	per:city_of_death
+Infobox CanadianMP:name	per:alternate_names
+Infobox CanadianMP:nationality	per:origin
+Infobox CanadianMP:occupation	per:title
+Infobox CanadianMP:office	per:employee_of
+Infobox CanadianMP:office	per:title
+Infobox CanadianMP:office1	per:employee_of
+Infobox CanadianMP:office1	per:title
+Infobox CanadianMP:office2	per:employee_of
+Infobox CanadianMP:office2	per:title
+Infobox CanadianMP:office3	per:employee_of
+Infobox CanadianMP:office3	per:title
+Infobox CanadianMP:office4	per:employee_of
+Infobox CanadianMP:office4	per:title
+Infobox CanadianMP:office5	per:employee_of
+Infobox CanadianMP:office5	per:title
+Infobox CanadianMP:office6	per:employee_of
+Infobox CanadianMP:office6	per:title
+Infobox CanadianMP:order	per:employee_of
+Infobox CanadianMP:order	per:title
+Infobox CanadianMP:order2	per:employee_of
+Infobox CanadianMP:order2	per:title
+Infobox CanadianMP:order3	per:employee_of
+Infobox CanadianMP:order3	per:title
+Infobox CanadianMP:order5	per:employee_of
+Infobox CanadianMP:order5	per:title
+Infobox CanadianMP:otherparty	per:member_of
+Infobox CanadianMP:parliament	per:member_of
+Infobox CanadianMP:parliament2	per:member_of
+Infobox CanadianMP:parliament3	per:member_of
+Infobox CanadianMP:party	per:member_of
+Infobox CanadianMP:profession	per:title
+Infobox CanadianMP:religion	per:religion
+Infobox CanadianMP:residence	per:countries_of_residence
+Infobox CanadianMP:residence	per:states_or_provinces_of_residence
+Infobox CanadianMP:residence	per:cities_of_residence
+Infobox CanadianMP:spouse	per:spouse
+Infobox CanadianMP:spouse2	per:spouse
+Infobox Chancellor:alma_mater	per:schools_attended
+Infobox Chancellor:birth_date	per:age
+Infobox Chancellor:birth_date	per:date_of_birth
+Infobox Chancellor:birth_place	per:country_of_birth
+Infobox Chancellor:birth_place	per:stateorprovince_of_birth
+Infobox Chancellor:birth_place	per:city_of_birth
+Infobox Chancellor:name	per:alternate_names
+Infobox Chancellor:order	per:employee_of
+Infobox Chancellor:order	per:member_of
+Infobox Chancellor:order	per:title
+Infobox Chancellor:order2	per:employee_of
+Infobox Chancellor:order2	per:member_of
+Infobox Chancellor:order2	per:title
+Infobox Chancellor:order3	per:employee_of
+Infobox Chancellor:order3	per:member_of
+Infobox Chancellor:order3	per:title
+Infobox Chancellor:party	per:member_of
+Infobox Chancellor:profession	per:title
+Infobox Chancellor:religion	per:religion
+Infobox Chancellor:spouse	per:spouse
+Infobox Cricketer:country	per:origin
+Infobox Cricketer:country abbrev	per:origin
+Infobox Cricketer:country_abbrev	per:origin
+Infobox Cricketer:name	per:alternate_names
+Infobox Cricketer:nationality	per:origin
+Infobox Figure skater:country	per:origin
+Infobox Figure skater:dateofbirth	per:age
+Infobox Figure skater:dateofbirth	per:date_of_birth
+Infobox Figure skater:residence	per:countries_of_residence
+Infobox Figure skater:residence	per:states_or_provinces_of_residence
+Infobox Figure skater:residence	per:cities_of_residence
+Infobox Figure skater:skating club	per:member_of
+Infobox Figure skater:skating_club	per:member_of
+Infobox Go player:affiliation	per:member_of
+Infobox Go player:cityofbirth	per:city_of_birth
+Infobox Go player:countryofbirth	per:origin
+Infobox Go player:dateofbirth	per:age
+Infobox Go player:dateofbirth	per:date_of_birth
+Infobox Go player:residence	per:countries_of_residence
+Infobox Go player:residence	per:states_or_provinces_of_residence
+Infobox Go player:residence	per:cities_of_residence
+Infobox Monarch:consort	per:spouse
+Infobox Monarch:date of birth	per:date_of_birth
+Infobox Monarch:date of death	per:date_of_death
+Infobox Monarch:date_of_birth	per:date_of_birth
+Infobox Monarch:date_of_death	per:date_of_death
+Infobox Monarch:father	per:parents
+Infobox Monarch:full name	per:alternate_names
+Infobox Monarch:full_name	per:alternate_names
+Infobox Monarch:issue	per:children
+Infobox Monarch:mother	per:parents
+Infobox Monarch:name	per:alternate_names
+Infobox Monarch:othertitles	per:title
+Infobox Monarch:place of birth	per:country_of_birth
+Infobox Monarch:place of birth	per:stateorprovince_of_birth
+Infobox Monarch:place of birth	per:city_of_birth
+Infobox Monarch:place of death	per:country_of_death
+Infobox Monarch:place of death	per:stateorprovince_of_death
+Infobox Monarch:place of death	per:city_of_death
+Infobox Monarch:place_of_birth	per:country_of_birth
+Infobox Monarch:place_of_birth	per:stateorprovince_of_birth
+Infobox Monarch:place_of_birth	per:city_of_birth
+Infobox Monarch:place_of_death	per:country_of_death
+Infobox Monarch:place_of_death	per:stateorprovince_of_death
+Infobox Monarch:place_of_death	per:city_of_death
+Infobox Monarch:queen	per:spouse
+Infobox Monarch:spouse 1	per:spouse
+Infobox Monarch:spouse 2	per:spouse
+Infobox Monarch:spouse 3	per:spouse
+Infobox Monarch:spouse 4	per:spouse
+Infobox Monarch:spouse 5	per:spouse
+Infobox Monarch:spouse 6	per:spouse
+Infobox Monarch:spouse 7	per:spouse
+Infobox Monarch:spouse_1	per:spouse
+Infobox Monarch:spouse_2	per:spouse
+Infobox Monarch:spouse_3	per:spouse
+Infobox Monarch:spouse_4	per:spouse
+Infobox Monarch:spouse_5	per:spouse
+Infobox Monarch:spouse_6	per:spouse
+Infobox Monarch:spouse_7	per:spouse
+Infobox Monarch:title	per:title
+Infobox Musical artist:Born	per:age
+Infobox Musical artist:Born	per:date_of_birth
+Infobox Musical artist:Born	per:country_of_birth
+Infobox Musical artist:Born	per:stateorprovince_of_birth
+Infobox Musical artist:Born	per:city_of_birth
+Infobox Musical artist:Name	per:alternate_names
+Infobox Musical artist:Occupation	per:title
+Infobox Musical artist:Origin	per:origin
+Infobox Musical artist:Origin	per:country_of_birth
+Infobox Musical artist:Origin	per:stateorprovince_of_birth
+Infobox Musical artist:Origin	per:city_of_birth
+Infobox President:birth_date	per:age
+Infobox President:birth_date	per:date_of_birth
+Infobox President:birth_place	per:country_of_birth
+Infobox President:birth_place	per:stateorprovince_of_birth
+Infobox President:birth_place	per:city_of_birth
+Infobox President:children	per:children
+Infobox President:death_date	per:age
+Infobox President:death_date	per:date_of_death
+Infobox President:death_place	per:country_of_death
+Infobox President:death_place	per:stateorprovince_of_death
+Infobox President:death_place	per:city_of_death
+Infobox President:name	per:alternate_names
+Infobox President:nationality	per:origin
+Infobox President:order	per:employee_of
+Infobox President:order	per:member_of
+Infobox President:order	per:title
+Infobox President:order1	per:employee_of
+Infobox President:order1	per:member_of
+Infobox President:order1	per:title
+Infobox President:order2	per:employee_of
+Infobox President:order2	per:member_of
+Infobox President:order2	per:title
+Infobox President:order3	per:employee_of
+Infobox President:order3	per:member_of
+Infobox President:order3	per:title
+Infobox President:order4	per:employee_of
+Infobox President:order4	per:member_of
+Infobox President:order4	per:title
+Infobox President:order5	per:employee_of
+Infobox President:order5	per:member_of
+Infobox President:order5	per:title
+Infobox President:party	per:member_of
+Infobox President:religion	per:religion
+Infobox President:spouse	per:spouse
+Infobox Prime Minister:alma_mater	per:schools_attended
+Infobox Prime Minister:birth_date	per:age
+Infobox Prime Minister:birth_date	per:date_of_birth
+Infobox Prime Minister:birth_place	per:country_of_birth
+Infobox Prime Minister:birth_place	per:stateorprovince_of_birth
+Infobox Prime Minister:birth_place	per:city_of_birth
+Infobox Prime Minister:birthname	per:alternate_names
+Infobox Prime Minister:children	per:children
+Infobox Prime Minister:constituency	per:employee_of
+Infobox Prime Minister:constituency_MP3	per:employee_of
+Infobox Prime Minister:death_date	per:age
+Infobox Prime Minister:death_date	per:date_of_death
+Infobox Prime Minister:death_place	per:country_of_death
+Infobox Prime Minister:death_place	per:stateorprovince_of_death
+Infobox Prime Minister:death_place	per:city_of_death
+Infobox Prime Minister:ethnicity	per:origin
+Infobox Prime Minister:name	per:alternate_names
+Infobox Prime Minister:nationality	per:origin
+Infobox Prime Minister:occupation	per:title
+Infobox Prime Minister:office	per:employee_of
+Infobox Prime Minister:office	per:title
+Infobox Prime Minister:office2	per:employee_of
+Infobox Prime Minister:office2	per:member_of
+Infobox Prime Minister:office2	per:title
+Infobox Prime Minister:order	per:employee_of
+Infobox Prime Minister:order	per:member_of
+Infobox Prime Minister:order	per:title
+Infobox Prime Minister:order2	per:employee_of
+Infobox Prime Minister:order2	per:member_of
+Infobox Prime Minister:order2	per:title
+Infobox Prime Minister:otherparty	per:member_of
+Infobox Prime Minister:parliament2	per:member_of
+Infobox Prime Minister:parliament3	per:member_of
+Infobox Prime Minister:party	per:member_of
+Infobox Prime Minister:profession	per:title
+Infobox Prime Minister:religion	per:religion
+Infobox Prime Minister:residence	per:countries_of_residence
+Infobox Prime Minister:residence	per:states_or_provinces_of_residence
+Infobox Prime Minister:residence	per:cities_of_residence
+Infobox Prime Minister:riding2	per:employee_of
+Infobox Prime Minister:riding3	per:employee_of
+Infobox Prime Minister:spouse	per:spouse
+Infobox Senator:alma_mater	per:schools_attended
+Infobox Senator:birth_date	per:age
+Infobox Senator:birth_date	per:date_of_birth
+Infobox Senator:birth_place	per:country_of_birth
+Infobox Senator:birth_place	per:stateorprovince_of_birth
+Infobox Senator:birth_place	per:city_of_birth
+Infobox Senator:children	per:children
+Infobox Senator:death_date	per:date_of_death
+Infobox Senator:death_place	per:country_of_death
+Infobox Senator:death_place	per:stateorprovince_of_death
+Infobox Senator:death_place	per:city_of_death
+Infobox Senator:jr/sr	per:title
+Infobox Senator:name	per:alternate_names
+Infobox Senator:nationality	per:origin
+Infobox Senator:occupation	per:title
+Infobox Senator:office2	per:employee_of
+Infobox Senator:office2	per:member_of
+Infobox Senator:office2	per:title
+Infobox Senator:party	per:member_of
+Infobox Senator:profession	per:title
+Infobox Senator:religion	per:religion
+Infobox Senator:residence	per:countries_of_residence
+Infobox Senator:residence	per:states_or_provinces_of_residence
+Infobox Senator:residence	per:cities_of_residence
+Infobox Senator:spouse	per:spouse
+Infobox Senator:state	per:employee_of
+Infobox US Cabinet official:alma_mater	per:schools_attended
+Infobox US Cabinet official:birth_date	per:age
+Infobox US Cabinet official:birth_date	per:date_of_birth
+Infobox US Cabinet official:birth_place	per:country_of_birth
+Infobox US Cabinet official:birth_place	per:stateorprovince_of_birth
+Infobox US Cabinet official:birth_place	per:city_of_birth
+Infobox US Cabinet official:name	per:alternate_names
+Infobox US Cabinet official:title	per:employee_of
+Infobox US Cabinet official:title	per:member_of
+Infobox US Cabinet official:title	per:title
+Infobox US Cabinet official:title2	per:employee_of
+Infobox US Cabinet official:title2	per:member_of
+Infobox US Cabinet official:title2	per:title
+Infobox WoT detainees:alias	per:alternate_names
+Infobox WoT detainees:charge	per:charges
+Infobox WoT detainees:children	per:children
+Infobox WoT detainees:citizenship	per:origin
+Infobox WoT detainees:date_of_birth	per:age
+Infobox WoT detainees:date_of_birth	per:date_of_birth
+Infobox WoT detainees:date_of_death	per:age
+Infobox WoT detainees:date_of_death	per:date_of_death
+Infobox WoT detainees:detained_at	per:countries_of_residence
+Infobox WoT detainees:detained_at	per:states_or_provinces_of_residence
+Infobox WoT detainees:detained_at	per:cities_of_residence
+Infobox WoT detainees:group	per:member_of
+Infobox WoT detainees:occupation	per:title
+Infobox WoT detainees:parents	per:parents
+Infobox WoT detainees:place_of_birth	per:country_of_birth
+Infobox WoT detainees:place_of_birth	per:stateorprovince_of_birth
+Infobox WoT detainees:place_of_birth	per:city_of_birth
+Infobox WoT detainees:place_of_death	per:country_of_death
+Infobox WoT detainees:place_of_death	per:stateorprovince_of_death
+Infobox WoT detainees:place_of_death	per:city_of_death
+Infobox WoT detainees:spouse	per:spouse
+Infobox WoT detainees:subject_name	per:alternate_names
+Infobox Wrestler:birth_date	per:date_of_birth
+Infobox Wrestler:birth_place	per:country_of_birth
+Infobox Wrestler:birth_place	per:stateorprovince_of_birth
+Infobox Wrestler:birth_place	per:city_of_birth
+Infobox Wrestler:death_date	per:date_of_death
+Infobox Wrestler:death_place	per:country_of_death
+Infobox Wrestler:death_place	per:stateorprovince_of_death
+Infobox Wrestler:death_place	per:city_of_death
+Infobox Wrestler:name	per:alternate_names
+Infobox Wrestler:names	per:alternate_names
+Infobox actor:birthdate	per:age
+Infobox actor:birthdate	per:date_of_birth
+Infobox actor:birthname	per:alternate_names
+Infobox actor:birthplace	per:country_of_birth
+Infobox actor:birthplace	per:stateorprovince_of_birth
+Infobox actor:birthplace	per:city_of_birth
+Infobox actor:children	per:children
+Infobox actor:deathdate	per:age
+Infobox actor:deathdate	per:date_of_death
+Infobox actor:deathplace	per:country_of_death
+Infobox actor:deathplace	per:stateorprovince_of_death
+Infobox actor:deathplace	per:city_of_death
+Infobox actor:name	per:alternate_names
+Infobox actor:occupation	per:title
+Infobox actor:spouse	per:spouse
+Infobox afl player:birthdate	per:age
+Infobox afl player:birthdate	per:date_of_birth
+Infobox afl player:birthplace	per:country_of_birth
+Infobox afl player:birthplace	per:stateorprovince_of_birth
+Infobox afl player:birthplace	per:city_of_birth
+Infobox afl player:deathdate	per:age
+Infobox afl player:deathdate	per:date_of_death
+Infobox afl player:deathplace	per:country_of_death
+Infobox afl player:deathplace	per:stateorprovince_of_death
+Infobox afl player:deathplace	per:city_of_death
+Infobox afl player:debutteam	per:member_of
+Infobox afl player:originalteam	per:member_of
+Infobox afl player:playingteams	per:member_of
+Infobox musical artist:Alias	per:alternate_names
+Infobox musical artist:Associated_acts	per:member_of
+Infobox musical artist:Birth_name	per:alternate_names
+Infobox musical artist:Born	per:age
+Infobox musical artist:Born	per:date_of_birth
+Infobox musical artist:Born	per:origin
+Infobox musical artist:Born	per:country_of_birth
+Infobox musical artist:Born	per:stateorprovince_of_birth
+Infobox musical artist:Born	per:city_of_birth
+Infobox musical artist:Died	per:date_of_death
+Infobox musical artist:Died	per:country_of_death
+Infobox musical artist:Died	per:stateorprovince_of_death
+Infobox musical artist:Died	per:city_of_death
+Infobox musical artist:Label	per:employee_of
+Infobox musical artist:Name	per:alternate_names
+Infobox musical artist:Occupation	per:title
+Infobox musical artist:Origin	per:origin
+Infobox musical artist:Origin	per:countries_of_residence
+Infobox musical artist:Origin	per:states_or_provinces_of_residence
+Infobox musical artist:Origin	per:cities_of_residence
+Infobox_Celebrity:birth_date	per:age
+Infobox_Celebrity:birth_date	per:date_of_birth
+Infobox_Celebrity:birth_name	per:alternate_names
+Infobox_Celebrity:birth_place	per:country_of_birth
+Infobox_Celebrity:birth_place	per:stateorprovince_of_birth
+Infobox_Celebrity:birth_place	per:city_of_birth
+Infobox_Celebrity:death_date	per:age
+Infobox_Celebrity:death_date	per:date_of_death
+Infobox_Celebrity:death_place	per:country_of_death
+Infobox_Celebrity:death_place	per:stateorprovince_of_death
+Infobox_Celebrity:death_place	per:city_of_death
+Infobox_Celebrity:name	per:alternate_names
+Infobox_Celebrity:occupation	per:title
+Infobox_Celebrity:spouse	per:spouse
+Infobox_Muslim scholars:Ethnicity	per:origin
+Infobox_Muslim scholars:Maddhab	per:religion
+Infobox_Muslim scholars:Region	per:origin
+Infobox_Muslim scholars:Region	per:countries_of_residence
+Infobox_Muslim scholars:Region	per:states_or_provinces_of_residence
+Infobox_Muslim scholars:Region	per:cities_of_residence
+Infobox_Muslim scholars:birth	per:date_of_birth
+Infobox_Muslim scholars:death	per:date_of_death
+Infobox_Muslim scholars:name	per:alternate_names
+Infobox_Muslim scholars:notability	per:title
+Infobox_Person:alma_mater	per:schools_attended
+Infobox_Person:birth_date	per:age
+Infobox_Person:birth_date	per:date_of_birth
+Infobox_Person:birth_place	per:country_of_birth
+Infobox_Person:birth_place	per:stateorprovince_of_birth
+Infobox_Person:birth_place	per:city_of_birth
+Infobox_Person:children	per:children
+Infobox_Person:death_date	per:age
+Infobox_Person:death_date	per:date_of_death
+Infobox_Person:death_place	per:country_of_death
+Infobox_Person:death_place	per:stateorprovince_of_death
+Infobox_Person:death_place	per:city_of_death
+Infobox_Person:name	per:alternate_names
+Infobox_Person:occupation	per:title
+Infobox_Person:parents	per:parents
+Infobox_Person:religion	per:religion
+Infobox_Person:spouse	per:spouse
+Infobox_Philosopher:birth	per:age
+Infobox_Philosopher:birth	per:date_of_birth
+Infobox_Philosopher:death	per:age
+Infobox_Philosopher:death	per:date_of_death
+Infobox_Philosopher:name	per:alternate_names
+Infobox_Politician:birth_date	per:age
+Infobox_Politician:birth_date	per:date_of_birth
+Infobox_Politician:birth_place	per:country_of_birth
+Infobox_Politician:birth_place	per:stateorprovince_of_birth
+Infobox_Politician:birth_place	per:city_of_birth
+Infobox_Politician:children	per:children
+Infobox_Politician:civil partner	per:spouse
+Infobox_Politician:civil_partner	per:spouse
+Infobox_Politician:constituency	per:employee_of
+Infobox_Politician:constituency2	per:employee_of
+Infobox_Politician:constituency3	per:employee_of
+Infobox_Politician:death_date	per:age
+Infobox_Politician:death_date	per:date_of_death
+Infobox_Politician:death_place	per:country_of_death
+Infobox_Politician:death_place	per:stateorprovince_of_death
+Infobox_Politician:death_place	per:city_of_death
+Infobox_Politician:name	per:alternate_names
+Infobox_Politician:occupation	per:title
+Infobox_Politician:office	per:employee_of
+Infobox_Politician:office	per:member_of
+Infobox_Politician:office	per:title
+Infobox_Politician:office2	per:employee_of
+Infobox_Politician:office2	per:member_of
+Infobox_Politician:office2	per:title
+Infobox_Politician:office3	per:employee_of
+Infobox_Politician:office3	per:member_of
+Infobox_Politician:office3	per:title
+Infobox_Politician:party	per:member_of
+Infobox_Politician:religion	per:religion
+Infobox_Politician:residence	per:countries_of_residence
+Infobox_Politician:residence	per:states_or_provinces_of_residence
+Infobox_Politician:residence	per:cities_of_residence
+Infobox_Politician:spouse	per:spouse
+Infobox_President:alma_mater	per:schools_attended
+Infobox_President:birth_date	per:age
+Infobox_President:birth_date	per:date_of_birth
+Infobox_President:birth_place	per:country_of_birth
+Infobox_President:birth_place	per:stateorprovince_of_birth
+Infobox_President:birth_place	per:city_of_birth
+Infobox_President:death_date	per:date_of_death
+Infobox_President:death_place	per:country_of_death
+Infobox_President:death_place	per:stateorprovince_of_death
+Infobox_President:death_place	per:city_of_death
+Infobox_President:name	per:alternate_names
+Infobox_President:order	per:employee_of
+Infobox_President:order	per:title
+Infobox_President:order1	per:employee_of
+Infobox_President:order1	per:member_of
+Infobox_President:order1	per:title
+Infobox_President:party	per:member_of
+Infobox_President:religion	per:religion
+Infobox_President:spouse	per:spouse
+Infobox_Scientist:alma_mater	per:schools_attended
+Infobox_Scientist:birth_date	per:date_of_birth
+Infobox_Scientist:birth_place	per:country_of_birth
+Infobox_Scientist:birth_place	per:stateorprovince_of_birth
+Infobox_Scientist:birth_place	per:city_of_birth
+Infobox_Scientist:name	per:alternate_names
+Infobox_Scientist:nationality	per:origin
+Infobox_Scientist:religion	per:religion
+Infobox_Scientist:work_institution	per:employee_of
+Infobox_Senator:date_of_birth	per:age
+Infobox_Senator:date_of_birth	per:date_of_birth
+Infobox_Senator:date_of_death	per:age
+Infobox_Senator:date_of_death	per:date_of_death
+Infobox_Senator:jr/sr	per:title
+Infobox_Senator:name	per:alternate_names
+Infobox_Senator:party	per:member_of
+Infobox_Senator:place_of_birth	per:country_of_birth
+Infobox_Senator:place_of_birth	per:stateorprovince_of_birth
+Infobox_Senator:place_of_birth	per:city_of_birth
+Infobox_Senator:place_of_death	per:country_of_death
+Infobox_Senator:place_of_death	per:stateorprovince_of_death
+Infobox_Senator:place_of_death	per:city_of_death
+Infobox_Senator:profession	per:title
+Infobox_Senator:religion	per:religion
+Infobox_Senator:spouse	per:spouse
+Infobox_Senator:state	per:employee_of
+infobox actor:birthdate	per:age
+infobox actor:birthdate	per:date_of_birth
+infobox actor:birthname	per:alternate_names
+infobox actor:birthplace	per:country_of_birth
+infobox actor:birthplace	per:stateorprovince_of_birth
+infobox actor:birthplace	per:city_of_birth
+infobox actor:children	per:children
+infobox actor:deathdate	per:age
+infobox actor:deathdate	per:date_of_death
+infobox actor:deathplace	per:country_of_death
+infobox actor:deathplace	per:stateorprovince_of_death
+infobox actor:deathplace	per:city_of_death
+infobox actor:name	per:alternate_names
+infobox actor:occupation	per:title
+infobox actor:spouse	per:spouse

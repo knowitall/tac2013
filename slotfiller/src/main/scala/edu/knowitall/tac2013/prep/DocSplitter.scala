@@ -65,6 +65,4 @@ object DocSplitter {
     
     lineReader.close()
   }
-  
-  
 }

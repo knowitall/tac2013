@@ -71,9 +71,17 @@ class SolrQueryExecutor(val solrClient: SolrClient, val corefOn: Boolean) {
 
 object SolrQueryExecutor {
   
-  val defaultSolrUrl = "http://knowitall:knowit!@rv-n16.cs.washington.edu:9321/solr"
+  val defaultSolrUrl = oldCorpusUrl
+  
+  val oldCorpusUrl = "http://knowitall:knowit!@rv-n16.cs.washington.edu:9321/solr"
+    
+  val newCorpusUrl = "http://knowitall:knowit!@rv-n16.cs.washington.edu:8123/solr"
     
   lazy val defaultInstance = new SolrQueryExecutor(defaultSolrUrl)
+  
+  lazy val oldCorpus = new SolrQueryExecutor(oldCorpusUrl)
+  
+  lazy val newCorpus = new SolrQueryExecutor(newCorpusUrl)
   
   lazy val corefInstance = new SolrQueryExecutor(defaultSolrUrl,true)
 }

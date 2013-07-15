@@ -1,0 +1,1650 @@
+Infobox Airline:Alliance	org:member_of
+Infobox Airline:Headquarters	org:country_of_headquarters
+Infobox Airline:Headquarters	org:stateorprovince_of_headquarters
+Infobox Airline:Headquarters	org:city_of_headquarters
+Infobox Airline:IATA	org:alternate_names
+Infobox Airline:ICAO	org:alternate_names
+Infobox Airline:Key people	org:top_members/employees
+Infobox Airline:Parent	org:parents
+Infobox Airline:Parent Company	org:parents
+Infobox Airline:airline	org:alternate_names
+Infobox Airline:alliance	org:member_of
+Infobox Airline:callsign	org:alternate_names
+Infobox Airline:ceased	org:dissolved
+Infobox Airline:ceased operations	org:dissolved
+Infobox Airline:commenced	org:founded
+Infobox Airline:company_name	org:alternate_names
+Infobox Airline:employees	org:number_of_employees/members
+Infobox Airline:founded	org:founded
+Infobox Airline:headquarters	org:country_of_headquarters
+Infobox Airline:headquarters	org:stateorprovince_of_headquarters
+Infobox Airline:headquarters	org:city_of_headquarters
+Infobox Airline:key_people	org:top_members/employees
+Infobox Airline:parent	org:parents
+Infobox Airline:subsidary	org:subsidiaries
+Infobox Airline:subsidiaries	org:subsidiaries
+Infobox Airline:subsidiary	org:subsidiaries
+Infobox Airline:url	org:website
+Infobox Airline:website	org:website
+Infobox American State Political Party:assemblyleader	org:top_members/employees
+Infobox American State Political Party:chairman	org:top_members/employees
+Infobox American State Political Party:foundation	org:founded
+Infobox American State Political Party:headquarters	org:country_of_headquarters
+Infobox American State Political Party:headquarters	org:stateorprovince_of_headquarters
+Infobox American State Political Party:headquarters	org:city_of_headquarters
+Infobox American State Political Party:ideology	org:political/religious_affiliation
+Infobox American State Political Party:national	org:member_of
+Infobox American State Political Party:party_name	org:alternate_names
+Infobox American State Political Party:senateleader	org:top_members/employees
+Infobox American State Political Party:website	org:website
+Infobox American_Political_Party:chairman	org:top_members/employees
+Infobox American_Political_Party:fiscalpolicy	org:political/religious_affiliation
+Infobox American_Political_Party:foundation	org:founded
+Infobox American_Political_Party:headquarters	org:country_of_headquarters
+Infobox American_Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox American_Political_Party:headquarters	org:city_of_headquarters
+Infobox American_Political_Party:houseleader	org:top_members/employees
+Infobox American_Political_Party:ideology	org:political/religious_affiliation
+Infobox American_Political_Party:international	org:member_of
+Infobox American_Political_Party:party_name	org:alternate_names
+Infobox American_Political_Party:senateleader	org:top_members/employees
+Infobox American_Political_Party:socialpolicy	org:political/religious_affiliation
+Infobox American_Political_Party:website	org:website
+Infobox Amtrak:owners	org:parents
+Infobox Amtrak:start	org:founded
+Infobox Aust school private:city	org:city_of_headquarters
+Infobox Aust school private:country	org:country_of_headquarters
+Infobox Aust school private:denomination	org:political/religious_affiliation
+Infobox Aust school private:enrollment	org:number_of_employees/members
+Infobox Aust school private:enrolment	org:number_of_employees/members
+Infobox Aust school private:est	org:founded
+Infobox Aust school private:established	org:founded
+Infobox Aust school private:homepage	org:website
+Infobox Aust school private:key_people	org:top_members/employees
+Infobox Aust school private:magazine	org:subsidiaries
+Infobox Aust school private:name	org:alternate_names
+Infobox Aust school private:num_employ	org:number_of_employees/members
+Infobox Aust school private:principal	org:top_members/employees
+Infobox Aust school private:staff	org:number_of_employees/members
+Infobox Aust school private:state	org:stateorprovince_of_headquarters
+Infobox Aust school private:students	org:number_of_employees/members
+Infobox Aust school private:website	org:website
+Infobox Aust school:Blue_homepage	org:website
+Infobox Aust school:Captains	org:top_members/employees
+Infobox Aust school:Principal/_Headmaster	org:top_members/employees
+Infobox Aust school:Suburb	org:city_of_headquarters
+Infobox Aust school:affiliations	org:member_of
+Infobox Aust school:affiliations	org:political/religious_affiliation
+Infobox Aust school:captain	org:top_members/employees
+Infobox Aust school:captains	org:top_members/employees
+Infobox Aust school:city	org:city_of_headquarters
+Infobox Aust school:deputy	org:top_members/employees
+Infobox Aust school:deputy principals	org:top_members/employees
+Infobox Aust school:enrollment	org:number_of_employees/members
+Infobox Aust school:enrolment	org:number_of_employees/members
+Infobox Aust school:established	org:founded
+Infobox Aust school:homepage	org:website
+Infobox Aust school:name	org:alternate_names
+Infobox Aust school:newspaper	org:subsidiaries
+Infobox Aust school:nickname	org:alternate_names
+Infobox Aust school:principal	org:top_members/employees
+Infobox Aust school:staff	org:number_of_employees/members
+Infobox Aust school:state	org:stateorprovince_of_headquarters
+Infobox Aust school:street/suburb	org:city_of_headquarters
+Infobox Aust school:students	org:number_of_employees/members
+Infobox Aust school:vice principal	org:top_members/employees
+Infobox Aust school:website	org:website
+Infobox Australian Political Party:deputy	org:top_members/employees
+Infobox Australian Political Party:disbanded	org:dissolved
+Infobox Australian Political Party:foundation	org:founded
+Infobox Australian Political Party:headquarters	org:country_of_headquarters
+Infobox Australian Political Party:headquarters	org:stateorprovince_of_headquarters
+Infobox Australian Political Party:headquarters	org:city_of_headquarters
+Infobox Australian Political Party:ideology	org:political/religious_affiliation
+Infobox Australian Political Party:leader	org:top_members/employees
+Infobox Australian Political Party:party_name	org:alternate_names
+Infobox Australian Political Party:website	org:website
+Infobox Australian police:commissioner	org:top_members/employees
+Infobox Australian police:employees	org:number_of_employees/members
+Infobox Australian police:established	org:founded
+Infobox Australian police:headquarters	org:country_of_headquarters
+Infobox Australian police:headquarters	org:stateorprovince_of_headquarters
+Infobox Australian police:headquarters	org:city_of_headquarters
+Infobox Australian police:ministry	org:parents
+Infobox Australian police:name	org:alternate_names
+Infobox Australian police:units	org:subsidiaries
+Infobox Australian police:website	org:website
+Infobox Austrian Political Party:europarl	org:member_of
+Infobox Austrian Political Party:european	org:member_of
+Infobox Austrian Political Party:foundation	org:founded
+Infobox Austrian Political Party:headquarters	org:country_of_headquarters
+Infobox Austrian Political Party:headquarters	org:stateorprovince_of_headquarters
+Infobox Austrian Political Party:headquarters	org:city_of_headquarters
+Infobox Austrian Political Party:ideology	org:political/religious_affiliation
+Infobox Austrian Political Party:international	org:member_of
+Infobox Austrian Political Party:leader	org:top_members/employees
+Infobox Austrian Political Party:party_name	org:alternate_names
+Infobox Austrian Political Party:website	org:website
+Infobox Basketball club:Solsonica SpA	org:website
+Infobox Basketball club:Vice-President	org:top_members/employees
+Infobox Basketball club:assisting coach	org:top_members/employees
+Infobox Basketball club:coach	org:top_members/employees
+Infobox Basketball club:conference	org:member_of
+Infobox Basketball club:founded	org:founded
+Infobox Basketball club:history	org:dissolved
+Infobox Basketball club:history	org:founded
+Infobox Basketball club:leagues	org:member_of
+Infobox Basketball club:location	org:country_of_headquarters
+Infobox Basketball club:location	org:stateorprovince_of_headquarters
+Infobox Basketball club:location	org:city_of_headquarters
+Infobox Basketball club:name	org:alternate_names
+Infobox Basketball club:nickname	org:alternate_names
+Infobox Basketball club:owner	org:parents
+Infobox Basketball club:president	org:top_members/employees
+Infobox Basketball club:vice-presidents	org:top_members/employees
+Infobox Basketball club:website	org:website
+Infobox Brazilian Political Party:foundation	org:founded
+Infobox Brazilian Political Party:headquarters	org:country_of_headquarters
+Infobox Brazilian Political Party:headquarters	org:stateorprovince_of_headquarters
+Infobox Brazilian Political Party:headquarters	org:city_of_headquarters
+Infobox Brazilian Political Party:ideology	org:political/religious_affiliation
+Infobox Brazilian Political Party:international	org:member_of
+Infobox Brazilian Political Party:party_name	org:alternate_names
+Infobox Brazilian Political Party:president	org:top_members/employees
+Infobox Brazilian Political Party:website	org:website
+Infobox British Political Party:chairman	org:top_members/employees
+Infobox British Political Party:deputy leader	org:top_members/employees
+Infobox British Political Party:europarl	org:member_of
+Infobox British Political Party:european	org:member_of
+Infobox British Political Party:foundation	org:founded
+Infobox British Political Party:headquarters	org:country_of_headquarters
+Infobox British Political Party:headquarters	org:stateorprovince_of_headquarters
+Infobox British Political Party:headquarters	org:city_of_headquarters
+Infobox British Political Party:ideology	org:political/religious_affiliation
+Infobox British Political Party:international	org:member_of
+Infobox British Political Party:leader	org:top_members/employees
+Infobox British Political Party:party_name	org:alternate_names
+Infobox British Political Party:website	org:website
+Infobox Bus transit:alliance	org:member_of
+Infobox Bus transit:ceo	org:top_members/employees
+Infobox Bus transit:founded	org:founded
+Infobox Bus transit:headquarters	org:country_of_headquarters
+Infobox Bus transit:headquarters	org:stateorprovince_of_headquarters
+Infobox Bus transit:headquarters	org:city_of_headquarters
+Infobox Bus transit:locale	org:country_of_headquarters
+Infobox Bus transit:locale	org:stateorprovince_of_headquarters
+Infobox Bus transit:locale	org:city_of_headquarters
+Infobox Bus transit:name	org:alternate_names
+Infobox Bus transit:operator	org:parents
+Infobox Bus transit:parent	org:parents
+Infobox Bus transit:website	org:website
+Infobox CBB Team:city	org:city_of_headquarters
+Infobox CBB Team:coach	org:top_members/employees
+Infobox CBB Team:conference	org:member_of
+Infobox CBB Team:conference_short	org:member_of
+Infobox CBB Team:division	org:member_of
+Infobox CBB Team:name	org:alternate_names
+Infobox CBB Team:nickname	org:alternate_names
+Infobox CBB Team:state	org:stateorprovince_of_headquarters
+Infobox CBB Team:stateabb	org:stateorprovince_of_headquarters
+Infobox CBB Team:university	org:parents
+Infobox Canadian Police Service:chief	org:top_members/employees
+Infobox Canadian Police Service:established	org:founded
+Infobox Canadian Police Service:headquarters	org:country_of_headquarters
+Infobox Canadian Police Service:headquarters	org:stateorprovince_of_headquarters
+Infobox Canadian Police Service:headquarters	org:city_of_headquarters
+Infobox Canadian Police Service:name	org:alternate_names
+Infobox Canadian Police Service:website	org:website
+Infobox Canadian college athletics:city	org:city_of_headquarters
+Infobox Canadian college athletics:conference	org:member_of
+Infobox Canadian college athletics:director	org:top_members/employees
+Infobox Canadian college athletics:division	org:member_of
+Infobox Canadian college athletics:name	org:alternate_names
+Infobox Canadian college athletics:nickname	org:alternate_names
+Infobox Canadian college athletics:pageurl	org:website
+Infobox Canadian college athletics:province	org:stateorprovince_of_headquarters
+Infobox Canadian college athletics:teams	org:members
+Infobox Canadian college athletics:university	org:parents
+Infobox Canadian government departments:current_minister	org:top_members/employees
+Infobox Canadian government departments:department	org:alternate_names
+Infobox Canadian government departments:deputy_minister	org:top_members/employees
+Infobox Canadian government departments:employees	org:number_of_employees/members
+Infobox Canadian government departments:established	org:founded
+Infobox Canadian government departments:second_minister	org:top_members/employees
+Infobox Canadian government departments:secretary	org:top_members/employees
+Infobox Canadian government departments:website	org:website
+Infobox Casino:address	org:country_of_headquarters
+Infobox Casino:address	org:stateorprovince_of_headquarters
+Infobox Casino:address	org:city_of_headquarters
+Infobox Casino:casino	org:alternate_names
+Infobox Casino:date_opened	org:founded
+Infobox Casino:location	org:country_of_headquarters
+Infobox Casino:location	org:stateorprovince_of_headquarters
+Infobox Casino:location	org:city_of_headquarters
+Infobox Casino:owner	org:parents
+Infobox Casino:website	org:website
+Infobox Central bank:bank_name	org:alternate_names
+Infobox Central bank:bank_name_in_local	org:alternate_names
+Infobox Central bank:bank_of	org:parents
+Infobox Central bank:established	org:founded
+Infobox Central bank:headquarters	org:country_of_headquarters
+Infobox Central bank:headquarters	org:stateorprovince_of_headquarters
+Infobox Central bank:headquarters	org:city_of_headquarters
+Infobox Central bank:president	org:top_members/employees
+Infobox Central bank:website	org:website
+Infobox Christian denomination:area	org:country_of_headquarters
+Infobox Christian denomination:area	org:stateorprovince_of_headquarters
+Infobox Christian denomination:area	org:city_of_headquarters
+Infobox Christian denomination:founded_date	org:founded
+Infobox Christian denomination:founder	org:founded_by
+Infobox Christian denomination:members	org:number_of_employees/members
+Infobox Christian denomination:name	org:alternate_names
+Infobox Christian denomination:orientation	org:political/religious_affiliation
+Infobox Christian denomination:parent	org:parents
+Infobox Church:address	org:country_of_headquarters
+Infobox Church:address	org:stateorprovince_of_headquarters
+Infobox Church:address	org:city_of_headquarters
+Infobox Church:dedicated_date	org:founded
+Infobox Church:denomination	org:member_of
+Infobox Church:diocese	org:member_of
+Infobox Church:location	org:country_of_headquarters
+Infobox Church:location	org:stateorprovince_of_headquarters
+Infobox Church:location	org:city_of_headquarters
+Infobox Church:seniorpastor	org:top_members/employees
+Infobox Church:website	org:website
+Infobox College Volleyball Team:city	org:city_of_headquarters
+Infobox College Volleyball Team:coach	org:top_members/employees
+Infobox College Volleyball Team:conference	org:member_of
+Infobox College Volleyball Team:conference_short	org:member_of
+Infobox College Volleyball Team:name	org:alternate_names
+Infobox College Volleyball Team:nickname	org:alternate_names
+Infobox College Volleyball Team:state	org:stateorprovince_of_headquarters
+Infobox College Volleyball Team:stateabb	org:stateorprovince_of_headquarters
+Infobox College Volleyball Team:university	org:parents
+Infobox College Wrestling Team:city	org:city_of_headquarters
+Infobox College Wrestling Team:coach	org:top_members/employees
+Infobox College Wrestling Team:conference	org:member_of
+Infobox College Wrestling Team:conference_short	org:member_of
+Infobox College Wrestling Team:name	org:alternate_names
+Infobox College Wrestling Team:nickname	org:alternate_names
+Infobox College Wrestling Team:state	org:stateorprovince_of_headquarters
+Infobox College Wrestling Team:stateabb	org:stateorprovince_of_headquarters
+Infobox College Wrestling Team:university	org:parents
+Infobox College baseball team:city	org:city_of_headquarters
+Infobox College baseball team:coach	org:top_members/employees
+Infobox College baseball team:conference	org:member_of
+Infobox College baseball team:conference_short	org:member_of
+Infobox College baseball team:division	org:member_of
+Infobox College baseball team:founded	org:founded
+Infobox College baseball team:name	org:alternate_names
+Infobox College baseball team:nickname	org:alternate_names
+Infobox College baseball team:state	org:stateorprovince_of_headquarters
+Infobox College baseball team:stateabb	org:stateorprovince_of_headquarters
+Infobox College baseball team:university	org:parents
+Infobox College:Principal	org:top_members/employees
+Infobox College:affiliation	org:subsidiaries
+Infobox College:affiliations	org:subsidiaries
+Infobox College:city	org:city_of_headquarters
+Infobox College:dean	org:top_members/employees
+Infobox College:director	org:top_members/employees
+Infobox College:established	org:founded
+Infobox College:faculty	org:number_of_employees/members
+Infobox College:location	org:country_of_headquarters
+Infobox College:location	org:stateorprovince_of_headquarters
+Infobox College:location	org:city_of_headquarters
+Infobox College:name	org:alternate_names
+Infobox College:native_name	org:alternate_names
+Infobox College:principal	org:top_members/employees
+Infobox College:state	org:stateorprovince_of_headquarters
+Infobox College:students	org:number_of_employees/members
+Infobox College:website	org:website
+Infobox Company:CEO	org:top_members/employees
+Infobox Company:Co-Chairmen	org:top_members/employees
+Infobox Company:Company Name	org:alternate_names
+Infobox Company:Company_name	org:alternate_names
+Infobox Company:Founder	org:founded_by
+Infobox Company:Head Office	org:country_of_headquarters
+Infobox Company:Head Office	org:stateorprovince_of_headquarters
+Infobox Company:Head Office	org:city_of_headquarters
+Infobox Company:Headquarter	org:country_of_headquarters
+Infobox Company:Headquarter	org:stateorprovince_of_headquarters
+Infobox Company:Headquarter	org:city_of_headquarters
+Infobox Company:Headquarters	org:country_of_headquarters
+Infobox Company:Headquarters	org:stateorprovince_of_headquarters
+Infobox Company:Headquarters	org:city_of_headquarters
+Infobox Company:Homepage	org:website
+Infobox Company:Owner	org:parents
+Infobox Company:Parent Company	org:parents
+Infobox Company:URL	org:website
+Infobox Company:Years_active	org:dissolved
+Infobox Company:Years_active	org:founded
+Infobox Company:address	org:country_of_headquarters
+Infobox Company:address	org:stateorprovince_of_headquarters
+Infobox Company:address	org:city_of_headquarters
+Infobox Company:affiliations	org:member_of
+Infobox Company:assets	org:subsidiaries
+Infobox Company:ceo	org:top_members/employees
+Infobox Company:chief executive officer	org:top_members/employees
+Infobox Company:company name	org:alternate_names
+Infobox Company:company_name	org:alternate_names
+Infobox Company:company_type	org:parents
+Infobox Company:defunct	org:dissolved
+Infobox Company:defunct divisions	org:subsidiaries
+Infobox Company:dissolution	org:dissolved
+Infobox Company:dissolved	org:dissolved
+Infobox Company:divisions	org:subsidiaries
+Infobox Company:employees	org:number_of_employees/members
+Infobox Company:fate	org:dissolved
+Infobox Company:foundation	org:founded
+Infobox Company:founded	org:founded
+Infobox Company:founder	org:founded_by
+Infobox Company:founder/President	org:founded_by
+Infobox Company:founders	org:founded_by
+Infobox Company:founding_city	org:city_of_headquarters
+Infobox Company:headquarter	org:country_of_headquarters
+Infobox Company:headquarter	org:stateorprovince_of_headquarters
+Infobox Company:headquarter	org:city_of_headquarters
+Infobox Company:headquarters	org:country_of_headquarters
+Infobox Company:headquarters	org:stateorprovince_of_headquarters
+Infobox Company:headquarters	org:city_of_headquarters
+Infobox Company:holding company	org:parents
+Infobox Company:homepage	org:website
+Infobox Company:investors	org:shareholders
+Infobox Company:key people	org:top_members/employees
+Infobox Company:key_people	org:top_members/employees
+Infobox Company:launch date	org:founded
+Infobox Company:launch_date	org:founded
+Infobox Company:location	org:country_of_headquarters
+Infobox Company:location	org:stateorprovince_of_headquarters
+Infobox Company:location	org:city_of_headquarters
+Infobox Company:location_city	org:city_of_headquarters
+Infobox Company:location_country	org:country_of_headquarters
+Infobox Company:location_state	org:stateorprovince_of_headquarters
+Infobox Company:members	org:number_of_employees/members
+Infobox Company:name	org:alternate_names
+Infobox Company:num employees	org:number_of_employees/members
+Infobox Company:num_employees	org:number_of_employees/members
+Infobox Company:number_of_employees	org:number_of_employees/members
+Infobox Company:official_name	org:alternate_names
+Infobox Company:old_name	org:alternate_names
+Infobox Company:owner	org:parents
+Infobox Company:owners	org:parents
+Infobox Company:parent	org:parents
+Infobox Company:parent (lineage; no longer parent)	org:parents
+Infobox Company:parents	org:parents
+Infobox Company:past_names	org:alternate_names
+Infobox Company:president	org:top_members/employees
+Infobox Company:subsid	org:subsidiaries
+Infobox Company:url	org:website
+Infobox Company:website	org:website
+Infobox DRC Political Party:foundation	org:founded
+Infobox DRC Political Party:headquarters	org:country_of_headquarters
+Infobox DRC Political Party:headquarters	org:stateorprovince_of_headquarters
+Infobox DRC Political Party:headquarters	org:city_of_headquarters
+Infobox DRC Political Party:ideology	org:political/religious_affiliation
+Infobox DRC Political Party:leader	org:top_members/employees
+Infobox DRC Political Party:party_name	org:alternate_names
+Infobox DRC Political Party:pr??sident	org:top_members/employees
+Infobox DRC Political Party:website	org:website
+Infobox Defunct Company:company_name	org:alternate_names
+Infobox Defunct Company:defunct	org:dissolved
+Infobox Defunct Company:fate	org:dissolved
+Infobox Defunct Company:foundation	org:founded
+Infobox Defunct Company:founder	org:founded_by
+Infobox Defunct Company:homepage	org:website
+Infobox Defunct Company:key_people	org:top_members/employees
+Infobox Defunct Company:location	org:country_of_headquarters
+Infobox Defunct Company:location	org:stateorprovince_of_headquarters
+Infobox Defunct Company:location	org:city_of_headquarters
+Infobox Defunct Company:location_city	org:city_of_headquarters
+Infobox Defunct Company:num_employees	org:number_of_employees/members
+Infobox Defunct Company:parent	org:parents
+Infobox Defunct Company:subsid	org:subsidiaries
+Infobox Defunct Company:subsids	org:subsidiaries
+Infobox Defunct company:company_name	org:alternate_names
+Infobox Defunct company:defunct	org:dissolved
+Infobox Defunct company:fate	org:dissolved
+Infobox Defunct company:foundation	org:founded
+Infobox Defunct company:homepage	org:website
+Infobox Defunct company:key_people	org:top_members/employees
+Infobox Defunct company:location	org:country_of_headquarters
+Infobox Defunct company:location	org:stateorprovince_of_headquarters
+Infobox Defunct company:location	org:city_of_headquarters
+Infobox Defunct company:name	org:alternate_names
+Infobox Defunct company:num_employees	org:number_of_employees/members
+Infobox Defunct company:parent	org:parents
+Infobox Defunct company:subsid	org:subsidiaries
+Infobox Dutch_Political_Party:Dissolved	org:dissolved
+Infobox Dutch_Political_Party:EKleader	org:top_members/employees
+Infobox Dutch_Political_Party:EPleader	org:top_members/employees
+Infobox Dutch_Political_Party:TKleader	org:top_members/employees
+Infobox Dutch_Political_Party:europarl	org:member_of
+Infobox Dutch_Political_Party:european	org:member_of
+Infobox Dutch_Political_Party:foundation	org:founded
+Infobox Dutch_Political_Party:headquarters	org:country_of_headquarters
+Infobox Dutch_Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox Dutch_Political_Party:headquarters	org:city_of_headquarters
+Infobox Dutch_Political_Party:ideology	org:political/religious_affiliation
+Infobox Dutch_Political_Party:international	org:member_of
+Infobox Dutch_Political_Party:leader	org:top_members/employees
+Infobox Dutch_Political_Party:party_name	org:alternate_names
+Infobox Dutch_Political_Party:partychair	org:top_members/employees
+Infobox Dutch_Political_Party:website	org:website
+Infobox Education in Canada:administrator	org:top_members/employees
+Infobox Education in Canada:area	org:country_of_headquarters
+Infobox Education in Canada:area	org:stateorprovince_of_headquarters
+Infobox Education in Canada:area	org:city_of_headquarters
+Infobox Education in Canada:assistant_principals	org:top_members/employees
+Infobox Education in Canada:city	org:city_of_headquarters
+Infobox Education in Canada:custodian	org:top_members/employees
+Infobox Education in Canada:district	org:subsidiaries
+Infobox Education in Canada:enrollment	org:number_of_employees/members
+Infobox Education in Canada:established	org:founded
+Infobox Education in Canada:founded	org:founded
+Infobox Education in Canada:homepage	org:website
+Infobox Education in Canada:name	org:alternate_names
+Infobox Education in Canada:principal	org:top_members/employees
+Infobox Education in Canada:province	org:stateorprovince_of_headquarters
+Infobox Education in Canada:staff	org:number_of_employees/members
+Infobox Education in Canada:streetaddress	org:country_of_headquarters
+Infobox Education in Canada:streetaddress	org:stateorprovince_of_headquarters
+Infobox Education in Canada:streetaddress	org:city_of_headquarters
+Infobox Education in Canada:streetaddress_160_Palmer_Rd._city	org:city_of_headquarters
+Infobox Education in Canada:superintendent	org:top_members/employees
+Infobox Education in Canada:teamname	org:subsidiaries
+Infobox Education in Canada:trustee	org:top_members/employees
+Infobox Education in Canada:url	org:website
+Infobox Education in Canada:viceprincipal	org:top_members/employees
+Infobox Education in Canada:website	org:website
+Infobox Exchange:city	org:city_of_headquarters
+Infobox Exchange:country	org:country_of_headquarters
+Infobox Exchange:foundation	org:founded
+Infobox Exchange:founded	org:founded
+Infobox Exchange:homepage	org:website
+Infobox Exchange:key_people	org:top_members/employees
+Infobox Exchange:name	org:alternate_names
+Infobox Exchange:nativename	org:alternate_names
+Infobox Exchange:owner	org:parents
+Infobox Football club:ceo	org:top_members/employees
+Infobox Football club:chairman	org:top_members/employees
+Infobox Football club:clubname	org:alternate_names
+Infobox Football club:dissolved	org:dissolved
+Infobox Football club:founded	org:founded
+Infobox Football club:fullname	org:alternate_names
+Infobox Football club:ground	org:country_of_headquarters
+Infobox Football club:ground	org:stateorprovince_of_headquarters
+Infobox Football club:ground	org:city_of_headquarters
+Infobox Football club:league	org:member_of
+Infobox Football club:manager	org:top_members/employees
+Infobox Football club:nickname	org:alternate_names
+Infobox Football club:shortname	org:alternate_names
+Infobox French Political Party:europarl	org:member_of
+Infobox French Political Party:european	org:member_of
+Infobox French Political Party:foundation	org:founded
+Infobox French Political Party:headquarters	org:country_of_headquarters
+Infobox French Political Party:headquarters	org:stateorprovince_of_headquarters
+Infobox French Political Party:headquarters	org:city_of_headquarters
+Infobox French Political Party:ideology	org:political/religious_affiliation
+Infobox French Political Party:international	org:member_of
+Infobox French Political Party:leader	org:top_members/employees
+Infobox French Political Party:members	org:number_of_employees/members
+Infobox French Political Party:party_name	org:alternate_names
+Infobox French Political Party:président	org:top_members/employees
+Infobox French Political Party:website	org:website
+Infobox Geopolitical organization:admin_center	org:country_of_headquarters
+Infobox Geopolitical organization:admin_center	org:stateorprovince_of_headquarters
+Infobox Geopolitical organization:admin_center	org:city_of_headquarters
+Infobox Geopolitical organization:established_date1	org:founded
+Infobox Geopolitical organization:leader_name1	org:top_members/employees
+Infobox Geopolitical organization:linking_name	org:alternate_names
+Infobox Geopolitical organization:name	org:alternate_names
+Infobox Geopolitical organization:official_website	org:website
+Infobox German_Political_Party:europarl	org:member_of
+Infobox German_Political_Party:european	org:member_of
+Infobox German_Political_Party:foundation	org:founded
+Infobox German_Political_Party:headquarters	org:country_of_headquarters
+Infobox German_Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox German_Political_Party:headquarters	org:city_of_headquarters
+Infobox German_Political_Party:ideology	org:political/religious_affiliation
+Infobox German_Political_Party:international	org:member_of
+Infobox German_Political_Party:leader	org:top_members/employees
+Infobox German_Political_Party:party_name	org:alternate_names
+Infobox German_Political_Party:party_wikicolourid	org:alternate_names
+Infobox German_Political_Party:position	org:political/religious_affiliation
+Infobox German_Political_Party:website	org:website
+Infobox Government agency:Address	org:country_of_headquarters
+Infobox Government agency:Address	org:stateorprovince_of_headquarters
+Infobox Government agency:Address	org:city_of_headquarters
+Infobox Government agency:abbreviation	org:alternate_names
+Infobox Government agency:agency_name	org:alternate_names
+Infobox Government agency:chief1_name	org:top_members/employees
+Infobox Government agency:chief1_predecessor	org:top_members/employees
+Infobox Government agency:chief2_name	org:top_members/employees
+Infobox Government agency:chief3_name	org:top_members/employees
+Infobox Government agency:chief4_name	org:top_members/employees
+Infobox Government agency:chief5_name	org:top_members/employees
+Infobox Government agency:child1_agency	org:subsidiaries
+Infobox Government agency:child2_agency	org:subsidiaries
+Infobox Government agency:child3_agency	org:subsidiaries
+Infobox Government agency:child4_agency	org:subsidiaries
+Infobox Government agency:child5_agency	org:subsidiaries
+Infobox Government agency:child6_agency	org:subsidiaries
+Infobox Government agency:child7_agency	org:subsidiaries
+Infobox Government agency:child8_agency	org:subsidiaries
+Infobox Government agency:date1	org:founded
+Infobox Government agency:date2	org:founded
+Infobox Government agency:department	org:parents
+Infobox Government agency:dissolved	org:dissolved
+Infobox Government agency:employees	org:number_of_employees/members
+Infobox Government agency:formed	org:founded
+Infobox Government agency:headquarters	org:country_of_headquarters
+Infobox Government agency:headquarters	org:stateorprovince_of_headquarters
+Infobox Government agency:headquarters	org:city_of_headquarters
+Infobox Government agency:jurisdiction	org:parents
+Infobox Government agency:minister1_name	org:top_members/employees
+Infobox Government agency:minister2_name	org:top_members/employees
+Infobox Government agency:minister3_name	org:top_members/employees
+Infobox Government agency:minister4_name	org:top_members/employees
+Infobox Government agency:minister5_name	org:top_members/employees
+Infobox Government agency:minister6_name	org:top_members/employees
+Infobox Government agency:minister7_name	org:top_members/employees
+Infobox Government agency:nativename	org:alternate_names
+Infobox Government agency:nativename_a	org:alternate_names
+Infobox Government agency:nativename_r	org:alternate_names
+Infobox Government agency:parent_agency	org:parents
+Infobox Government agency:website	org:website
+Infobox Greek Political Party:europarl	org:member_of
+Infobox Greek Political Party:european	org:member_of
+Infobox Greek Political Party:foundation	org:founded
+Infobox Greek Political Party:headquarters	org:country_of_headquarters
+Infobox Greek Political Party:headquarters	org:stateorprovince_of_headquarters
+Infobox Greek Political Party:headquarters	org:city_of_headquarters
+Infobox Greek Political Party:ideology	org:political/religious_affiliation
+Infobox Greek Political Party:international	org:member_of
+Infobox Greek Political Party:leader	org:top_members/employees
+Infobox Greek Political Party:party_name	org:alternate_names
+Infobox Greek Political Party:position	org:political/religious_affiliation
+Infobox Greek Political Party:website	org:website
+Infobox Historic Political Party:active	org:dissolved
+Infobox Historic Political Party:active	org:founded
+Infobox Historic Political Party:ideology	org:political/religious_affiliation
+Infobox Historic Political Party:international	org:member_of
+Infobox Historic Political Party:party name	org:alternate_names
+Infobox Historic Political Party:position	org:political/religious_affiliation
+Infobox Historic political party:active	org:dissolved
+Infobox Historic political party:active	org:founded
+Infobox Historic political party:ideology	org:political/religious_affiliation
+Infobox Historic political party:international	org:member_of
+Infobox Historic political party:party name	org:alternate_names
+Infobox Historic political party:position	org:political/religious_affiliation
+Infobox Hospital:Affiliation	org:parents
+Infobox Hospital:Closed	org:dissolved
+Infobox Hospital:Country	org:country_of_headquarters
+Infobox Hospital:Founded	org:founded
+Infobox Hospital:Location	org:country_of_headquarters
+Infobox Hospital:Location	org:stateorprovince_of_headquarters
+Infobox Hospital:Location	org:city_of_headquarters
+Infobox Hospital:Name	org:alternate_names
+Infobox Hospital:Org/Group	org:parents
+Infobox Hospital:Region	org:country_of_headquarters
+Infobox Hospital:Region	org:stateorprovince_of_headquarters
+Infobox Hospital:Region	org:city_of_headquarters
+Infobox Hospital:State	org:stateorprovince_of_headquarters
+Infobox Hospital:Website	org:website
+Infobox Korean name:title	org:alternate_names
+Infobox Law enforcement agency:abbreviation	org:alternate_names
+Infobox Law enforcement agency:agencyname	org:alternate_names
+Infobox Law enforcement agency:chief1name	org:top_members/employees
+Infobox Law enforcement agency:commonname	org:alternate_names
+Infobox Law enforcement agency:country	org:country_of_headquarters
+Infobox Law enforcement agency:divname	org:country_of_headquarters
+Infobox Law enforcement agency:divname	org:stateorprovince_of_headquarters
+Infobox Law enforcement agency:divname	org:city_of_headquarters
+Infobox Law enforcement agency:employees	org:number_of_employees/members
+Infobox Law enforcement agency:formedmonthday	org:founded
+Infobox Law enforcement agency:formedyear	org:founded
+Infobox Law enforcement agency:governingbody	org:parents
+Infobox Law enforcement agency:headquarters	org:country_of_headquarters
+Infobox Law enforcement agency:headquarters	org:stateorprovince_of_headquarters
+Infobox Law enforcement agency:headquarters	org:city_of_headquarters
+Infobox Law enforcement agency:minister1name	org:top_members/employees
+Infobox Law enforcement agency:website	org:website
+Infobox Magazine:category	org:political/religious_affiliation
+Infobox Magazine:country	org:country_of_headquarters
+Infobox Magazine:editor	org:top_members/employees
+Infobox Magazine:firstdate	org:founded
+Infobox Magazine:publisher	org:parents
+Infobox Magazine:title	org:alternate_names
+Infobox Magazine:website	org:website
+Infobox Military Unit:allegiance	org:parents
+Infobox Military Unit:branch	org:parents
+Infobox Military Unit:ceremonial_chief	org:top_members/employees
+Infobox Military Unit:colonel_of_the_regiment	org:top_members/employees
+Infobox Military Unit:country	org:country_of_headquarters
+Infobox Military Unit:current_commander	org:top_members/employees
+Infobox Military Unit:garrison	org:country_of_headquarters
+Infobox Military Unit:garrison	org:stateorprovince_of_headquarters
+Infobox Military Unit:garrison	org:city_of_headquarters
+Infobox Military Unit:nickname	org:alternate_names
+Infobox Military Unit:notable_commanders	org:top_members/employees
+Infobox Military Unit:size	org:number_of_employees/members
+Infobox Military Unit:unit_name	org:alternate_names
+Infobox National Military:available	org:number_of_employees/members
+Infobox National Military:branches	org:subsidiaries
+Infobox National Military:commander	org:top_members/employees
+Infobox National Military:commander-in-chief	org:top_members/employees
+Infobox National Military:country	org:parents
+Infobox National Military:founded	org:founded
+Infobox National Military:headquarters	org:country_of_headquarters
+Infobox National Military:headquarters	org:stateorprovince_of_headquarters
+Infobox National Military:headquarters	org:city_of_headquarters
+Infobox National Military:minister	org:top_members/employees
+Infobox National Military:name	org:alternate_names
+Infobox National Military:native_name	org:alternate_names
+Infobox National baseball team:Confederation	org:member_of
+Infobox National baseball team:Country	org:country_of_headquarters
+Infobox National baseball team:Federation	org:member_of
+Infobox National baseball team:Manager	org:top_members/employees
+Infobox National baseball team:Name	org:alternate_names
+Infobox National football team:Association	org:member_of
+Infobox National football team:Asst Manager	org:top_members/employees
+Infobox National football team:Asst_Manager	org:top_members/employees
+Infobox National football team:Captain	org:top_members/employees
+Infobox National football team:Coach	org:top_members/employees
+Infobox National football team:Confederation	org:member_of
+Infobox National football team:Home Stadium	org:city_of_headquarters
+Infobox National football team:Home_Stadium	org:city_of_headquarters
+Infobox National football team:Name	org:alternate_names
+Infobox National football team:Nickname	org:alternate_names
+Infobox National football team:The_lions_of_Africa_Association	org:member_of
+Infobox National football team:diador berbatov_Home Stadium	org:city_of_headquarters
+Infobox National football team:diador_berbatov_Home_Stadium	org:city_of_headquarters
+Infobox Nepalese_Political_Party:chairman	org:top_members/employees
+Infobox Nepalese_Political_Party:foundation	org:founded
+Infobox Nepalese_Political_Party:headquarters	org:country_of_headquarters
+Infobox Nepalese_Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox Nepalese_Political_Party:headquarters	org:city_of_headquarters
+Infobox Nepalese_Political_Party:ideology	org:political/religious_affiliation
+Infobox Nepalese_Political_Party:international	org:member_of
+Infobox Nepalese_Political_Party:labour	org:members
+Infobox Nepalese_Political_Party:leader	org:top_members/employees
+Infobox Nepalese_Political_Party:party_name	org:alternate_names
+Infobox Nepalese_Political_Party:peasants	org:members
+Infobox Nepalese_Political_Party:president	org:top_members/employees
+Infobox Nepalese_Political_Party:secretary	org:top_members/employees
+Infobox Nepalese_Political_Party:students	org:members
+Infobox Nepalese_Political_Party:website	org:website
+Infobox Nepalese_Political_Party:women	org:members
+Infobox Nepalese_Political_Party:youth	org:members
+Infobox Network:country	org:country_of_headquarters
+Infobox Network:founder	org:founded_by
+Infobox Network:key_people	org:top_members/employees
+Infobox Network:launch_date	org:founded
+Infobox Network:network_name	org:alternate_names
+Infobox Network:owner	org:parents
+Infobox Network:parent	org:parents
+Infobox Network:past_names	org:alternate_names
+Infobox Network:website	org:website
+Infobox Newspaper:ceased publication	org:dissolved
+Infobox Newspaper:ceased_publication	org:dissolved
+Infobox Newspaper:circulation	org:number_of_employees/members
+Infobox Newspaper:editor	org:top_members/employees
+Infobox Newspaper:foundation	org:founded
+Infobox Newspaper:headquarters	org:country_of_headquarters
+Infobox Newspaper:headquarters	org:stateorprovince_of_headquarters
+Infobox Newspaper:headquarters	org:city_of_headquarters
+Infobox Newspaper:name	org:alternate_names
+Infobox Newspaper:owners	org:parents
+Infobox Newspaper:political	org:political/religious_affiliation
+Infobox Newspaper:website	org:website
+Infobox Non-profit:Non-profit_name	org:alternate_names
+Infobox Non-profit:dissolved	org:dissolved
+Infobox Non-profit:founded_date	org:founded
+Infobox Non-profit:founder	org:founded_by
+Infobox Non-profit:homepage	org:website
+Infobox Non-profit:key_people	org:top_members/employees
+Infobox Non-profit:location	org:country_of_headquarters
+Infobox Non-profit:location	org:stateorprovince_of_headquarters
+Infobox Non-profit:location	org:city_of_headquarters
+Infobox Non-profit:num_employees	org:number_of_employees/members
+Infobox Non-profit:num_volunteers	org:number_of_employees/members
+Infobox Non-profit:owner	org:parents
+Infobox Norwegian political party:foundation	org:founded
+Infobox Norwegian political party:headquarters	org:country_of_headquarters
+Infobox Norwegian political party:headquarters	org:stateorprovince_of_headquarters
+Infobox Norwegian political party:headquarters	org:city_of_headquarters
+Infobox Norwegian political party:ideology	org:political/religious_affiliation
+Infobox Norwegian political party:leader	org:top_members/employees
+Infobox Norwegian political party:members	org:members
+Infobox Norwegian political party:members	org:number_of_employees/members
+Infobox Norwegian political party:newspaper	org:subsidiaries
+Infobox Norwegian political party:party_articletitle	org:alternate_names
+Infobox Norwegian political party:party_name	org:alternate_names
+Infobox Norwegian political party:website	org:website
+Infobox Norwegian political party:youth_wing	org:members
+Infobox PRC political parties:foundation	org:founded
+Infobox PRC political parties:headquarters	org:country_of_headquarters
+Infobox PRC political parties:headquarters	org:stateorprovince_of_headquarters
+Infobox PRC political parties:headquarters	org:city_of_headquarters
+Infobox PRC political parties:ideology	org:political/religious_affiliation
+Infobox PRC political parties:leader	org:top_members/employees
+Infobox PRC political parties:members	org:number_of_employees/members
+Infobox PRC political parties:party_name	org:alternate_names
+Infobox Political Party:foundation	org:founded
+Infobox Political Party:ideology	org:political/religious_affiliation
+Infobox Political Party:international	org:member_of
+Infobox Political Party:party_articletitle	org:alternate_names
+Infobox Political Party:party_name	org:alternate_names
+Infobox Political party:chairman	org:top_members/employees
+Infobox Political party:chairperson	org:top_members/employees
+Infobox Political party:dissolution	org:dissolved
+Infobox Political party:europarl	org:member_of
+Infobox Political party:foundation	org:founded
+Infobox Political party:headquarters	org:country_of_headquarters
+Infobox Political party:headquarters	org:stateorprovince_of_headquarters
+Infobox Political party:headquarters	org:city_of_headquarters
+Infobox Political party:ideology	org:political/religious_affiliation
+Infobox Political party:international	org:member_of
+Infobox Political party:leader	org:top_members/employees
+Infobox Political party:leader1_name	org:top_members/employees
+Infobox Political party:leader2_name	org:top_members/employees
+Infobox Political party:leader3_name	org:top_members/employees
+Infobox Political party:membership	org:number_of_employees/members
+Infobox Political party:name_english	org:alternate_names
+Infobox Political party:name_native	org:alternate_names
+Infobox Political party:national	org:member_of
+Infobox Political party:newspaper	org:subsidiaries
+Infobox Political party:party_name	org:alternate_names
+Infobox Political party:president	org:top_members/employees
+Infobox Political party:website	org:website
+Infobox Political party:youth_wing	org:members
+Infobox Political_Party:foundation	org:founded
+Infobox Political_Party:ideology	org:political/religious_affiliation
+Infobox Political_Party:leader	org:top_members/employees
+Infobox Political_Party:nationality	org:country_of_headquarters
+Infobox Political_Party:party_name	org:alternate_names
+Infobox Political_Party:website	org:website
+Infobox Public transit:began_operation	org:founded
+Infobox Public transit:locale	org:country_of_headquarters
+Infobox Public transit:locale	org:stateorprovince_of_headquarters
+Infobox Public transit:locale	org:city_of_headquarters
+Infobox Public transit:name	org:alternate_names
+Infobox Public transit:operator	org:parents
+Infobox ROC Political_Party:domestic	org:member_of
+Infobox ROC Political_Party:foundation	org:founded
+Infobox ROC Political_Party:headquarters	org:country_of_headquarters
+Infobox ROC Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox ROC Political_Party:headquarters	org:city_of_headquarters
+Infobox ROC Political_Party:ideology	org:political/religious_affiliation
+Infobox ROC Political_Party:international	org:member_of
+Infobox ROC Political_Party:leader	org:top_members/employees
+Infobox ROC Political_Party:party_name	org:alternate_names
+Infobox ROC Political_Party:website	org:website
+Infobox Romanian minister office:formation	org:founded
+Infobox Romanian minister office:incumbent	org:top_members/employees
+Infobox Romanian minister office:website	org:website
+Infobox SG rail:hq_city	org:city_of_headquarters
+Infobox SG rail:locale	org:country_of_headquarters
+Infobox SG rail:locale	org:stateorprovince_of_headquarters
+Infobox SG rail:locale	org:city_of_headquarters
+Infobox SG rail:railroad_name	org:alternate_names
+Infobox SG rail:start_year	org:founded
+Infobox School:address	org:country_of_headquarters
+Infobox School:address	org:stateorprovince_of_headquarters
+Infobox School:address	org:city_of_headquarters
+Infobox School:administrator	org:top_members/employees
+Infobox School:affiliation	org:member_of
+Infobox School:affiliation	org:political/religious_affiliation
+Infobox School:assistant principals	org:top_members/employees
+Infobox School:assistant_principals	org:top_members/employees
+Infobox School:athletic conference	org:member_of
+Infobox School:athletics conference	org:member_of
+Infobox School:athletics_conference	org:member_of
+Infobox School:authority	org:parents
+Infobox School:chairperson	org:top_members/employees
+Infobox School:chaplain	org:top_members/employees
+Infobox School:city	org:city_of_headquarters
+Infobox School:closed	org:dissolved
+Infobox School:conference	org:member_of
+Infobox School:coordinates	org:country_of_headquarters
+Infobox School:coordinates	org:stateorprovince_of_headquarters
+Infobox School:coordinates	org:city_of_headquarters
+Infobox School:country	org:country_of_headquarters
+Infobox School:country1	org:country_of_headquarters
+Infobox School:county	org:country_of_headquarters
+Infobox School:county	org:stateorprovince_of_headquarters
+Infobox School:custodian	org:top_members/employees
+Infobox School:dean	org:top_members/employees
+Infobox School:denomination	org:political/religious_affiliation
+Infobox School:director	org:top_members/employees
+Infobox School:district	org:parents
+Infobox School:enrollment	org:number_of_employees/members
+Infobox School:enrolment	org:number_of_employees/members
+Infobox School:established	org:founded
+Infobox School:faculty	org:number_of_employees/members
+Infobox School:founded	org:founded
+Infobox School:founder	org:founded_by
+Infobox School:head	org:top_members/employees
+Infobox School:head of school	org:top_members/employees
+Infobox School:head_of_school	org:top_members/employees
+Infobox School:headteacher	org:top_members/employees
+Infobox School:homepage	org:website
+Infobox School:houses	org:subsidiaries
+Infobox School:location	org:country_of_headquarters
+Infobox School:location	org:stateorprovince_of_headquarters
+Infobox School:location	org:city_of_headquarters
+Infobox School:name	org:alternate_names
+Infobox School:native_name	org:alternate_names
+Infobox School:newspaper	org:subsidiaries
+Infobox School:nickname	org:alternate_names
+Infobox School:opened	org:founded
+Infobox School:president	org:top_members/employees
+Infobox School:principal	org:top_members/employees
+Infobox School:province	org:stateorprovince_of_headquarters
+Infobox School:publication	org:subsidiaries
+Infobox School:rector	org:top_members/employees
+Infobox School:region	org:country_of_headquarters
+Infobox School:region	org:stateorprovince_of_headquarters
+Infobox School:region	org:city_of_headquarters
+Infobox School:religion	org:political/religious_affiliation
+Infobox School:staff	org:number_of_employees/members
+Infobox School:state	org:stateorprovince_of_headquarters
+Infobox School:streetaddress	org:country_of_headquarters
+Infobox School:streetaddress	org:stateorprovince_of_headquarters
+Infobox School:streetaddress	org:city_of_headquarters
+Infobox School:superintendent	org:top_members/employees
+Infobox School:team_name	org:subsidiaries
+Infobox School:trustee	org:top_members/employees
+Infobox School:viceprincipal	org:top_members/employees
+Infobox School:website	org:website
+Infobox Secondary school:address	org:country_of_headquarters
+Infobox Secondary school:address	org:stateorprovince_of_headquarters
+Infobox Secondary school:address	org:city_of_headquarters
+Infobox Secondary school:affiliations	org:member_of
+Infobox Secondary school:affiliations	org:political/religious_affiliation
+Infobox Secondary school:asst principal	org:top_members/employees
+Infobox Secondary school:asst_principal	org:top_members/employees
+Infobox Secondary school:athletic_director	org:top_members/employees
+Infobox Secondary school:athletics	org:member_of
+Infobox Secondary school:city	org:city_of_headquarters
+Infobox Secondary school:country	org:country_of_headquarters
+Infobox Secondary school:district	org:stateorprovince_of_headquarters
+Infobox Secondary school:established	org:founded
+Infobox Secondary school:faculty	org:number_of_employees/members
+Infobox Secondary school:founder	org:founded_by
+Infobox Secondary school:mascot	org:subsidiaries
+Infobox Secondary school:name	org:alternate_names
+Infobox Secondary school:newspaper	org:subsidiaries
+Infobox Secondary school:principal	org:top_members/employees
+Infobox Secondary school:province	org:stateorprovince_of_headquarters
+Infobox Secondary school:state	org:stateorprovince_of_headquarters
+Infobox Secondary school:students	org:number_of_employees/members
+Infobox Secondary school:teaching_staff	org:number_of_employees/members
+Infobox Secondary school:vice principal	org:top_members/employees
+Infobox Secondary school:vice_principal	org:top_members/employees
+Infobox Secondary school:website	org:website
+Infobox Singapore School:address	org:country_of_headquarters
+Infobox Singapore School:address	org:stateorprovince_of_headquarters
+Infobox Singapore School:address	org:city_of_headquarters
+Infobox Singapore School:city/town	org:city_of_headquarters
+Infobox Singapore School:enrollment	org:number_of_employees/members
+Infobox Singapore School:established	org:founded
+Infobox Singapore School:homepage	org:website
+Infobox Singapore School:name	org:alternate_names
+Infobox Singapore School:principal	org:top_members/employees
+Infobox Social Political Party:Headquarters	org:country_of_headquarters
+Infobox Social Political Party:Headquarters	org:stateorprovince_of_headquarters
+Infobox Social Political Party:Headquarters	org:city_of_headquarters
+Infobox Social Political Party:foundation	org:founded
+Infobox Social Political Party:founder	org:founded_by
+Infobox Social Political Party:ideology	org:political/religious_affiliation
+Infobox Social Political Party:leader	org:top_members/employees
+Infobox Social Political Party:party_name	org:alternate_names
+Infobox Social Political Party:religion	org:political/religious_affiliation
+Infobox Social Political Party:website	org:website
+Infobox Space agency:URL	org:website
+Infobox Space agency:acronym	org:alternate_names
+Infobox Space agency:administrator	org:top_members/employees
+Infobox Space agency:established	org:founded
+Infobox Space agency:headquarters	org:country_of_headquarters
+Infobox Space agency:headquarters	org:stateorprovince_of_headquarters
+Infobox Space agency:headquarters	org:city_of_headquarters
+Infobox Space agency:name	org:alternate_names
+Infobox Space agency:native_name	org:alternate_names
+Infobox Space agency:owner	org:parents
+Infobox Space agency:spaceport	org:country_of_headquarters
+Infobox Space agency:spaceport	org:stateorprovince_of_headquarters
+Infobox Space agency:spaceport	org:city_of_headquarters
+Infobox Speedway team:closed	org:dissolved
+Infobox Speedway team:clubname	org:alternate_names
+Infobox Speedway team:country	org:country_of_headquarters
+Infobox Speedway team:founded	org:founded
+Infobox Speedway team:league	org:member_of
+Infobox Speedway team:manager	org:top_members/employees
+Infobox Speedway team:website	org:website
+Infobox Sports team:arena	org:country_of_headquarters
+Infobox Sports team:arena	org:stateorprovince_of_headquarters
+Infobox Sports team:arena	org:city_of_headquarters
+Infobox Sports team:ballpark	org:country_of_headquarters
+Infobox Sports team:ballpark	org:stateorprovince_of_headquarters
+Infobox Sports team:ballpark	org:city_of_headquarters
+Infobox Sports team:cheerleaders	org:subsidiaries
+Infobox Sports team:city	org:city_of_headquarters
+Infobox Sports team:coach	org:top_members/employees
+Infobox Sports team:dancers	org:subsidiaries
+Infobox Sports team:founded	org:founded
+Infobox Sports team:history	org:alternate_names
+Infobox Sports team:history	org:member_of
+Infobox Sports team:league	org:member_of
+Infobox Sports team:manager	org:top_members/employees
+Infobox Sports team:president	org:top_members/employees
+Infobox Sports team:stadium	org:country_of_headquarters
+Infobox Sports team:stadium	org:stateorprovince_of_headquarters
+Infobox Sports team:stadium	org:city_of_headquarters
+Infobox Sports team:team	org:alternate_names
+Infobox TV channel:Launched	org:founded
+Infobox TV channel:closed date	org:dissolved
+Infobox TV channel:closed_date	org:dissolved
+Infobox TV channel:country	org:country_of_headquarters
+Infobox TV channel:country	org:stateorprovince_of_headquarters
+Infobox TV channel:country	org:city_of_headquarters
+Infobox TV channel:former names	org:alternate_names
+Infobox TV channel:former_names	org:alternate_names
+Infobox TV channel:headquarters	org:country_of_headquarters
+Infobox TV channel:headquarters	org:stateorprovince_of_headquarters
+Infobox TV channel:headquarters	org:city_of_headquarters
+Infobox TV channel:key people	org:top_members/employees
+Infobox TV channel:key_people	org:top_members/employees
+Infobox TV channel:launch	org:founded
+Infobox TV channel:network	org:parents
+Infobox TV channel:owner	org:parents
+Infobox TV channel:sat_serv_1	org:member_of
+Infobox TV channel:web	org:website
+Infobox UK Fire and Rescue:Chief Fire Officer	org:top_members/employees
+Infobox UK Fire and Rescue:Chief_Fire_Officer	org:top_members/employees
+Infobox UK Fire and Rescue:FA	org:top_members/employees
+Infobox UK Fire and Rescue:HQ	org:country_of_headquarters
+Infobox UK Fire and Rescue:HQ	org:stateorprovince_of_headquarters
+Infobox UK Fire and Rescue:HQ	org:city_of_headquarters
+Infobox UK Fire and Rescue:area	org:country_of_headquarters
+Infobox UK Fire and Rescue:area	org:stateorprovince_of_headquarters
+Infobox UK Fire and Rescue:area	org:city_of_headquarters
+Infobox UK Fire and Rescue:name	org:alternate_names
+Infobox UK Fire and Rescue:staff	org:number_of_employees/members
+Infobox UK Fire and Rescue:start	org:founded
+Infobox UK Police:HQ	org:country_of_headquarters
+Infobox UK Police:HQ	org:stateorprovince_of_headquarters
+Infobox UK Police:HQ	org:city_of_headquarters
+Infobox UK Police:area	org:country_of_headquarters
+Infobox UK Police:area	org:stateorprovince_of_headquarters
+Infobox UK Police:area	org:city_of_headquarters
+Infobox UK Police:divname	org:subsidiaries
+Infobox UK Police:head	org:top_members/employees
+Infobox UK Police:name	org:alternate_names
+Infobox UK Police:officers	org:number_of_employees/members
+Infobox UK Police:start	org:founded
+Infobox UK Police:web	org:website
+Infobox UK school:City	org:city_of_headquarters
+Infobox UK school:LEA	org:parents
+Infobox UK school:chair	org:top_members/employees
+Infobox UK school:country	org:country_of_headquarters
+Infobox UK school:county	org:stateorprovince_of_headquarters
+Infobox UK school:enrollment	org:number_of_employees/members
+Infobox UK school:established	org:founded
+Infobox UK school:founder	org:founded_by
+Infobox UK school:head	org:top_members/employees
+Infobox UK school:houses	org:subsidiaries
+Infobox UK school:name	org:alternate_names
+Infobox UK school:president	org:top_members/employees
+Infobox UK school:publication	org:subsidiaries
+Infobox UK school:religion	org:political/religious_affiliation
+Infobox UK school:size	org:number_of_employees/members
+Infobox UK school:staff	org:number_of_employees/members
+Infobox UK school:street	org:country_of_headquarters
+Infobox UK school:street	org:stateorprovince_of_headquarters
+Infobox UK school:street	org:city_of_headquarters
+Infobox UK school:website	org:website
+Infobox UK school:website_name	org:website
+Infobox Ukrainian Political Party:foundation	org:founded
+Infobox Ukrainian Political Party:headquarters	org:country_of_headquarters
+Infobox Ukrainian Political Party:headquarters	org:stateorprovince_of_headquarters
+Infobox Ukrainian Political Party:headquarters	org:city_of_headquarters
+Infobox Ukrainian Political Party:ideology	org:political/religious_affiliation
+Infobox Ukrainian Political Party:international	org:member_of
+Infobox Ukrainian Political Party:leader	org:top_members/employees
+Infobox Ukrainian Political Party:party_name	org:alternate_names
+Infobox Ukrainian Political Party:position	org:political/religious_affiliation
+Infobox Ukrainian Political Party:website	org:website
+Infobox Union:affiliation	org:member_of
+Infobox Union:country	org:country_of_headquarters
+Infobox Union:dissolved_date	org:dissolved
+Infobox Union:founded	org:founded
+Infobox Union:full_name	org:alternate_names
+Infobox Union:head	org:top_members/employees
+Infobox Union:members	org:number_of_employees/members
+Infobox Union:name	org:alternate_names
+Infobox Union:native_name	org:alternate_names
+Infobox Union:office	org:country_of_headquarters
+Infobox Union:office	org:stateorprovince_of_headquarters
+Infobox Union:office	org:city_of_headquarters
+Infobox Union:people	org:top_members/employees
+Infobox Union:website	org:website
+Infobox University:address	org:country_of_headquarters
+Infobox University:address	org:stateorprovince_of_headquarters
+Infobox University:address	org:city_of_headquarters
+Infobox University:affiliation	org:political/religious_affiliation
+Infobox University:affiliations	org:member_of
+Infobox University:athletics	org:subsidiaries
+Infobox University:chairman	org:top_members/employees
+Infobox University:chancellor	org:top_members/employees
+Infobox University:city	org:city_of_headquarters
+Infobox University:closed	org:dissolved
+Infobox University:country	org:country_of_headquarters
+Infobox University:dean	org:top_members/employees
+Infobox University:director	org:top_members/employees
+Infobox University:enrollment	org:number_of_employees/members
+Infobox University:established	org:founded
+Infobox University:faculty	org:number_of_employees/members
+Infobox University:former_names	org:alternate_names
+Infobox University:head	org:top_members/employees
+Infobox University:name	org:alternate_names
+Infobox University:native_name	org:alternate_names
+Infobox University:nickname	org:alternate_names
+Infobox University:nickname	org:subsidiaries
+Infobox University:nobel_laureates	org:number_of_employees/members
+Infobox University:officer_in_charge	org:top_members/employees
+Infobox University:postgrad	org:number_of_employees/members
+Infobox University:president	org:top_members/employees
+Infobox University:profess	org:number_of_employees/members
+Infobox University:province	org:stateorprovince_of_headquarters
+Infobox University:provost	org:top_members/employees
+Infobox University:staff	org:number_of_employees/members
+Infobox University:state	org:stateorprovince_of_headquarters
+Infobox University:students	org:number_of_employees/members
+Infobox University:superintendent	org:top_members/employees
+Infobox University:vice-president	org:top_members/employees
+Infobox University:vice_chancellor	org:top_members/employees
+Infobox University:website	org:website
+Infobox War Faction:active	org:dissolved
+Infobox War Faction:active	org:founded
+Infobox War Faction:allies	org:political/religious_affiliation
+Infobox War Faction:headquarters	org:country_of_headquarters
+Infobox War Faction:headquarters	org:stateorprovince_of_headquarters
+Infobox War Faction:headquarters	org:city_of_headquarters
+Infobox War Faction:leaders	org:top_members/employees
+Infobox War Faction:name	org:alternate_names
+Infobox Wrestling team:article_name	org:alternate_names
+Infobox Wrestling team:billed	org:country_of_headquarters
+Infobox Wrestling team:billed	org:stateorprovince_of_headquarters
+Infobox Wrestling team:billed	org:city_of_headquarters
+Infobox Wrestling team:debut	org:founded
+Infobox Wrestling team:disbanded	org:dissolved
+Infobox Wrestling team:members	org:number_of_employees/members
+Infobox australian football club:C.E.O	org:top_members/employees
+Infobox australian football club:captain	org:top_members/employees
+Infobox australian football club:chairman	org:top_members/employees
+Infobox australian football club:clubname	org:alternate_names
+Infobox australian football club:coach	org:top_members/employees
+Infobox australian football club:founded	org:founded
+Infobox australian football club:founded/established	org:founded
+Infobox australian football club:fullname	org:alternate_names
+Infobox australian football club:ground	org:country_of_headquarters
+Infobox australian football club:ground	org:stateorprovince_of_headquarters
+Infobox australian football club:ground	org:city_of_headquarters
+Infobox australian football club:ground2	org:country_of_headquarters
+Infobox australian football club:ground2	org:stateorprovince_of_headquarters
+Infobox australian football club:ground2	org:city_of_headquarters
+Infobox australian football club:ground3	org:country_of_headquarters
+Infobox australian football club:ground3	org:stateorprovince_of_headquarters
+Infobox australian football club:ground3	org:city_of_headquarters
+Infobox australian football club:league	org:member_of
+Infobox australian football club:nicknames	org:alternate_names
+Infobox australian football club:url	org:website
+Infobox baseball team:Founded	org:founded
+Infobox baseball team:League	org:member_of
+Infobox baseball team:Location	org:country_of_headquarters
+Infobox baseball team:Location	org:stateorprovince_of_headquarters
+Infobox baseball team:Location	org:city_of_headquarters
+Infobox baseball team:Name	org:alternate_names
+Infobox baseball team:Stadium	org:country_of_headquarters
+Infobox baseball team:Stadium	org:stateorprovince_of_headquarters
+Infobox baseball team:Stadium	org:city_of_headquarters
+Infobox college athletics:arena	org:country_of_headquarters
+Infobox college athletics:arena	org:stateorprovince_of_headquarters
+Infobox college athletics:arena	org:city_of_headquarters
+Infobox college athletics:arena2	org:country_of_headquarters
+Infobox college athletics:arena2	org:stateorprovince_of_headquarters
+Infobox college athletics:arena2	org:city_of_headquarters
+Infobox college athletics:baseballfield	org:country_of_headquarters
+Infobox college athletics:baseballfield	org:stateorprovince_of_headquarters
+Infobox college athletics:baseballfield	org:city_of_headquarters
+Infobox college athletics:city	org:city_of_headquarters
+Infobox college athletics:conference	org:member_of
+Infobox college athletics:director	org:top_members/employees
+Infobox college athletics:division	org:member_of
+Infobox college athletics:founded	org:founded
+Infobox college athletics:name	org:alternate_names
+Infobox college athletics:nickname	org:alternate_names
+Infobox college athletics:pagename	org:website
+Infobox college athletics:pageurl	org:website
+Infobox college athletics:stadium	org:country_of_headquarters
+Infobox college athletics:stadium	org:stateorprovince_of_headquarters
+Infobox college athletics:stadium	org:city_of_headquarters
+Infobox college athletics:state	org:stateorprovince_of_headquarters
+Infobox college athletics:stateabb	org:stateorprovince_of_headquarters
+Infobox college athletics:university	org:parents
+Infobox cricket team:captain	org:top_members/employees
+Infobox cricket team:coach	org:top_members/employees
+Infobox cricket team:county	org:stateorprovince_of_headquarters
+Infobox cricket team:founded	org:founded
+Infobox cricket team:ground	org:country_of_headquarters
+Infobox cricket team:ground	org:stateorprovince_of_headquarters
+Infobox cricket team:ground	org:city_of_headquarters
+Infobox cricket team:website	org:website
+Infobox football league:confed	org:member_of
+Infobox football league:country	org:country_of_headquarters
+Infobox football league:founded	org:founded
+Infobox football league:most successful club	org:members
+Infobox football league:website	org:website
+Infobox musical artist:Alias	org:alternate_names
+Infobox musical artist:Current_members	org:number_of_employees/members
+Infobox musical artist:Label	org:member_of
+Infobox musical artist:Name	org:alternate_names
+Infobox musical artist:Past_members	org:top_members/employees
+Infobox musical artist:URL	org:website
+Infobox musical artist:Years_active	org:founded
+Infobox national basketball team:coach	org:top_members/employees
+Infobox national basketball team:country	org:country_of_headquarters
+Infobox national basketball team:national_fed	org:member_of
+Infobox national basketball team:nickname	org:alternate_names
+Infobox national volleyball team:coach	org:top_members/employees
+Infobox national volleyball team:confederation	org:member_of
+Infobox national volleyball team:federation	org:member_of
+Infobox national volleyball team:manager	org:top_members/employees
+Infobox national volleyball team:name	org:alternate_names
+Infobox national volleyball team:website	org:website
+Infobox non test cricket team:WCL_division	org:member_of
+Infobox non test cricket team:country_name	org:country_of_headquarters
+Infobox public organisation:founded	org:founded
+Infobox public organisation:full_name	org:alternate_names
+Infobox public organisation:homepage	org:website
+Infobox public organisation:hq	org:country_of_headquarters
+Infobox public organisation:hq	org:stateorprovince_of_headquarters
+Infobox public organisation:hq	org:city_of_headquarters
+Infobox public organisation:territory	org:country_of_headquarters
+Infobox public organisation:territory	org:stateorprovince_of_headquarters
+Infobox public organisation:territory	org:city_of_headquarters
+Infobox rugby league club:URL	org:website
+Infobox rugby league club:ceo	org:top_members/employees
+Infobox rugby league club:clubname	org:alternate_names
+Infobox rugby league club:coach	org:top_members/employees
+Infobox rugby league club:founded	org:founded
+Infobox rugby league club:fullname	org:alternate_names
+Infobox rugby league club:ground	org:country_of_headquarters
+Infobox rugby league club:ground	org:stateorprovince_of_headquarters
+Infobox rugby league club:ground	org:city_of_headquarters
+Infobox rugby league club:league	org:member_of
+Infobox rugby league club:manager	org:top_members/employees
+Infobox rugby league club:nickname	org:alternate_names
+Infobox rugby league club:short name	org:alternate_names
+Infobox rugby league club:shortname	org:alternate_names
+Infobox rugby league club:url	org:website
+Infobox rugby league nation:Association	org:member_of
+Infobox rugby league nation:Coach	org:top_members/employees
+Infobox rugby league nation:Home Stadium	org:country_of_headquarters
+Infobox rugby league nation:Home Stadium	org:stateorprovince_of_headquarters
+Infobox rugby league nation:Home Stadium	org:city_of_headquarters
+Infobox rugby league nation:Home_Stadium	org:country_of_headquarters
+Infobox rugby league nation:Home_Stadium	org:stateorprovince_of_headquarters
+Infobox rugby league nation:Home_Stadium	org:city_of_headquarters
+Infobox rugby league nation:Name	org:alternate_names
+Infobox rugby league nation:Nickname	org:alternate_names
+Infobox rugby league team:chairman	org:top_members/employees
+Infobox rugby league team:clubname	org:alternate_names
+Infobox rugby league team:coach	org:top_members/employees
+Infobox rugby league team:founded	org:founded
+Infobox rugby league team:fullname	org:alternate_names
+Infobox rugby league team:ground	org:country_of_headquarters
+Infobox rugby league team:ground	org:stateorprovince_of_headquarters
+Infobox rugby league team:ground	org:city_of_headquarters
+Infobox rugby league team:league	org:member_of
+Infobox rugby league team:location	org:country_of_headquarters
+Infobox rugby league team:location	org:stateorprovince_of_headquarters
+Infobox rugby league team:location	org:city_of_headquarters
+Infobox rugby league team:nickname	org:alternate_names
+Infobox rugby league team:website	org:website
+Infobox rugby team:coach	org:top_members/employees
+Infobox rugby team:countryflag	org:country_of_headquarters
+Infobox rugby team:countryflag	org:stateorprovince_of_headquarters
+Infobox rugby team:countryflag	org:city_of_headquarters
+Infobox rugby team:countryflag2	org:country_of_headquarters
+Infobox rugby team:countryflag2	org:stateorprovince_of_headquarters
+Infobox rugby team:countryflag2	org:city_of_headquarters
+Infobox rugby team:countryflag3	org:country_of_headquarters
+Infobox rugby team:countryflag3	org:stateorprovince_of_headquarters
+Infobox rugby team:countryflag3	org:city_of_headquarters
+Infobox rugby team:nickname	org:alternate_names
+Infobox rugby team:teamname	org:alternate_names
+Infobox rugby team:unions	org:member_of
+Infobox school:address	org:country_of_headquarters
+Infobox school:address	org:stateorprovince_of_headquarters
+Infobox school:address	org:city_of_headquarters
+Infobox school:enrollment	org:number_of_employees/members
+Infobox school:established	org:founded
+Infobox school:location	org:country_of_headquarters
+Infobox school:location	org:stateorprovince_of_headquarters
+Infobox school:location	org:city_of_headquarters
+Infobox school:name	org:alternate_names
+Infobox school:principal	org:top_members/employees
+Infobox school:website	org:website
+Infobox sport governing body:chairman	org:top_members/employees
+Infobox sport governing body:headquarters	org:country_of_headquarters
+Infobox sport governing body:headquarters	org:stateorprovince_of_headquarters
+Infobox sport governing body:headquarters	org:city_of_headquarters
+Infobox sport governing body:key staff	org:top_members/employees
+Infobox sport governing body:key_staff	org:top_members/employees
+Infobox sport governing body:president	org:top_members/employees
+Infobox sport governing body:website	org:website
+Infobox sport governing body:year closed	org:dissolved
+Infobox sport governing body:year formed	org:founded
+Infobox sport governing body:year_closed	org:dissolved
+Infobox sport governing body:year_formed	org:founded
+Infobox sports league:champion	org:members
+Infobox sports league:country	org:country_of_headquarters
+Infobox sports league:founded	org:founded
+Infobox sports league:title	org:alternate_names
+InfoboxFireDepartment:chief	org:top_members/employees
+InfoboxFireDepartment:commissioner	org:top_members/employees
+InfoboxFireDepartment:established	org:founded
+InfoboxFireDepartment:name	org:alternate_names
+InfoboxFireDepartment:strength	org:number_of_employees/members
+Infobox_Airline:IATA	org:alternate_names
+Infobox_Airline:ICAO	org:alternate_names
+Infobox_Airline:airline	org:alternate_names
+Infobox_Airline:alliance	org:member_of
+Infobox_Airline:callsign	org:alternate_names
+Infobox_Airline:founded	org:founded
+Infobox_Airline:headquarters	org:country_of_headquarters
+Infobox_Airline:headquarters	org:stateorprovince_of_headquarters
+Infobox_Airline:headquarters	org:city_of_headquarters
+Infobox_Airline:key_people	org:top_members/employees
+Infobox_Airline:parent	org:parents
+Infobox_Airline:website	org:website
+Infobox_Austrian_Political_Party:europarl	org:member_of
+Infobox_Austrian_Political_Party:european	org:member_of
+Infobox_Austrian_Political_Party:foundation	org:founded
+Infobox_Austrian_Political_Party:headquarters	org:country_of_headquarters
+Infobox_Austrian_Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox_Austrian_Political_Party:headquarters	org:city_of_headquarters
+Infobox_Austrian_Political_Party:ideology	org:political/religious_affiliation
+Infobox_Austrian_Political_Party:international	org:member_of
+Infobox_Austrian_Political_Party:leader	org:top_members/employees
+Infobox_Austrian_Political_Party:party_name	org:alternate_names
+Infobox_Austrian_Political_Party:position	org:political/religious_affiliation
+Infobox_Austrian_Political_Party:website	org:website
+Infobox_British_Political_Party:europarl	org:member_of
+Infobox_British_Political_Party:european	org:member_of
+Infobox_British_Political_Party:foundation	org:founded
+Infobox_British_Political_Party:headquarters	org:country_of_headquarters
+Infobox_British_Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox_British_Political_Party:headquarters	org:city_of_headquarters
+Infobox_British_Political_Party:ideology	org:political/religious_affiliation
+Infobox_British_Political_Party:international	org:member_of
+Infobox_British_Political_Party:leader	org:top_members/employees
+Infobox_British_Political_Party:party_articletitle	org:alternate_names
+Infobox_British_Political_Party:party_name	org:alternate_names
+Infobox_British_Political_Party:position	org:political/religious_affiliation
+Infobox_British_Political_Party:website	org:website
+Infobox_Canada_Political_Party:dissolution	org:dissolved
+Infobox_Canada_Political_Party:foundation	org:founded
+Infobox_Canada_Political_Party:headquarters	org:country_of_headquarters
+Infobox_Canada_Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox_Canada_Political_Party:headquarters	org:city_of_headquarters
+Infobox_Canada_Political_Party:ideology	org:political/religious_affiliation
+Infobox_Canada_Political_Party:leader	org:top_members/employees
+Infobox_Canada_Political_Party:party_name	org:alternate_names
+Infobox_Canada_Political_Party:party_wikicolourid	org:political/religious_affiliation
+Infobox_Canada_Political_Party:president	org:top_members/employees
+Infobox_Canada_Political_Party:website	org:website
+Infobox_Company:company_name	org:alternate_names
+Infobox_Company:company_type	org:parents
+Infobox_Company:dissolved	org:dissolved
+Infobox_Company:foundation	org:founded
+Infobox_Company:founder	org:founded_by
+Infobox_Company:homepage	org:website
+Infobox_Company:key_people	org:top_members/employees
+Infobox_Company:location	org:country_of_headquarters
+Infobox_Company:location	org:stateorprovince_of_headquarters
+Infobox_Company:location	org:city_of_headquarters
+Infobox_Company:location_city	org:city_of_headquarters
+Infobox_Company:location_country	org:country_of_headquarters
+Infobox_Company:num_employees	org:number_of_employees/members
+Infobox_Company:parent	org:parents
+Infobox_Company:subsid	org:subsidiaries
+Infobox_Company:subsidiaries	org:subsidiaries
+Infobox_Czech_Political_Party:europarl	org:member_of
+Infobox_Czech_Political_Party:european	org:member_of
+Infobox_Czech_Political_Party:foundation	org:founded
+Infobox_Czech_Political_Party:headquarters	org:country_of_headquarters
+Infobox_Czech_Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox_Czech_Political_Party:headquarters	org:city_of_headquarters
+Infobox_Czech_Political_Party:ideology	org:political/religious_affiliation
+Infobox_Czech_Political_Party:international	org:member_of
+Infobox_Czech_Political_Party:leader	org:top_members/employees
+Infobox_Czech_Political_Party:party_name	org:alternate_names
+Infobox_Czech_Political_Party:website	org:website
+Infobox_Indian_Political_Party:alliance	org:member_of
+Infobox_Indian_Political_Party:foundation	org:founded
+Infobox_Indian_Political_Party:headquarters	org:country_of_headquarters
+Infobox_Indian_Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox_Indian_Political_Party:headquarters	org:city_of_headquarters
+Infobox_Indian_Political_Party:ideology	org:political/religious_affiliation
+Infobox_Indian_Political_Party:labour	org:members
+Infobox_Indian_Political_Party:loksabha_leader	org:top_members/employees
+Infobox_Indian_Political_Party:party_name	org:alternate_names
+Infobox_Indian_Political_Party:peasants	org:members
+Infobox_Indian_Political_Party:publication	org:subsidiaries
+Infobox_Indian_Political_Party:rajyasabha_leader	org:top_members/employees
+Infobox_Indian_Political_Party:secretary	org:top_members/employees
+Infobox_Indian_Political_Party:students	org:members
+Infobox_Indian_Political_Party:website	org:website
+Infobox_Indian_Political_Party:women	org:members
+Infobox_Indian_Political_Party:youth	org:members
+Infobox_Irish_Political_Party:europarl	org:member_of
+Infobox_Irish_Political_Party:european	org:member_of
+Infobox_Irish_Political_Party:foundation	org:founded
+Infobox_Irish_Political_Party:headquarters	org:country_of_headquarters
+Infobox_Irish_Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox_Irish_Political_Party:headquarters	org:city_of_headquarters
+Infobox_Irish_Political_Party:ideology	org:political/religious_affiliation
+Infobox_Irish_Political_Party:international	org:member_of
+Infobox_Irish_Political_Party:leader	org:top_members/employees
+Infobox_Irish_Political_Party:party_name	org:alternate_names
+Infobox_Irish_Political_Party:website	org:website
+Infobox_Italian_political_party:coalition	org:member_of
+Infobox_Italian_political_party:dissolution	org:dissolved
+Infobox_Italian_political_party:europarl	org:member_of
+Infobox_Italian_political_party:european	org:member_of
+Infobox_Italian_political_party:foundation	org:founded
+Infobox_Italian_political_party:headquarters	org:country_of_headquarters
+Infobox_Italian_political_party:headquarters	org:stateorprovince_of_headquarters
+Infobox_Italian_political_party:headquarters	org:city_of_headquarters
+Infobox_Italian_political_party:ideology	org:political/religious_affiliation
+Infobox_Italian_political_party:international	org:member_of
+Infobox_Italian_political_party:leader	org:top_members/employees
+Infobox_Italian_political_party:leader1_name	org:top_members/employees
+Infobox_Italian_political_party:leader2_name	org:top_members/employees
+Infobox_Italian_political_party:leader3_name	org:top_members/employees
+Infobox_Italian_political_party:leader4_name	org:top_members/employees
+Infobox_Italian_political_party:membership	org:number_of_employees/members
+Infobox_Italian_political_party:name_english	org:alternate_names
+Infobox_Italian_political_party:newspaper	org:subsidiaries
+Infobox_Italian_political_party:website	org:website
+Infobox_Italy_Political_Party:coalition	org:member_of
+Infobox_Italy_Political_Party:foundation	org:founded
+Infobox_Italy_Political_Party:ideology	org:political/religious_affiliation
+Infobox_Italy_Political_Party:leader	org:top_members/employees
+Infobox_Italy_Political_Party:newspaper	org:subsidiaries
+Infobox_Italy_Political_Party:party_name	org:alternate_names
+Infobox_Italy_Political_Party:party_name_italian	org:alternate_names
+Infobox_Italy_Political_Party:website	org:website
+Infobox_Japanese_Political_Party:foundation	org:founded
+Infobox_Japanese_Political_Party:headquarters	org:country_of_headquarters
+Infobox_Japanese_Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox_Japanese_Political_Party:headquarters	org:city_of_headquarters
+Infobox_Japanese_Political_Party:ideology	org:political/religious_affiliation
+Infobox_Japanese_Political_Party:international	org:member_of
+Infobox_Japanese_Political_Party:lhouseleader	org:top_members/employees
+Infobox_Japanese_Political_Party:party_name	org:alternate_names
+Infobox_Japanese_Political_Party:president	org:top_members/employees
+Infobox_Japanese_Political_Party:representative	org:top_members/employees
+Infobox_Japanese_Political_Party:secretary	org:top_members/employees
+Infobox_Japanese_Political_Party:uhouseleader	org:top_members/employees
+Infobox_Japanese_Political_Party:website	org:website
+Infobox_Nepalese_Political_Party:foundation	org:founded
+Infobox_Nepalese_Political_Party:headquarters	org:country_of_headquarters
+Infobox_Nepalese_Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox_Nepalese_Political_Party:headquarters	org:city_of_headquarters
+Infobox_Nepalese_Political_Party:ideology	org:political/religious_affiliation
+Infobox_Nepalese_Political_Party:international	org:member_of
+Infobox_Nepalese_Political_Party:labour	org:members
+Infobox_Nepalese_Political_Party:party_name	org:alternate_names
+Infobox_Nepalese_Political_Party:secretary	org:top_members/employees
+Infobox_Nepalese_Political_Party:students	org:members
+Infobox_Nepalese_Political_Party:website	org:website
+Infobox_Nepalese_Political_Party:youth	org:members
+Infobox_Organization:formation	org:founded
+Infobox_Organization:headquarters	org:country_of_headquarters
+Infobox_Organization:headquarters	org:stateorprovince_of_headquarters
+Infobox_Organization:headquarters	org:city_of_headquarters
+Infobox_Organization:membership	org:number_of_employees/members
+Infobox_Organization:name	org:alternate_names
+Infobox_Organization:website	org:website
+Infobox_Political_Party:alliance	org:member_of
+Infobox_Political_Party:dissolution	org:dissolved
+Infobox_Political_Party:european	org:member_of
+Infobox_Political_Party:foundation	org:founded
+Infobox_Political_Party:headquarters	org:country_of_headquarters
+Infobox_Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox_Political_Party:headquarters	org:city_of_headquarters
+Infobox_Political_Party:ideology	org:political/religious_affiliation
+Infobox_Political_Party:int_alignment	org:member_of
+Infobox_Political_Party:international	org:member_of
+Infobox_Political_Party:leader	org:top_members/employees
+Infobox_Political_Party:members	org:members
+Infobox_Political_Party:membership	org:number_of_employees/members
+Infobox_Political_Party:newspaper	org:subsidiaries
+Infobox_Political_Party:party_name	org:alternate_names
+Infobox_Political_Party:party_name_italian	org:alternate_names
+Infobox_Political_Party:party_wikicolourid	org:political/religious_affiliation
+Infobox_Political_Party:publication	org:subsidiaries
+Infobox_Political_Party:status	org:number_of_employees/members
+Infobox_Political_Party:website	org:website
+Infobox_Political_party:chairperson	org:top_members/employees
+Infobox_Political_party:dissolution	org:dissolved
+Infobox_Political_party:europarl	org:member_of
+Infobox_Political_party:foundation	org:founded
+Infobox_Political_party:headquarters	org:country_of_headquarters
+Infobox_Political_party:headquarters	org:stateorprovince_of_headquarters
+Infobox_Political_party:headquarters	org:city_of_headquarters
+Infobox_Political_party:ideology	org:political/religious_affiliation
+Infobox_Political_party:international	org:member_of
+Infobox_Political_party:leader	org:top_members/employees
+Infobox_Political_party:leader1_name	org:top_members/employees
+Infobox_Political_party:leader2_name	org:top_members/employees
+Infobox_Political_party:leader3_name	org:top_members/employees
+Infobox_Political_party:membership	org:number_of_employees/members
+Infobox_Political_party:name_english	org:alternate_names
+Infobox_Political_party:name_native	org:alternate_names
+Infobox_Political_party:newspaper	org:subsidiaries
+Infobox_Political_party:president	org:top_members/employees
+Infobox_Political_party:website	org:website
+Infobox_Political_party:youth_wing	org:members
+Infobox_Romanian_Political_Party:ep-group	org:member_of
+Infobox_Romanian_Political_Party:european	org:member_of
+Infobox_Romanian_Political_Party:foundation	org:founded
+Infobox_Romanian_Political_Party:headquarters	org:country_of_headquarters
+Infobox_Romanian_Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox_Romanian_Political_Party:headquarters	org:city_of_headquarters
+Infobox_Romanian_Political_Party:ideology	org:political/religious_affiliation
+Infobox_Romanian_Political_Party:international	org:member_of
+Infobox_Romanian_Political_Party:leader	org:top_members/employees
+Infobox_Romanian_Political_Party:party_name	org:alternate_names
+Infobox_Romanian_Political_Party:website	org:website
+Infobox_School:affiliation	org:member_of
+Infobox_School:affiliation	org:political/religious_affiliation
+Infobox_School:athletics	org:subsidiaries
+Infobox_School:conference	org:member_of
+Infobox_School:dean	org:top_members/employees
+Infobox_School:district	org:subsidiaries
+Infobox_School:enrollment	org:number_of_employees/members
+Infobox_School:established	org:founded
+Infobox_School:faculty	org:number_of_employees/members
+Infobox_School:location	org:country_of_headquarters
+Infobox_School:location	org:stateorprovince_of_headquarters
+Infobox_School:location	org:city_of_headquarters
+Infobox_School:name	org:alternate_names
+Infobox_School:president	org:top_members/employees
+Infobox_School:principal	org:top_members/employees
+Infobox_School:staff	org:number_of_employees/members
+Infobox_School:students	org:number_of_employees/members
+Infobox_Sri_Lankan_Political_Party:chairman	org:top_members/employees
+Infobox_Sri_Lankan_Political_Party:fiscalpolicy	org:political/religious_affiliation
+Infobox_Sri_Lankan_Political_Party:foundation	org:founded
+Infobox_Sri_Lankan_Political_Party:headquarters	org:country_of_headquarters
+Infobox_Sri_Lankan_Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox_Sri_Lankan_Political_Party:headquarters	org:city_of_headquarters
+Infobox_Sri_Lankan_Political_Party:ideology	org:political/religious_affiliation
+Infobox_Sri_Lankan_Political_Party:leader	org:top_members/employees
+Infobox_Sri_Lankan_Political_Party:party_name	org:alternate_names
+Infobox_Sri_Lankan_Political_Party:ppchairman	org:top_members/employees
+Infobox_Sri_Lankan_Political_Party:publication	org:subsidiaries
+Infobox_Sri_Lankan_Political_Party:secretary	org:top_members/employees
+Infobox_Sri_Lankan_Political_Party:socialpolicy	org:political/religious_affiliation
+Infobox_Sri_Lankan_Political_Party:website	org:website
+Infobox_Swedish_Political_Party:europarl	org:member_of
+Infobox_Swedish_Political_Party:european	org:member_of
+Infobox_Swedish_Political_Party:foundation	org:founded
+Infobox_Swedish_Political_Party:headquarters	org:country_of_headquarters
+Infobox_Swedish_Political_Party:headquarters	org:stateorprovince_of_headquarters
+Infobox_Swedish_Political_Party:headquarters	org:city_of_headquarters
+Infobox_Swedish_Political_Party:ideology	org:political/religious_affiliation
+Infobox_Swedish_Political_Party:international	org:member_of
+Infobox_Swedish_Political_Party:leader	org:top_members/employees
+Infobox_Swedish_Political_Party:party_name	org:alternate_names
+Infobox_Swedish_Political_Party:website	org:website
+Infobox_TV_channel:country	org:country_of_headquarters
+Infobox_TV_channel:launch	org:founded
+Infobox_TV_channel:owner	org:parents
+Infobox_TV_channel:web	org:website
+Infobox_University:address	org:country_of_headquarters
+Infobox_University:address	org:stateorprovince_of_headquarters
+Infobox_University:address	org:city_of_headquarters
+Infobox_University:affiliations	org:member_of
+Infobox_University:athletics	org:member_of
+Infobox_University:chancellor	org:top_members/employees
+Infobox_University:city	org:city_of_headquarters
+Infobox_University:country	org:country_of_headquarters
+Infobox_University:dean	org:top_members/employees
+Infobox_University:enrollment	org:number_of_employees/members
+Infobox_University:established	org:founded
+Infobox_University:faculty	org:number_of_employees/members
+Infobox_University:former_names	org:alternate_names
+Infobox_University:location	org:country_of_headquarters
+Infobox_University:location	org:stateorprovince_of_headquarters
+Infobox_University:location	org:city_of_headquarters
+Infobox_University:name	org:alternate_names
+Infobox_University:native_name	org:alternate_names
+Infobox_University:nickname	org:subsidiaries
+Infobox_University:president	org:top_members/employees
+Infobox_University:provost	org:top_members/employees
+Infobox_University:rector	org:top_members/employees
+Infobox_University:staff	org:number_of_employees/members
+Infobox_University:state	org:stateorprovince_of_headquarters
+Infobox_University:vice_chancellor	org:top_members/employees
+Infobox_University:website	org:website
+Infobox_esl_club:clubname	org:alternate_names
+Infobox_esl_club:founded	org:founded
+Infobox_esl_club:fullname	org:alternate_names
+Infobox_esl_club:ground	org:country_of_headquarters
+Infobox_esl_club:ground	org:stateorprovince_of_headquarters
+Infobox_esl_club:ground	org:city_of_headquarters
+Infobox_esl_club:league	org:member_of
+Infobox_esl_club:web	org:website
+Infobox_national_korfball_team:Association	org:member_of
+Infobox_national_korfball_team:IKF_code	org:alternate_names
+Infobox_national_korfball_team:IKF_membership	org:founded
+Infobox_national_korfball_team:Name	org:alternate_names
+Infobox_national_korfball_team:website	org:website
+infobox College swim team:city	org:city_of_headquarters
+infobox College swim team:coach	org:top_members/employees
+infobox College swim team:conference	org:member_of
+infobox College swim team:conferenceshort	org:member_of
+infobox College swim team:founded	org:founded
+infobox College swim team:home pool	org:country_of_headquarters
+infobox College swim team:home pool	org:stateorprovince_of_headquarters
+infobox College swim team:home pool	org:city_of_headquarters
+infobox College swim team:home_pool	org:country_of_headquarters
+infobox College swim team:home_pool	org:stateorprovince_of_headquarters
+infobox College swim team:home_pool	org:city_of_headquarters
+infobox College swim team:state	org:stateorprovince_of_headquarters
+infobox College swim team:stateabb	org:stateorprovince_of_headquarters
+infobox GAA overseas club:80px_irish	org:alternate_names
+infobox GAA overseas club:club gaa	org:alternate_names
+infobox GAA overseas club:club_gaa	org:alternate_names
+infobox GAA overseas club:competitionl	org:member_of
+infobox GAA overseas club:competitionm	org:member_of
+infobox GAA overseas club:county	org:stateorprovince_of_headquarters
+infobox GAA overseas club:division	org:member_of
+infobox GAA overseas club:founded	org:founded
+infobox GAA overseas club:grounds	org:country_of_headquarters
+infobox GAA overseas club:grounds	org:stateorprovince_of_headquarters
+infobox GAA overseas club:grounds	org:city_of_headquarters
+infobox GAA overseas club:irish	org:alternate_names
+infobox GAA overseas club:nickname	org:alternate_names
+infobox University:address	org:country_of_headquarters
+infobox University:address	org:stateorprovince_of_headquarters
+infobox University:address	org:city_of_headquarters
+infobox University:affiliation	org:political/religious_affiliation
+infobox University:affiliations	org:member_of
+infobox University:athletics	org:subsidiaries
+infobox University:chairman	org:top_members/employees
+infobox University:chancellor	org:top_members/employees
+infobox University:city	org:city_of_headquarters
+infobox University:closed	org:dissolved
+infobox University:country	org:country_of_headquarters
+infobox University:dean	org:top_members/employees
+infobox University:director	org:top_members/employees
+infobox University:enrollment	org:number_of_employees/members
+infobox University:established	org:founded
+infobox University:faculty	org:number_of_employees/members
+infobox University:former_names	org:alternate_names
+infobox University:head	org:top_members/employees
+infobox University:name	org:alternate_names
+infobox University:native_name	org:alternate_names
+infobox University:nickname	org:alternate_names
+infobox University:nickname	org:subsidiaries
+infobox University:nobel_laureates	org:number_of_employees/members
+infobox University:officer_in_charge	org:top_members/employees
+infobox University:postgrad	org:number_of_employees/members
+infobox University:president	org:top_members/employees
+infobox University:profess	org:number_of_employees/members
+infobox University:province	org:stateorprovince_of_headquarters
+infobox University:provost	org:top_members/employees
+infobox University:staff	org:number_of_employees/members
+infobox University:state	org:stateorprovince_of_headquarters
+infobox University:students	org:number_of_employees/members
+infobox University:superintendent	org:top_members/employees
+infobox University:vice-president	org:top_members/employees
+infobox University:vice_chancellor	org:top_members/employees
+infobox University:website	org:website
+infobox football club:ceo	org:top_members/employees
+infobox football club:chairman	org:top_members/employees
+infobox football club:dissolved	org:dissolved
+infobox football club:founded	org:founded
+infobox football club:fullname	org:alternate_names
+infobox football club:ground	org:country_of_headquarters
+infobox football club:ground	org:stateorprovince_of_headquarters
+infobox football club:ground	org:city_of_headquarters
+infobox football club:league	org:member_of
+infobox football club:manager	org:top_members/employees
+infobox football club:nickname	org:alternate_names
+infobox football club:shortname	org:alternate_names
+infobox football club:website	org:website
+infobox_Nepalese_Political_Party:foundation	org:founded
+infobox_Nepalese_Political_Party:headquarters	org:country_of_headquarters
+infobox_Nepalese_Political_Party:headquarters	org:stateorprovince_of_headquarters
+infobox_Nepalese_Political_Party:headquarters	org:city_of_headquarters
+infobox_Nepalese_Political_Party:ideology	org:political/religious_affiliation
+infobox_Nepalese_Political_Party:international	org:member_of
+infobox_Nepalese_Political_Party:leader	org:top_members/employees
+infobox_Nepalese_Political_Party:party_name	org:alternate_names
+infobox_Nepalese_Political_Party:website	org:website
+infobox_Political_Party:foundation	org:founded
+infobox_Political_Party:headquarters	org:country_of_headquarters
+infobox_Political_Party:headquarters	org:stateorprovince_of_headquarters
+infobox_Political_Party:headquarters	org:city_of_headquarters
+infobox_Political_Party:ideology	org:political/religious_affiliation
+infobox_Political_Party:international	org:member_of
+infobox_Political_Party:party_name	org:alternate_names
+infobox_Political_Party:website	org:website

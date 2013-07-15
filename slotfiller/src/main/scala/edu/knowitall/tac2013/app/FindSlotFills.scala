@@ -40,11 +40,7 @@ class FindSlotFills(val queryExecutor: SolrQueryExecutor) {
   def runForServerOutput(rawName: String, nodeId: Option[String], entityTypeString: String, overrideSlotNames: Set[String], fmt: OutputFormatter): Unit = {
     
     val entityName = rawName.replace("_", " ").trim()
-    val entityType = entityTypeString.trim() match {
-      case "organization" => ORG
-      case "person" => PER
-      case _ => throw new IllegalArgumentException("Second Argument must be either 'person' or 'organization'")
-    }
+    val entityType = KBPQueryEntityType.fromString(entityTypeString)
     val overrideSlots = overrideSlotNames map Slot.fromName
 
     val kbpQuery = if (overrideSlotNames.isEmpty) {
