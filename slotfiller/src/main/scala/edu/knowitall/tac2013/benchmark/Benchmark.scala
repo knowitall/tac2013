@@ -226,8 +226,8 @@ object Benchmarker {
     require(corpus == "2012" || corpus == "2013", "Corpus must be 2012 or 2013")
     
     val outputStrings = corpus match {
-      case "2013" => new Benchmarker(SolrQueryExecutor.newCorpus, load2013Benchmark).go
-      case "2012" => new Benchmarker(SolrQueryExecutor.oldCorpus, load2012Benchmark).go
+      case "2013" => new Benchmarker(SolrQueryExecutor.getInstance("new"), load2013Benchmark).go
+      case "2012" => new Benchmarker(SolrQueryExecutor.getInstance("old"), load2012Benchmark).go
       case _ => throw new RuntimeException("Corpus must be 2012 or 2013")
     }
     

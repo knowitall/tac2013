@@ -46,7 +46,7 @@ object FindSlotFillsServer extends App {
             req.parameterValues("nodeId").head,
             req.parameterValues("type").head,
             req.parameterValues("slots").head,
-            req.parameterValues("corpusUrl").head,
+            req.parameterValues("corpus").head,
             req.parameterValues("pu").headOption,
             req.parameterValues("pf").headOption,
             req.parameterValues("dc").headOption,
@@ -67,8 +67,8 @@ object FindSlotFillsServer extends App {
         	  <input type="radio" name="type" value="organization">organization<br/>
               Slots: (optional) <input type="text" name="slots"/> (comma sep. default: all slots) <br/>
               Corpus:<br/>
-              <input type="radio" name="corpusUrl" value="http://knowitall:knowit!@rv-n16:8123/solr" checked>2013 Corpus<br/>
-        	  <input type="radio" name="corpusUrl" value="http://knowitall:knowit!@rv-n16:9321/solr">2010 Corpus<br/>
+              <input type="radio" name="corpus" value="new" checked>2013 Corpus<br/>
+        	  <input type="radio" name="corpus" value="old">2010 Corpus<br/>
               Output Options:<br/>
               <input type="checkbox" name="pu" value="true">Print Unfiltered Candidates?<br/>
               <input type="checkbox" name="pf" value="true" checked>Print Filtered Candidates?<br/>
@@ -90,7 +90,7 @@ object FindSlotFillsServer extends App {
           entityString: String, 
           nodeIdStr: String, 
           typ: String, slots: 
-          String, corpusUrl: String,
+          String, corpus: String,
           pu: Option[String], // print unfiltered?
           pf: Option[String], // print filtered?
           dc: Option[String], // detailed candidates?
@@ -127,7 +127,7 @@ object FindSlotFillsServer extends App {
           def stream(os: OutputStream) = {
             val printStream = new PrintStream(os)
             try {
-              new FindSlotFills(corpusUrl,corefOn).runForServerOutput(entityString, nodeId, typ, slotsSplit, getFormatter(printStream))
+              new FindSlotFills(corpus,corefOn).runForServerOutput(entityString, nodeId, typ, slotsSplit, getFormatter(printStream))
             } catch {
               case e: Throwable => {
                 e.printStackTrace(printStream)
@@ -146,6 +146,5 @@ object FindSlotFillsServer extends App {
     } catch {
       case e: java.net.BindException => println("Address already in use: " + configuration.port); System.exit(1)
     }
-
   }
 }

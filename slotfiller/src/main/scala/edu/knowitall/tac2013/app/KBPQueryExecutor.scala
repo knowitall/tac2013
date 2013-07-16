@@ -6,13 +6,11 @@ import edu.knowitall.tac2013.app.FilterSolrResults.filterResults
 
 object KBPQueryExecutor {
 
-  def executeKbpQuery(kbpQuery: KBPQuery, outFmt: OutputFormatter): Unit = {
-    
-    val qExec = SolrQueryExecutor.defaultInstance
+  def executeKbpQuery(queryExecutor: SolrQueryExecutor, kbpQuery: KBPQuery, outFmt: OutputFormatter): Unit = {
 
     val slots = kbpQuery.slotsToFill
 
-    val unfiltered = slots map { slot => (slot, qExec.executeUnfilteredQuery(kbpQuery, slot)) } toMap
+    val unfiltered = slots map { slot => (slot, queryExecutor.executeUnfilteredQuery(kbpQuery, slot)) } toMap
     
     val filteredCandidates = slots map { slot => (slot, filterResults(unfiltered(slot), kbpQuery)) } toMap
 
@@ -25,7 +23,7 @@ object KBPQueryExecutor {
     outFmt.printAnswers(smoothedSlotBestAnswers, kbpQuery)
   }
 
-  def executeKbpQueries(kbpQueryList: List[KBPQuery], outputPath: String) {
+  def executeKbpQueries(queryExecutor: SolrQueryExecutor, kbpQueryList: List[KBPQuery], outputPath: String) {
 
     //delete output file before appending to it
     val f = new File(outputPath)
@@ -38,20 +36,21 @@ object KBPQueryExecutor {
     val outFmt = OutputFormatter.detailedAnswersOnly(output)
     
     for (kbpQuery <- kbpQueryList) {
-      executeKbpQuery(kbpQuery, outFmt)
+      executeKbpQuery(queryExecutor, kbpQuery, outFmt)
     }
     output.close()
   }
 
   def main(args: Array[String]) {
 
-    assert(args.length == 2,
-      "there should be two arguments: path to KBP query File, path to the output File")
+    assert(args.length == 3,
+      "there should be three arguments: path to KBP query File, path to the output File, and \"old\" or \"new\" to specify corpus")
 
+    val queryExecutor = SolrQueryExecutor.getInstance(args(2))
     val KBPQueryPath = args(0)
     val outputPath = args(1)
 
     val kbpQueryList = KBPQuery.parseKBPQueries(KBPQueryPath)
-    executeKbpQueries(kbpQueryList, outputPath)
+    executeKbpQueries(queryExecutor, kbpQueryList, outputPath)
   }
 }
