@@ -71,9 +71,9 @@ class SolrQueryExecutor(val solrClient: SolrClient, val corefOn: Boolean) {
 
 object SolrQueryExecutor {
   
-  val defaultSolrUrl = oldCorpusUrl
-  
   val oldCorpusUrl = "http://knowitall:knowit!@rv-n16.cs.washington.edu:9321/solr"
+    
+  val defaultSolrUrl = oldCorpusUrl
     
   val newCorpusUrl = "http://knowitall:knowit!@rv-n16.cs.washington.edu:8123/solr"
     

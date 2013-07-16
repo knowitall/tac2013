@@ -210,4 +210,11 @@ case class OutputFormatter(
 
 object OutputFormatter {
   val default = new OutputFormatter(System.out) 
+  
+  def detailedAnswersOnly(output: PrintStream) = 
+    new OutputFormatter(output, printUnfiltered = false, printFiltered = false, printGroups = false, printAnswers = true, detailedAnswers = true)
+  
+  def formattedAnswersOnly(output: PrintStream) = 
+    new OutputFormatter(output, printUnfiltered = false, printFiltered = false, printGroups = false, printAnswers = true, detailedAnswers = false)
+  
 }

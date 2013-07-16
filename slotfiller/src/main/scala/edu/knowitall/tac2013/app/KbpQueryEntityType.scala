@@ -9,4 +9,9 @@ object KBPQueryEntityType extends Enumeration{
     case "org" | "organization" => ORG
     case _ => throw new RuntimeException(s"Invalid KBPQueryEntityType: $str")
   }
+  
+  def toString(t: KBPQueryEntityType) = t match {
+    case ORG => "ORG"
+    case PER => "PER"
+  }
 }

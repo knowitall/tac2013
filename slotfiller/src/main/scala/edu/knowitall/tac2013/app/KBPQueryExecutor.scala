@@ -35,7 +35,7 @@ object KBPQueryExecutor {
 
     val output = new PrintStream(outputPath)
 
-    val outFmt = new OutputFormatter(output)
+    val outFmt = OutputFormatter.detailedAnswersOnly(output)
     
     for (kbpQuery <- kbpQueryList) {
       executeKbpQuery(kbpQuery, outFmt)
