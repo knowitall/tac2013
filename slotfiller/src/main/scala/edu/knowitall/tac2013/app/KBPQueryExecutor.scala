@@ -3,6 +3,8 @@ package edu.knowitall.tac2013.app
 import java.io._
 import edu.knowitall.tac2013.solr.query.SolrQueryExecutor
 import edu.knowitall.tac2013.app.FilterSolrResults.filterResults
+import edu.knowitall.tac2013.app.util.DateUtils
+import edu.knowitall.tac2013.solr.query.SolrHelper
 
 object KBPQueryExecutor {
 
@@ -13,6 +15,8 @@ object KBPQueryExecutor {
     val unfiltered = slots map { slot => (slot, queryExecutor.executeUnfilteredQuery(kbpQuery, slot)) } toMap
     
     val filteredCandidates = slots map { slot => (slot, filterResults(unfiltered(slot), kbpQuery)) } toMap
+    
+    DateUtils.putInTimexFormat(filteredCandidates)
 
     val bestAnswers = slots map { slot => 
       (slot, new SlotFillReranker(outFmt).findSlotAnswers(slot, kbpQuery, filteredCandidates(slot))) 
@@ -47,6 +51,9 @@ object KBPQueryExecutor {
       "there should be three arguments: path to KBP query File, path to the output File, and \"old\" or \"new\" to specify corpus")
 
     val queryExecutor = SolrQueryExecutor.getInstance(args(2))
+    //set configs for SolrHelper
+    SolrHelper.setConfigurations(args(2), false)
+    
     val KBPQueryPath = args(0)
     val outputPath = args(1)
 

@@ -1,7 +1,10 @@
 package edu.knowitall.tac2013.app
 
+import edu.knowitall.tac2013.stanford.annotator.utils.StanfordAnnotatorHelperMethods
+
 object SlotFillConsistency {
   
+
   
   def makeConsistent(answers: Map[Slot,Seq[Candidate]]): Map[Slot,Seq[Candidate]] = {
     
@@ -296,5 +299,6 @@ object SlotFillConsistency {
     else{
       0.0
     }
-  } 
+  }
+  
 }

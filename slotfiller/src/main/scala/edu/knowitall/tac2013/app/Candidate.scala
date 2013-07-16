@@ -11,7 +11,11 @@ import edu.knowitall.taggers.Type
 import edu.knowitall.collection.immutable.Interval
 import edu.knowitall.tac2013.app.LocationHelper.findLocationTaggedType
 
-class TrimmedFill(val string: String, val interval: Interval)
+class TrimmedFill(var string: String, var interval: Interval){
+  
+  def setString(newString: String){string = newString}
+  def setInterval(newInterval: Interval){interval = newInterval}
+}
 
 class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, val types: List[Type]) {
 
@@ -186,6 +190,7 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
   lazy val justificationOffsetString = offsetString(justificationInterval)
   
   lazy val trimmedFill = getTrimmedFill()
+
 }
 
 object Candidate {
@@ -198,5 +203,6 @@ object Candidate {
     
     1 - candidates.map(c => 1 - c.extr.confidence).reduce(_ * _)
   }
+
   
 }

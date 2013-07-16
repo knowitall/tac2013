@@ -50,6 +50,8 @@ object SlotFillerBuild extends Build {
     "net.liftweb" %% "lift-json" % "2.5-RC5",
     "org.apache.solr" % "solr-solrj" % "4.3.0",
     "edu.washington.cs.knowitall.chunkedextractor" %% "chunkedextractor" % "1.0.4",
+    "edu.washington.cs.knowitall.stanford-corenlp" % "stanford-sutime-models" % "1.3.5",
+    "edu.washington.cs.knowitall.stanford-corenlp" % "stanford-postag-models" % "1.3.5",
     "org.slf4j" % "slf4j-api" % "1.7.2",
     "ch.qos.logback" % "logback-classic" % "1.0.9",
     "ch.qos.logback" % "logback-core" % "1.0.9"

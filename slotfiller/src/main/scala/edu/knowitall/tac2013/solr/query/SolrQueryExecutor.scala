@@ -81,10 +81,7 @@ object SolrQueryExecutor {
   private lazy val newCorpus = new SolrQueryExecutor(newUrl)
   private lazy val newCorpusCoref = new SolrQueryExecutor(newUrl, corefOn=true)
   
-  @deprecated
-  def defaultInstance = oldCorpus
-  @deprecated
-  def corefInstance = oldCorpusCoref
+
 
   
   def getInstance(str: String, corefOn: Boolean = false): SolrQueryExecutor = (str, corefOn) match {

@@ -17,6 +17,7 @@ case class Slot(name: String, slotType: Option[String], maxResults: Int, pattern
   def isCityList = if(name.contains("cities")) true else false
   def isStateOrProvinceList = if(name.contains("states")) true else false
   def isList = if(maxResults > 1) true else false
+  def isDate = if(name.contains("date")) true else false
 }
 
 object Slot {

@@ -5,12 +5,17 @@ import KBPQueryEntityType._
 import edu.knowitall.tac2013.solr.query.SolrQueryExecutor
 import java.io.PrintStream
 import scopt.OptionParser
+import edu.knowitall.tac2013.app.util.DateUtils
+import edu.knowitall.tac2013.solr.query.SolrHelper
 
 //Command line application object for running solr queries on all the slots
 //of a given entity and semantic type
 class FindSlotFills(val oldOrNew: String, val corefOn: Boolean) {
   
   val queryExecutor = SolrQueryExecutor.getInstance(oldOrNew, corefOn)
+  
+  //set XML url to correct place
+  SolrHelper.setConfigurations(oldOrNew,corefOn)
   
   def main(args: Array[String]): Unit = {
 
@@ -62,6 +67,9 @@ class FindSlotFills(val oldOrNew: String, val corefOn: Boolean) {
     }
     
     fmt.printFilteredResults(slotCandidateSets, kbpQuery)
+    
+    //get correct date format strings
+    DateUtils.putInTimexFormat(slotCandidateSets)
     
     val slotBestAnswers = slotCandidateSets map { case (slot, patternCandidates) =>
       (slot -> new SlotFillReranker(fmt).findSlotAnswers(slot, kbpQuery, patternCandidates))  
