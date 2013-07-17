@@ -32,7 +32,8 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
     val trimString = trimmedFill.string + trimLinkString
     
     "fill: " + trimString + "\tentity: " + entityField.debugString +
-    "\trel: " + extr.rel.debugString + "\t docID: " + extr.sentence.docId +
+    "\trel: " + extr.rel.debugString + "\targ1: " + extr.arg1.debugString + 
+    "\targ2: " + extr.arg2.debugString + "\t docID: " + extr.sentence.docId +
       "\tconf: " + extr.confidence + "\t sent: " + extr.sentence.dgraph.text
   }
   

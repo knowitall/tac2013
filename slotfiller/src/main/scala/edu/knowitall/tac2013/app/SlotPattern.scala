@@ -12,7 +12,9 @@ case class SlotPattern private (
   val arg2Begins: Option[String],
   val entityIn: Option[String],
   val slotFillIn: Option[String],
-  val slotType: Option[String]) {
+  val slotType: Option[String],
+  val arg1Terms: Option[String],
+  val arg2Terms: Option[String]){
 
   import SlotPattern.requireTrimmed
 
@@ -21,6 +23,8 @@ case class SlotPattern private (
   entityIn foreach requireTrimmed
   slotFillIn foreach requireTrimmed
   slotType foreach requireTrimmed
+  arg1Terms foreach requireTrimmed
+  arg2Terms foreach requireTrimmed
 
   val entityType: KBPQueryEntityType = if (slotName.startsWith("per:")) PER else ORG
   
@@ -63,12 +67,16 @@ object SlotPattern {
   def read(csvDataArray: Array[String]): Option[SlotPattern] = {
     
     csvDataArray match {
+      case Array(slotName, maxValues, relString, arg2Begins, entityIn, slotFillIn, slotType, arg1Terms, arg2Terms, _*) => {
+        val pattern = getSlotPattern(slotName, maxValues, relString, arg2Begins, entityIn, slotFillIn, slotType, arg1Terms, arg2Terms)
+        Some(pattern)
+      }
       case Array(slotName, maxValues, relString, arg2Begins, entityIn, slotFillIn, slotType, _*) => {
-        val pattern = getSlotPattern(slotName, maxValues, relString, arg2Begins, entityIn, slotFillIn, slotType)
+        val pattern = getSlotPattern(slotName, maxValues, relString, arg2Begins, entityIn, slotFillIn, slotType, "", "")
         Some(pattern)
       }
       case Array(slotName, maxValues, _*) => {
-        val pattern = getSlotPattern(slotName, maxValues, "", "", "", "", "")
+        val pattern = getSlotPattern(slotName, maxValues, "", "", "", "", "", "", "")
         Some(pattern)
       }
       case _ => {
@@ -88,7 +96,9 @@ object SlotPattern {
     Arg2BeginsArgString: String,
     EntityInArgString: String,
     SlotFillInArgString: String,
-    SlotTypeArgString: String): SlotPattern = {
+    SlotTypeArgString: String,
+    Arg1TermsArgString: String,
+    Arg2TermsArgString: String): SlotPattern = {
     
     requireTrimmed(MaxValuesArgString)
     requireTrimmed(OpenIERelationArgString)
@@ -96,6 +106,8 @@ object SlotPattern {
     requireTrimmed(EntityInArgString)
     requireTrimmed(SlotFillInArgString)
     requireTrimmed(SlotTypeArgString)
+    requireTrimmed(Arg1TermsArgString)
+    requireTrimmed(Arg2TermsArgString)
 
     //determine if this is a valid integer
     val arg2 = {
@@ -130,7 +142,18 @@ object SlotPattern {
       case "" => None
       case _ => Some(SlotTypeArgString)
     }
+    
+    val arg8 = Arg1TermsArgString match{
+      case "" => None
+      case _ => Some(Arg1TermsArgString)
+    }
+    
+    val arg9 = Arg2TermsArgString match{
+      case "" => None
+      case _ => Some(Arg2TermsArgString)
+    }
+    
 
-    new SlotPattern(slot, arg2, arg3, arg4, arg5, arg6, arg7)
+    new SlotPattern(slot, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
   }
 }

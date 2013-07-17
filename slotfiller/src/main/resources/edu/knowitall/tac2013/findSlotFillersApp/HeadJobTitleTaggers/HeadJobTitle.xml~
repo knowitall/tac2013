@@ -1,0 +1,335 @@
+<taggers>
+	<CaseInsensitiveKeywordTagger descriptor="HeadJobTitle">
+		<keywords>
+			<keyword>Acting Chief Director</keyword>
+			<keyword>acting Director</keyword>
+			<keyword>acting executive director</keyword>
+			<keyword>acting managing director</keyword>
+			<keyword>Admin manager</keyword>
+			<keyword>administrator</keyword>
+			<keyword>administrative manager</keyword>
+			<keyword>ARCHBISHOP</keyword>
+			<keyword>ART DIRECTOR</keyword>
+			<keyword>Artist director</keyword>
+			<keyword>ARTISTIC DIRECTOR</keyword>
+			<keyword>Artistic/Executive Director</keyword>
+			<keyword>Assist Executive Director</keyword>
+			<keyword>Associate / Director</keyword>
+			<keyword>Associate Academic Director</keyword>
+			<keyword>associate art director</keyword>
+			<keyword>associate artistic director</keyword>
+			<keyword>associate athletic director</keyword>
+			<keyword>Associate Athletics Director</keyword>
+			<keyword>ASSOCIATE CASTING DIRECTOR</keyword>
+			<keyword>associate country director</keyword>
+			<keyword>Associate Creative Director</keyword>
+			<keyword>associate deputy director</keyword>
+			<keyword>ASSOCIATE DIRECTOR</keyword>
+			<keyword>Associate Director/Director</keyword>
+			<keyword>associate division director</keyword>
+			<keyword>associate executive director</keyword>
+			<keyword>associate medical director</keyword>
+			<keyword>associate regional director</keyword>
+			<keyword>associate vice president</keyword>
+			<keyword>association executive director</keyword>
+			<keyword>Association manager</keyword>
+			<keyword>Association President Director</keyword>
+			<keyword>BOARD PRESIDENT</keyword>
+			<keyword>Budget deputy director</keyword>
+			<keyword>business director</keyword>
+			<keyword>Campaign Finance Director</keyword>
+			<keyword>CFM Executive Director</keyword>
+			<keyword>CFO/general manager</keyword>
+			<keyword>chairman</keyword>
+			<keyword>chairwoman</keyword>
+			<keyword>CHANCELLOR</keyword>
+			<keyword>chief</keyword>
+			<keyword>Chief Academic Officer</keyword>
+			<keyword>Chief Accountant/Finanace Manager</keyword>
+			<keyword>chief administrative assistant</keyword>
+			<keyword>chief administrative manager</keyword>
+			<keyword>Chief administrative officer</keyword>
+			<keyword>chief administrator</keyword>
+			<keyword>CHIEF ADVISOR</keyword>
+			<keyword>chief appellate officer</keyword>
+			<keyword>chief archaeological officer</keyword>
+			<keyword>Chief Audit Director</keyword>
+			<keyword>chief commercial director</keyword>
+			<keyword>Chief Commercial Officer</keyword>
+			<keyword>Chief Constitutional Officer</keyword>
+			<keyword>chief creative director</keyword>
+			<keyword>Chief Creative Officer</keyword>
+			<keyword>chief cultural officer</keyword>
+			<keyword>chief deputy director</keyword>
+			<keyword>chief digital officer</keyword>
+			<keyword>chief Director</keyword>
+			<keyword>chief economic advisor</keyword>
+			<keyword>chief economist</keyword>
+			<keyword>chief economist strategist</keyword>
+			<keyword>chief editor</keyword>
+			<keyword>Chief Electoral Officer</keyword>
+			<keyword>chief engineer-director</keyword>
+			<keyword>chief engineering director</keyword>
+			<keyword>chief English editor</keyword>
+			<keyword>chief environment scientist</keyword>
+			<keyword>chief epidemiologist</keyword>
+			<keyword>Chief Equality Officer</keyword>
+			<keyword>chief equity analyst</keyword>
+			<keyword>CHIEF EXECUTIVE</keyword>
+			<keyword>chief executive director</keyword>
+			<keyword>chief executive officer</keyword>
+			<keyword>chief federal officer</keyword>
+			<keyword>Chief Financial Advisor</keyword>
+			<keyword>chief financial officer</keyword>
+			<keyword>chief financial operator</keyword>
+			<keyword>chief forensic odontologist</keyword>
+			<keyword>chief forensic pathologist</keyword>
+			<keyword>chief forex manager</keyword>
+			<keyword>chief fund manager</keyword>
+			<keyword>chief general manager</keyword>
+			<keyword>chief geologist</keyword>
+			<keyword>chief global analyst</keyword>
+			<keyword>chief golf analyst</keyword>
+			<keyword>Chief government administrator</keyword>
+			<keyword>chief hockey administrator</keyword>
+			<keyword>chief humanitarian coordinator</keyword>
+			<keyword>chief hurricane specialist</keyword>
+			<keyword>chief international officer</keyword>
+			<keyword>chief Investment strategist</keyword>
+			<keyword>chief legal advisor</keyword>
+			<keyword>chief legal analyst</keyword>
+			<keyword>chief legal officer</keyword>
+			<keyword>chief legislative analyst</keyword>
+			<keyword>chief macroeconomy analyst</keyword>
+			<keyword>chief MANAGER</keyword>
+			<keyword>chief managing director</keyword>
+			<keyword>chief market strategist</keyword>
+			<keyword>chief marketing director</keyword>
+			<keyword>chief marketing manager</keyword>
+			<keyword>chief marketing strategist</keyword>
+			<keyword>chief medical director</keyword>
+			<keyword>chief medical editor</keyword>
+			<keyword>Chief medical officer</keyword>
+			<keyword>chief meteorologist</keyword>
+			<keyword>chief metreologist</keyword>
+			<keyword>chief microbiologist</keyword>
+			<keyword>chief military advisor</keyword>
+			<keyword>chief military officer</keyword>
+			<keyword>Chief Ministry Officer</keyword>
+			<keyword>chief NHTSA administrator</keyword>
+			<keyword>chief nuclear technologist</keyword>
+			<keyword>CHIEF OF STAFF</keyword>
+			<keyword>chief operating officer</keyword>
+			<keyword>chief operational psychologist</keyword>
+			<keyword>chief operations specialist</keyword>
+			<keyword>chief operator</keyword>
+			<keyword>Chief Ophtalmologist</keyword>
+			<keyword>Chief Petty Officer</keyword>
+			<keyword>chief physiologist</keyword>
+			<keyword>chief police officer</keyword>
+			<keyword>Chief Political Advisor</keyword>
+			<keyword>chief political analyst</keyword>
+			<keyword>chief political consultant</keyword>
+			<keyword>chief political editor</keyword>
+			<keyword>chief political strategist</keyword>
+			<keyword>chief portfolio manager</keyword>
+			<keyword>chief presidential economist</keyword>
+			<keyword>chief Program Administrator</keyword>
+			<keyword>chief psychologist</keyword>
+			<keyword>Chief Qualify Officer</keyword>
+			<keyword>chief quality officer</keyword>
+			<keyword>chief regional administrator</keyword>
+			<keyword>Chief Regulatory Advisor</keyword>
+			<keyword>chief research psychologist</keyword>
+			<keyword>Chief research scientist</keyword>
+			<keyword>chief research strategist</keyword>
+			<keyword>chief retail analyst</keyword>
+			<keyword>chief safety director</keyword>
+			<keyword>Chief Scientific Advisor</keyword>
+			<keyword>Chief Scientist/Rationalist</keyword>
+			<keyword>chief security coordinator</keyword>
+			<keyword>chief security strategist</keyword>
+			<keyword>chief specialist</keyword>
+			<keyword>chief stage manager</keyword>
+			<keyword>chief state volcanologist</keyword>
+			<keyword>Chief Statistical Officer</keyword>
+			<keyword>chief stock analyst</keyword>
+			<keyword>chief strategic advisor</keyword>
+			<keyword>chief strategic officer</keyword>
+			<keyword>CHIEF STRATEGIST</keyword>
+			<keyword>Chief Supervisor</keyword>
+			<keyword>chief technical analyst</keyword>
+			<keyword>chief technical director</keyword>
+			<keyword>chief technical strategist</keyword>
+			<keyword>chief tecnical director</keyword>
+			<keyword>chief telephone operator</keyword>
+			<keyword>chief toxicologist</keyword>
+			<keyword>chief U.N. administrator</keyword>
+			<keyword>Chief utive Officer</keyword>
+			<keyword>Chief Veterinary Officer</keyword>
+			<keyword>chief volcanologist</keyword>
+			<keyword>Chief-of-Staff</keyword>
+			<keyword>coach</keyword>
+			<keyword>commander</keyword>
+			<keyword>CO-CHAIR</keyword>
+			<keyword>CO-CHAIRMAN</keyword>
+			<keyword>co-chief administrative officer</keyword>
+			<keyword>co-creative director</keyword>
+			<keyword>co-deputy director</keyword>
+			<keyword>codirector</keyword>
+			<keyword>Co-Director</keyword>
+			<keyword>Co-Executive Director</keyword>
+			<keyword>co-founder</keyword>
+			<keyword>co-owner</keyword>
+			<keyword>Commercial Operations Manager</keyword>
+			<keyword>COO</keyword>
+			<keyword>Coordinating Director</keyword>
+			<keyword>corporate communications director</keyword>
+			<keyword>corporate director</keyword>
+			<keyword>corporate general manager</keyword>
+			<keyword>corporate manager</keyword>
+			<keyword>corporate vice president</keyword>
+			<keyword>corporation managing director</keyword>
+			<keyword>council executive director</keyword>
+			<keyword>Council president</keyword>
+			<keyword>Council Program Director</keyword>
+			<keyword>dean</keyword>
+			<keyword>dictator</keyword>
+			<keyword>editor</keyword>
+			<keyword>exective director</keyword>
+			<keyword>EXECUTIVE</keyword>
+			<keyword>executive administrative manager</keyword>
+			<keyword>executive art director</keyword>
+			<keyword>executive artistic director</keyword>
+			<keyword>executive associate commissioner</keyword>
+			<keyword>Executive Associate Director</keyword>
+			<keyword>executive beauty director</keyword>
+			<keyword>executive board director</keyword>
+			<keyword>Executive Chef</keyword>
+			<keyword>executive co-ordinator</keyword>
+			<keyword>executive creative director</keyword>
+			<keyword>executive deputy commissioner</keyword>
+			<keyword>executive deputy curator</keyword>
+			<keyword>executive deputy director</keyword>
+			<keyword>executive deputy editor</keyword>
+			<keyword>Executive deputy president</keyword>
+			<keyword>executive deputy procurator</keyword>
+			<keyword>executive deputy secretary</keyword>
+			<keyword>EXECUTIVE DIRECTOR</keyword>
+			<keyword>executive director president</keyword>
+			<keyword>executive editorial director</keyword>
+			<keyword>executive fashion editor</keyword>
+			<keyword>executive food director</keyword>
+			<keyword>executive foreign editor</keyword>
+			<keyword>executive general manager</keyword>
+			<keyword>executive global director</keyword>
+			<keyword>Executive Leadership Specialist</keyword>
+			<keyword>executive marketing director</keyword>
+			<keyword>executive medical director</keyword>
+			<keyword>EXECUTIVE OFFICER</keyword>
+			<keyword>executive pastor</keyword>
+			<keyword>Executive Producer/Editor</keyword>
+			<keyword>Executive Scientific Director</keyword>
+			<keyword>executive Secretary</keyword>
+			<keyword>Executive Secretary/Administrator</keyword>
+			<keyword>executive secretary-treasurer</keyword>
+			<keyword>executive strategy director</keyword>
+			<keyword>executive tourism director</keyword>
+			<keyword>executive vice director</keyword>
+			<keyword>executive Washington editor</keyword>
+			<keyword>Executive/Artistic Director</keyword>
+			<keyword>Executrive Director</keyword>
+			<keyword>exeuctive director</keyword>
+			<keyword>exeutive director</keyword>
+			<keyword>EX-Executive Director</keyword>
+			<keyword>ex-finance director</keyword>
+			<keyword>ex-general manager</keyword>
+			<keyword>FIELD DIRECTOR</keyword>
+			<keyword>finance ministry director</keyword>
+			<keyword>foreign ministry director</keyword>
+			<keyword>Foreign Office director</keyword>
+			<keyword>foreign relations director</keyword>
+			<keyword>foundation executive director</keyword>
+			<keyword>founder</keyword>
+			<keyword>founder Director</keyword>
+			<keyword>General Accounting Director</keyword>
+			<keyword>general Manager</keyword>
+			<keyword>general vice president</keyword>
+			<keyword>global executive director</keyword>
+			<keyword>global finance director</keyword>
+			<keyword>global managing director</keyword>
+			<keyword>global marketing director</keyword>
+			<keyword>group executive director</keyword>
+			<keyword>Group Executive Editor</keyword>
+			<keyword>group finance director</keyword>
+			<keyword>group general manager</keyword>
+			<keyword>GROUP MANAGER</keyword>
+			<keyword>group managing director</keyword>
+			<keyword>group marketing director</keyword>
+			<keyword>head</keyword>
+			<keyword>interim Director</keyword>
+			<keyword>interim executive director</keyword>
+			<keyword>interim general manager</keyword>
+			<keyword>interim manager</keyword>
+			<keyword>interim managing director</keyword>
+			<keyword>interior ministry director</keyword>
+			<keyword>International General Manager</keyword>
+			<keyword>International Group Manager</keyword>
+			<keyword>international manager</keyword>
+			<keyword>International operations manager</keyword>
+			<keyword>International Product Manager</keyword>
+			<keyword>international relations manager</keyword>
+			<keyword>leader</keyword>
+			<keyword>management director</keyword>
+			<keyword>manager</keyword>
+			<keyword>Manager Administrator</keyword>
+			<keyword>manager cc directormanager</keyword>
+			<keyword>manager director</keyword>
+			<keyword>Manager president</keyword>
+			<keyword>manager R director</keyword>
+			<keyword>Manager/Assistant Director</keyword>
+			<keyword>Manager/Associate Director</keyword>
+			<keyword>Manager/Director</keyword>
+			<keyword>Managering Director</keyword>
+			<keyword>managing director</keyword>
+			<keyword>ManagingDirector</keyword>
+			<keyword>managinig director</keyword>
+			<keyword>marketing general manager</keyword>
+			<keyword>minster</keyword>
+			<keyword>owner</keyword>
+			<keyword>premier</keyword>
+			<keyword>president director</keyword>
+			<keyword>President Director General</keyword>
+			<keyword>President Elect</keyword>
+			<keyword>president impersonator</keyword>
+			<keyword>president Nazi/Communist/Fascist</keyword>
+			<keyword>president office chemist</keyword>
+			<keyword>President Vice-President Treasurer</keyword>
+			<keyword>President/Chief</keyword>
+			<keyword>president/general manager</keyword>
+			<keyword>president/managing director</keyword>
+			<keyword>presidente y director</keyword>
+			<keyword>President-Elect</keyword>
+			<keyword>president-general manager</keyword>
+			<keyword>prime minister</keyword>
+			<keyword>publisher</keyword>
+			<keyword>ringleader</keyword>
+			<keyword>Senior Director/Director</keyword>
+			<keyword>Senior Director/Executive Director</keyword>
+			<keyword>Senior/Executive Director</keyword>
+			<keyword>service deputy director</keyword>
+			<keyword>SR manager</keyword>
+			<keyword>Sr. manager</keyword>
+			<keyword>top member</keyword>
+			<keyword>VICE CHANCELLOR</keyword>
+			<keyword>Vice director</keyword>
+			<keyword>vice executive director</keyword>
+			<keyword>vice president director</keyword>
+			<keyword>Vice President/Director</keyword>
+			<keyword>Vice President-Director</keyword>
+			<keyword>vice president-general manager</keyword>
+			<keyword>VICE-CHANCELLOR</keyword>
+			<keyword>Vice-Director</keyword>
+		</keywords>
+	</CaseInsensitiveKeywordTagger>
+</taggers>

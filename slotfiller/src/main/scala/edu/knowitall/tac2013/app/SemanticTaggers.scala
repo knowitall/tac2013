@@ -21,6 +21,8 @@ object SemanticTaggers {
   private lazy val ReligionTagger = loadTagger("/edu/knowitall/tac2013/findSlotFillersApp/ReligionTaggers")
 
   private lazy val JobTitleTagger = loadTagger("/edu/knowitall/tac2013/findSlotFillersApp/JobTitleTaggers")
+  
+  private lazy val HeadJobTitleTagger = loadTagger("/edu/knowitall/tac2013/findSlotFillersApp/HeadJobTitleTaggers")
 
   private lazy val DateTagger = loadTagger("/edu/knowitall/tac2013/findSlotFillersApp/DateTaggers")
   
@@ -54,6 +56,17 @@ object SemanticTaggers {
       tokens = tokens ::: List(lemma)
     }
     val types = scala.collection.JavaConversions.asScalaIterable(JobTitleTagger.tag(scala.collection.JavaConversions.asJavaList(tokens)))
+    types.toList
+  }
+  
+  def useHeadJobTitleTagger(chunkedSentence: Seq[ChunkedToken]): List[Type] = {
+
+    var tokens = List[Lemmatized[ChunkedToken]]()
+    for (token <- chunkedSentence) {
+      val lemma = morpha.lemmatizeToken(token);
+      tokens = tokens ::: List(lemma)
+    }
+    val types = scala.collection.JavaConversions.asScalaIterable(HeadJobTitleTagger.tag(scala.collection.JavaConversions.asJavaList(tokens)))
     types.toList
   }
 
@@ -154,7 +167,12 @@ object SemanticTaggers {
       val types = SemanticTaggers.useJobTitleTagger(sent)
       typeList = typeList ::: types
 
-    } else if (slotType == "Nationality") {
+    } else if (slotType == "HeadJobTitle"){
+      
+      val types = SemanticTaggers.useHeadJobTitleTagger(sent)
+      typeList = typeList ::: types
+    }
+      else if (slotType == "Nationality") {
 
       val types = SemanticTaggers.useNationalityTagger(sent)
       typeList = typeList ::: types

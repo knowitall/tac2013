@@ -4,11 +4,13 @@ import edu.knowitall.tac2013.solr.query.SolrQueryType._
 import edu.knowitall.tac2013.app.KBPQuery
 import edu.knowitall.tac2013.app.SlotPattern
 import scala.Option.option2Iterable
+import scala.util.matching.Regex
 
 case class SolrQuery(val queryString: String, val queryType: SolrQueryType, val pattern: SlotPattern)
 
 class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val corefOn: Boolean) {
 
+  
   def this(pattern: SlotPattern, kbpQuery: KBPQuery) = this(pattern, kbpQuery ,false)
   val arg1TextConstraint: Option[String] = {
     pattern.entityIn match {
@@ -20,9 +22,9 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
   val relTextConstraint: Option[String] = {
     pattern.relString match {
       case Some(relString) => {
-        val noJobTitle = relString.replace("<JobTitle>", "")
-        if (noJobTitle != "") {
-          Some("+relText:\"" + noJobTitle + "\"")
+        val noSemanticCategoriesString =  SolrQueryBuilder.semanticCategoryPattern.replaceAllIn(relString, "")
+        if (noSemanticCategoriesString != "") {
+          Some("+relText:\"" + noSemanticCategoriesString + "\"")
         } else {
           None
         }
@@ -40,7 +42,42 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
 
   val arg2StartConstraint: Option[String] = {
     pattern.arg2Begins match {
-      case Some(arg2Begins) => Some("+arg2Text:\"%s\"".format(arg2Begins))
+      case Some(arg2Begins) => {
+        val noSemanticCategoriesString =  SolrQueryBuilder.semanticCategoryPattern.replaceAllIn(arg2Begins, "")
+        if (noSemanticCategoriesString != "") {
+          Some("+arg2Text:\"" + noSemanticCategoriesString + "\"")
+        } else {
+          None
+        }
+      }
+      case None => None
+    }
+  }
+  
+  val arg1TermsConstraint: Option[String] = {
+    pattern.arg1Terms match {
+      case Some(arg1Terms) => {
+        val noSemanticCategoriesString =  SolrQueryBuilder.semanticCategoryPattern.replaceAllIn(arg1Terms, "")
+        if (noSemanticCategoriesString != "") {
+          Some("+arg1Text:\"" + noSemanticCategoriesString + "\"")
+        } else {
+          None
+        }
+      }
+      case None => None
+    }
+  }
+  
+  val arg2TermsConstraint: Option[String] = {
+    pattern.arg2Terms match {
+      case Some(arg2Terms) => {
+        val noSemanticCategoriesString =  SolrQueryBuilder.semanticCategoryPattern.replaceAllIn(arg2Terms, "")
+        if (noSemanticCategoriesString != "") {
+          Some("+arg2Text:\"" + noSemanticCategoriesString + "\"")
+        } else {
+          None
+        }
+      }
       case None => None
     }
   }
@@ -122,4 +159,9 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
       regularQuery.toSeq ++ linkedQuery
     }
   }
+}
+
+object SolrQueryBuilder{
+  
+  lazy val semanticCategoryPattern = new Regex("[A-Z<]\\w+(>)?")
 }
