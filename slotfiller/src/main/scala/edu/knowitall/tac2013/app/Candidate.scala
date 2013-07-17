@@ -11,7 +11,7 @@ import edu.knowitall.taggers.Type
 import edu.knowitall.collection.immutable.Interval
 import edu.knowitall.tac2013.app.LocationHelper.findLocationTaggedType
 
-class TrimmedFill(var string: String, var interval: Interval){
+class TrimmedType(var string: String, var interval: Interval){
   
   def setString(newString: String){string = newString}
   def setInterval(newInterval: Interval){interval = newInterval}
@@ -33,7 +33,7 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
     
     val trimString = trimmedFill.string + trimLinkString
     
-    "fill: " + trimString + "\tentity: " + entityField.debugString +
+    "fill: " + trimString + "\tentity: " + trimmedEntity.string +
     "\trel: " + extr.rel.debugString + "\targ1: " + extr.arg1.debugString + 
     "\targ2: " + extr.arg2.debugString + "\t docID: " + extr.sentence.docId +
       "\tconf: " + extr.confidence + "\t sent: " + extr.sentence.dgraph.text
@@ -79,11 +79,11 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
   
   def offsetString(interval: Interval): String = "%d-%d".format(interval.start, interval.last)
   
-  def offsetString(fill: TrimmedFill): String = offsetString(getOffset(trimmedFill))
+  def offsetString(trimmedItem: TrimmedType): String = offsetString(getOffset(trimmedItem))
   
   def offsetString(field: KbpExtractionField): String = offsetString(getOffset(field))
   
-  def getOffset(fill: TrimmedFill): Interval = {
+  def getOffset(fill: TrimmedType): Interval = {
     val startOffset = extr.sentence.startOffset
     val firstToken = extr.sentence.chunkedTokens(fill.interval).minBy(_.offset)
     val lastToken = extr.sentence.chunkedTokens(fill.interval).maxBy(t => t.offset + t.string.length)
@@ -97,8 +97,8 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
     Interval.closed(firstToken.offset + startOffset, lastToken.offset + lastToken.string.length + startOffset - 1)
   }
   
-  private def basicTrim(str: String, interval: Interval): TrimmedFill = {    
-    val noChangeTrimmedFill = new TrimmedFill(str,interval)
+  private def basicTrim(str: String, interval: Interval): TrimmedType = {    
+    val noChangeTrimmedFill = new TrimmedType(str,interval)
     
     //if there is only one word just return the basic
     var words = str.split(" ")
@@ -120,7 +120,7 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
     if(headToken.isPreposition){
       val noPrepSlotFillString = str.substring(headToken.offsets.size).trim()
       val newInterval = Interval.open(interval.start+1,interval.end)
-      return new TrimmedFill(noPrepSlotFillString,newInterval)
+      return new TrimmedType(noPrepSlotFillString,newInterval)
     }
     
     return noChangeTrimmedFill
@@ -141,7 +141,7 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
     }
   }
   
-  private def getTrimmedFill(): TrimmedFill = {
+  private def getTrimmedFill(): TrimmedType = {
 
     val intersectingTypes = types.filter(_.interval.intersects(fillField.tokenInterval))
     if (intersectingTypes.isEmpty) {
@@ -163,9 +163,54 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
     }
   }
   
+  private def chooseBestEntityInterval (intersectingTypes: List[Type]): Option[Type] ={
+    val entityType = solrQuery.pattern.slotName.split(":")(0)
+    entityType match {
+      case "org" => { 
+        for(t <- intersectingTypes){
+          if(t.descriptor() == "StanfordORGANIZATION"){
+            return Some(t)
+          }
+        }
+        return None
+      }
+      case "per" => {
+        for(t <- intersectingTypes){
+          if(t.descriptor() == "StanfordPERSON"){
+            return Some(t)
+          }
+        }
+        return None
+      }
+    }
+  }
+  
+  private def getTrimmedEntity(): TrimmedType = {
+
+    //types come in right to left order so the first element is the right most
+    val entityTypes = SemanticTaggers.useStandfordNERTagger(extr.sentence.chunkedTokens)
+    val intersectingTypes = entityTypes.filter(_.interval.intersects(entityField.tokenInterval))
+    if (intersectingTypes.isEmpty) {
+      basicTrim(entityField.originalText, entityField.tokenInterval)
+    } 
+    else {
+      chooseBestEntityInterval(intersectingTypes) match {
+        case Some(bestType) => {
+          // Type doesn't seem to correctly return text()
+          val bestTokens = extr.sentence.chunkedTokens(bestType.interval)
+          val text = originalText(bestTokens)
+          basicTrim(text, bestType.interval)
+        }
+        case None => {
+          basicTrim(entityField.originalText, entityField.tokenInterval)
+        }
+      }
+    }
+  }
   
   
-  lazy val entityOffsetInterval = getOffset(entityField)
+  
+  lazy val entityOffsetInterval = getOffset(trimmedEntity)
   
   lazy val fillOffsetInterval = getOffset(trimmedFill)
   
@@ -175,7 +220,7 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
      Interval.span(Iterable(entityOffsetInterval, fillOffsetInterval, relOffsetInterval)) 
   }
   
-  lazy val entityOffsetString = offsetString(entityField)
+  lazy val entityOffsetString = offsetString(trimmedEntity)
   
   lazy val fillOffsetString = offsetString(trimmedFill)
   
@@ -184,6 +229,8 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
   lazy val justificationOffsetString = offsetString(justificationInterval)
   
   lazy val trimmedFill = getTrimmedFill()
+  
+  lazy val trimmedEntity = getTrimmedEntity()
 
 }
 

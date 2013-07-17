@@ -275,6 +275,7 @@ object FilterSolrResults {
   
   private def satisfiesTermFilters(candidate: Candidate) : Boolean = {
     
+    
     //arg1 Terms
     val arg1TermsSatisfied =
       candidate.pattern.arg1Terms match {
@@ -309,6 +310,7 @@ object FilterSolrResults {
         }
         case None => true
       }
+    
     
     (arg1TermsSatisfied && arg2TermsSatisfied)
   }
@@ -512,12 +514,13 @@ object FilterSolrResults {
   //
   def filterResults(unfiltered: Seq[Candidate], kbpQuery: KBPQuery): Seq[Candidate] = {
     
+    
     def combinedFilter(candidate: Candidate) = (
             satisfiesArg2BeginsFilter(candidate) &&
-            satisfiesEntityFilter(kbpQuery)(candidate) &&
             satisfiesRelFilter(candidate) &&
-            satisfiesSemanticFilter(candidate) &&
-            satisfiesTermFilters(candidate))
+            satisfiesTermFilters(candidate) &&
+            satisfiesEntityFilter(kbpQuery)(candidate) &&
+            satisfiesSemanticFilter(candidate))
     
     unfiltered filter combinedFilter
   }

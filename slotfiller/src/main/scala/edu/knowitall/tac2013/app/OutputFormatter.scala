@@ -161,7 +161,7 @@ case class OutputFormatter(
           runID,
           bestAnswer.extr.sentence.docId,
           "Fill: " + bestAnswer.trimmedFill.string + " " +bestAnswer.fillOffsetString,
-          "Entity: " + bestAnswer.entityField.originalText + " " + bestAnswer.entityOffsetString,
+          "Entity: " + bestAnswer.trimmedEntity.string + " " + bestAnswer.entityOffsetString,
           "Just: " + bestAnswer.extr.sentence.dgraph.text + " " +bestAnswer.justificationOffsetString,
           bestAnswer.extr.confidence)
         
