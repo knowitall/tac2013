@@ -5,7 +5,7 @@ import edu.knowitall.tac2013.app.KBPQueryEntityType._
 import java.net.URL
 import edu.knowitall.common.Resource
 
-case class Slot(name: String, slotType: Option[String], maxResults: Int, patterns: Seq[SlotPattern]) {
+case class Slot(name: String, maxResults: Int, patterns: Seq[SlotPattern]) {
   require(name == name.trim)
   
   def isLocation = if(name.contains("city") || name.contains("country") || name.contains("stateorprovince") ||
@@ -66,7 +66,7 @@ object Slot {
     
     val patterns = patternFields.flatMap(fields => SlotPattern.read(fields))
     
-    Slot(slotString, slotType, maxValues, patterns)
+    Slot(slotString, maxValues, patterns)
   }
   
   

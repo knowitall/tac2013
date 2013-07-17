@@ -39,7 +39,7 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
       "\tconf: " + extr.confidence + "\t sent: " + extr.sentence.dgraph.text
   }
   
-  def deduplicationKey: String = Seq(extractionKey, extr.sentence.dgraph.text).mkString(" ")
+  def deduplicationKey: String = Seq(extractionKey, extr.sentence.dgraph.text, solrQuery).mkString(" ")
   
   /**
    * Concatenates tokens from (arg1, rel, arg2) which are nouns, pronouns, or verbs

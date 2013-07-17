@@ -21,12 +21,14 @@ class SolrQueryExecutor(val solrClient: SolrClient, val corefOn: Boolean) {
   
   private def issueSolrQuery(kbpSolrQuery: SolrQuery): Seq[Candidate] = {
     
-    println(kbpSolrQuery.queryString)
+    
     
     // issue query
     val query = solrClient.query(kbpSolrQuery.queryString)
     val result = query.sortBy("confidence",Order.desc).rows(10000).getResultAsMap()
 
+    println(s"Ran Query: (${kbpSolrQuery.queryString}) for Pattern: ${kbpSolrQuery.pattern.debugString} and got ${result.numFound} hits.")
+    
     // load as KbpExtraction
     val kbpExtrs = result.documents.flatMap { doc =>
       val fieldMap = doc.asInstanceOf[Map[String, Any]]

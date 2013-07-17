@@ -22,7 +22,7 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
   val relTextConstraint: Option[String] = {
     pattern.relString match {
       case Some(relString) => {
-        val noSemanticCategoriesString =  SolrQueryBuilder.semanticCategoryPattern.replaceAllIn(relString, "")
+        val noSemanticCategoriesString =  SolrQueryBuilder.semanticCategoryPattern.replaceAllIn(relString, "").trim
         if (noSemanticCategoriesString.trim() != "") {
           Some("+relText:\"" + noSemanticCategoriesString + "\"")
         } else {
@@ -43,7 +43,7 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
   val arg2StartConstraint: Option[String] = {
     pattern.arg2Begins match {
       case Some(arg2Begins) => {
-        val noSemanticCategoriesString =  SolrQueryBuilder.semanticCategoryPattern.replaceAllIn(arg2Begins, "")
+        val noSemanticCategoriesString =  SolrQueryBuilder.semanticCategoryPattern.replaceAllIn(arg2Begins, "").trim
         if (noSemanticCategoriesString.trim() != "") {
           Some("+arg2Text:\"" + noSemanticCategoriesString + "\"")
         } else {
@@ -57,7 +57,7 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
   val arg1TermsConstraint: Option[String] = {
     pattern.arg1Terms match {
       case Some(arg1Terms) => {
-        val noSemanticCategoriesString =  SolrQueryBuilder.semanticCategoryPattern.replaceAllIn(arg1Terms, "")
+        val noSemanticCategoriesString =  SolrQueryBuilder.semanticCategoryPattern.replaceAllIn(arg1Terms, "").trim
         if (noSemanticCategoriesString.trim() != "") {
           Some("+arg1Text:\"" + noSemanticCategoriesString + "\"")
         } else {
@@ -71,7 +71,7 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
   val arg2TermsConstraint: Option[String] = {
     pattern.arg2Terms match {
       case Some(arg2Terms) => {
-        val noSemanticCategoriesString =  SolrQueryBuilder.semanticCategoryPattern.replaceAllIn(arg2Terms, "")
+        val noSemanticCategoriesString =  SolrQueryBuilder.semanticCategoryPattern.replaceAllIn(arg2Terms, "").trim
         if (noSemanticCategoriesString.trim() != "") {
           Some("+arg2Text:\"" + noSemanticCategoriesString + "\"")
         } else {
