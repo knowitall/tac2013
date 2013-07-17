@@ -1,130 +1,270 @@
-KBP relation,Max values (9 means no limit),Relation terms,Arg2 begins,Entity in,SlotFill in,Slot type
-per:alternate_names,9,known,as,arg1,arg2,ProperNoun
-,,,,,,
-per:cause_of_death,9,died,from,arg1,arg2,<any>
-per:cause_of_death,9,died,as,arg1,arg2,result of X
-per:cause_of_death,9,died,of,arg1,arg2,<any>
-per:cause_of_death,9,died,due to,arg1,arg2,<any>
-,,,,,,
-per:city_of_death,1,died,in,arg1,arg2,City
-per:country_of_death,1,died,in,arg1,arg2,Country
-per:stateorprovince_of_death,1,died,in,arg1,arg2,Stateorprovince
-,,,,,,
-per:date_of_death,1,died,in,arg1,arg2,Date
-per:date_of_death,1,died,on,arg1,arg2,Date
-,,,,,,
-per:other_family,9,cousin of,,arg1,arg2,Person 
-per:other_family,9,cousin [of],,arg1,arg2,Person 
-per:other_family,9,cousin of,,arg2,arg1,Person 
-per:other_family,9,cousin [of],,arg2,arg1,Person 
-per:other_family,9,uncle of,,arg1,arg2,Person 
-per:other_family,9,uncle [of,,arg1,arg2,Person 
-per:other_family,9,uncle of,,arg2,arg1,Person 
-per:other_family,9,uncle [of,,arg2,arg1,Person 
-per:other_family,9,aunt of,,arg1,arg2,Person 
-per:other_family,9,aunt [of],,arg1,arg2,Person 
-per:other_family,9,aunt of,,arg2,arg1,Person 
-per:other_family,9,aunt [of],,arg2,arg1,Person 
-,,,,,,
-per:children,9,son of,,arg2,arg1,Person
-per:children,9,son [of],,arg2,arg1,Person
-per:children,9,daughter of,,arg2,arg1,Person
-per:children,9,daughter [of],,arg2,arg1,Person
-per:children,9,father of,,arg1,arg2,Person
-per:children,9,father [of],,arg1,arg2,Person
-per:children,9,mother of,,arg1,arg2,Person
-per:children,9,mother [of],,arg1,arg2,Person
-per:children,9,parents,,arg1,arg2,Person
-,,,,,,
-per:date_of_birth,1,born,in,arg1,arg2,Date
-per:date_of_birth,1,born,on,arg1,arg2,Date
-,,,,,,
-per:schools_attended,9,attended,,arg1,arg2,School
-per:schools_attended,9,graduated,from,arg1,arg2,School
-per:schools_attended,9,graduate,from,arg1,arg2,School
-per:schools_attended,9,graduate,of,arg1,arg2,School
-per:schools_attended,9,enrolled,in,arg1,arg2,School
-per:schools_attended,9,enrolled,at,arg1,arg2,School
-per:schools_attended,9,student,at,arg1,arg2,School
-,,,,,,
-per:employee_or_member_of,9,employed,at,arg1,arg2,Organization
-per:employee_or_member_of,9,employed,by,arg1,arg2,Organization
-per:employee_or_member_of,9,hired,by,arg1,arg2,Organization
-per:employee_or_member_of,9,hired,,arg2,arg1,Organization
-per:employee_or_member_of,9,joined,,arg1,arg2,Organization
-per:employee_or_member_of,9,<JobTitle> of,,arg1,arg2,Organization
-per:employee_or_member_of,9,<JobTitle> [of],,arg1,arg2,Organization
-per:employee_or_member_of,9,<JobTitle>,at,arg1,arg2,Organization
-per:employee_or_member_of,9,<JobTitle>,for,arg1,arg2,Organization
-,,,,,,
-per:title,9,employed,as,arg1,arg2,JobTitle
-per:title,9,hired,as,arg1,arg2,JobTitle
-per:title,9,employed,as,arg1,arg2,JobTitle
-per:title,9,employed,as,arg1,arg2,JobTitle
-per:employee_or_member_of,9,<JobTitle> of,,arg1,relation,JobTitle
-per:employee_or_member_of,9,<JobTitle> [of],,arg1,relation,JobTitle
-per:employee_or_member_of,9,<JobTitle>,at,arg1,relation,JobTitle
-per:employee_or_member_of,9,<JobTitle>,for,arg1,relation,JobTitle
-,,,,,,
-per:parents,9,son of,,arg1,arg2,Person
-per:parents,9,son [of],,arg1,arg2,Person
-per:parents,9,daughter of,,arg1,arg2,Person
-per:parents,9,daughter [of],,arg1,arg2,Person
-per:parents,9,father of,,arg2,arg1,Person
-per:parents,9,father [of],,arg2,arg1,Person
-per:parents,9,mother of,,arg2,arg1,Person
-per:parents,9,mother [of],,arg2,arg1,Person
-per:parents,9,parents,,arg2,arg1,Person
-,,,,,,
-per:city_of_birth,1,born,in,arg1,arg2,City
-,,,,,arg1,
-per:country_of_birth,1,born,in,arg1,arg2,Country
-,,,,,,
-per:stateorprovince_of_birth,1,born,in,arg1,arg2,Stateorprovince
-,,,,,,
-per:cities_of_residence,9,lived,in,arg1,arg2,City
-per:cities_of_residence,9,came,from,arg1,arg2,City
-per:cities_of_residence,9,be,from,arg1,arg2,City
-per:cities_of_residence,9,grew up,in,arg1,arg2,City
-,,,,,,
-per:countries_of_residence,9,lived,in,arg1,arg2,Country
-per:countries_of_residence,9,came,from,arg1,arg2,Country
-per:countries_of_residence,9,be,from,arg1,arg2,Country
-per:countries_of_residence,9,grew up,in,arg1,arg2,Country
-,,,,,,
-per:statesorprovinces_of_residence,9,lived,in,arg1,arg2,Stateorprovince
-per:statesorprovinces_of_residence,9,came,from,arg1,arg2,Stateorprovince
-per:statesorprovinces_of_residence,9,be,from,arg1,arg2,Stateorprovince
-per:statesorprovinces_of_residence,9,grew up,in,arg1,arg2,Stateorprovince
-,,,,,,
-per:religion,1,be,,arg1,arg2,Religion
-,,,,,,
-per:siblings,9,brother of,,arg1 ,arg1,Person
-per:siblings,9,brother [of],,arg1 ,arg1,Person
-per:siblings,9,brother of,,arg2 ,arg1,Person
-per:siblings,9,brother [of],,arg2 ,arg1,Person
-per:siblings,9,sister of,,arg1 ,arg1,Person
-per:siblings,9,sister [of],,arg1 ,arg1,Person
-per:siblings,9,sister of,,arg2 ,arg1,Person
-per:siblings,9,sister [of],,arg2 ,arg1,Person
-,,,,,,
-per:spouse,9,wife of,,arg1,arg2,Person
-per:spouse,9,wife [of],,arg1,arg2,Person
-per:spouse,9,wife of,,arg2,arg1,Person
-per:spouse,9,wife [of],,arg2,arg1,Person
-per:spouse,9,husband of,,arg1,arg2,Person
-per:spouse,9,husband [of],,arg1,arg2,Person
-per:spouse,9,husband of,,arg2,arg1,Person
-per:spouse,9,husband [of],,arg2,arg1,Person
-per:spouse,9,married,,arg1,arg2,Person
-per:spouse,9,married,to,arg1,arg2,Person
-per:spouse,9,married,,arg2,arg1,Person
-per:spouse,9,married,to,arg2,arg1,Person
-,,,,,,
-per:age,1,old,,arg1,relation,<integer>-year-old
-per:age,1,age,,arg1,arg2,Integer
-,,,,,,
-per:charges,9,charged,with,arg1,arg2,Crime
-,,,,,,
-per:origin,1,national,of,arg1,arg2,Country
-per:origin,1,be,,arg1,arg2,Nationality
+KBP relation,Max values (9 means no limit),Relation terms,Arg2 begins,Entity in,SlotFill in,Slot type,Arg1 terms,Arg2 terms
+,,,,,,,,
+per:alternate_names,9,known,as,arg1,arg2,ProperNoun,,
+per:alternate_names,9,born,Person,arg1,arg2,Person,,
+,,,,,,,,
+,,,,,,,,
+per:cause_of_death,1,died,from,arg1,arg2,<any>,,
+per:cause_of_death,1,died,as,arg1,arg2,result of X,,
+per:cause_of_death,1,died,of,arg1,arg2,<any>,,
+per:cause_of_death,1,died,due to,arg1,arg2,<any>,,
+per:cause_of_death,1,succumbed,to,arg1,arg2,<any>,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+per:city_of_death,1,died,in,arg1,arg2,City,,
+per:city_of_death,1,died,at,arg1,arg2,City,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+per:country_of_death,1,died,in,arg1,arg2,Country,,
+per:country_of_death,1,died,at,arg1,arg2,Country,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+per:stateorprovince_of_death,1,died,in,arg1,arg2,Stateorprovince,,
+per:stateorprovince_of_death,1,died,at,arg1,arg2,Stateorprovince,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+per:date_of_death,1,died,in,arg1,arg2,Date,,
+per:date_of_death,1,died,on,arg1,arg2,Date,,
+per:date_of_death,1,died,,arg1,arg2,Date,,
+,,,,,,,,
+,,,,,,,,
+per:other_family,9,cousin of,,arg1,arg2,Person ,,
+per:other_family,9,cousin of,,arg2,arg1,Person ,,
+per:other_family,9,uncle of,,arg1,arg2,Person ,,
+per:other_family,9,uncle of,,arg2,arg1,Person ,,
+per:other_family,9,aunt of,,arg1,arg2,Person ,,
+per:other_family,9,aunt of,,arg2,arg1,Person ,,
+,,,,,,,,
+per:children,9,son of,,arg2,arg1,Person,,
+per:children,9,daughter of,,arg2,arg1,Person,,
+per:children,9,father of,,arg1,arg2,Person,,
+per:children,9,mother of,,arg1,arg2,Person,,
+per:children,9,parents of,,arg1,arg2,Person,,
+,,,,,,,,
+per:date_of_birth,1,born,in,arg1,arg2,Date,,
+per:date_of_birth,1,born,on,arg1,arg2,Date,,
+,,,,,,,,
+per:schools_attended,9,attended,,arg1,arg2,School,,
+per:schools_attended,9,entered,,arg1,arg2,School,,
+per:schools_attended,9,graduated,from,arg1,arg2,School,,
+per:schools_attended,9,graduate,from,arg1,arg2,School,,
+per:schools_attended,9,graduate from,,arg1,arg2,School,,
+per:schools_attended,9,graduate of,,arg1,arg2,School,,
+per:schools_attended,9,enrolled,in,arg1,arg2,School,,
+per:schools_attended,9,enrolled,at,arg1,arg2,School,,
+per:schools_attended,9,student at,,arg1,arg2,School,,
+per:schools_attended,9,received,from,arg1,arg2,School,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+per:employee_or_member_of,9,employed,at,arg1,arg2,Organization,,
+per:employee_or_member_of,9,employed,by,arg1,arg2,Organization,,
+per:employee_or_member_of,9,hired,by,arg1,arg2,Organization,,
+per:employee_or_member_of,9,hired,,arg2,arg1,Organization,,
+per:employee_or_member_of,9,joined,,arg1,arg2,Organization,,
+per:employee_or_member_of,9,founded,Organization,arg1,arg2,Organization,,
+per:employee_or_member_of,9,lead,,arg1,arg2,Organization,,
+per:employee_or_member_of,9,run,Organization,arg1,arg2,Organization,,
+per:employee_or_member_of,9,<JobTitle> of,,arg1,arg2,Organization,,
+per:employee_or_member_of,9,<JobTitle> at,,arg1,arg2,Organization,,
+per:employee_or_member_of,9,<JobTitle> for,,arg1,arg2,Organization,,
+per:employee_or_member_of,9,be,,arg1,arg2,Organization,,<JobTitle> of
+per:employee_or_member_of,9,become,,arg1,arg2,Organization,,<JobTitle> of
+per:employee_or_member_of,9,elected,,arg1,arg2,Organization,,<JobTitle> of
+per:employee_or_member_of,9,re-elected,,arg1,arg2,Organization,,<JobTitle> of
+per:employee_or_member_of,9,reelected,,arg1,arg2,Organization,,<JobTitle> of
+per:employee_or_member_of,9,appointed,,arg1,arg2,Organization,,<JobTitle> of
+per:employee_or_member_of,9,named,,arg1,arg2,Organization,,<JobTitle> of
+,,,,,,,,
+per:employee_or_member_of,9,be,,arg1,arg2,Organization,,Organization <JobTitle>
+per:employee_or_member_of,9,become,,arg1,arg2,Organization,,Organization <JobTitle>
+per:employee_or_member_of,9,elected,,arg1,arg2,Organization,,Organization <JobTitle>
+per:employee_or_member_of,9,appointed,,arg1,arg2,Organization,,Organization <JobTitle>
+per:employee_or_member_of,9,named,,arg1,arg2,Organization,,Organization <JobTitle>
+per:employee_or_member_of,9,re-elected,,arg1,arg2,Organization,,Organization <JobTitle>
+per:employee_or_member_of,9,reelected,,arg1,arg2,Organization,,Organization <JobTitle>
+,,,,,,,,
+per:employee_or_member_of,9,nominate,,arg2,arg1,Organization,,
+per:employee_or_member_of,9,nominee of,,arg1,arg2,Organization,,
+per:employee_or_member_of,9,candidate of,,arg1,arg2,Organization,,
+per:employee_or_member_of,9,candidate for,,arg1,arg2,Organization,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+per:employee_or_member_of,9,lead,,arg1,arg2,Country,,
+per:employee_or_member_of,9,run,Organization,arg1,arg2,Country,,
+per:employee_or_member_of,9,<JobTitle> of,,arg1,arg2,Country,,
+per:employee_or_member_of,9,<JobTitle> at,,arg1,arg2,Country,,
+per:employee_or_member_of,9,<JobTitle> for,,arg1,arg2,Country,,
+per:employee_or_member_of,9,be,,arg1,arg2,Country,,<JobTitle> of
+per:employee_or_member_of,9,become,,arg1,arg2,Country,,<JobTitle> of
+per:employee_or_member_of,9,be,,arg1,arg2,Country,,Country <JobTitle>
+per:employee_or_member_of,9,<JobTitle> of,,arg1,arg2,Country,,
+per:employee_or_member_of,9,elected,,arg1,arg2,Country,,<JobTitle> of
+per:employee_or_member_of,9,elected,,arg1,arg2,Country,,Country <JobTitle>
+per:employee_or_member_of,9,re-elected,,arg1,arg2,Country,,<JobTitle> of
+per:employee_or_member_of,9,re-elected,,arg1,arg2,Country,,Country <JobTitle>
+per:employee_or_member_of,9,reelected,,arg1,arg2,Country,,<JobTitle> of
+per:employee_or_member_of,9,reelected,,arg1,arg2,Country,,Country <JobTitle>
+,,,,,,,,
+,,,,,,,,
+per:employee_or_member_of,9,lead,,arg1,arg2,City,,
+per:employee_or_member_of,9,run,Organization,arg1,arg2,City,,
+per:employee_or_member_of,9,<JobTitle> of,,arg1,arg2,City,,
+per:employee_or_member_of,9,<JobTitle> at,,arg1,arg2,City,,
+per:employee_or_member_of,9,<JobTitle> for,,arg1,arg2,City,,
+per:employee_or_member_of,9,be,,arg1,arg2,City,,<JobTitle> of
+per:employee_or_member_of,9,become,,arg1,arg2,City,,<JobTitle> of
+per:employee_or_member_of,9,be,,arg1,arg2,City,,City <JobTitle>
+per:employee_or_member_of,9,elected,,arg1,arg2,City,,<JobTitle> of
+per:employee_or_member_of,9,elected,,arg1,arg2,City,,City <JobTitle>
+per:employee_or_member_of,9,re-elected,,arg1,arg2,City,,<JobTitle> of
+per:employee_or_member_of,9,re-elected,,arg1,arg2,City,,City <JobTitle>
+per:employee_or_member_of,9,reelected,,arg1,arg2,City,,<JobTitle> of
+per:employee_or_member_of,9,reelected,,arg1,arg2,City,,City <JobTitle>
+,,,,,,,,
+,,,,,,,,
+per:employee_or_member_of,9,<JobTitle> of,,arg1,arg2,Stateorprovince,,
+per:employee_or_member_of,9,lead,,arg1,arg2,Stateorprovince,,
+per:employee_or_member_of,9,run,Organization,arg1,arg2,Stateorprovince,,
+per:employee_or_member_of,9,<JobTitle> of,,arg1,arg2,Stateorprovince,,
+per:employee_or_member_of,9,<JobTitle> at,,arg1,arg2,Stateorprovince,,
+per:employee_or_member_of,9,<JobTitle> for,,arg1,arg2,Stateorprovince,,
+per:employee_or_member_of,9,<JobTitle> from,,arg1,arg2,Stateorprovince,,
+per:employee_or_member_of,9,be,,arg1,arg2,Stateorprovince,,<JobTitle> of
+per:employee_or_member_of,9,become,,arg1,arg2,Stateorprovince,,<JobTitle> of
+per:employee_or_member_of,9,be,,arg1,arg2,Stateorprovince,,Stateorprovince <JobTitle>
+per:employee_or_member_of,9,<JobTitle> of,,arg1,arg2,Stateorprovince,,
+per:employee_or_member_of,9,elected,,arg1,arg2,Stateorprovince,,<JobTitle> of
+per:employee_or_member_of,9,elected,,arg1,arg2,Stateorprovince,,Stateorprovince <JobTitle>
+per:employee_or_member_of,9,re-elected,,arg1,arg2,Stateorprovince,,<JobTitle> of
+per:employee_or_member_of,9,re-elected,,arg1,arg2,Stateorprovince,,Stateorprovince <JobTitle>
+per:employee_or_member_of,9,reelected,,arg1,arg2,Stateorprovince,,<JobTitle> of
+per:employee_or_member_of,9,reelected,,arg1,arg2,Stateorprovince,,Stateorprovince <JobTitle>
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+per:title,9,employed,as,arg1,arg2,JobTitle,,
+per:title,9,hired,as,arg1,arg2,JobTitle,,
+per:title,9,employed,as,arg1,arg2,JobTitle,,
+per:title,9,employed,as,arg1,arg2,JobTitle,,
+per:title,9,<JobTitle> of,,arg1,relation,JobTitle,,
+per:title,9,<JobTitle> at,,arg1,relation,JobTitle,,
+per:title,9,<JobTitle> for,,arg1,relation,JobTitle,,
+per:title,9,became,,arg1,arg2,JobTitle,,
+per:title,9,be,,arg1,arg2,JobTitle,,
+per:title,9,elected,,arg1,arg2,JobTitle,,
+per:title,9,re-elected,,arg1,arg2,JobTitle,,
+per:title,9,reelected,,arg1,arg2,JobTitle,,
+per:title,9,appointed,,arg1,arg2,JobTitle,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+per:parents,9,son of,,arg1,arg2,Person,,
+per:parents,9,daughter of,,arg1,arg2,Person,,
+per:parents,9,father of,,arg2,arg1,Person,,
+per:parents,9,mother of,,arg2,arg1,Person,,
+per:parents,9,parent of,,arg2,arg1,Person,,
+,,,,,,,,
+per:city_of_birth,1,born,in,arg1,arg2,City,,
+per:city_of_birth,1,born,,arg1,arg2,City,,in
+per:city_of_birth,1,native of,,arg1,arg2,City,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+per:country_of_birth,1,born,in,arg1,arg2,Country,,
+per:country_of_birth,1,born,,arg1,arg2,Country,,in
+per:country_of_birth,1,native of,,arg1,arg2,Country,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+per:stateorprovince_of_birth,1,born,in,arg1,arg2,Stateorprovince,,
+per:stateorprovince_of_birth,1,born,,arg1,arg2,Stateorprovince,,in
+per:stateorprovince_of_birth,1,native of,,arg1,arg2,Stateorprovince,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+per:cities_of_residence,9,lived,in,arg1,arg2,City,,
+per:cities_of_residence,9,came,from,arg1,arg2,City,,
+per:cities_of_residence,9,be,from,arg1,arg2,City,,
+per:cities_of_residence,9,grew up,in,arg1,arg2,City,,
+per:cities_of_residence,9,die,at,arg1,arg2,City,,home
+per:cities_of_residence,9,<JobTitle> of,,arg1,arg2,City,,
+per:cities_of_residence,9,raised,in,arg1,arg2,City,,
+per:cities_of_residence,9,lived,City,arg1,arg2,City,,
+,,,,,,,,
+per:countries_of_residence,9,lived,in,arg1,arg2,Country,,
+per:countries_of_residence,9,came,from,arg1,arg2,Country,,
+per:countries_of_residence,9,be,from,arg1,arg2,Country,,
+per:countries_of_residence,9,grew up,in,arg1,arg2,Country,,
+per:countries_of_residence,9,die,at,arg1,arg2,Country,,home
+per:countries_of_residence,9,<JobTitle> of,,arg1,arg2,Country,,
+per:countries_of_residence,9,raised,in,arg1,arg2,Country,,
+per:countries_of_residence,9,lived,Country,arg1,arg2,Country,,
+,,,,,,,,
+per:statesorprovinces_of_residence,9,lived,in,arg1,arg2,Stateorprovince,,
+per:statesorprovinces_of_residence,9,came,from,arg1,arg2,Stateorprovince,,
+per:statesorprovinces_of_residence,9,be,from,arg1,arg2,Stateorprovince,,
+per:statesorprovinces_of_residence,9,grew up,in,arg1,arg2,Stateorprovince,,
+per:statesorprovinces_of_residence,9,die,at,arg1,arg2,Stateorprovince,,home
+per:statesorprovinces_of_residence,9,<JobTitle> of,,arg1,arg2,Stateorprovince,,
+per:statesorprovinces_of_residence,9,raised,in,arg1,arg2,Stateorprovince,,
+per:statesorprovinces_of_residence,9,lived,Stateorprovince,arg1,arg2,Stateorprovince,,
+,,,,,,,,
+per:religion,1,be,,arg1,arg2,Religion,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+per:siblings,9,brother of,,arg1 ,arg1,Person,,
+per:siblings,9,brother of,,arg2 ,arg1,Person,,
+per:siblings,9,sister of,,arg1 ,arg1,Person,,
+per:siblings,9,sister of,,arg2 ,arg1,Person,,
+,,,,,,,,
+per:spouse,9,wife of,,arg1,arg2,Person,,
+per:spouse,9,wife of,,arg2,arg1,Person,,
+per:spouse,9,ex-wife of,,arg1,arg2,Person,,
+per:spouse,9,ex-wife of,,arg2,arg1,Person,,
+per:spouse,9,widow of,,arg1,arg2,Person,,
+per:spouse,9,widow of,,arg2,arg1,Person,,
+per:spouse,9,widower of,,arg1,arg2,Person,,
+per:spouse,9,widower of,,arg2,arg1,Person,,
+per:spouse,9,husband of,,arg1,arg2,Person,,
+per:spouse,9,husband of,,arg2,arg1,Person,,
+per:spouse,9,ex-husband of,,arg1,arg2,Person,,
+per:spouse,9,ex-husband of,,arg2,arg1,Person,,
+per:spouse,9,spouse of,,arg1,arg2,Person,,
+per:spouse,9,spouse of,,arg2,arg1,Person,,
+per:spouse,9,married,,arg1,arg2,Person,,
+per:spouse,9,remarried,,arg1,arg2,Person,,
+per:spouse,9,married,to,arg1,arg2,Person,,
+per:spouse,9,married,,arg2,arg1,Person,,
+per:spouse,9,remarried,,arg2,arg1,Person,,
+per:spouse,9,married,to,arg2,arg1,Person,,
+,,,,,,,,
+per:age,1,old,,arg1,relation,<integer>-year-old,,
+per:age,1,age,,arg1,arg2,Integer,,
+per:age,1,die,at,arg1,arg2,Integer,,age
+per:age,1,succumbed,at,arg1,arg2,Integer,,age
+,,,,,,,,
+,,,,,,,,
+per:charges,9,charged,with,arg1,arg2,Crime,,
+,,,,,,,,
+per:origin,1,national of,,arg1,arg2,Country,,
+per:origin,1,be,,arg1,arg2,Nationality,,
+per:origin,1,<JobTitle> of,,arg1,arg2,Country,,
+per:origin,1,lead,,arg1,arg2,Country,,
+per:origin,1,run,,arg1,arg2,Country,,
+per:origin,1,rule,,arg1,arg2,Country,,
+per:origin,1,<JobTitle> of,,arg1,arg2,Nationality,,
+per:origin,1,lead,,arg1,arg2,Nationality,,
+per:origin,1,run,,arg1,arg2,Nationality,,
+per:origin,1,rule,,arg1,arg2,Nationality,,

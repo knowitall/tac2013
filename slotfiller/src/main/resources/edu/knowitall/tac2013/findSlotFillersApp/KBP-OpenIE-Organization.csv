@@ -1,62 +1,137 @@
-KBP relation,Max values (9 means no limit),Relation terms,Arg2 begins,Entity in,SlotFill in,Slot type
-org:date_dissolved,1,was closed down,in,arg1,arg2,Date
-,,,,,,
-org:top_members_employees,9,<JobTitle> of,,arg2,arg1,Person
-org:top_members_employees,9,<JobTitle> [of],,arg2,arg1,Person
-org:top_members_employees,9,<JobTitle>,at,arg2,arg1,Person
-org:top_members_employees,9,<JobTitle>,for,arg2,arg1,Person
-,,,,,,
-org:alternate_names,9,dba,,arg1,arg2,ProperNoun
-org:alternate_names,9,d/b/a,,arg1,arg2,ProperNoun
-,,,,,,
-org:website,0,,,,,
-,,,,,,
-org:subsidiaries,9,subsidiary of,,arg2,arg1,Organization
-org:subsidiaries,9,branch of,,arg2,arg1,Organization
-,,,,,,
-org:founded_by,9,founded,,arg2,arg1,Person
-org:founded_by,9,founded,by,arg1,arg2,Person
-org:founded_by,9,started,,arg2,arg1,Person
-org:founded_by,9,started,by,arg1,arg2,Person
-org:founded_by,9,created,by,arg1,arg2,Person
-org:founded_by,9,set up,by,arg1,arg2,Person
-org:founded_by,9,founder of,,arg1,arg2,Person
-org:founded_by,9,founder [of],,arg1,arg2,Person
-org:founded_by,9,formed,,arg2,arg1,Person
-org:founded_by,9,formed,by,arg1,arg2,Person
-,,,,,,
-org:city_of_headquarters,1,headquartered,in,arg1,arg2,City
-org:city_of_headquarters,1,based,in,arg1,arg2,City
-,,,,,,
-org:country_of_headquarters,1,headquartered,in,arg1,arg2,Country
-org:country_of_headquarters,1,based,in,arg1,arg2,Country
-,,,,,,
-org:stateorprovince_of_headquarters,1,headquartered,in,arg1,arg2,Stateorprovince
-org:stateorprovince_of_headquarters,1,based,in,arg1,arg2,Stateorprovince
-,,,,,,
-,,,,,,
-org:parents,9,subsidiary of,,arg1,arg2,Organization
-org:parents,9,branch of,,arg1,arg2,Organization
-,,,,,,
-org:date_founded,1,founded,in,arg1,arg2,Date
-org:date_founded,1,established,in,arg1,arg2,Date
-org:date_founded,1,started,in,arg1,arg2,Date
-org:date_founded,1,created,in,arg1,arg2,Date
-org:date_founded,1,set up,in,arg1,arg2,Date
-org:date_founded,1,formed,in,arg1,arg2,Date
-,,,,,,
-org:member_of,1,member of,,arg1,arg2,Organization
-org:member_of,1,member [of],,arg1,arg2,Organization
-org:member_of,1,wing of,,arg1,arg2,Organization
-org:member_of,1,wing [of],,arg1,arg2,Organization
-,,,,,,
-org:members,9,member of,,arg2,arg1,Organization
-org:members,9,member [of],,arg2,arg1,Organization
-org:member_of,1,wing of,,arg2,arg1,Organization
-org:member_of,1,wing [of],,arg2,arg1,Organization
-,,,,,,
-org:number_of_employees_members,0,,,,,
-,,,,,,
-org:political_religious_affiliation,0,,,,,
-,,,,,,
-org:shareholders,0,,,,,
+KBP relation,Max values (9 means no limit),Relation terms,Arg2 begins,Entity in,SlotFill in,Slot type,Arg1 terms,Arg2 terms
+,,,,,,,,
+org:alternate_names,9,known,as,arg1,arg2,ProperNoun,,
+,,,,,,,,
+org:date_dissolved,1,was closed down,in,arg1,arg2,Date,,
+,,,,,,,,
+org:top_members_employees,9,<HeadJobTitle> of,,arg2,arg1,Person,,
+org:top_members_employees,9,<HeadJobTitle> at,,arg2,arg1,Person,,
+org:top_members_employees,9,<HeadJobTitle> for,,arg2,arg1,Person,,
+org:top_members_employees,9,<HeadJobTitle> in,,arg2,arg1,Person,,
+org:top_members_employees,9,lead,by,arg1,arg2,Person,,
+org:top_members_employees,9,head,by,arg1,arg2,Person,,
+org:top_members_employees,9,run,by,arg1,arg2,Person,,
+org:top_members_employees,9,resign,as,arg2,arg1,Person,,
+org:top_members_employees,9,step down,as,arg2,arg1,Person,,
+org:top_members_employees,9,chair,,arg2,arg1,Person,,
+org:top_members_employees,9,lead,,arg2,arg1,Person,,
+org:top_members_employees,9,head,,arg2,arg1,Person,,
+org:top_members_employees,9,run,,arg2,arg1,Person,,
+org:top_members_employees,9,appoint,,arg1,arg2,Person,,
+org:top_members_employees,9,publish,,arg2,arg1,Person,,
+,,,,,,,,
+org:alternate_names,1,means,,arg1,arg2,ProperNoun,,
+org:alternate_names,,known,as,arg1,arg2,ProperNoun,,
+org:alternate_names,,known,as,arg2,arg1,ProperNoun,,
+,,,,,,,,
+,,,,,,,,
+org:website,0,,,,,,,
+,,,,,,,,
+org:subsidiaries,9,subsidiary of,,arg2,arg1,Organization,,
+org:subsidiaries,9,branch of,,arg2,arg1,Organization,,
+org:subsidiaries,9,wing of,,arg2,arg1,Organization,,
+org:subsidiaries,9,unit of,,arg2,arg1,Organization,,
+org:subsidiaries,9,part of,,arg2,arg1,Organization,,
+org:subsidiaries,9,parent company  of,,arg1,arg2,Organization,,
+org:subsidiaries,9,corporate parent  of,,arg1,arg2,Organization,,
+,,,,,,,,
+org:founded_by,9,founded,,arg2,arg1,Person,,
+org:founded_by,9,founded,by,arg1,arg2,Person,,
+org:founded_by,9,started,,arg2,arg1,Person,,
+org:founded_by,9,started,by,arg1,arg2,Person,,
+org:founded_by,9,founder of,,arg2,arg1,Person,,
+org:founded_by,9,co-founder of,,arg2,arg1,Person,,
+org:founded_by,9,set up,,arg2,arg1,Person,,
+org:founded_by,9,set up,by,arg1,arg2,Person,,
+org:founded_by,9,formed,,arg2,arg1,Person,,
+org:founded_by,9,formed,by,arg1,arg2,Person,,
+,,,,,,,,
+,,,,,,,,
+org:city_of_headquarters,1,headquartered,in,arg1,arg2,City,,
+org:city_of_headquarters,1,based,in,arg1,arg2,City,,
+org:city_of_headquarters,1,be,,arg2,arg1,City,,home
+org:city_of_headquarters,1,operate,out of,arg1,arg2,City,,
+org:city_of_headquarters,1,situate,in,arg1,arg2,City,,
+org:city_of_headquarters,1,situate,at,arg1,arg2,City,,
+org:city_of_headquarters,1,headquartered,at,arg1,arg2,City,,
+org:city_of_headquarters,1,organization in,,arg1,arg2,City,,
+org:city_of_headquarters,1,based,,arg1,arg2,City,,
+org:city_of_headquarters,1,located,in,arg1,arg2,City,,
+org:city_of_headquarters,1,located,,arg1,arg2,City,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+org:country_of_headquarters,1,headquartered,in,arg1,arg2,Country,,
+org:country_of_headquarters,1,based,in,arg1,arg2,Country,,
+org:country_of_headquarters,1,be,,arg2,arg1,Country,,home
+org:country_of_headquarters,1,operate,out of,arg1,arg2,Country,,
+org:country_of_headquarters,1,situate,in,arg1,arg2,Country,,
+org:country_of_headquarters,1,situate,at,arg1,arg2,Country,,
+org:country_of_headquarters,1,headquartered,at,arg1,arg2,Country,,
+org:country_of_headquarters,1,taxpayer of,,arg1,arg2,Country,,
+org:city_of_headquarters,1,organization in,,arg1,arg2,Country,,
+org:city_of_headquarters,1,based,,arg1,arg2,Country,,
+org:city_of_headquarters,1,located,in,arg1,arg2,Country,,
+org:city_of_headquarters,1,located,,arg1,arg2,Country,,
+,,,,,,,,
+,,,,,,,,
+org:stateorprovince_of_headquarters,1,headquartered,in,arg1,arg2,Stateorprovince,,
+org:stateorprovince_of_headquarters,1,based,in,arg1,arg2,Stateorprovince,,
+org:stateorprovince_of_headquarters,1,be,,arg2,arg1,Stateorprovince,,home
+org:stateorprovince_of_headquarters,1,operate,out of,arg1,arg2,Stateorprovince,,
+org:stateorprovince_of_headquarters,1,situate,in,arg1,arg2,Stateorprovince,,
+org:stateorprovince_of_headquarters,1,situate,at,arg1,arg2,Stateorprovince,,
+org:stateorprovince_of_headquarters,1,headquartered,at,arg1,arg2,Stateorprovince,,
+org:stateorprovince_of_headquarters,1,taxpayer of,,arg1,arg2,Stateorprovince,,
+org:stateorprovince_of_headquarters,1,organization in,,arg1,arg2,Stateorprovince,,
+org:stateorprovince_of_headquarters,1,based,,arg1,arg2,Stateorprovince,,
+org:stateorprovince_of_headquarters,1,located,in,arg1,arg2,Stateorprovince,,
+org:stateorprovince_of_headquarters,1,located,,arg1,arg2,Stateorprovince,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+org:parents,9,subsidiary of,Organization,arg1,arg2,Organization,,
+org:parents,9,branch of,Organization,arg1,arg2,Organization,,
+org:parents,9,be,part of ,arg1,arg2,Organization,,
+org:parents,9,part of,Organization,arg1,arg2,Organization,,
+org:parents,9,wing of,Organization,arg1,arg2,Organization,,
+org:parents,9,unit of,Organization,arg1,arg2,Organization,,
+org:parents,9,division of,Organization,arg1,arg2,Organization,,
+org:parents,9,parent of,Organization,arg2,arg1,Organization,,
+org:parents,9,owns,Organization,arg2,arg1,Organization,,
+org:parents,9,parent company of,Organization,arg2,arg1,Organization,,
+org:parents,9,corporate parent of,Organization,arg2,arg1,Organization,,
+org:parents,9,buy,Organization,arg2,arg1,Organization,,
+org:parents,9,owner of,Organization,arg2,arg1,Organization,,
+org:parents,9,acquired,Organization,arg2,arg1,Organization,,
+org:parents,9,includes,Organization,arg2,arg1,Organization,,
+org:parents,9,take over,Organization,arg2,arg1,Organization,,
+org:parents,9,purchased,Organization,arg2,arg1,Organization,,
+org:parents,9,publisher of,Organization,arg2,arg1,Organization,,
+org:parents,9,to sell,Organization,arg2,arg1,Organization,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+org:date_founded,1,founded,in,arg1,arg2,Date,,
+org:date_founded,1,established,in,arg1,arg2,Date,,
+org:date_founded,1,started,in,arg1,arg2,Date,,
+org:date_founded,1,created,in,arg1,arg2,Date,,
+org:date_founded,1,set up,in,arg1,arg2,Date,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+org:member_of,1,member of,,arg1,arg2,Organization,,
+org:member_of,1,wing of,,arg1,arg2,Organization,,
+org:member_of,1,part of,,arg1,arg2,Organization,,
+,,,,,,,,
+,,,,,,,,
+org:members,9,member of,,arg2,arg1,Organization,,
+org:members,9,wing of,,arg2,arg1,Organization,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+org:number_of_employees_members,0,,,,,,,
+,,,,,,,,
+org:political_religious_affiliation,0,,,,,,,
+,,,,,,,,
+org:shareholders,0,,,,,,,
