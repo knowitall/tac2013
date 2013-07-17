@@ -26,8 +26,10 @@ object KBPQuery {
   import KBPQueryEntityType._
 
   // fabricate a KBPQuery for testing
-  def forEntityName(name: String, entityType: KBPQueryEntityType, nodeId: Option[String] = None): KBPQuery = {
-    new KBPQuery("TEST", name, "NULL", -1, -1, entityType, nodeId, Slot.getSlotTypesList(entityType).toSet)
+  def forEntityName(name: String, entityType: KBPQueryEntityType, nodeId: Option[String] = None, extraPatterns: Seq[SlotPattern] = Nil): KBPQuery = {
+    val slots = Slot.getSlotTypesList(entityType).toSet
+    val slotsExtraPatterns = Slot.addPatterns(slots, extraPatterns)
+    new KBPQuery("TEST", name, "NULL", -1, -1, entityType, nodeId, slotsExtraPatterns)
   }
   
   //parses a single query from an XML file, will not work if there are more than one query in the XML file

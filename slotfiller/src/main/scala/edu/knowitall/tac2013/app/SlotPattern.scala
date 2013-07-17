@@ -55,7 +55,7 @@ case class SlotPattern private (
 
 object SlotPattern {
 
-  private def requireTrimmed(s: String) = require(s.equals(s.trim()), "String must be trimmed: \"$s\"".format(s))
+  private def requireTrimmed(s: String) = require(s.equals(s.trim()), "String must be trimmed: \"%s\"".format(s))
 
   val personPatternResource = "/edu/knowitall/tac2013/findSlotFillersApp/KBP-OpenIE-Person.csv"
   val organizationPatternResource = "/edu/knowitall/tac2013/findSlotFillersApp/KBP-OpenIE-Organization.csv"

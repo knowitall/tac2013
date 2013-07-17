@@ -38,21 +38,44 @@ class FindSlotFills(val oldOrNew: String, val corefOn: Boolean) {
 
     val slots = slotStrings.split(",").map(_.trim).filter(_.nonEmpty).toSet
     
-    runForServerOutput(entityName, None, entityType, slots, new OutputFormatter(System.out))
+    runForServerOutput(entityName, None, entityType, slots, new OutputFormatter(System.out), Nil)
     
     if (output != System.out) output.close()
   }
 
-  def runForServerOutput(rawName: String, nodeId: Option[String], entityTypeString: String, overrideSlotNames: Set[String], fmt: OutputFormatter): Unit = {
+  
+  val splitPattern = ",|\t".r
+  
+  def runForServerOutput(
+      rawName: String, 
+      nodeId: Option[String], 
+      entityTypeString: String, 
+      overrideSlotNames: Set[String], 
+      fmt: OutputFormatter, 
+      extraPatternStrings: Seq[String]): Unit = {
     
     val entityName = rawName.replace("_", " ").trim()
     val entityType = KBPQueryEntityType.fromString(entityTypeString)
     val overrideSlots = overrideSlotNames map Slot.fromName
+    
+    val extraPatternOpts = extraPatternStrings.map(s => splitPattern.split(s).map(_.trim)).map(split => (split, SlotPattern.read(split)))
+    val extraPatterns = extraPatternOpts.flatMap { case (split, patOpt) =>
+      patOpt match {
+        case Some(pat) => {
+          fmt.out.println("Including extra pattern: " + split.mkString(",") + " => " + pat.debugString)
+          Some(pat)
+        }
+        case None => {
+          fmt.out.println("Couldn't parse pattern: " + split.mkString(","))
+          None
+        }
+      }
+    }
 
     val kbpQuery = if (overrideSlotNames.isEmpty) {
-      KBPQuery.forEntityName(entityName, entityType, nodeId)
+      KBPQuery.forEntityName(entityName, entityType, nodeId, extraPatterns)
     } else {
-      KBPQuery.forEntityName(entityName, entityType, nodeId).withOverrideSlots(overrideSlots)
+      KBPQuery.forEntityName(entityName, entityType, nodeId, extraPatterns).withOverrideSlots(Slot.addPatterns(overrideSlots, extraPatterns))
     }
     
     val unfilteredSlotCandidateSets = kbpQuery.slotsToFill.map { slot => 

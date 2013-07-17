@@ -54,12 +54,13 @@ object FindSlotFillsServer extends App {
             req.parameterValues("dg").headOption,
             req.parameterValues("pa").headOption,
             req.parameterValues("da").headOption,
-            req.parameterValues("cf").headOption)
+            req.parameterValues("cf").headOption,
+            req.parameterValues("extraPatterns").headOption)
         case req @ GET(Path(Seg(Nil))) =>
           ResponseString("""<html>
               <h1>KnowItAll Slot Fill Test Server</h1>
               <body>
-            <form method="POST">
+            <form method="POST" id="demoform">
               Entity Name: <input type="text" name="name"/><br/>
               Entity Node Id: (optional) <input type="text" name="nodeId"/><br/>
               Entity Type:<br/>
@@ -77,6 +78,8 @@ object FindSlotFillsServer extends App {
               <input type="checkbox" name="pa" value="true" checked>Print answers? <input type="checkbox" name="da" value="true" checked>Detailed?<br/>
               Query Options:<br/>
               <input type="checkbox" name="cf" value="true" checked>Coref<br/>
+              Extra Patterns to Include (one per line, comma or tab separated fields.)<br/>
+              <textarea name="extraPatterns" form="demoform" rows="3" cols="100"></textarea>
               <input type="submit"/>
             </form>
             </body></html>""") ~> Ok
@@ -98,7 +101,8 @@ object FindSlotFillsServer extends App {
           dg: Option[String], // detailed groups?
           pa: Option[String], // print answers?
           da: Option[String],  // detailed answers?
-          cf: Option[String]) = { //coref?
+          cf: Option[String],  //coref?
+          extraPatterns: Option[String]) = { 
 
         val nodeId = if (nodeIdStr.nonEmpty) Some(nodeIdStr) else None
         
@@ -122,12 +126,14 @@ object FindSlotFillsServer extends App {
           printAnswers = printAnswers,
           detailedAnswers = detailedAnswers)
         
+        val extraPatternStrings = extraPatterns.map(_.trim).filter(_.nonEmpty).toSeq.flatMap(p => p.split("\n"))
+        
         
         new ResponseStreamer {
           def stream(os: OutputStream) = {
             val printStream = new PrintStream(os)
             try {
-              new FindSlotFills(corpus,corefOn).runForServerOutput(entityString, nodeId, typ, slotsSplit, getFormatter(printStream))
+              new FindSlotFills(corpus,corefOn).runForServerOutput(entityString, nodeId, typ, slotsSplit, getFormatter(printStream), extraPatternStrings)
             } catch {
               case e: Throwable => {
                 e.printStackTrace(printStream)

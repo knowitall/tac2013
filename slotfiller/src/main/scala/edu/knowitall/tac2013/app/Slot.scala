@@ -85,5 +85,11 @@ object Slot {
       case PER => personSlots
     }
   }
+  
+  def addPatterns(slots: Set[Slot], patterns: Iterable[SlotPattern]): Set[Slot] = {
+    val patternsMap = patterns.groupBy(_.slotName)
+    
+    slots.map { slot => slot.copy(patterns = slot.patterns ++ patternsMap.getOrElse(slot.name, Nil))}
+  }
 }
 

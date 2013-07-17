@@ -69,20 +69,21 @@ class Benchmarker(val solrExec: SolrQueryExecutor, val benchmarkItemSets: Iterab
     var usedAnswers: Set[BenchmarkAnswer] = Set.empty
     for (response <- responses) {
       // find an answer that matches
-      val matchingAnswer = unusedAnswers.find(_.okFills.contains(response.trimmedFill.string))
-      matchingAnswer match {
-        case Some(answer) => {
-          unusedAnswers -= answer
-          usedAnswers += answer
-          outputLines ::= correct(item, response)
-        }
-        case None => {
-          outputLines ::= notInBenchmark(item, response)
-        }
+      val matchingAnswers = item.answers.filter(_.okFills.contains(response.trimmedFill.string))
+      if (matchingAnswers.nonEmpty) {
+        unusedAnswers --= matchingAnswers
+        usedAnswers ++= matchingAnswers
+        outputLines ::= correct(item, response)
+      } else {
+        outputLines ::= notInBenchmark(item, response)
       }
     }
     
-    for (answer <- unusedAnswers) {
+    val distinctUnusedAnswers = unusedAnswers.groupBy(_.okFills).map(_._2.head)
+    
+    for (answer <- distinctUnusedAnswers) {
+      // only report distinct omissions
+      
       outputLines ::= notFound(answer, item)
     }
     
@@ -164,6 +165,7 @@ object Benchmarker {
   import java.net.URL
   import edu.knowitall.common.Resource.using
   import scopt.OptionParser
+  import edu.knowitall.tac2013.solr.query.SolrHelper
   
   val benchmark2012 = "Benchmark_2012.tsv"
   val benchmark2013 = "Benchmark_2013.tsv"
@@ -180,7 +182,7 @@ object Benchmarker {
     // drop header line and filter empty lines.
     val filteredLines = source.getLines.drop(1).filter(_.trim.nonEmpty)
     // split on tabs
-    val splitLines = filteredLines.map(tabRegex.split).map(_.toList)
+    val splitLines = filteredLines.map(l => tabRegex.split(l)map(_.trim)).map(_.toList)
     // group by (name, type, nodeId, slotname)
     val groupNames = splitLines.toSeq.groupBy { fields =>
       fields match {
@@ -225,9 +227,17 @@ object Benchmarker {
     if (!parser.parse(args)) return
     require(corpus == "2012" || corpus == "2013", "Corpus must be 2012 or 2013")
     
+    
+    
     val outputStrings = corpus match {
-      case "2013" => new Benchmarker(SolrQueryExecutor.getInstance("new"), load2013Benchmark).go
-      case "2012" => new Benchmarker(SolrQueryExecutor.getInstance("old"), load2012Benchmark).go
+      case "2013" => {
+        SolrHelper.setConfigurations("new", false)
+        new Benchmarker(SolrQueryExecutor.getInstance("new"), load2013Benchmark).go
+      }
+      case "2012" => {
+        SolrHelper.setConfigurations("old", false)
+        new Benchmarker(SolrQueryExecutor.getInstance("old"), load2012Benchmark).go
+      }
       case _ => throw new RuntimeException("Corpus must be 2012 or 2013")
     }
     
