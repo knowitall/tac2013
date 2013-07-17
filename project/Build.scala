@@ -46,7 +46,7 @@ object SlotFillerBuild extends Build {
     "org.scalatest" %% "scalatest" % "1.9.1" % "test",
     "edu.washington.cs.knowitall.nlptools" %% "nlptools-chunk-opennlp" % "2.4.2",
     "edu.washington.cs.knowitall.nlptools" %% "nlptools-parse-clear" % "2.4.2" excludeAll(ExclusionRule(organization = "com.googlecode.clearnlp")),
-    "edu.washington.cs.knowitall.srlie" %% "openie-srl" % "1.0.0-RC1"   excludeAll(ExclusionRule(organization = "com.googlecode.clearnlp")),
+    "edu.washington.cs.knowitall.srlie" %% "openie-srl" % "1.0.0-RC1" excludeAll(ExclusionRule(organization = "com.googlecode.clearnlp")),
     "net.liftweb" %% "lift-json" % "2.5-RC5",
     "org.apache.solr" % "solr-solrj" % "4.3.0",
     "edu.washington.cs.knowitall.chunkedextractor" %% "chunkedextractor" % "1.0.4",
@@ -54,8 +54,8 @@ object SlotFillerBuild extends Build {
     "edu.washington.cs.knowitall.stanford-corenlp" % "stanford-postag-models" % "1.3.5",
     "org.slf4j" % "slf4j-api" % "1.7.2",
     "ch.qos.logback" % "logback-classic" % "1.0.9",
-    "ch.qos.logback" % "logback-core" % "1.0.9"
-    ),
+    "ch.qos.logback" % "logback-core" % "1.0.9",
+    "edu.washington.cs.knowitall.openie" %% "openie-linker" % "1.0" excludeAll(ExclusionRule(artifact = "reverb-core"), ExclusionRule(organization = "org.apache.derby"))),
     resolvers ++= Seq("amateras-repo" at "http://amateras.sourceforge.jp/mvn/")
   )).settings(net.virtualvoid.sbt.graph.Plugin.graphSettings: _*)
 

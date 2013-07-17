@@ -8,8 +8,8 @@ import java.io.PrintStream
  * okFills contains the set of acceptable answers (e.g. Slotfill and alternates). The primary (Slotfill) will always
  * be the first element...
  */
-case class BenchmarkAnswer(val okFills: Seq[String], val docId: String) {
-  
+case class BenchmarkAnswer(val fills: Seq[String], val docId: String) {
+  val lcFills = fills.map(_.toLowerCase).toSet
 }
 
 case class BenchmarkItem(val entityName: String, val entityType: String, val nodeId: String, val slot: Slot, val answers: Set[BenchmarkAnswer]) {
@@ -17,7 +17,7 @@ case class BenchmarkItem(val entityName: String, val entityType: String, val nod
   import edu.knowitall.tac2013.app.KBPQuery
   import edu.knowitall.tac2013.app.KBPQueryEntityType
   
-  def printString(answer: BenchmarkAnswer) = (Seq(entityName, entityType, nodeId, answer.docId, slot.name) ++ answer.okFills).mkString("\t")
+  def printString(answer: BenchmarkAnswer) = (Seq(entityName, entityType, nodeId, answer.docId, slot.name) ++ answer.fills).mkString("\t")
   def printStrings = (answers.toSeq map printString)
   
   
@@ -53,7 +53,7 @@ class Benchmarker(val solrExec: SolrQueryExecutor, val benchmarkItemSets: Iterab
 
     val filteredCandidates = items.map( item => (item.slot, FilterSolrResults.filterResults(unfiltered(item.slot), item.kbpQuery))).toMap
 
-    val bestAnswers = items.map( item => (item.slot, new SlotFillReranker(nullOutput).findSlotAnswers(item.slot, item.kbpQuery, filteredCandidates(item.slot)))).toMap
+    val bestAnswers = items.par.map( item => (item.slot, new SlotFillReranker(nullOutput).findSlotAnswers(item.slot, item.kbpQuery, filteredCandidates(item.slot)))).toMap
 
     val bestAnswersAllSlots = slots.map(s => (s, bestAnswers.getOrElse(s, Nil))).toMap
     
@@ -69,7 +69,7 @@ class Benchmarker(val solrExec: SolrQueryExecutor, val benchmarkItemSets: Iterab
     var usedAnswers: Set[BenchmarkAnswer] = Set.empty
     for (response <- responses) {
       // find an answer that matches
-      val matchingAnswers = item.answers.filter(_.okFills.contains(response.trimmedFill.string))
+      val matchingAnswers = item.answers.filter(_.lcFills.contains(response.trimmedFill.string.toLowerCase))
       if (matchingAnswers.nonEmpty) {
         unusedAnswers --= matchingAnswers
         usedAnswers ++= matchingAnswers
@@ -79,7 +79,7 @@ class Benchmarker(val solrExec: SolrQueryExecutor, val benchmarkItemSets: Iterab
       }
     }
     
-    val distinctUnusedAnswers = unusedAnswers.groupBy(_.okFills).map(_._2.head)
+    val distinctUnusedAnswers = unusedAnswers.groupBy(_.fills).map(_._2.head)
     
     for (answer <- distinctUnusedAnswers) {
       // only report distinct omissions
@@ -144,7 +144,7 @@ class Benchmarker(val solrExec: SolrQueryExecutor, val benchmarkItemSets: Iterab
   }
   
   def go: Iterable[String] = {
-    val responses = benchmarkItemSets.map(itemSet => (itemSet, getResponse(itemSet)))
+    val responses = benchmarkItemSets.par.map(itemSet => (itemSet, getResponse(itemSet)))
     
     val results = responses.flatMap { case (itemSet, resultsMap) =>
       val slotsToItems = itemSet.items.groupBy(_.slot).map { case (slot, items) => 
@@ -195,8 +195,8 @@ object Benchmarker {
       case (name :: typ :: nodeId :: slotname :: Nil, splits) => {
         val answers = splits.map { fields =>
           fields match {
-            case (_ :: _ :: _ :: docId :: _ :: slotfill :: alternates) =>
-              BenchmarkAnswer(slotfill :: alternates, docId)
+            case (_ :: _ :: _ :: docId :: _ :: slotfills) =>
+              BenchmarkAnswer(slotfills, docId)
             case _ => throw new RuntimeException("(#2) Malformed benchmark item fields:\n" + fields.mkString("\t"))
           }
         }
