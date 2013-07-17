@@ -40,6 +40,7 @@ public class StanfordAnnotatorHelperMethods {
 		Properties suTimeProps = new Properties();
 		suTimeProps.put("annotators", "tokenize, ssplit, pos, lemma, cleanxml, ner");
 		suTimeProps.put("sutime.binders", "0");
+		suTimeProps.put("clean.datetags","datetime|date|dateline");
 		this.suTimePipeline = new StanfordCoreNLP(suTimeProps);
 
 	}

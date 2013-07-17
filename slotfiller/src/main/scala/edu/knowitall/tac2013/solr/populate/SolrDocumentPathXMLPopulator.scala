@@ -14,6 +14,7 @@ import scala.Option.option2Iterable
 import org.apache.solr.common.SolrInputDocument
 import scala.io.Source
 import java.io.FileInputStream
+import java.util.regex.Pattern
 
 class SolrDocumentPathXMLPopulator private (val solrServer: ConcurrentUpdateSolrServer) {
 
@@ -60,6 +61,8 @@ object SolrDocumentPathXMLPopulator {
   
   private val queueSize = 1000
   private val threadCount = 4
+  val docIdLinePattern = Pattern.compile("^<DOC\\s?id", Pattern.CASE_INSENSITIVE)
+
   
   private def getDefaultSolrServer(solrUrl: String): ConcurrentUpdateSolrServer = {
     new ConcurrentUpdateSolrServer(solrUrl, queueSize, threadCount)
@@ -112,7 +115,7 @@ object SolrDocumentPathXMLPopulator {
     val idXmlPairs = for (d <- docSplitter.get) yield {
         val lines = d.lines
         var pair :Option[(String,String)] = None
-        val docIdLineOption = lines.filter(l => l.line.startsWith("<DOCID>")).headOption
+        val docIdLineOption = lines.filter(l => (docIdLinePattern.matcher(l.line).find())).headOption
         if(docIdLineOption.isDefined){
           val processedKbpDoc = new KbpProcessedDoc(docIdLineOption.get,None,None,lines)
           val docIdOption = processedKbpDoc.extractDocId
