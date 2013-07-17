@@ -23,7 +23,7 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
     pattern.relString match {
       case Some(relString) => {
         val noSemanticCategoriesString =  SolrQueryBuilder.semanticCategoryPattern.replaceAllIn(relString, "")
-        if (noSemanticCategoriesString != "") {
+        if (noSemanticCategoriesString.trim() != "") {
           Some("+relText:\"" + noSemanticCategoriesString + "\"")
         } else {
           None
@@ -44,7 +44,7 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
     pattern.arg2Begins match {
       case Some(arg2Begins) => {
         val noSemanticCategoriesString =  SolrQueryBuilder.semanticCategoryPattern.replaceAllIn(arg2Begins, "")
-        if (noSemanticCategoriesString != "") {
+        if (noSemanticCategoriesString.trim() != "") {
           Some("+arg2Text:\"" + noSemanticCategoriesString + "\"")
         } else {
           None
@@ -58,7 +58,7 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
     pattern.arg1Terms match {
       case Some(arg1Terms) => {
         val noSemanticCategoriesString =  SolrQueryBuilder.semanticCategoryPattern.replaceAllIn(arg1Terms, "")
-        if (noSemanticCategoriesString != "") {
+        if (noSemanticCategoriesString.trim() != "") {
           Some("+arg1Text:\"" + noSemanticCategoriesString + "\"")
         } else {
           None
@@ -72,7 +72,7 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
     pattern.arg2Terms match {
       case Some(arg2Terms) => {
         val noSemanticCategoriesString =  SolrQueryBuilder.semanticCategoryPattern.replaceAllIn(arg2Terms, "")
-        if (noSemanticCategoriesString != "") {
+        if (noSemanticCategoriesString.trim() != "") {
           Some("+arg2Text:\"" + noSemanticCategoriesString + "\"")
         } else {
           None
@@ -112,7 +112,7 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
     if (!pattern.isValid) {
       None
     } else {
-      val queryFields = Seq(arg1TextConstraint, relTextConstraint, arg2TextConstraint, arg2StartConstraint).flatten
+      val queryFields = Seq(arg1TextConstraint, relTextConstraint, arg2TextConstraint, arg2StartConstraint,arg1TermsConstraint,arg2TermsConstraint).flatten
       val query = SolrQuery(getQueryString(queryFields), SolrQueryType.REGULAR, pattern)
       Some(query)
     }
@@ -123,7 +123,7 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
     if (!pattern.isValid || kbpQuery.nodeId.isEmpty) {
       None
     } else {
-      val queryFields = Seq(arg1LinkConstraint, relTextConstraint, arg2LinkConstraint, arg2StartConstraint).flatten
+      val queryFields = Seq(arg1LinkConstraint, relTextConstraint, arg2LinkConstraint, arg2StartConstraint,arg1TermsConstraint,arg2TermsConstraint).flatten
       val query = SolrQuery(getQueryString(queryFields), SolrQueryType.LINKED, pattern)
       Some(query)
     }
@@ -138,7 +138,7 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
 	    else{
 	      val seqOfCorefQueries = 
 	      for(docId <- kbpQuery.docIds) yield {
-	    	val queryFields = Seq(getDocIdConstraint(docId),relTextConstraint,arg2StartConstraint).flatten
+	    	val queryFields = Seq(getDocIdConstraint(docId),relTextConstraint,arg2StartConstraint,arg1TermsConstraint,arg2TermsConstraint).flatten
 	    	val query = SolrQuery(getQueryString(queryFields), SolrQueryType.COREF, pattern)
 	    	query
 	      }

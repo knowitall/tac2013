@@ -142,7 +142,7 @@ object FilterSolrResults {
       }
       return None
     }
-     else if(semanticType == "Location"){
+     else if(semanticType == "Location" || semanticType =="City" || semanticType =="Country" || semanticType =="Stateorprovince"){
       val types = SemanticTaggers.useStandfordNERTagger(chunkedSentence)
       for (t <- types) {
         if(intervalMatches(t.interval,interval,backwards)) {
@@ -154,6 +154,7 @@ object FilterSolrResults {
       return None
       
     }
+
     else if (semanticType == "School") {
       val types = SemanticTaggers.useEducationalOrganizationTagger(chunkedSentence)
       for (t <- types) {
