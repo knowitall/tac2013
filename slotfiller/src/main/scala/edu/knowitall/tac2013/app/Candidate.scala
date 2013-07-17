@@ -18,6 +18,8 @@ class TrimmedFill(var string: String, var interval: Interval){
 }
 
 class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, val types: List[Type]) {
+  
+  import Candidate._
 
   def pattern = solrQuery.pattern 
   def queryType = solrQuery.queryType
@@ -140,32 +142,23 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
   }
   
   private def getTrimmedFill(): TrimmedFill = {
-    var trimmedFillString: Option[String] = None
-    
-    if(types.isEmpty){
-      return basicTrim(fillField.originalText,fillField.tokenInterval)
-    }
-    
-    //there are types from the tagger that was ran on
+
+    val intersectingTypes = types.filter(_.interval.intersects(fillField.tokenInterval))
+    if (intersectingTypes.isEmpty) {
+      basicTrim(fillField.originalText, fillField.tokenInterval)
+    } //there are types from the tagger that was ran on
     //the appropriate slot fill type
-    else{
-      var intersectingTypes = List[Type]()
-      for(t <- types){
-        if(t.interval().intersects(fillField.tokenInterval)){
-          intersectingTypes = intersectingTypes ::: List(t)
+    else {
+      chooseBestInterval(intersectingTypes) match {
+        case Some(bestType) => {
+          // Type doesn't seem to correctly return text()
+          val bestTokens = extr.sentence.chunkedTokens(bestType.interval)
+          val text = originalText(bestTokens)
+          basicTrim(text, bestType.interval)
         }
-      }
-      if(!intersectingTypes.isEmpty){
-        val bestInterval = chooseBestInterval(intersectingTypes)
-        if(bestInterval.isDefined){
-           return basicTrim(bestInterval.get.text(),bestInterval.get.interval())
+        case None => {
+          basicTrim(fillField.originalText, fillField.tokenInterval)
         }
-        else{
-          return basicTrim(fillField.originalText,fillField.tokenInterval)
-        }
-      }
-      else{
-        return basicTrim(fillField.originalText,fillField.tokenInterval)
       }
     }
   }
@@ -196,6 +189,8 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
 
 object Candidate {
   
+  import edu.knowitall.tool.tokenize.Token
+  
   type Candidates = Seq[Candidate]
   
   def groupScore(candidates: Candidates): Double = {
@@ -205,5 +200,14 @@ object Candidate {
     1 - candidates.map(c => 1 - c.extr.confidence).reduce(_ * _)
   }
 
-  
+  def originalText(tokens: Iterable[Token]) = {
+    val builder = new StringBuilder()
+    
+    for (token <- tokens) {
+      builder.append(" " * (token.offset - builder.length - tokens.head.offset))
+      builder.append(token.string)
+    }
+
+    builder.toString()
+  }
 }
