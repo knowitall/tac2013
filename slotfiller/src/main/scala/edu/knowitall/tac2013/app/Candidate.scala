@@ -87,14 +87,14 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
     val startOffset = extr.sentence.startOffset
     val firstToken = extr.sentence.chunkedTokens(fill.interval).minBy(_.offset)
     val lastToken = extr.sentence.chunkedTokens(fill.interval).maxBy(t => t.offset + t.string.length)
-    Interval.closed(firstToken.offset + startOffset, lastToken.offset + lastToken.string.length + startOffset)
+    Interval.closed(firstToken.offset + startOffset, lastToken.offset + lastToken.string.length + startOffset - 1)
   }
   
   def getOffset(field: KbpExtractionField): Interval = {
     val startOffset = extr.sentence.startOffset
     val firstToken = field.tokens.minBy(_.offset)
     val lastToken = field.tokens.maxBy(t => t.offset + t.string.length)
-    Interval.closed(firstToken.offset + startOffset, lastToken.offset + lastToken.string.length + startOffset)
+    Interval.closed(firstToken.offset + startOffset, lastToken.offset + lastToken.string.length + startOffset - 1)
   }
   
   private def basicTrim(str: String, interval: Interval): TrimmedFill = {    
@@ -167,7 +167,7 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
   
   lazy val entityOffsetInterval = getOffset(entityField)
   
-  lazy val fillOffsetInterval = getOffset(fillField)
+  lazy val fillOffsetInterval = getOffset(trimmedFill)
   
   lazy val relOffsetInterval = getOffset(extr.rel)
   

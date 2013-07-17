@@ -5,6 +5,7 @@ import edu.knowitall.tac2013.solr.query.SolrQueryExecutor
 import edu.knowitall.tac2013.app.FilterSolrResults.filterResults
 import edu.knowitall.tac2013.app.util.DateUtils
 import edu.knowitall.tac2013.solr.query.SolrHelper
+import scopt.OptionParser
 
 object KBPQueryExecutor {
 
@@ -27,37 +28,39 @@ object KBPQueryExecutor {
     outFmt.printAnswers(smoothedSlotBestAnswers, kbpQuery)
   }
 
-  def executeKbpQueries(queryExecutor: SolrQueryExecutor, kbpQueryList: List[KBPQuery], outputPath: String) {
-
-    //delete output file before appending to it
-    val f = new File(outputPath)
-    if (f.exists()) {
-      f.delete()
-    }
-
-    val output = new PrintStream(outputPath)
-
-    val outFmt = OutputFormatter.detailedAnswersOnly(output)
-    
-    for (kbpQuery <- kbpQueryList) {
-      executeKbpQuery(queryExecutor, kbpQuery, outFmt)
-    }
-    output.close()
-  }
-
   def main(args: Array[String]) {
 
-    assert(args.length == 3,
-      "there should be three arguments: path to KBP query File, path to the output File, and \"old\" or \"new\" to specify corpus")
-
-    val queryExecutor = SolrQueryExecutor.getInstance(args(2))
-    //set configs for SolrHelper
-    SolrHelper.setConfigurations(args(2), false)
+    var queryFile = "."
+    var outputFile = "."
+    var corpus = "old"
+    var detailed = false
+    var corefOn = false
     
-    val KBPQueryPath = args(0)
-    val outputPath = args(1)
+    val parser = new OptionParser() {
+      arg("queryFile", "Path to query file.", { s => queryFile = s })
+      arg("outputFile", "Path to output file.", { s => outputFile = s })
+      arg("corpus", "Either \"old\" or \"new\".", { s => corpus = s })
+      opt("detailed", "Produce more verbose output", { detailed = true })
+      opt("coref", "Turn on coref module", { corefOn = true })
+    }
+    
+    if (!parser.parse(args)) return
 
-    val kbpQueryList = KBPQuery.parseKBPQueries(KBPQueryPath)
-    executeKbpQueries(queryExecutor, kbpQueryList, outputPath)
+    val queryExecutor = SolrQueryExecutor.getInstance(corpus, corefOn)
+    //set configs for SolrHelper
+    SolrHelper.setConfigurations(corpus, corefOn)
+    
+    val outputStream = new PrintStream(outputFile)
+    val outputFormatter = detailed match {
+      case true => OutputFormatter.detailedAnswersOnly(outputStream)
+      case false => OutputFormatter.formattedAnswersOnly(outputStream)
+    }
+
+    val kbpQueryList = KBPQuery.parseKBPQueries(queryFile)
+        for (kbpQuery <- kbpQueryList) {
+      executeKbpQuery(queryExecutor, kbpQuery, outputFormatter)
+    }
+    
+    outputStream.close()
   }
 }
