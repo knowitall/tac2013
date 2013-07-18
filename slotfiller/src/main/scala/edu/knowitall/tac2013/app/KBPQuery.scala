@@ -19,6 +19,7 @@ case class KBPQuery (val id: String, val name: String, val doc: String,
   
   lazy val docIdToSentNumDocIdPairMap = SolrHelper.getDocIDMapToSentNumsForEntityNameAndNodeID(name, nodeId)
   lazy val docIds = docIdToSentNumDocIdPairMap.keySet.toList
+  
 }
 
 object KBPQuery {

@@ -358,6 +358,27 @@ object FilterSolrResults {
           case "arg2" => candidate.extr.arg2.originalText
           case _ => throw new Exception("Poorly formatted entityIn field, should be arg1 or arg2")
         }
+        //if the query does have a nodeID make sure that the entity does not have a different nodeID
+        val noLinkConflict = {
+	        if(kbpQuery.nodeId.isDefined){
+	          val entityNodeID = kbpQuery.nodeId.get
+	          val thisNodeIDOption = candidate.entityField.wikiLink
+	          if(thisNodeIDOption.isDefined){
+	            val thisNodeID = thisNodeIDOption.get
+	            if(entityNodeID == thisNodeID){
+	               true
+	            }
+	            else{
+	              false
+	            }
+	          }
+	          else{
+	            true
+	          }
+	          
+	        }
+	        true
+        }
 
         val entityFromExtractionSplit = entityFromExtraction.toString().split(" ")
 
@@ -374,7 +395,7 @@ object FilterSolrResults {
           count = count + 1
         }
 
-        true
+        true && noLinkConflict
       } else {
 
         throw new Exception("KbpSlotToOpenIEData instance is not valid.")

@@ -156,7 +156,7 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
       regularQuery.toSeq ++ linkedQuery ++ corefQueries.get
     }
     else{
-      regularQuery.toSeq ++ linkedQuery
+       regularQuery.toSeq ++ linkedQuery
     }
   }
 }
