@@ -9,6 +9,41 @@ class SlotFillReranker(fmt: OutputFormatter) {
 
   import SlotFillReranker._
   
+  val datePattern = "\\w{4}-\\w{2}-\\w{2}".r.pattern
+  def isDatePattern(str: String): Boolean = datePattern.matcher(str).matches() 
+  
+  def getNameGroups(slotCandidates: Seq[Candidate]): Map[String, Seq[Candidate]] = {
+    // merge by wikilink
+    val trimGroups = mergeByLinks(slotCandidates)
+    // merge lone first names into longer names (e.g. 'Jones' gets merged with 'Jones Smith')
+    val prefixesMerged = mergePrefixes(trimGroups)
+    // merge by last name (e.g. 'Jones Smith' gets merged with 'Smith')
+    val lastKeys = prefixesMerged.iterator.toSeq.flatMap { case (key, candidates) => candidates.map(c => (key.split(" ").last, c)) }
+    val groups = lastKeys.groupBy(_._1).map { case (key, keysNcandidates) => (key, keysNcandidates.map(_._2)) }
+    groups
+  }
+
+  def rankNameGroups(nameGroups: Map[String, Seq[Candidate]]): Seq[(String, Seq[Candidate])] = {
+    // rank extractions by trimFill frequency * trimFill length
+    nameGroups.iterator.toSeq.sortBy(p => -Candidate.groupScore(p._2)).map {
+      case (key, candidates) =>
+        val trimGroups = candidates.groupBy(_.trimmedFill.string)
+        val sortedTrimGroups = trimGroups.toSeq.sortBy { case (trim, candidates) => -trim.length * candidates.size }
+        val sortedCandidates = sortedTrimGroups.flatMap { case (trim, candidates) => candidates }
+        (sortedCandidates.head.trimmedFill.string, sortedCandidates)
+    }
+  }
+  
+  def rankDateGroups(dateGroups: Map[String, Seq[Candidate]]): Seq[(String, Seq[Candidate])] = {
+    // rank extractions by how specific the date is
+    // e.g. rank by fewest number of X's...
+    dateGroups.iterator.toSeq.sortBy { case (dateString, candidates) =>
+      
+      val notDatePenalty = if (isDatePattern(dateString)) 0 else 1000
+      dateString.count(_ == 'X') - (candidates.size.toDouble / 2) + notDatePenalty
+    }
+  }
+  
   /**
    * Requires that all candidates (if any) are for the same slot.
    */
@@ -19,29 +54,20 @@ class SlotFillReranker(fmt: OutputFormatter) {
     else {
       
       val maxAnswers = slot.maxResults
+      val fillTypes = slot.patterns.flatMap(_.slotType).toSet
+      val dateFill = fillTypes.contains("Date")
       
       require(slotCandidates.forall(_.pattern.slotName.equals(slot.name)))
       
-      val trimGroups = mergeByLinks(slotCandidates)
+      val groups = dateFill match {
+        case false => getNameGroups(slotCandidates)
+        case true => slotCandidates.groupBy(_.trimmedFill.string)
+      }
       
-      //fmt.printFillGroups("Grouped by link then trim:", slot, trimGroups)
-      
-      val prefixesMerged = mergePrefixes(trimGroups)
-      
-      //fmt.printFillGroups("Prefix trim groups merged:", slot, prefixesMerged)
-      
-      //val groups = getSuffixGroups(slot, prefixesMerged)
-      val lastKeys = prefixesMerged.iterator.toSeq.flatMap { case (key, candidates) => candidates.map(c => (key.split(" ").last, c)) }
-      val groups = lastKeys.groupBy(_._1).map { case (key, keysNcandidates) => (key, keysNcandidates.map(_._2)) }
-      
-      //fmt.printFillGroups("Merged and grouped:", slot, groups)
-      
-      // rank extractions my trimFill frequency * trimFill length
-      val rankedAnswers = groups.iterator.toSeq.sortBy(p => -Candidate.groupScore(p._2)).map { case (key, candidates) =>
-        val trimGroups = candidates.groupBy(_.trimmedFill.string)
-        val sortedTrimGroups = trimGroups.toSeq.sortBy { case (trim, candidates) => -trim.length * candidates.size } 
-        val sortedCandidates = sortedTrimGroups.flatMap { case (trim, candidates) => candidates }
-        (sortedCandidates.head.trimmedFill.string, sortedCandidates)
+      // 
+      val rankedAnswers = dateFill match {
+        case false => rankNameGroups(groups)
+        case true => rankDateGroups(groups)
       }
       
       fmt.printFillGroups("Merged and grouped with best answers first", slot, rankedAnswers.toMap)

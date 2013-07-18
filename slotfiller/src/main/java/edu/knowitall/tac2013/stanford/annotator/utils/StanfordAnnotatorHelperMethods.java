@@ -1,29 +1,21 @@
 package edu.knowitall.tac2013.stanford.annotator.utils;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.nio.CharBuffer;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.FileUtils;
 
 import edu.knowitall.collection.immutable.Interval;
 import edu.stanford.nlp.ling.CoreAnnotations.*;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
-import edu.stanford.nlp.time.SUTimeMain;
 import edu.stanford.nlp.time.TimeAnnotations.TimexAnnotation;
-import edu.stanford.nlp.time.TimeAnnotations.TimexAnnotations;
-import edu.stanford.nlp.time.SUTime;
 import edu.stanford.nlp.time.Timex;
 import edu.stanford.nlp.util.CoreMap;
 
@@ -83,6 +75,7 @@ public class StanfordAnnotatorHelperMethods {
 	private String normalizeTimex(Timex t){
 		if(t.timexType() == "DATE"){
 	      String timexString = t.value();
+	      if (timexString == null) return "";
 	      String formattedString = timexString;
 	      if(Pattern.matches("\\w{4}", timexString)){
 	    	  formattedString = timexString +"-XX-XX";
