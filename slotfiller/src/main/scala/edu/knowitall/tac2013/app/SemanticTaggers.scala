@@ -187,7 +187,8 @@ object SemanticTaggers {
       typeList = typeList ::: types
 
     } else if (slotType == "ProperNoun"){
-      //need to figure out what to do for general ProperNoun semantic filter
+        val types = SemanticTaggers.useStandfordNERTagger(sent)
+        typeList = typeList ::: types
 
     }  else if ((slotType =="<integer>-year-old") || (slotType == "Integer")){
       val types = SemanticTaggers.useIntegerTagger(sent)

@@ -18,6 +18,7 @@ case class Slot(name: String, maxResults: Int, patterns: Seq[SlotPattern]) {
   def isStateOrProvinceList = if(name.contains("states")) true else false
   def isList = if(maxResults > 1) true else false
   def isDate = if(name.contains("date")) true else false
+  def isAlternateName = if(name.contains("alternate_names")) true else false
 }
 
 object Slot {

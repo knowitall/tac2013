@@ -210,7 +210,11 @@ object FilterSolrResults {
       return None
 
     } else if (semanticType == "ProperNoun"){
-      //need to figure out what to do for general ProperNoun semantic filter
+      val types = SemanticTaggers.useStandfordNERTagger(chunkedSentence)
+      for (t <- types) {
+        if(intervalMatches(t.interval,interval,backwards)) return Some(t.interval())
+
+      }
       
       return None
     }  else if ((semanticType =="<integer>-year-old") || (semanticType == "Integer")){
@@ -400,106 +404,55 @@ object FilterSolrResults {
 
       for (t <- types) {
         if (t.interval().intersects(slotLocation)) {
-          slotType match {
-            case "Organization" => {
-              if (t.descriptor() == "StanfordORGANIZATION") {
-                return true
-              }
-            }
-            case "Person" => {
-              if (t.descriptor() == "StanfordPERSON") {
-                return true
-              }
-            }
-            // default case will be location
-            case _ => {
-              //if trimmed Fill does not exist then the Candidate
-              //constructor has filtered out this extraction
-              val typesInSlotFill = types.filter(t => (t.interval().intersects(slotLocation)))
-              if(findLocationTaggedType(typesInSlotFill,slotType).isDefined){
-                return true
-              }
-              else{
-                return false
-              }
-
-            }
+          if(t.interval().start - slotLocation.start < 5){
+	          slotType match {
+	            case "Organization" => {
+	              if (t.descriptor() == "StanfordORGANIZATION") {
+	
+	                return true
+	              }
+	            }
+	            case "Person" => {
+	              if (t.descriptor() == "StanfordPERSON") {
+	                return true
+	              }
+	            }
+	            // default case will be location
+	            case _ => {
+	              //if trimmed Fill does not exist then the Candidate
+	              //constructor has filtered out this extraction
+	              val typesInSlotFill = types.filter(t => (t.interval().intersects(slotLocation)))
+	              if(findLocationTaggedType(typesInSlotFill,slotType).isDefined){
+	                return true
+	              }
+	              else{
+	                return false
+	              }
+	
+	            }
+	          }
           }
         }
       }
 
       return false
-    } else if (slotType == "School") {
+    } else if (slotType == "School" || slotType == "JobTitle" ||slotType == "HeadJobTitle" ||
+        slotType == "Nationality" || slotType == "Religion" || slotType == "Date" ||
+        slotType == "ProperNoun" || slotType =="<integer>-year-old" || slotType == "Integer") {
       
       for (t <- types) {
-        if (t.interval().intersects(slotLocation)) return true
+        if (t.interval().intersects(slotLocation)){
+          if(t.interval().start - slotLocation.start < 5){
+            return true
+          }
+        } 
 
       }
 
-      return false
-
-    } else if (slotType == "JobTitle") {
-
-
-      for (t <- types) {
-        if (t.interval().intersects(slotLocation)) return true
-
-      }
-
-      return false
-
-    } else if (slotType == "HeadJobTitle"){
-      
-      for(t <- types){
-        if (t.interval().intersects(slotLocation)) return true
-      }
-      
       return false
     }
-      else if (slotType == "Nationality") {
 
-
-      for (t <- types) {
-        if (t.interval().intersects(slotLocation)) return true
-
-      }
-
-      return false
-
-    } else if (slotType == "Religion") {
-
-
-
-      for (t <- types) {
-        if (t.interval().intersects(slotLocation)) return true
-
-      }
-
-      return false
-
-    } else if (slotType == "Date") {
-
-      for (t <- types) {
-        if (t.interval().intersects(slotLocation)) return true
-
-      }
-
-      return false
-
-    } else if (slotType == "ProperNoun"){
-      //need to figure out what to do for general ProperNoun semantic filter
-      
-      return true
-    }  else if ((slotType =="<integer>-year-old") || (slotType == "Integer")){
-
-      for (t <- types) {
-        if (t.interval().intersects(slotLocation)) return true
-
-      }
-
-      return false
-      
-    } else {
+    else {
     
     
 
@@ -507,6 +460,17 @@ object FilterSolrResults {
 
     }
 
+  }
+  
+  def satisfiesLengthFilter(candidate: Candidate): Boolean = {
+    
+    //if an alternate name slot fill is longer than 5 tokens, it should be filtered out
+    if(Slot.fromName(candidate.pattern.slotName).isAlternateName){
+      if(candidate.trimmedFill.interval.length >5) return false
+    }
+    
+    
+    true
   }
 
   //filters results from solr by calling helper methods that look at the KbpSlotToOpenIEData specifications and compare
@@ -520,7 +484,8 @@ object FilterSolrResults {
             satisfiesRelFilter(candidate) &&
             satisfiesTermFilters(candidate) &&
             satisfiesEntityFilter(kbpQuery)(candidate) &&
-            satisfiesSemanticFilter(candidate))
+            satisfiesSemanticFilter(candidate) &&
+            satisfiesLengthFilter(candidate))
     
     unfiltered filter combinedFilter
   }
