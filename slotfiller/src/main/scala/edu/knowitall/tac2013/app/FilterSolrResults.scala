@@ -252,7 +252,22 @@ object FilterSolrResults {
         
         
       }
-      case None => true
+      case None => {
+        //if nothing specified then throw out any extractions where arg2 does begin with a preposition
+        val firstTokenInArg2Option = candidate.extr.arg2.tokens.headOption
+        if(firstTokenInArg2Option.isDefined){
+          val firstTokenInArg2 = firstTokenInArg2Option.get
+          if(firstTokenInArg2.isPreposition){
+            false
+          }
+          else{
+            true
+          }
+        }
+        else{
+          false
+        }
+      }
     }
   }
 
