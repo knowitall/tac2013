@@ -116,7 +116,7 @@ public class StanfordAnnotatorHelperMethods {
 		    	for(CoreLabel token: sentence.get(TokensAnnotation.class)){
 		    		Timex tt = token.get(TimexAnnotation.class);
 		    		if(charInterval.intersects(Interval.closed(token.beginPosition(), token.endPosition()))){
-		    			if(tt != null){
+		    			if(tt != null && tt.value() != null){
 		    				return normalizeTimex(tt);
 		    			}
 		    		}
