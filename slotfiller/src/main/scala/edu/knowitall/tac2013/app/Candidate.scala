@@ -10,6 +10,7 @@ import edu.knowitall.tool.chunk.ChunkedToken
 import edu.knowitall.taggers.Type
 import edu.knowitall.collection.immutable.Interval
 import edu.knowitall.tac2013.app.LocationHelper.findLocationTaggedType
+import scala.math.Ordering
 
 class TrimmedType(var string: String, var interval: Interval){
   
@@ -128,6 +129,12 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
      
   }
   
+  private def getLongestRightmostInterval(intersectingTypes : List[Type]) : Option[Type]= {
+    
+   Some(intersectingTypes.maxBy(_.text().length()))
+   
+  }
+  
   // intersectingTypes can't be empty when called
   private def chooseBestInterval (intersectingTypes: List[Type]): Option[Type] ={
     val slotType = pattern.slotType.getOrElse("")
@@ -135,8 +142,25 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
       slotType == "City"){
       findLocationTaggedType(intersectingTypes,slotType)
     }
+    
+    else if(slotType =="JobTitle" || slotType =="School" || slotType =="Nationality" ||
+        slotType =="Country" || slotType == "Crime" ){
+      getLongestRightmostInterval(intersectingTypes)
+    }
     else{
       // return first type in list
+      var printAll = false
+      for(t <- intersectingTypes){
+        if(t.text().contains("executive"))
+          printAll = true
+      }
+      
+      if(printAll){
+        println("Printing all intersecting types")
+        for(t <- intersectingTypes){
+          println(t.text() + " " + t.interval())
+        }
+      }
       Some(intersectingTypes.head)
     }
   }

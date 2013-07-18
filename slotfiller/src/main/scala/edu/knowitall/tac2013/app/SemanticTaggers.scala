@@ -195,6 +195,10 @@ object SemanticTaggers {
       typeList = typeList ::: types
       
     }
+    else if (slotType =="Crime"){
+       val types = SemanticTaggers.useCrimeTagger(sent)
+      typeList = typeList ::: types     
+    }
       
     //this gives types in left to right order
     typeList.reverse

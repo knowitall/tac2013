@@ -227,6 +227,16 @@ object FilterSolrResults {
 
       return None
       
+    } else if (semanticType =="Crime"){
+
+      val types = SemanticTaggers.useCrimeTagger(chunkedSentence)
+      for (t <- types) {
+        if(intervalMatches(t.interval,interval,backwards)) return Some(t.interval())
+
+      }
+
+      return None
+      
     } else {
     
     
@@ -453,7 +463,8 @@ object FilterSolrResults {
       return false
     } else if (slotType == "School" || slotType == "JobTitle" ||slotType == "HeadJobTitle" ||
         slotType == "Nationality" || slotType == "Religion" || slotType == "Date" ||
-        slotType == "ProperNoun" || slotType =="<integer>-year-old" || slotType == "Integer") {
+        slotType == "ProperNoun" || slotType =="<integer>-year-old" || slotType == "Integer" ||
+        slotType =="Crime") {
       
       for (t <- types) {
         if (t.interval().intersects(slotLocation)){
