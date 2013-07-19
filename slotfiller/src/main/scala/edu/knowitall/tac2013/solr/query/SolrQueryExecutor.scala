@@ -18,8 +18,7 @@ class SolrQueryExecutor(val solrClient: SolrClient, val corefOn: Boolean) {
   def this(url: String) = this(new SolrClient(url),false)
   def this(url: String, corefOn: Boolean) = this(new SolrClient(url), corefOn)
   
-  
-  private def issueSolrQuery(queryString: String): Seq[KbpExtraction] = {
+  def issueSolrQuery(queryString: String): Seq[KbpExtraction] = {
     
     // issue query
     val query = solrClient.query(queryString)

@@ -3,7 +3,7 @@ package models
 import java.util.ArrayList
 
 import scala.collection.JavaConverters._
-
+import edu.knowitall.collection.immutable.Interval
 import edu.knowitall.tac2013.openie._
 
 case class ExtractionInstance(docId: String, arg1: String, rel: String, arg2: String,
@@ -48,6 +48,18 @@ case class ExtractionInstance(docId: String, arg1: String, rel: String, arg2: St
 }
 
 object ExtractionInstance {
+  
+  def getOffset(extr: KbpExtraction, field: KbpExtractionField): Interval = {
+    val startOffset = extr.sentence.startOffset
+    val firstToken = field.tokens.minBy(_.offset)
+    val lastToken = field.tokens.maxBy(t => t.offset + t.string.length)
+    Interval.closed(firstToken.offset + startOffset, lastToken.offset + lastToken.string.length + startOffset - 1)
+  }
+  def offsetString(extr: KbpExtraction, field: KbpExtractionField): String = {
+    val interval = getOffset(extr, field)
+    "offsets=%d-%d".format(interval.start, interval.last)
+  }
+  
   class ExtractionInstanceOrdering(groupBy: ExtractionPart) extends Ordering[ExtractionInstance] {
     def compare(a: ExtractionInstance, b: ExtractionInstance) =
       implicitly[Ordering[(Int, Double)]].compare(a.score(groupBy), b.score(groupBy))
@@ -56,12 +68,12 @@ object ExtractionInstance {
   def fromKbpExtraction(e: KbpExtraction): ExtractionInstance = {
     
     def postags(field: KbpExtractionField) = field.tokens.map(_.postag).mkString(" ")
-    def linkTypes(field: KbpExtractionField) = field.wikiLink map { link =>
+    def linkTypes(extr: KbpExtraction, field: KbpExtractionField) = Seq(offsetString(extr, field)) ++ field.wikiLink.map { link =>
       s"WikiLink(${link.name}, fbid=${link.fbid}, conf=${link.score}, nodeId=${link.nodeId.getOrElse("Nil")})" 
     } toSeq
     
     ExtractionInstance(e.sentence.docId, e.arg1.originalText, e.rel.originalText, e.arg2.originalText,
-        linkTypes(e.arg1), linkTypes(e.rel), linkTypes(e.arg2), e.arg1.wikiLink.flatMap(_.nodeId), e.arg2.wikiLink.flatMap(_.nodeId),
+        linkTypes(e, e.arg1), linkTypes(e, e.rel), linkTypes(e, e.arg2), e.arg1.wikiLink.flatMap(_.nodeId), e.arg2.wikiLink.flatMap(_.nodeId),
         postags(e.arg1), postags(e.rel), postags(e.arg2), 
         e.sentenceText, e.extractor, e.confidence, 1)
   }
