@@ -197,7 +197,7 @@ object SemanticTaggers {
     }
     else if (slotType =="Crime"){
        val types = SemanticTaggers.useCrimeTagger(sent)
-      typeList = typeList ::: types     
+       typeList = typeList ::: types
     }
       
     //this gives types in left to right order

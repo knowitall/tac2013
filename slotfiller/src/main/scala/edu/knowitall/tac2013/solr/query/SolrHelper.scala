@@ -1,6 +1,8 @@
 package edu.knowitall.tac2013.solr.query
 
 import jp.sf.amateras.solr.scala.SolrClient
+import edu.stanford.nlp.dcoref.CorefChain.CorefMention
+import edu.knowitall.collection.immutable.Interval
 
 object SolrHelper {
   

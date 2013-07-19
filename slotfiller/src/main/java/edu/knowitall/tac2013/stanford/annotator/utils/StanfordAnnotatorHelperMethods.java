@@ -4,13 +4,19 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.IOUtils;
 
 import edu.knowitall.collection.immutable.Interval;
+import edu.stanford.nlp.dcoref.CorefChain;
+import edu.stanford.nlp.dcoref.CorefChain.CorefMention;
+import edu.stanford.nlp.dcoref.CorefCoreAnnotations.CorefChainAnnotation;
+import edu.stanford.nlp.dcoref.CorefCoreAnnotations.CorefClusterIdAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.*;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.Annotation;
@@ -26,6 +32,7 @@ import edu.knowitall.tac2013.solr.query.SolrHelper;
 public class StanfordAnnotatorHelperMethods {
 	
 	private final StanfordCoreNLP suTimePipeline;
+	private final StanfordCoreNLP corefPipeline;
 	private String filePath = "/homes/gws/jgilme1/docs/";
 	
 	public StanfordAnnotatorHelperMethods(){
@@ -34,6 +41,10 @@ public class StanfordAnnotatorHelperMethods {
 		suTimeProps.put("sutime.binders", "0");
 		suTimeProps.put("clean.datetags","datetime|date|dateline");
 		this.suTimePipeline = new StanfordCoreNLP(suTimeProps);
+		
+		Properties corefProps = new Properties();
+	    corefProps.put("annotators", "tokenize, ssplit, pos, lemma, cleanxml, ner, parse, dcoref");
+		this.corefPipeline = new StanfordCoreNLP(corefProps);
 
 	}
 	
@@ -118,5 +129,34 @@ public class StanfordAnnotatorHelperMethods {
 		}
 	    
 	    return originalString;
+	}
+	
+	public List<CorefMention> getCorefMentions(String xmlString, Interval interval) {
+		Annotation document = new Annotation(xmlString);
+		corefPipeline.annotate(document);
+		
+		
+		
+		Map<Integer, CorefChain> graph = document.get(CorefChainAnnotation.class);
+
+		Integer corefClusterID = null;
+		
+		List<CoreMap> sentences = document.get(SentencesAnnotation.class);
+	    for(CoreMap sentence: sentences){
+	    	for(CoreLabel token: sentence.get(TokensAnnotation.class)){
+	    		if(token.beginPosition() == interval.start()){
+	    			corefClusterID = token.get(CorefClusterIdAnnotation.class);
+	    		}
+	    	}
+	    }
+	    
+		
+	    if(corefClusterID != null){
+	    	return graph.get(corefClusterID).getMentionsInTextualOrder();
+	    }
+	    else{
+	    	return new ArrayList<CorefMention>();
+	    }
+		
 	}
 }
