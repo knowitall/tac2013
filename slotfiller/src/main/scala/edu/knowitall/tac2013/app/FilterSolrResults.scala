@@ -450,17 +450,19 @@ object FilterSolrResults {
 
       for (t <- types) {
         if (t.interval().intersects(slotLocation)) {
-          if(t.interval().start - slotLocation.start < 5){
 	          slotType match {
 	            case "Organization" => {
 	              if (t.descriptor() == "StanfordORGANIZATION") {
-	
-	                return true
+	            	  if(t.interval().start - slotLocation.start < 5){
+	            		  	return true
+	            	  }
 	              }
 	            }
 	            case "Person" => {
 	              if (t.descriptor() == "StanfordPERSON") {
-	                return true
+	            	  if(t.interval().start - slotLocation.start < 5){
+	                      return true
+	            	  }
 	              }
 	            }
 	            // default case will be location
@@ -477,7 +479,6 @@ object FilterSolrResults {
 	
 	            }
 	          }
-          }
         }
       }
 
@@ -489,16 +490,12 @@ object FilterSolrResults {
       
       for (t <- types) {
         if (t.interval().intersects(slotLocation)){
-          if(t.interval().start - slotLocation.start < 5){
             return true
           }
         } 
 
-      }
-
       return false
     }
-
     else {
     
     
@@ -519,6 +516,26 @@ object FilterSolrResults {
     
     true
   }
+  
+  def satisfiesSlotFilter(candidate: Candidate): Boolean = {
+    
+    if(Slot.fromName(candidate.pattern.slotName).isCauseOfDeath){     
+       if(candidate.fillField.tokens.headOption.isDefined){
+         if(candidate.fillField.tokens.head.isPronoun)
+           return false
+       }       
+    }
+    else if(Slot.fromName(candidate.pattern.slotName).isTitle){
+      
+    	if(candidate.fillField.tokenInterval.size == 1){
+    	  if(candidate.fillField.originalText == "leader" || candidate.fillField.originalText == "head"){
+    	    return false
+    	  }
+    	}    	
+    }
+    return true
+    
+  }
 
   //filters results from solr by calling helper methods that look at the KbpSlotToOpenIEData specifications and compare
   //that data with the results from solr to see if the relation is still a candidate
@@ -532,7 +549,8 @@ object FilterSolrResults {
             satisfiesTermFilters(candidate) &&
             satisfiesEntityFilter(kbpQuery)(candidate) &&
             satisfiesSemanticFilter(candidate) &&
-            satisfiesLengthFilter(candidate))
+            satisfiesLengthFilter(candidate) &&
+            satisfiesSlotFilter(candidate))
     
     unfiltered filter combinedFilter
   }

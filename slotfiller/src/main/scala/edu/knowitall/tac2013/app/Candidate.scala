@@ -24,6 +24,7 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
 
   def pattern = solrQuery.pattern 
   def queryType = solrQuery.queryType
+  def kbpQuery = solrQuery.kbpQuery
 
   def debugString = {
     
@@ -98,7 +99,7 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
     Interval.closed(firstToken.offset + startOffset, lastToken.offset + lastToken.string.length + startOffset - 1)
   }
   
-  private def basicTrim(str: String, interval: Interval): TrimmedType = {    
+  private def basicTrim(str: String, interval: Interval, lookForEntity: Boolean): TrimmedType = {    
     val noChangeTrimmedFill = new TrimmedType(str,interval)
     
     //if there is only one word just return the basic
@@ -112,6 +113,16 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
     val tokens =  extr.sentence.chunkedTokens(interval)
     if(tokens.isEmpty){
       return noChangeTrimmedFill
+    }
+    
+    //check if we are trimming the entity and there is no good matching type
+    // if so then see if there is
+    //an exact string match with the KBP query String and trim to that spot
+    if(lookForEntity){
+      if(str.endsWith(this.kbpQuery.name)){
+        val newInterval = Interval.open(interval.start + (interval.length - this.kbpQuery.name.split(" ").length),interval.end)
+        return new TrimmedType(this.kbpQuery.name,newInterval)
+      }
     }
     
     //get the first token and check if it is a preposition, if it is a
@@ -148,19 +159,6 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
       getLongestRightmostInterval(intersectingTypes)
     }
     else{
-      // return first type in list
-      var printAll = false
-      for(t <- intersectingTypes){
-        if(t.text().contains("executive"))
-          printAll = true
-      }
-      
-      if(printAll){
-        println("Printing all intersecting types")
-        for(t <- intersectingTypes){
-          println(t.text() + " " + t.interval())
-        }
-      }
       Some(intersectingTypes.head)
     }
   }
@@ -169,7 +167,7 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
 
     val intersectingTypes = types.filter(_.interval.intersects(fillField.tokenInterval))
     if (intersectingTypes.isEmpty) {
-      basicTrim(fillField.originalText, fillField.tokenInterval)
+      basicTrim(fillField.originalText, fillField.tokenInterval,false)
     } //there are types from the tagger that was ran on
     //the appropriate slot fill type
     else {
@@ -178,10 +176,10 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
           // Type doesn't seem to correctly return text()
           val bestTokens = extr.sentence.chunkedTokens(bestType.interval)
           val text = originalText(bestTokens)
-          basicTrim(text, bestType.interval)
+          basicTrim(text, bestType.interval,false)
         }
         case None => {
-          basicTrim(fillField.originalText, fillField.tokenInterval)
+          basicTrim(fillField.originalText, fillField.tokenInterval,false)
         }
       }
     }
@@ -215,7 +213,7 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
     val entityTypes = SemanticTaggers.useStandfordNERTagger(extr.sentence.chunkedTokens)
     val intersectingTypes = entityTypes.filter(_.interval.intersects(entityField.tokenInterval))
     if (intersectingTypes.isEmpty) {
-      basicTrim(entityField.originalText, entityField.tokenInterval)
+      basicTrim(entityField.originalText, entityField.tokenInterval,true)
     } 
     else {
       chooseBestEntityInterval(intersectingTypes) match {
@@ -223,10 +221,10 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
           // Type doesn't seem to correctly return text()
           val bestTokens = extr.sentence.chunkedTokens(bestType.interval)
           val text = originalText(bestTokens)
-          basicTrim(text, bestType.interval)
+          basicTrim(text, bestType.interval,false)
         }
         case None => {
-          basicTrim(entityField.originalText, entityField.tokenInterval)
+          basicTrim(entityField.originalText, entityField.tokenInterval,true)
         }
       }
     }

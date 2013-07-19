@@ -19,6 +19,8 @@ case class Slot(name: String, maxResults: Int, patterns: Seq[SlotPattern]) {
   def isList = if(maxResults > 1) true else false
   def isDate = if(name.contains("date")) true else false
   def isAlternateName = if(name.contains("alternate_names")) true else false
+  def isCauseOfDeath = if(name.contains("cause_of_death")) true else false
+  def isTitle = if(name == "per:title") true else false
 }
 
 object Slot {
@@ -55,7 +57,6 @@ object Slot {
   }
   
   private def fromNameAndPatterns(slotString: String, patternFields: Seq[Array[String]]): Slot = {
-    
     val headPattern = patternFields.head
     
     val maxValues = headPattern(1).toInt

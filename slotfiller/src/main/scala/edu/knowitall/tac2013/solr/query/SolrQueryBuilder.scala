@@ -6,7 +6,7 @@ import edu.knowitall.tac2013.app.SlotPattern
 import scala.Option.option2Iterable
 import scala.util.matching.Regex
 
-case class SolrQuery(val queryString: String, val queryType: SolrQueryType, val pattern: SlotPattern)
+case class SolrQuery(val queryString: String, val queryType: SolrQueryType, val pattern: SlotPattern, val kbpQuery: KBPQuery)
 
 class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val corefOn: Boolean) {
 
@@ -113,7 +113,7 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
       None
     } else {
       val queryFields = Seq(arg1TextConstraint, relTextConstraint, arg2TextConstraint, arg2StartConstraint,arg1TermsConstraint,arg2TermsConstraint).flatten
-      val query = SolrQuery(getQueryString(queryFields), SolrQueryType.REGULAR, pattern)
+      val query = SolrQuery(getQueryString(queryFields), SolrQueryType.REGULAR, pattern, kbpQuery)
       Some(query)
     }
   }
@@ -124,7 +124,7 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
       None
     } else {
       val queryFields = Seq(arg1LinkConstraint, relTextConstraint, arg2LinkConstraint, arg2StartConstraint,arg1TermsConstraint,arg2TermsConstraint).flatten
-      val query = SolrQuery(getQueryString(queryFields), SolrQueryType.LINKED, pattern)
+      val query = SolrQuery(getQueryString(queryFields), SolrQueryType.LINKED, pattern, kbpQuery)
       Some(query)
     }
   }
@@ -139,7 +139,7 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
 	      val seqOfCorefQueries = 
 	      for(docId <- kbpQuery.docIds) yield {
 	    	val queryFields = Seq(getDocIdConstraint(docId),relTextConstraint,arg2StartConstraint,arg1TermsConstraint,arg2TermsConstraint).flatten
-	    	val query = SolrQuery(getQueryString(queryFields), SolrQueryType.COREF, pattern)
+	    	val query = SolrQuery(getQueryString(queryFields), SolrQueryType.COREF, pattern, kbpQuery)
 	    	query
 	      }
 	      Some(seqOfCorefQueries)
