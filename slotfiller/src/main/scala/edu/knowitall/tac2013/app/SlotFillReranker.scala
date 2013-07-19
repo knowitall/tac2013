@@ -89,7 +89,7 @@ class SlotFillReranker(fmt: OutputFormatter) {
   
   /**
    * Merge by link id, if present, else by trimmed fill string. Convert 
-   * link group keys to most common trimmed fill.
+   * link group keys to most common trimmed fill and lowercase.
    */
   def mergeByLinks(candidates: Seq[Candidate]): Map[String, Seq[Candidate]] = {
     def key(cand: Candidate) = cand.fillField.wikiLink match {
@@ -105,7 +105,7 @@ class SlotFillReranker(fmt: OutputFormatter) {
       else {
         // since linked, probably all are good, long ones better
         // get longest trim and filter out stop words
-        val bestTrim = candidates.groupBy(_.trimmedFill.string).maxBy(_._2.size)._2.head.trimmedFill.string
+        val bestTrim = candidates.groupBy(_.trimmedFill.string).maxBy(_._2.size)._2.head.trimmedFill.string.toLowerCase
         (removeStopTokens(bestTrim), candidates)
       }
     }

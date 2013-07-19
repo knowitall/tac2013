@@ -37,6 +37,7 @@ class Benchmarker(val solrExec: SolrQueryExecutor, val benchmarkItemSets: Iterab
   import edu.knowitall.tac2013.app.OutputFormatter
   import edu.knowitall.tac2013.app.SlotFillReranker
   import edu.knowitall.tac2013.app.SlotFillConsistency
+  import edu.knowitall.tac2013.app.util.DateUtils
   import java.io.PrintStream
   import java.util.concurrent.atomic.AtomicInteger
   import edu.knowitall.tac2013.app.KBPQueryEntityType
@@ -53,6 +54,8 @@ class Benchmarker(val solrExec: SolrQueryExecutor, val benchmarkItemSets: Iterab
 
     val filteredCandidates = items.map( item => (item.slot, FilterSolrResults.filterResults(unfiltered(item.slot), item.kbpQuery))).toMap
 
+    DateUtils.putInTimexFormat(filteredCandidates)
+    
     val bestAnswers = items.par.map( item => (item.slot, new SlotFillReranker(nullOutput).findSlotAnswers(item.slot, item.kbpQuery, filteredCandidates(item.slot)))).toMap
 
     val bestAnswersAllSlots = slots.map(s => (s, bestAnswers.getOrElse(s, Nil))).toMap

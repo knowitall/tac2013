@@ -19,15 +19,13 @@ class SolrQueryExecutor(val solrClient: SolrClient, val corefOn: Boolean) {
   def this(url: String, corefOn: Boolean) = this(new SolrClient(url), corefOn)
   
   
-  private def issueSolrQuery(kbpSolrQuery: SolrQuery): Seq[Candidate] = {
-    
-    
+  private def issueSolrQuery(queryString: String): Seq[KbpExtraction] = {
     
     // issue query
-    val query = solrClient.query(kbpSolrQuery.queryString)
-    val result = query.sortBy("confidence",Order.desc).rows(10000).getResultAsMap()
+    val query = solrClient.query(queryString)
+    val result = query.sortBy("confidence",Order.desc).rows(15000).getResultAsMap()
 
-    println(s"Ran Query: (${kbpSolrQuery.queryString}) for Pattern: ${kbpSolrQuery.pattern.debugString} and got ${result.numFound} hits.")
+    println(s"Ran Query: ($queryString) and got ${result.numFound} hits.")
     
     // load as KbpExtraction
     val kbpExtrs = result.documents.flatMap { doc =>
@@ -35,12 +33,21 @@ class SolrQueryExecutor(val solrClient: SolrClient, val corefOn: Boolean) {
       KbpExtraction.fromFieldMap(fieldMap)
       
     }
-    
-    // wrap with Candidate
+    kbpExtrs
+  }
+  
+  private def wrapWithCandidate(kbpSolrQuery: SolrQuery, kbpExtrs: Seq[KbpExtraction]): Seq[Candidate] = {
     kbpExtrs.map { extr =>
       new Candidate(queryCounter.getAndIncrement, kbpSolrQuery, extr, 
           getTagTypes(extr,kbpSolrQuery.pattern))
     }
+  }
+
+  private def deduplicate(candidates: Seq[Candidate]) = {
+    candidates.groupBy(_.deduplicationKey).map {
+      case (key, duplicates) =>
+        duplicates.maxBy(_.extr.confidence)
+    } toSeq
   }
   
   //takes entity string and map from KBP slot strings to Open IE relation strings and runs queries
@@ -48,26 +55,25 @@ class SolrQueryExecutor(val solrClient: SolrClient, val corefOn: Boolean) {
   def executeUnfilteredQuery(kbpQuery: KBPQuery, slot: Slot): Seq[Candidate] = {
 
     val patterns = slot.patterns
-
-    val wikiID = kbpQuery.id match{
-      case "" => None
-      case _ => Some(kbpQuery.id)
-    }
     
     val solrQueries = patterns.flatMap { pattern => 
       val queryBuilder = new SolrQueryBuilder(pattern, kbpQuery,corefOn)
       queryBuilder.getQueries 
     }
     
-    val allResults = solrQueries.flatMap { q => issueSolrQuery(q) } toSeq
+    // group solr queries by their query string to avoid running the same solr query multiple times.
+    val distinctQueries = solrQueries.groupBy(_.queryString).iterator.toSeq
     
-    // deduplicate identical extractions
-    val deduplicated = allResults.groupBy(_.deduplicationKey).map { case (key, duplicates) =>
-      // duplicates should all be same, i.e. same confidence, etc... but explicitly take highest conf anyways.
-      duplicates.maxBy(_.extr.confidence)
-    } toSeq
+    // map (queryString, Seq[SolrQuery]) to (Seq[KbpExtraction], Seq[SolrQuery])
     
-    deduplicated
+    val kbpExtracionResults = distinctQueries.par.map({ case (qstring, solrQueries) => (issueSolrQuery(qstring), solrQueries) }).toList
+    
+    val candidates = kbpExtracionResults.flatMap { case (kbpExtrs, solrQueries) =>
+      solrQueries.flatMap { sq =>
+        wrapWithCandidate(sq, kbpExtrs)
+      }
+    }
+    candidates
   }
 }
 

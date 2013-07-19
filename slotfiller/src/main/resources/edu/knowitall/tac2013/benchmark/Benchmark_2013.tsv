@@ -1,66 +1,76 @@
-Entity	Type	KB_ID	DocID	Slotname	Slotfill	Alternate1	Alternate2
-Levi Johnston	PER	NIL001	bolt-eng-DF-170-181122-8793601	per:age	19		
-Levi Johnston	PER	NIL001	bolt-eng-DF-170-181122-8793601	per:children	Bristol		
-Levi Johnston	PER	NIL001	bolt-eng-DF-170-181122-8793601	per:parents	Sherry Johnston		
-							
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:age	50		
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:cause_of_death	cardiac arrest	drug overdose	
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:children	Paris		
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:children	Prince Michael	Prince	
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:cities_of_residence	Los Angeles		
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:city_of_birth	Gary		
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:city_of_death	Los Angeles		
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:countries_of_residence	Bahrain		
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:date_of_birth	1958-08-29		
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:date_of_death	2009-06-25		
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:parents	Joe Jackson		
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:parents	Katherine Jackson		
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:siblings	Jermaine Jackson		
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:siblings	Tito		
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:siblings	Randy		
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:siblings	LaToya Jackson		
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:siblings	Jackie		
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:spouse	Deborah Rowe	Debbie Rowe	
-Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:title	singer		
-							
-David Boston	PER	E0536696	eng-NG-31-140126-8660104	per:charges	DUI		
-David Boston	PER	E0536696	eng-NG-31-140126-8660104	per:employee_or_member_of	Tampa Bay Buccaneers	Tampa Bay	
-David Boston	PER	E0536696	eng-NG-31-140126-8660104	per:age	29		
-							
-Omar Bakri	PER	NIL002	AFP_ENG_20101112.0170	per:charges	inciting murder		
-Omar Bakri	PER	NIL002	AFP_ENG_20101112.0170	per:employee_or_member_of	Choudary		
-Omar Bakri	PER	NIL002	AFP_ENG_20101112.0170	per:employee_or_member_of	Syrian Muslim Brotherhood		
-Omar Bakri	PER	NIL002	AFP_ENG_20101112.0170	per:employee_or_member_of	Muhajiroun		
-Omar Bakri	PER	NIL002	AFP_ENG_20101112.0170	per:origin	Syrian		
-Omar Bakri	PER	NIL002	AFP_ENG_20101112.0170	per:origin	Lebanese 	Lebanon	
-Omar Bakri	PER	NIL002	AFP_ENG_20101112.0170	per:religion	Muslim	Islamic	
-							
-							
-GM China	ORG	NIL003	XIN_ENG_20100702.0392	org:parents	General Motors		
-GM China	ORG	NIL003	XIN_ENG_20100702.0392	org:top_members_employees	Kevin Wale		
-GM China	ORG	NIL003	XIN_ENG_20100702.0392	org:top_members_employees	Phil Murtaugh		
-GM China	ORG	NIL003	XIN_ENG_20100702.0392	org:top_members_employees	Tim Stratford		
-							
-Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:top_members_employees	Dick Cheney	Cheney	
-Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:subsidiaries	Kellogg , Brown and Root	KBR	Kellogg Brown
-Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:subsidiaries	Coots		
-Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:top_members_employees	Hunt		
-Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:city_of_headquarters	Houston		
-Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:date_founded	1910-XX-XX		
-Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:founded_by	Erle Halliburton		
-							
-Gerardo Castillo Chavez	PER	NIL004	APW_ENG_20100203.1236	per:alternate_names	"Cheeks	"Cachetes	
-							
-Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:employee_or_member_of	Homeland Security	DHS	Homeland Security Department
-Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:employee_or_member_of	Chertoff Group		
-Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:employee_or_member_of	Senate Whitewater Committee		
-Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:title	National Security Advisor 		
-Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:title	homeland security secretary	secretary	
-Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:title	attorney general		
-Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:title	assistant attorney general		
-Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:title	chief		
-Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:other_family	Benjamin Chertoff	Ben Chertoff	
-Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:stateorprovince_of_birth	NJ		
-Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:origin	Israeli 	Jews	
-Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:parents	Livia Eisen		
-Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:date_of_birth	1953-11-28		
+Entity	Type	KB_ID	DocID	Slotname	Slotfill	Alternate1	Alternate2	
+Levi Johnston	PER	NIL001	bolt-eng-DF-170-181122-8793601	per:age	19			
+Levi Johnston	PER	NIL001	bolt-eng-DF-170-181122-8793601	per:children	Bristol			
+Levi Johnston	PER	NIL001	bolt-eng-DF-170-181122-8793601	per:parents	Sherry Johnston	Johnston		
+								
+								
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:age	50			
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:cause_of_death	cardiac arrest	drug overdose		
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:children	Paris			
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:children	Prince Michael	Prince		
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:cities_of_residence	Los Angeles			
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:city_of_birth	Gary			
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:city_of_death	Los Angeles			
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:countries_of_residence	Bahrain			
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:date_of_birth	1958-08-29			
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:date_of_death	2009-06-25	XXXX-06-25		
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:parents	Joe Jackson			
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:parents	Katherine Jackson
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:siblings	Jermaine Jackson	Germaine	Jermaine			
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:siblings	Tito			
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:siblings	Randy			
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:siblings	LaToya Jackson	La Toya		
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:siblings	Jackie			
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:spouse	Deborah Rowe	Debbie Rowe		
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:title	singer			
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:countries_of_residence	US			
+Michael Jackson	PER	E0126705	AFP_ENG_20090626.0623	per:title	recording artist			
+								
+David Boston	PER	E0536696	eng-NG-31-140126-8660104	per:charges	DUI			
+David Boston	PER	E0536696	eng-NG-31-140126-8660104	per:employee_or_member_of	Tampa Bay Buccaneers	Tampa Bay		
+David Boston	PER	E0536696	eng-NG-31-140126-8660104	per:age	29			
+								
+Omar Bakri	PER	NIL002	AFP_ENG_20101112.0170	per:charges	inciting murder			
+Omar Bakri	PER	NIL002	AFP_ENG_20101112.0170	per:employee_or_member_of	Choudary			
+Omar Bakri	PER	NIL002	AFP_ENG_20101112.0170	per:employee_or_member_of	Syrian Muslim Brotherhood			
+Omar Bakri	PER	NIL002	AFP_ENG_20101112.0170	per:employee_or_member_of	Al-Muhajiroun	Muhajiroun		
+Omar Bakri	PER	NIL002	AFP_ENG_20101112.0170	per:origin	Syrian			
+Omar Bakri	PER	NIL002	AFP_ENG_20101112.0170	per:origin	Lebanese 	Lebanon		
+Omar Bakri	PER	NIL002	AFP_ENG_20101112.0170	per:religion	Muslim	Islamic		
+								
+								
+GM China	ORG	NIL003	XIN_ENG_20100702.0392	org:parents	General Motors			
+GM China	ORG	NIL003	XIN_ENG_20100702.0392	org:top_members_employees	Kevin Wale			
+GM China	ORG	NIL003	XIN_ENG_20100702.0392	org:top_members_employees	Phil Murtaugh			
+GM China	ORG	NIL003	XIN_ENG_20100702.0392	org:top_members_employees	Tim Stratford			
+								
+Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:top_members_employees	Dick Cheney	Cheney		
+Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:top_members_employees	Mark McCollum			
+Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:subsidiaries	Kellogg , Brown and Root	KBR	Kellogg Brown	
+Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:subsidiaries	Coots			
+Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:subsidiaries	Ingersoll Dresser Pump Company			
+Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:subsidiaries	Sperry Sun Drilling Service			
+Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:top_members_employees	Hunt			
+Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:city_of_headquarters	Houston			
+Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:date_founded	1919-XX-XX	1910-XX-XX
+Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:founded_by	Erle Halliburton			
+Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:top_members_employees	David Lesar			
+Halliburton	ORG	E0137767	bolt-eng-DF-170-181103-8904661	org:top_members_employees	Tim Probert			
+								
+Gerardo Castillo Chavez	PER	NIL004	APW_ENG_20100203.1236	per:alternate_names	"Cheeks	"Cachetes
+								
+Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:employee_or_member_of	Homeland Security	DHS	Homeland Security Department	Department of Homeland Security Homeland Security
+Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:employee_or_member_of	Chertoff Group			
+Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:employee_or_member_of	Senate Whitewater Committee			
+Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:title	National Security Advisor 			
+Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:title	homeland security secretary	secretary		
+Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:title	attorney general			
+Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:title	assistant attorney general			
+Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:title	chief			
+Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:other_family	Benjamin Chertoff	Ben Chertoff		
+Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:stateorprovince_of_birth	NJ			
+Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:origin	Israeli 	Jews		
+Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:parents	Livia Eisen			
+Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:date_of_birth	1953-11-28			
+Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:origin	US			
+Michael Chertoff	PER	E0033088	eng-NG-31-142146-10008615	per:title	advisor			

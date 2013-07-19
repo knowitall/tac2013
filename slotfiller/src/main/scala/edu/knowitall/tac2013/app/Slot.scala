@@ -65,7 +65,7 @@ object Slot {
       if (field.isEmpty()) None else Some(field)
     }
     
-    val patterns = patternFields.flatMap(fields => SlotPattern.read(fields))
+    val patterns = patternFields.flatMap(fields => SlotPattern.read(fields)).distinct
     
     Slot(slotString, maxValues, patterns)
   }
