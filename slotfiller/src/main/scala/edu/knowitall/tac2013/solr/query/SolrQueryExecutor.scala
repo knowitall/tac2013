@@ -70,7 +70,7 @@ class SolrQueryExecutor(val solrClient: SolrClient, val corefOn: Boolean) {
     
     val candidates = kbpExtracionResults.flatMap { case (kbpExtrs, solrQueries) =>
       solrQueries.flatMap { sq =>
-        wrapWithCandidate(sq, kbpExtrs)
+        deduplicate(wrapWithCandidate(sq, kbpExtrs))
       }
     }
     candidates

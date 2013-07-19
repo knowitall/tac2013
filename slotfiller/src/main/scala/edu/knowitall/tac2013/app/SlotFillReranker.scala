@@ -94,7 +94,7 @@ class SlotFillReranker(fmt: OutputFormatter) {
   def mergeByLinks(candidates: Seq[Candidate]): Map[String, Seq[Candidate]] = {
     def key(cand: Candidate) = cand.fillField.wikiLink match {
       case Some(wikiLink) => "%%" + wikiLink.fbid // use %% later so we know which ones were linked
-      case None => removeStopTokens(cand.trimmedFill.string)
+      case None => removeStopTokens(cand.trimmedFill.string.toLowerCase)
     }
     // group by key...
     val groups = candidates.groupBy(key)
