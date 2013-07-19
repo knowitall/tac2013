@@ -358,11 +358,12 @@ object FilterSolrResults {
           case "arg2" => candidate.extr.arg2.originalText
           case _ => throw new Exception("Poorly formatted entityIn field, should be arg1 or arg2")
         }
+
+        val thisNodeIDOption = candidate.entityField.wikiLink
         //if the query does have a nodeID make sure that the entity does not have a different nodeID
         val noLinkConflict = {
 	        if(kbpQuery.nodeId.isDefined){
 	          val entityNodeID = kbpQuery.nodeId.get
-	          val thisNodeIDOption = candidate.entityField.wikiLink
 	          if(thisNodeIDOption.isDefined){
 	            val thisNodeID = thisNodeIDOption.get
 	            if(entityNodeID == thisNodeID){
@@ -377,7 +378,16 @@ object FilterSolrResults {
 	          }
 	          
 	        }
-	        true
+	        //if the kbpQuery has no nodeID then make sure that the extraction entity
+	        //does not have a nodeID.
+	        else{
+	          if(thisNodeIDOption.isDefined) {
+	            println("KBPQuery wiki ID is not defined but extraction entity ID is defined for " + candidate.debugString )
+	            false
+	          } else {
+	            true
+	          }
+	        }
         }
 
         val entityFromExtractionSplit = entityFromExtraction.toString().split(" ")

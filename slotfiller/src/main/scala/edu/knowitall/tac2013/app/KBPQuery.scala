@@ -19,9 +19,7 @@ case class KBPQuery (val id: String, val name: String, val doc: String,
   
   lazy val docIdToSentNumDocIdPairMap = SolrHelper.getDocIDMapToSentNumsForEntityNameAndNodeID(name, nodeId)
   lazy val docIds = docIdToSentNumDocIdPairMap.keySet.toList
-  
-  val alternateNames = KBPQuery.findAlternateNames(this)
-  
+    
 }
 
 object KBPQuery {
@@ -141,14 +139,6 @@ object KBPQuery {
      val kbpQueryList = for( qXML <- queryXMLSeq) yield parseSingleKBPQueryFromXML(qXML)
     
      kbpQueryList.toList
-  }
-  
-  private def findAlternateNames(kbpQuery: KBPQuery) = {
-    val docName = kbpQuery.doc
-    val rawDoc = SolrHelper.getRawDoc(docName)
-    val altString = rawDoc.substring(kbpQuery.begOffset, kbpQuery.endOffset)
-    println(altString)
-    true
   }
   
 }
