@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <taggers>
-	<CaseInsensitiveKeywordTagger descriptor="JobTitle">
+	<CaseInsensitiveKeywordTagger descriptor="JobTitles">
 		<keywords>
 			<keyword>Academic coordinator</keyword>
 			<keyword>academic specialist</keyword>
@@ -1914,6 +1913,7 @@
 			<keyword>general administrator</keyword>
 			<keyword>general affair manager</keyword>
 			<keyword>general assignment editor</keyword>
+			<keyword>governor</keyword>
 			<keyword>General Auditor</keyword>
 			<keyword>general books manager</keyword>
 			<keyword>General Counsel</keyword>
@@ -2417,6 +2417,7 @@
 			<keyword>MATERIAL COORDINATOR</keyword>
 			<keyword>materials scientist</keyword>
 			<keyword>Math teacher</keyword>
+			<keyword>mayor</keyword>
 			<keyword>mathematical administrator</keyword>
 			<keyword>mayor director</keyword>
 			<keyword>mechanical director</keyword>
@@ -2756,6 +2757,7 @@
 			<keyword>presence of dermatologist</keyword>
 			<keyword>PRESENTATION COORDINATOR</keyword>
 			<keyword>preservation planning director</keyword>
+			<keyword>president</keyword>
 			<keyword>preservationist</keyword>
 			<keyword>president director</keyword>
 			<keyword>President Director General</keyword>
