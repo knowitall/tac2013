@@ -69,11 +69,11 @@ object Application extends Controller {
 
   def searchForm: Form[Query] = {
     import play.api.data.validation.Constraints._
-    def unapply(query: Query): Option[(Option[String], Option[String], Option[String], Option[String], Option[String], String)] = {
-      Some((query.arg1.entryString, query.rel.entryString, query.arg2.entryString, query.extractor, query.corpus, query.groupBy.short))
+    def unapply(query: Query): Option[(Option[String], Option[String], Option[String], Option[String], Option[String], Option[String], Option[String], Option[String], String)] = {
+      Some((query.arg1.entryString, query.rel.entryString, query.arg2.entryString, query.arg1link, query.arg2link, query.docId, query.extractor, query.corpus, query.groupBy.short))
     }
-    def apply(arg1: Option[String], rel: Option[String], arg2: Option[String], extractor: Option[String], corpus: Option[String], groupBy: String) = {
-      Query(arg1, rel, arg2, extractor, corpus, ExtractionPart.parse(groupBy))
+    def apply(arg1: Option[String], rel: Option[String], arg2: Option[String], arg1link: Option[String], arg2link: Option[String], docId: Option[String], extractor: Option[String], corpus: Option[String], groupBy: String) = {
+      Query(arg1, rel, arg2, arg1link, arg2link, docId, extractor, corpus, ExtractionPart.parse(groupBy))
     }
     Form(
       // Defines a mapping that will handle Contact values
@@ -81,13 +81,16 @@ object Application extends Controller {
         "arg1Text" -> optional(text),
         "relText" -> optional(text),
         "arg2Text" -> optional(text),
+        "arg1link" -> optional(text),
+        "arg2link" -> optional(text),
+        "docId" -> optional(text),
         "extractor" -> optional(text),
         "corpus" -> optional(text),
         "groupBy" -> text)(apply)(unapply)) verifying ("All search fields cannot be empty", { query =>
-          query.arg1.used || query.rel.used || query.arg2.used
+          query.arg1.used || query.rel.used || query.arg2.used || query.arg1link.isDefined || query.arg2link.isDefined || query.docId.isDefined
         }))
   }
-  def defaultSearchForm = searchForm.fill(Query(None, None, None))
+  def defaultSearchForm = searchForm.fill(Query.empty)
 
   def advancedSearchForm: Form[AdvancedQuery] = {
     def unapply(query: AdvancedQuery): Option[(String, String)] = {
@@ -143,13 +146,13 @@ object Application extends Controller {
     }.mkString("\n"))
   }
 
-  def search(arg1: Option[String], rel: Option[String], arg2: Option[String]) = Action {
-    val query = Query(arg1, rel, arg2)
+  def search(arg1: Option[String], rel: Option[String], arg2: Option[String], arg1link: Option[String], arg2link: Option[String], docId: Option[String]) = Action {
+    val query = Query(arg1, rel, arg2, arg1link, arg2link, docId, None, None)
     searchResult(query)
   }
 
-  def sentences(arg1: String, rel:String, arg2:String, corpus: Option[String], extractor: Option[String]) = Action {
-    val extrs = LuceneQueryExecutor.executeExact(arg1, rel, arg2, corpus, extractor)
+  def sentences(arg1: String, rel:String, arg2:String, arg1link: Option[String], arg2link: Option[String], docId: Option[String], corpus: Option[String], extractor: Option[String]) = Action {
+    val extrs = LuceneQueryExecutor.executeExact(arg1, rel, arg2, arg1link, arg2link, docId, corpus, extractor)
     Ok(views.html.sentences(extrs))
   }
 }

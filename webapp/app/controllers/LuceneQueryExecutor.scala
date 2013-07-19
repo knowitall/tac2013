@@ -37,7 +37,7 @@ object LuceneQueryExecutor {
         { case (string, i) => "+" + p.part.short + ":%" + p.part.short + "_" + i + "%" }.mkString(" ")
       }
 
-    (strings).mkString(" ")
+    (strings).mkString(" ") + " " + q.linkDocQuery
   }
 
   def luceneQueryVariables(q: Query): Map[String, String] =
@@ -73,20 +73,21 @@ object LuceneQueryExecutor {
     list.map(ExtractionInstance.fromMap) filter filterExtractor(q.extractor)
   }
 
-  def executeExact(arg1: String, rel: String, arg2: String, corpus: Option[String], extractor: Option[String]) = {
+  def executeExact(arg1: String, rel: String, arg2: String, arg1link: Option[String], arg2link: Option[String], docId: Option[String], corpus: Option[String], extractor: Option[String]) = {
 
     Logger.info("sentenes for: " + List(arg1, rel, arg2))
     import jp.sf.amateras.solr.scala._
 
     val client = new SolrClient(solrUrl(corpus))
 
-    val queryString = "+arg1Text:%arg1Text% +relText:%relText% +arg2Text:%arg2Text%"
+    val optQueryString = (arg1link.map(l=>"+arg1WikiLinkNodeId:\""+l+"\"") ++ arg2link.map(l=>"+arg2WikiLinkNodeId:\""+l+"\"") ++ docId.map(l=>"+docId:\""+l+"\"")).mkString(" ")
+    val queryString = "+arg1Text:\"%s\" +relText:\"%s\" +arg2Text:\"%s\" ".format(arg1, rel, arg2) + " " + optQueryString
+    
     Logger.logger.debug("Lucene query: " + queryString)
-    Logger.logger.debug("Lucene variables: " + (List("arg1Text", "relText", "arg2Text") zip List(arg1, rel, arg2)))
 
     val result = client.query(queryString)
       .rows(10000)
-      .getResultAsMap(Map("arg1Text" -> arg1, "relText" -> rel, "arg2Text" -> arg2))
+      .getResultAsMap(Map.empty)
 
     val list = result.documents.toList
     Logger.info("sentence extractions received: " + list.size)

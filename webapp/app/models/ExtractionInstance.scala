@@ -7,7 +7,7 @@ import scala.collection.JavaConverters._
 import edu.knowitall.tac2013.openie._
 
 case class ExtractionInstance(docId: String, arg1: String, rel: String, arg2: String,
-    arg1Types: Seq[String], relTypes: Seq[String], arg2Types: Seq[String],
+    arg1Types: Seq[String], relTypes: Seq[String], arg2Types: Seq[String], arg1NodeId: Option[String], arg2NodeId: Option[String],
     arg1Postag: String, relPostag: String, arg2Postag: String,
     sentence: String, extractor: String, confidence: Double, count: Int) {
   //(ids: List[String], arg1: String, rel: String, arg2s: Seq[String], arg1Types: Seq[String], relTypes: Seq[String], arg2Types: Seq[String], arg1_postag: String, rel_postag: String, arg2_postag: String, sentence: String, url: String, extractor: String, confidence: Double, count: Int) {
@@ -61,7 +61,7 @@ object ExtractionInstance {
     } toSeq
     
     ExtractionInstance(e.sentence.docId, e.arg1.originalText, e.rel.originalText, e.arg2.originalText,
-        linkTypes(e.arg1), linkTypes(e.rel), linkTypes(e.arg2),
+        linkTypes(e.arg1), linkTypes(e.rel), linkTypes(e.arg2), e.arg1.wikiLink.flatMap(_.nodeId), e.arg2.wikiLink.flatMap(_.nodeId),
         postags(e.arg1), postags(e.rel), postags(e.arg2), 
         e.sentenceText, e.extractor, e.confidence, 1)
   }
