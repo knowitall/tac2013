@@ -138,9 +138,7 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
       return new TrimmedType(noPrepSlotFillString,newInterval)
     }
     
-    return noChangeTrimmedFill
-    
-     
+    return noChangeTrimmedFill 
   }
   
   private def getLongestRightmostInterval(intersectingTypes : List[Type]) : Option[Type]= {
@@ -150,19 +148,22 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
   }
   
   // intersectingTypes can't be empty when called
-  private def chooseBestInterval (intersectingTypes: List[Type]): Option[Type] ={
+  private def chooseBestInterval (slotFillIn: Option[String], intersectingTypes: List[Type]): Option[Type] ={
     val slotType = pattern.slotType.getOrElse("")
     if(slotType == "Country" || slotType == "Stateorprovince" ||
       slotType == "City"){
       findLocationTaggedType(intersectingTypes,slotType)
     }
     
-    else if(slotType =="JobTitle" || slotType =="School" || slotType =="Nationality" ||
-        slotType =="Country" || slotType == "Crime" ){
+    else if(slotType =="JobTitle" || slotType =="School" || slotType =="Nationality" || slotType == "Crime" ){
       getLongestRightmostInterval(intersectingTypes)
     }
     else{
-      Some(intersectingTypes.head)
+      slotFillIn match {
+        case Some("arg1") => Some(intersectingTypes.maxBy(_.interval.start))
+        case Some("arg2") | Some("relation") => Some(intersectingTypes.minBy(_.interval.start))
+        case _ => throw new RuntimeException(s"Invalid SlotFillIn: $slotFillIn")
+      }
     }
   }
   
@@ -174,7 +175,7 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
     } //there are types from the tagger that was ran on
     //the appropriate slot fill type
     else {
-      chooseBestInterval(intersectingTypes) match {
+      chooseBestInterval(pattern.slotFillIn, intersectingTypes) match {
         case Some(bestType) => {
           // Type doesn't seem to correctly return text()
           val bestTokens = extr.sentence.chunkedTokens(bestType.interval)

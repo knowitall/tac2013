@@ -149,16 +149,17 @@ class Benchmarker(val solrExec: SolrQueryExecutor, val benchmarkItemSets: Iterab
   def go: Iterable[String] = {
     val responses = benchmarkItemSets.par.map(itemSet => (itemSet, getResponse(itemSet)))
     
-    val results = responses.flatMap { case (itemSet, resultsMap) =>
+    val allResponseItems = responses.flatMap { case (itemSet, resultsMap) =>
       val slotsToItems = itemSet.items.groupBy(_.slot).map { case (slot, items) => 
         require(items.size == 1)
         (slot, items.head)
       }
-      val itemsToResults = resultsMap.flatMap { case (slot, results) => slotsToItems.get(slot).map(i => judgeResponses(results, i)) }
-      itemsToResults
+      val responseItems = resultsMap.iterator.flatMap { case (slot, results) => slotsToItems.get(slot).map(i => (results, i)) }
+      responseItems
     }
+    val results = allResponseItems.toList.sortBy(_._2.entityName).flatMap { case (results, i) => judgeResponses(results, i) }
     
-    results.toList.flatten ++ finalStats
+    results.toList ++ finalStats
   }
 }
 

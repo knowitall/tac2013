@@ -464,35 +464,29 @@ object FilterSolrResults {
 
       for (t <- types) {
         if (t.interval().intersects(slotLocation)) {
-	          slotType match {
-	            case "Organization" => {
-	              if (t.descriptor() == "StanfordORGANIZATION") {
-	            	  if(t.interval().start - slotLocation.start < 5){
-	            		  	return true
-	            	  }
-	              }
-	            }
-	            case "Person" => {
-	              if (t.descriptor() == "StanfordPERSON") {
-	            	  if(t.interval().start - slotLocation.start < 5){
-	                      return true
-	            	  }
-	              }
-	            }
-	            // default case will be location
-	            case _ => {
-	              //if trimmed Fill does not exist then the Candidate
-	              //constructor has filtered out this extraction
-	              val typesInSlotFill = types.filter(t => (t.interval().intersects(slotLocation)))
-	              if(findLocationTaggedType(typesInSlotFill,slotType).isDefined){
-	                return true
-	              }
-	              else{
-	                return false
-	              }
-	
-	            }
-	          }
+          slotType match {
+            case "Organization" => {
+              if (t.descriptor() == "StanfordORGANIZATION") {
+                return true
+              }
+            }
+            case "Person" => {
+              if (t.descriptor() == "StanfordPERSON") {
+                return true
+              }
+            }
+            // default case will be location
+            case _ => {
+              //if trimmed Fill does not exist then the Candidate
+              //constructor has filtered out this extraction
+              val typesInSlotFill = types.filter(t => (t.interval().intersects(slotLocation)))
+              if (findLocationTaggedType(typesInSlotFill, slotType).isDefined) {
+                return true
+              } else {
+                return false
+              }
+            }
+          }
         }
       }
 
@@ -511,13 +505,9 @@ object FilterSolrResults {
       return false
     }
     else {
-    
-    
 
       return true
-
     }
-
   }
   
   def satisfiesLengthFilter(candidate: Candidate): Boolean = {
@@ -530,18 +520,19 @@ object FilterSolrResults {
     true
   }
   
-  
   val titleStopListPath = "/edu/knowitall/tac2013/findSlotFillersApp/TitleStoplist.txt"
-  
 
-    
   val titleStopList = loadStoplist(titleStopListPath)
 
   def satisfiesSlotFilter(candidate: Candidate): Boolean = {
 
     val fillText = candidate.trimmedFill.string.toLowerCase
+    val slotFillIn = candidate.pattern.slotFillIn.getOrElse("")
     
-    if (Slot.fromName(candidate.pattern.slotName).isCauseOfDeath) {
+    // require that a slot filler in arg2 start within the first 4 tokens.
+    if (slotFillIn == "arg2" && candidate.trimmedFill.interval.start - candidate.extr.arg2.tokenInterval.start > 4) false
+    
+    else if (Slot.fromName(candidate.pattern.slotName).isCauseOfDeath) {
       val fillTokens = candidate.extr.sentence.chunkedTokens(candidate.trimmedFill.interval)
       !fillTokens.headOption.exists(_.isPronoun)
       
@@ -551,6 +542,11 @@ object FilterSolrResults {
     else true
   }
   
+  /**
+   * matches if any word starts with &
+   * e.g. &amp or &gt.
+   * A single & does not match.
+   */
   val htmlEntityPattern = ".*\\s+&\\w+.*".r.pattern
   def satisfiesHtmlFilter(candidate: Candidate): Boolean = {
     !htmlEntityPattern.matcher(candidate.trimmedFill.string).matches
