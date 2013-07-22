@@ -11,7 +11,9 @@ import scala.xml.XML
 case class KBPQuery (val id: String, val name: String, val doc: String,
     val begOffset: Int, val endOffset: Int, val entityType: KBPQueryEntityType,
     val nodeId: Option[String], val slotsToFill: Set[Slot]){
-
+    
+  var foundFbid: Option[String] = None
+  
   /**
    * Return a new KBPQuery with different slots to fill.
    */
@@ -19,7 +21,7 @@ case class KBPQuery (val id: String, val name: String, val doc: String,
   
   lazy val docIdToSentNumDocIdPairMap = SolrHelper.getDocIDMapToSentNumsForEntityNameAndNodeID(name, nodeId)
   lazy val docIds = docIdToSentNumDocIdPairMap.keySet.toList
-  lazy val numEntityFbids = nodeId match {
+  val numEntityFbids = nodeId match {
     case Some(str) => 1
     case None => {
       val qstring1 = "+arg1Text:\"%s\"".format(name)
@@ -34,6 +36,8 @@ case class KBPQuery (val id: String, val name: String, val doc: String,
       
       val allFbids = (fbidsArg1 ++ fbidsArg2)
       //val allNodeIds = nodeIdsArg1 ++ nodeIdsArg2
+      if (nodeId.isEmpty) System.err.println(s"Unlinked entity $name links to ${allFbids.size} fbids.")
+      if (allFbids.size == 1 && nodeId.isEmpty) foundFbid = Some(allFbids.head)
       allFbids.size
     }
   }

@@ -48,31 +48,36 @@ class SolrQueryExecutor(val solrClient: SolrClient, val corefOn: Boolean) {
         duplicates.maxBy(_.extr.confidence)
     } toSeq
   }
-  
+
   //takes entity string and map from KBP slot strings to Open IE relation strings and runs queries
   //to our solr instance for every type of OpenIERelation, this method uses no filters, this is for debugging purposes
   def executeUnfilteredQuery(kbpQuery: KBPQuery, slot: Slot): Seq[Candidate] = {
 
-    val patterns = slot.patterns
-    
-    val solrQueries = patterns.flatMap { pattern => 
-      val queryBuilder = new SolrQueryBuilder(pattern, kbpQuery,corefOn)
-      queryBuilder.getQueries 
-    }
-    
-    // group solr queries by their query string to avoid running the same solr query multiple times.
-    val distinctQueries = solrQueries.groupBy(_.queryString).iterator.toSeq
-    
-    // map (queryString, Seq[SolrQuery]) to (Seq[KbpExtraction], Seq[SolrQuery])
-    
-    val kbpExtracionResults = distinctQueries.par.map({ case (qstring, solrQueries) => (issueSolrQuery(qstring), solrQueries) }).toList
-    
-    val candidates = kbpExtracionResults.flatMap { case (kbpExtrs, solrQueries) =>
-      solrQueries.flatMap { sq =>
-        deduplicate(wrapWithCandidate(sq, kbpExtrs))
+    if (kbpQuery.nodeId.isEmpty && kbpQuery.numEntityFbids > 4) {
+      Nil
+    } else {
+      val patterns = slot.patterns
+
+      val solrQueries = patterns.flatMap { pattern =>
+        val queryBuilder = new SolrQueryBuilder(pattern, kbpQuery, corefOn)
+        queryBuilder.getQueries
       }
+
+      // group solr queries by their query string to avoid running the same solr query multiple times.
+      val distinctQueries = solrQueries.groupBy(_.queryString).iterator.toSeq
+
+      // map (queryString, Seq[SolrQuery]) to (Seq[KbpExtraction], Seq[SolrQuery])
+
+      val kbpExtracionResults = distinctQueries.par.map({ case (qstring, solrQueries) => (issueSolrQuery(qstring), solrQueries) }).toList
+
+      val candidates = kbpExtracionResults.flatMap {
+        case (kbpExtrs, solrQueries) =>
+          solrQueries.flatMap { sq =>
+            deduplicate(wrapWithCandidate(sq, kbpExtrs))
+          }
+      }
+      candidates
     }
-    candidates
   }
 }
 

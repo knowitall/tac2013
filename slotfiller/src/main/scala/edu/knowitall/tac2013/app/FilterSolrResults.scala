@@ -343,32 +343,30 @@ object FilterSolrResults {
         val thisNodeIDOption = candidate.entityField.wikiLink
         //if the query does have a nodeID make sure that the entity does not have a different nodeID
         val noLinkConflict = {
-	        if(kbpQuery.nodeId.isDefined){
-	          val entityNodeID = kbpQuery.nodeId.get
-	          if(thisNodeIDOption.isDefined){
-	            val thisNodeID = thisNodeIDOption.get
-	            if(entityNodeID == thisNodeID){
-	               true
-	            }
-	            else{
-	              false
-	            }
-	          }
-	          else{
-	            true
-	          }
-	          
-	        }
-	        //if the kbpQuery has no nodeID then make sure that the extraction entity
-	        //does not have a nodeID.
-	        else{
-	          if(thisNodeIDOption.isDefined && kbpQuery.numEntityFbids > 1) {
-	            println("KBPQuery wiki ID is not defined but extraction entity ID is defined for " + candidate.debugString )
-	            false
-	          } else {
-	            true
-	          }
-	        }
+          if (kbpQuery.nodeId.isDefined) {
+            val entityNodeID = kbpQuery.nodeId.get
+            if (thisNodeIDOption.isDefined) {
+              val thisNodeID = thisNodeIDOption.get
+              if (entityNodeID == thisNodeID) {
+                true
+              } else {
+                false
+              }
+            } else {
+              true
+            }
+          } //if the kbpQuery has no nodeID then make sure that the extraction entity
+          //does not have a nodeID, unless the nodeId is unique to that entity string,
+          //or if the candidate comes from the same document as the query.
+          else {
+            if (thisNodeIDOption.isDefined) {
+              if (kbpQuery.doc == candidate.extr.sentence.docId) true
+              else if (kbpQuery.numEntityFbids == 1) true
+              else false
+            } 
+
+            else true
+          }
         }
 
         val entityFromExtractionSplit = entityFromExtraction.toString().split(" ")

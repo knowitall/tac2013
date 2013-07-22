@@ -88,6 +88,13 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
       case _ => None
     }
   }
+  
+  val arg1FbidConstraint: Option[String] = {
+    (pattern.entityIn, kbpQuery.foundFbid) match {
+      case (Some("arg1"), Some(id)) => Some("+arg1WikiLinkFbid:\"%s\"".format(id))
+      case _ => None
+    }
+  }
 
   val arg2LinkConstraint: Option[String] = {
     (pattern.entityIn, kbpQuery.nodeId) match {
@@ -96,6 +103,12 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
     }
   }
   
+  val arg2FbidConstraint: Option[String] = {
+    (pattern.entityIn, kbpQuery.foundFbid) match {
+      case (Some("arg2"), Some(id)) => Some("+arg2WikiLinkFbid:\"%s\"".format(id))
+      case _ => None
+    }
+  }
   
   def getDocIdConstraint(docId: String): Option[String] = {
     Some("+docId:\"%s\"".format(docId))
@@ -120,10 +133,18 @@ class SolrQueryBuilder(val pattern: SlotPattern, val kbpQuery: KBPQuery, val cor
 
   val linkedQuery: Option[SolrQuery] = {
 
-    if (!pattern.isValid || kbpQuery.nodeId.isEmpty) {
+    if (!pattern.isValid || (kbpQuery.nodeId.isEmpty && kbpQuery.foundFbid.isEmpty)) {
       None
     } else {
-      val queryFields = Seq(arg1LinkConstraint, relTextConstraint, arg2LinkConstraint, arg2StartConstraint,arg1TermsConstraint,arg2TermsConstraint).flatten
+      val queryFields = Seq(
+          arg1LinkConstraint, 
+          relTextConstraint, 
+          arg2LinkConstraint, 
+          arg2StartConstraint,
+          arg1TermsConstraint,
+          arg2TermsConstraint,
+          arg1FbidConstraint,
+          arg2FbidConstraint).flatten
       val query = SolrQuery(getQueryString(queryFields), SolrQueryType.LINKED, pattern, kbpQuery)
       Some(query)
     }
