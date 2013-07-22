@@ -16,10 +16,10 @@ case class OutputFormatter(
     val printGroups: Boolean = true,
     val detailedGroups: Boolean = true,
     val printAnswers: Boolean = true,
-    val detailedAnswers: Boolean = true) {
+    val detailedAnswers: Boolean = true,
+    val runID: String = "UWashington_1") {
   
-  val runID = "UWashington_1"
- 
+   
   val indentSize = 4
   
   val maxUnformatted = 12
@@ -211,10 +211,10 @@ case class OutputFormatter(
 object OutputFormatter {
   val default = new OutputFormatter(System.out) 
   
-  def detailedAnswersOnly(output: PrintStream) = 
-    new OutputFormatter(output, printUnfiltered = false, printFiltered = false, printGroups = false, printAnswers = true, detailedAnswers = true)
+  def detailedAnswersOnly(output: PrintStream, runIDName: String) = 
+    new OutputFormatter(output, printUnfiltered = false, printFiltered = false, printGroups = false, printAnswers = true, detailedAnswers = true, runID = runIDName)
   
-  def formattedAnswersOnly(output: PrintStream) = 
-    new OutputFormatter(output, printUnfiltered = false, printFiltered = false, printGroups = false, printAnswers = true, detailedAnswers = false)
+  def formattedAnswersOnly(output: PrintStream, runIDName: String) = 
+    new OutputFormatter(output, printUnfiltered = false, printFiltered = false, printGroups = false, printAnswers = true, detailedAnswers = false, runID = runIDName)
   
 }
