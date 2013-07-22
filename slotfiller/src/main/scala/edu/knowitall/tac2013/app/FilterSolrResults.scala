@@ -6,6 +6,7 @@ import edu.knowitall.tac2013.solr.query.SolrQueryType._
 import edu.knowitall.tac2013.solr.query.SolrQueryType
 import edu.knowitall.collection.immutable.Interval
 import scala.util.matching.Regex
+import edu.knowitall.tac2013.app.util.DocUtils
 
 object FilterSolrResults {
   
@@ -413,30 +414,22 @@ object FilterSolrResults {
       }
     }
     else if (candidate.queryType == SolrQueryType.COREF){
-      //filter out if the entity slot contains a wikiLinkNodeID
-      candidate.pattern.entityIn.getOrElse({""}) match {
-        case "arg1" => { if(candidate.extr.arg1.wikiLink.isDefined) return false}
-        case "arg2" => { if(candidate.extr.arg2.wikiLink.isDefined) return false}
-      }
       
-      //filter out if there is no mention of the target entity in the current sentence or the preceeding two sentences
-      val sentencesWhereEntityIsMentioned = kbpQuery.docIdToSentNumDocIdPairMap(candidate.extr.sentence.docId).map(x => x._2)
-      val thisSentenceNum = candidate.extr.sentence.sentNum
-      val sentenceRange = thisSentenceNum-2 to thisSentenceNum
-      for(sentenceNum <- sentencesWhereEntityIsMentioned){
-        if(sentenceRange.contains(sentenceNum)){
-          return true
-        }
+      val kbpQueryEntityInterval = Option(DocUtils.stanfordHelper.getIntervalOfKBPEntityMention(kbpQuery.name, candidate.entityOffsetInterval, candidate.extr.sentence.docId))
+      if(kbpQueryEntityInterval.isEmpty){
+        false 
       }
-      
-      //if there is no sentence with a mention of the entity in the specified range
-      //around the coref extraction then the candidate extraction should be filtered out.
-      false
+      else{
+        //update entity string and interval to match that of the coreferenced kbp query entity
+        //candidate.trimmedEntity.setString(kbpQuery.name)
+        candidate.trimmedEntity.setByteOffsets(kbpQueryEntityInterval.get)
+        true
+      }
+    }
+    else{
+     true
     }
     
-    else {
-      true
-    }
   }
   
 

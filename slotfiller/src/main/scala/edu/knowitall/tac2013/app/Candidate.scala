@@ -14,8 +14,11 @@ import scala.math.Ordering
 
 class TrimmedType(var string: String, var interval: Interval){
   
+  var byteOffsets : Option[Interval] = None
+  
   def setString(newString: String){string = newString}
   def setInterval(newInterval: Interval){interval = newInterval}
+  def setByteOffsets(byteOffsets: Interval){this.byteOffsets = Some(byteOffsets)}
 }
 
 class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, val types: List[Type]) {
@@ -86,10 +89,10 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
   def offsetString(field: KbpExtractionField): String = offsetString(getOffset(field))
   
   def getOffset(fill: TrimmedType): Interval = {
-    val startOffset = extr.sentence.startOffset
-    val firstToken = extr.sentence.chunkedTokens(fill.interval).minBy(_.offset)
-    val lastToken = extr.sentence.chunkedTokens(fill.interval).maxBy(t => t.offset + t.string.length)
-    Interval.closed(firstToken.offset + startOffset, lastToken.offset + lastToken.string.length + startOffset - 1)
+	    val startOffset = extr.sentence.startOffset
+	    val firstToken = extr.sentence.chunkedTokens(fill.interval).minBy(_.offset)
+	    val lastToken = extr.sentence.chunkedTokens(fill.interval).maxBy(t => t.offset + t.string.length)
+	    Interval.closed(firstToken.offset + startOffset, lastToken.offset + lastToken.string.length + startOffset - 1)
   }
   
   def getOffset(field: KbpExtractionField): Interval = {

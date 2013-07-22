@@ -221,10 +221,14 @@ object Benchmarker {
     
     var corpus = "2013"
     var output = System.out
+    var corefOn = false
       
     val parser = new OptionParser() {
       arg("corpus", "2012 or 2013", { corpus = _ })
       opt("outFile", "File for output, default stdout", { s => output = new PrintStream(s)})
+      opt("coref", "Coref on true or false", { s => corefOn = s match{
+        case "true" => true
+        case _ =>  false }})
     }
     
     if (!parser.parse(args)) return
@@ -234,12 +238,12 @@ object Benchmarker {
     
     val outputStrings = corpus match {
       case "2013" => {
-        SolrHelper.setConfigurations("new", false)
-        new Benchmarker(SolrQueryExecutor.getInstance("new"), load2013Benchmark).go
+        SolrHelper.setConfigurations("new", corefOn)
+        new Benchmarker(SolrQueryExecutor.getInstance("new",corefOn), load2013Benchmark).go
       }
       case "2012" => {
-        SolrHelper.setConfigurations("old", false)
-        new Benchmarker(SolrQueryExecutor.getInstance("old"), load2012Benchmark).go
+        SolrHelper.setConfigurations("old", corefOn)
+        new Benchmarker(SolrQueryExecutor.getInstance("old",corefOn), load2012Benchmark).go
       }
       case _ => throw new RuntimeException("Corpus must be 2012 or 2013")
     }

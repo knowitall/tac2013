@@ -93,6 +93,7 @@ class FindSlotFills(val oldOrNew: String, val corefOn: Boolean) {
     
     //get correct date format strings
     DocUtils.putInTimexFormat(slotCandidateSets)
+    DocUtils.findBestFillMention(slotCandidateSets)
     
     val slotBestAnswers = slotCandidateSets map { case (slot, patternCandidates) =>
       (slot -> new SlotFillReranker(fmt).findSlotAnswers(slot, kbpQuery, patternCandidates))  

@@ -49,10 +49,22 @@ object DocUtils {
     }
     
     val mentions = getCorefMentions(args(0),Interval.closed(args(1).toInt,args(2).toInt))
-    
-    for(m <- mentions){
-      println(m.toString)
+    if(mentions.isDefined){
+	    for(m <- mentions.get){
+	      println(m.mentionSpan)
+	    }
     }
+    
+  }
+  
+  def findBestFillMention(slotCandidates: Map[Slot,Seq[Candidate]]){
+    
+    for(slot <-slotCandidates.keys){
+      for(candidate <- slotCandidates(slot)){
+        
+      }
+    }
+    
     
   }
 
