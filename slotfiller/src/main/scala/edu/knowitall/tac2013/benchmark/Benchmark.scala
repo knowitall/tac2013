@@ -30,7 +30,7 @@ case class BenchmarkItem(val entityName: String, val entityType: String, val nod
 
 case class BenchmarkItemSet(val entityName: String, val entityType: String, val nodeId: String, val items: Set[BenchmarkItem])
 
-class Benchmarker(val solrExec: SolrQueryExecutor, val benchmarkItemSets: Iterable[BenchmarkItemSet]) {
+class Benchmarker(val solrExec: SolrQueryExecutor, val benchmarkItemSets: Iterable[BenchmarkItemSet], val oldOrNew: String) {
 
   import edu.knowitall.tac2013.app.Candidate
   import edu.knowitall.tac2013.app.FilterSolrResults
@@ -54,7 +54,7 @@ class Benchmarker(val solrExec: SolrQueryExecutor, val benchmarkItemSets: Iterab
 
     val filteredCandidates = items.map( item => (item.slot, FilterSolrResults.filterResults(unfiltered(item.slot), item.kbpQuery))).toMap
 
-    DocUtils.putInTimexFormat(filteredCandidates)
+    DocUtils.putInTimexFormat(filteredCandidates,oldOrNew)
     
     val bestAnswers = items.par.map( item => (item.slot, new SlotFillReranker(nullOutput).findSlotAnswers(item.slot, item.kbpQuery, filteredCandidates(item.slot)))).toMap
 
@@ -240,11 +240,11 @@ object Benchmarker {
     val outputStrings = corpus match {
       case "2013" => {
         SolrHelper.setConfigurations("new", corefOn)
-        new Benchmarker(SolrQueryExecutor.getInstance("new",corefOn), load2013Benchmark).go
+        new Benchmarker(SolrQueryExecutor.getInstance("new",corefOn), load2013Benchmark, "new").go
       }
       case "2012" => {
         SolrHelper.setConfigurations("old", corefOn)
-        new Benchmarker(SolrQueryExecutor.getInstance("old",corefOn), load2012Benchmark).go
+        new Benchmarker(SolrQueryExecutor.getInstance("old",corefOn), load2012Benchmark, "old").go
       }
       case _ => throw new RuntimeException("Corpus must be 2012 or 2013")
     }

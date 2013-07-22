@@ -14,11 +14,11 @@ import scala.math.Ordering
 
 class TrimmedType(var string: String, var interval: Interval){
   
-  var byteOffsets : Option[Interval] = None
+  var supportingByteOffsets : Option[Interval] = None
   
   def setString(newString: String){string = newString}
   def setInterval(newInterval: Interval){interval = newInterval}
-  def setByteOffsets(byteOffsets: Interval){this.byteOffsets = Some(byteOffsets)}
+  def setSupportingByteOffsets(byteOffsets: Interval){this.supportingByteOffsets = Some(byteOffsets)}
 }
 
 class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, val types: List[Type]) {
@@ -84,7 +84,13 @@ class Candidate(val id: Int, val solrQuery: SolrQuery, val extr: KbpExtraction, 
   
   def offsetString(interval: Interval): String = "%d-%d".format(interval.start, interval.last)
   
-  def offsetString(trimmedItem: TrimmedType): String = offsetString(getOffset(trimmedItem))
+  def offsetString(trimmedItem: TrimmedType): String = {
+      var str= offsetString(getOffset(trimmedItem))
+      if(trimmedItem.supportingByteOffsets.isDefined){
+        str = str + "," + offsetString(trimmedItem.supportingByteOffsets.get)
+      }
+      str
+  }
   
   def offsetString(field: KbpExtractionField): String = offsetString(getOffset(field))
   

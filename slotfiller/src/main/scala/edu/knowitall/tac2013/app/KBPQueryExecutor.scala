@@ -9,7 +9,7 @@ import scopt.OptionParser
 
 object KBPQueryExecutor {
 
-  def executeKbpQuery(queryExecutor: SolrQueryExecutor, kbpQuery: KBPQuery, outFmt: OutputFormatter): Unit = {
+  def executeKbpQuery(queryExecutor: SolrQueryExecutor, kbpQuery: KBPQuery, outFmt: OutputFormatter, oldOrNew: String): Unit = {
 
     val slots = kbpQuery.slotsToFill
 
@@ -17,7 +17,7 @@ object KBPQueryExecutor {
     
     val filteredCandidates = slots map { slot => (slot, filterResults(unfiltered(slot), kbpQuery)) } toMap
     
-    DocUtils.putInTimexFormat(filteredCandidates)
+    DocUtils.putInTimexFormat(filteredCandidates,oldOrNew)
 
     val bestAnswers = slots map { slot => 
       (slot, new SlotFillReranker(outFmt).findSlotAnswers(slot, kbpQuery, filteredCandidates(slot))) 
@@ -58,7 +58,7 @@ object KBPQueryExecutor {
 
     val kbpQueryList = KBPQuery.parseKBPQueries(queryFile)
         for (kbpQuery <- kbpQueryList) {
-      executeKbpQuery(queryExecutor, kbpQuery, outputFormatter)
+      executeKbpQuery(queryExecutor, kbpQuery, outputFormatter,corpus)
     }
     
     outputStream.close()

@@ -401,8 +401,12 @@ object FilterSolrResults {
       }
       else{
         //update entity string and interval to match that of the coreferenced kbp query entity
-        //candidate.trimmedEntity.setString(kbpQuery.name)
-        candidate.trimmedEntity.setByteOffsets(kbpQueryEntityInterval.get)
+        candidate.trimmedEntity.setString(kbpQuery.name)
+        val supportingByteOffsets  = DocUtils.getByteOffSetsOfFirstOccurenceOfString(candidate.extr.sentence.docId,kbpQuery.name)
+        //if the offsets can be found..
+        if(supportingByteOffsets.isDefined){
+          candidate.trimmedEntity.setSupportingByteOffsets(supportingByteOffsets.get)
+        }
         true
       }
     }
