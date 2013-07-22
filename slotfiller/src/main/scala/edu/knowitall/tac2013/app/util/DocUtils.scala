@@ -12,7 +12,7 @@ object DocUtils {
   
   val stanfordHelper = new StanfordAnnotatorHelperMethods()
   
-  def putInTimexFormat(slotCandidates: Map[Slot,Seq[Candidate]]) {
+  def putInTimexFormat(slotCandidates: Map[Slot,Seq[Candidate]]): Unit = stanfordHelper.synchronized {
     
     for(slot <- slotCandidates.keys){
       if(slot.isDate){
@@ -29,7 +29,7 @@ object DocUtils {
     
   }
   
-  def getCorefMentions(docId: String, interval: Interval): Option[List[CorefMention]] = {
+  def getCorefMentions(docId: String, interval: Interval): Option[List[CorefMention]] = stanfordHelper.synchronized {
     val rawDoc = SolrHelper.getRawDoc(docId)
     val mentions = stanfordHelper.getCorefMentions(rawDoc, interval)
     if(mentions.isEmpty()){

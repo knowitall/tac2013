@@ -221,30 +221,17 @@ object FilterSolrResults {
       val types = SemanticTaggers.useIntegerTagger(chunkedSentence)
       for (t <- types) {
         if(intervalMatches(t.interval,interval,backwards)) return Some(t.interval())
-
       }
-
       return None
-      
     } else if (semanticType =="Crime"){
-
       val types = SemanticTaggers.useCrimeTagger(chunkedSentence)
       for (t <- types) {
         if(intervalMatches(t.interval,interval,backwards)) return Some(t.interval())
-
       }
-
-      return None
-      
+      return None   
     } else {
-    
-    
-
       return None
-
     }
-
-    
   }
 
   //filter for arg2 beginning with proper preposition
@@ -527,7 +514,7 @@ object FilterSolrResults {
     val fillText = candidate.trimmedFill.string.toLowerCase
     
     if (Slot.fromName(candidate.pattern.slotName).isCauseOfDeath) {
-      val fillTokens = candidate.fillField.tokens
+      val fillTokens = candidate.extr.sentence.chunkedTokens(candidate.trimmedFill.interval)
       !fillTokens.headOption.exists(_.isPronoun)
       
     } else if (Slot.fromName(candidate.pattern.slotName).isTitle) {
