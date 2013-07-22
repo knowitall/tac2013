@@ -7,6 +7,7 @@ import edu.knowitall.tac2013.solr.query.SolrQueryType
 import edu.knowitall.collection.immutable.Interval
 import scala.util.matching.Regex
 import edu.knowitall.tac2013.app.util.DocUtils
+import edu.knowitall.common.Resource.using
 
 object FilterSolrResults {
   
@@ -120,40 +121,37 @@ object FilterSolrResults {
     val semanticType = semanticTypeRaw.replace("<","").replace(">", "").trim()
     
     val chunkedSentence = candidate.extr.sentence.chunkedTokens
-   
-    
+
     if (semanticType == "Organization") {
       val types = SemanticTaggers.useStandfordNERTagger(chunkedSentence)
       for (t <- types) {
-         if (t.descriptor() == "StanfordORGANIZATION") {
-             if(intervalMatches(t.interval,interval,backwards)){
-                return Some(t.interval())
-             }
-            }
-      }
-      return None
-    } else if(semanticType == "Person"){
-      val types = SemanticTaggers.useStandfordNERTagger(chunkedSentence)
-      for (t <- types) {
-        if(intervalMatches(t.interval,interval,backwards)) {
-            if (t.descriptor() == "StanfordPERSON") {
-                return Some(t.interval())
-            }
+        if (t.descriptor() == "StanfordORGANIZATION") {
+          if (intervalMatches(t.interval, interval, backwards)) {
+            return Some(t.interval())
+          }
         }
       }
       return None
-    }
-     else if(semanticType == "Location" || semanticType =="City" || semanticType =="Country" || semanticType =="Stateorprovince"){
+    } else if (semanticType == "Person") {
       val types = SemanticTaggers.useStandfordNERTagger(chunkedSentence)
       for (t <- types) {
-        if(intervalMatches(t.interval,interval,backwards)) {
-            if (t.descriptor() == "StanfordLOCATION") {
-                return Some(t.interval())
-            }
+        if (intervalMatches(t.interval, interval, backwards)) {
+          if (t.descriptor() == "StanfordPERSON") {
+            return Some(t.interval())
+          }
         }
       }
       return None
-      
+    } else if (semanticType == "Location" || semanticType == "City" || semanticType == "Country" || semanticType == "Stateorprovince") {
+      val types = SemanticTaggers.useStandfordNERTagger(chunkedSentence)
+      for (t <- types) {
+        if (intervalMatches(t.interval, interval, backwards)) {
+          if (t.descriptor() == "StanfordLOCATION") {
+            return Some(t.interval())
+          }
+        }
+      }
+      return None
     }
 
     else if (semanticType == "School") {
@@ -284,12 +282,8 @@ object FilterSolrResults {
 
   private def satisfiesRelFilter(candidate: Candidate): Boolean = {
 
-    
     //if there are no semantic strings in the relation condidtion then count backwards for
     //the start interval and call satisfiesRequirementAtInterval
-    
-    
-
     candidate.pattern.relString match {
       case Some(relString) => {
         
@@ -304,7 +298,6 @@ object FilterSolrResults {
   }
   
   private def satisfiesTermFilters(candidate: Candidate) : Boolean = {
-    
     
     //arg1 Terms
     val arg1TermsSatisfied =
@@ -432,7 +425,6 @@ object FilterSolrResults {
     
   }
   
-
   private def satisfiesSemanticFilter(candidate: Candidate): Boolean = {
 
     val pattern = candidate.pattern
@@ -516,28 +508,32 @@ object FilterSolrResults {
       if(candidate.trimmedFill.interval.length >5) return false
     }
     
-    
     true
   }
   
+  
+  val titleStopListPath = "/edu/knowitall/tac2013/findSlotFillersApp/TitleStoplist.txt"
+  
+  val titleStopList = {
+    val resource = getClass.getResource(titleStopListPath)
+    require(resource != null, s"Couldn't find $titleStopListPath")
+    using(io.Source.fromURL(resource)) { source =>
+      source.getLines.map(_.toLowerCase.trim).toSet 
+    }
+  }
+
   def satisfiesSlotFilter(candidate: Candidate): Boolean = {
+
+    val fillText = candidate.trimmedFill.string.toLowerCase
     
-    if(Slot.fromName(candidate.pattern.slotName).isCauseOfDeath){     
-       if(candidate.fillField.tokens.headOption.isDefined){
-         if(candidate.fillField.tokens.head.isPronoun)
-           return false
-       }       
-    }
-    else if(Slot.fromName(candidate.pattern.slotName).isTitle){
+    if (Slot.fromName(candidate.pattern.slotName).isCauseOfDeath) {
+      val fillTokens = candidate.fillField.tokens
+      !fillTokens.headOption.exists(_.isPronoun)
       
-    	if(candidate.fillField.tokenInterval.size == 1){
-    	  if(candidate.fillField.originalText == "leader" || candidate.fillField.originalText == "head"){
-    	    return false
-    	  }
-    	}    	
+    } else if (Slot.fromName(candidate.pattern.slotName).isTitle) {
+      !titleStopList.contains(fillText) 
     }
-    return true
-    
+    else true
   }
   
   val htmlEntityPattern = ".*\\s+&\\w+.*".r.pattern

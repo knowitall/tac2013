@@ -20,7 +20,7 @@ case class Slot(name: String, maxResults: Int, patterns: Seq[SlotPattern]) {
   def isDate = if(name.contains("date")) true else false
   def isAlternateName = if(name.contains("alternate_names")) true else false
   def isCauseOfDeath = if(name.contains("cause_of_death")) true else false
-  def isTitle = if(name == "per:title") true else false
+  def isTitle = name.equals("per:title")
 }
 
 object Slot {
