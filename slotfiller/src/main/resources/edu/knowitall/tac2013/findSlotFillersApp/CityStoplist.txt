@@ -1,0 +1,9 @@
+manhattan
+bronx
+the bronx
+brooklyn
+queens
+staten island
+washington
+washington d.c.
+washington dc

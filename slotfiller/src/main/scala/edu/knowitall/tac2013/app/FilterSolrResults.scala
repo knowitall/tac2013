@@ -412,6 +412,38 @@ object FilterSolrResults {
     
   }
   
+  private def loadStoplist(rsrc: String) = {
+    val resource = getClass.getResource(rsrc)
+    require(resource != null, s"Couldn't find $rsrc")
+    using(io.Source.fromURL(resource)) { source =>
+      source.getLines.map(_.toLowerCase.trim).toSet 
+    }
+  }
+  
+  private val cityStoplistFile     = "/edu/knowitall/tac2013/findSlotFillersApp/CityStoplist.txt"
+  private val provinceStoplistFile = "/edu/knowitall/tac2013/findSlotFillersApp/ProvinceStoplist.txt"
+  private val countryStoplistFile  = "/edu/knowitall/tac2013/findSlotFillersApp/CountryStoplist.txt"
+    
+  private val cityStoplist     = loadStoplist(cityStoplistFile) 
+  private val provinceStoplist = loadStoplist(provinceStoplistFile)
+  private val countryStoplist  = loadStoplist(countryStoplistFile)
+  
+  private def satisfiesLocationStoplist(candidate: Candidate): Boolean = {
+
+    val fillText = candidate.trimmedFill.string.toLowerCase
+    val slotType = candidate.pattern.slotType.getOrElse({ "" })
+
+    if (slotType == "City") {
+      !cityStoplist.contains(fillText)
+    } else if (slotType == "Stateorprovince") {
+      !provinceStoplist.contains(fillText)
+    } else if (slotType == "Country") {
+      !countryStoplist.contains(fillText)
+    } else {
+      true
+    }    
+  }
+  
   private def satisfiesSemanticFilter(candidate: Candidate): Boolean = {
 
     val pattern = candidate.pattern
@@ -501,13 +533,9 @@ object FilterSolrResults {
   
   val titleStopListPath = "/edu/knowitall/tac2013/findSlotFillersApp/TitleStoplist.txt"
   
-  val titleStopList = {
-    val resource = getClass.getResource(titleStopListPath)
-    require(resource != null, s"Couldn't find $titleStopListPath")
-    using(io.Source.fromURL(resource)) { source =>
-      source.getLines.map(_.toLowerCase.trim).toSet 
-    }
-  }
+
+    
+  val titleStopList = loadStoplist(titleStopListPath)
 
   def satisfiesSlotFilter(candidate: Candidate): Boolean = {
 
@@ -541,6 +569,7 @@ object FilterSolrResults {
             satisfiesHtmlFilter(candidate) &&
             satisfiesTermFilters(candidate) &&
             satisfiesEntityFilter(kbpQuery)(candidate) &&
+            satisfiesLocationStoplist(candidate) &&
             satisfiesSemanticFilter(candidate) &&
             satisfiesSlotFilter(candidate))
     
