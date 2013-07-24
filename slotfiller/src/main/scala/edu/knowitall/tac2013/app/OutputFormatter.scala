@@ -114,6 +114,13 @@ case class OutputFormatter(
       else printSlotAnswer(kbpSlot, kbpQuery, bestAnswers.getOrElse(kbpSlot, Nil))
     }
   }
+  
+  def printEmpty(kbpQuery: KBPQuery){
+    //iterate over every slot type
+    for (kbpSlot <- kbpQuery.slotsToFill) yield {
+      printSlotAnswer(kbpSlot,kbpQuery,Nil)
+    }
+  }
 
   private def printSlotAnswer(slot: Slot, kbpQuery: KBPQuery, bestAnswers: Seq[Candidate]): Unit = {
 

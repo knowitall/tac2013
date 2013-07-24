@@ -566,10 +566,10 @@ object FilterSolrResults {
             satisfiesRelFilter(candidate) &&
             satisfiesHtmlFilter(candidate) &&
             satisfiesTermFilters(candidate) &&
-            satisfiesEntityFilter(kbpQuery)(candidate) &&
+            satisfiesSlotFilter(candidate) &&
             satisfiesLocationStoplist(candidate) &&
             satisfiesSemanticFilter(candidate) &&
-            satisfiesSlotFilter(candidate))
+            satisfiesEntityFilter(kbpQuery)(candidate))
     
     unfiltered filter combinedFilter
   }

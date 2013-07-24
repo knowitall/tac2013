@@ -60,7 +60,18 @@ object KBPQueryExecutor {
 
     val kbpQueryList = KBPQuery.parseKBPQueries(queryFile)
         for (kbpQuery <- kbpQueryList) {
-      executeKbpQuery(queryExecutor, kbpQuery, outputFormatter,corpus)
+          try{
+             executeKbpQuery(queryExecutor, kbpQuery, outputFormatter,corpus)
+             //clear hashmaps from previous queries in stanford helper so we don't
+             //get memory issues 
+             DocUtils.stanfordHelper.clearHashMaps()
+          }
+          //catch any exception and print nil for every slot in the query that failed
+          catch{
+            case e: Exception => {
+              outputFormatter.printEmpty(kbpQuery)
+            }
+          }
     }
     
     outputStream.close()

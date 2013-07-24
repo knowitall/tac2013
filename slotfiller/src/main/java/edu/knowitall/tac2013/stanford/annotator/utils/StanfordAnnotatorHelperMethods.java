@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Stack;
+import java.util.WeakHashMap;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.IOUtils;
@@ -32,6 +33,7 @@ import edu.stanford.nlp.util.Pair;
 
 import edu.knowitall.tac2013.app.Candidate;
 import edu.knowitall.tac2013.app.KBPQueryEntityType;
+import edu.knowitall.tac2013.app.util.DocUtils;
 import edu.knowitall.tac2013.solr.query.SolrHelper;
 
 
@@ -69,6 +71,11 @@ public class StanfordAnnotatorHelperMethods {
 		StanfordAnnotatorHelperMethods sh = new StanfordAnnotatorHelperMethods();
 		sh.runSuTime("testXMLDoc");
 		
+	}
+	
+	public void clearHashMaps(){
+		corefAnnotationMap.clear();
+		suTimeAnnotationMap.clear();
 	}
 	
 	public void runSuTime(String docID) throws FileNotFoundException, IOException{
@@ -276,7 +283,10 @@ public class StanfordAnnotatorHelperMethods {
 			}
 			document = new Annotation(xmlDoc);
 			try{
+		     System.out.println("Annotating document "+ docID);
+		     System.out.println("Document has size " + DocUtils.docLength(docID));
 			 corefPipeline.annotate(document);
+		     System.out.println("Done Annotating document "+ docID);
 			 corefAnnotationMap.put(docID, document);
 			}
 			catch (Exception e){
