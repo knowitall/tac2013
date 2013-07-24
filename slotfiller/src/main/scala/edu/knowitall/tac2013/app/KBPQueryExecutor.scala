@@ -69,6 +69,7 @@ object KBPQueryExecutor {
           //catch any exception and print nil for every slot in the query that failed
           catch{
             case e: Exception => {
+              println(e.getMessage())
               outputFormatter.printEmpty(kbpQuery)
             }
           }

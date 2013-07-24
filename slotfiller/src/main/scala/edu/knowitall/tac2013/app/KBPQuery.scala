@@ -108,47 +108,55 @@ object KBPQuery {
     new KBPQuery(idText,nameText,docIDText,begInt,endInt,entityType,nodeId,slotsToFill)
   }
   
-  private def parseSingleKBPQueryFromXML(queryXML: scala.xml.Node): KBPQuery = {
+  private def parseSingleKBPQueryFromXML(queryXML: scala.xml.Node): Option[KBPQuery] = {
     
 
     //val pathToXML = Source.fromFile(pathToFile)
-    
-    val idText = queryXML.attribute("id") match 
-    		{case Some(id) if id.length ==1 => id(0).text
-    		 case None => throw new IllegalArgumentException("no id value for query in xml doc")
-    		}
-    val nameText = queryXML.\\("name").text
-    val docIDText = queryXML.\\("docid").text
-    val begText = queryXML.\\("beg").text
-    val begInt = begText.toInt
-    val endText = queryXML.\\("end").text
-    val endInt = endText.toInt
-    val entityTypeText = queryXML.\\("enttype").text
-    val entityType = entityTypeText match {
-      case "ORG" => ORG
-      case "PER" => PER
-      case _ => throw new IllegalArgumentException("improper 'enttype' value in xml doc")
+    try{
+	    val idText = queryXML.attribute("id") match 
+	    		{case Some(id) if id.length ==1 => id(0).text
+	    		 case None => throw new IllegalArgumentException("no id value for query in xml doc")
+	    		}
+	    val nameText = queryXML.\\("name").text
+	    val docIDText = queryXML.\\("docid").text
+	    val begText = queryXML.\\("beg").text
+	    val begInt = begText.toInt
+	    val endText = queryXML.\\("end").text
+	    val endInt = endText.toInt
+	    val entityTypeText = queryXML.\\("enttype").text
+	    val entityType = entityTypeText match {
+	      case "ORG" => ORG
+	      case "PER" => PER
+	      case _ => throw new IllegalArgumentException("improper 'enttype' value in xml doc")
+	    }
+	    val nodeIDText = queryXML.\\("nodeid").text.trim()
+	    val nodeId = if (nodeIDText.isEmpty || nodeIDText.startsWith("NIL")) None else Some(nodeIDText)
+	    val ignoreText = queryXML.\\("ignore").text
+	    val ignoreSlots = {
+	      val ignoreNames = ignoreText.split(" ").toSet
+	      Slot.getSlotTypesList(entityType).filter(slot => ignoreNames.contains(slot.name))
+	    }
+	    
+	    
+	    //find slotsToFill by taking the difference between the global slots set
+	    // and the set specified in the xml doc
+	    val slotsToFill = entityType match{
+	      case ORG => {
+	        Slot.orgSlots &~ ignoreSlots
+	      }
+	      case PER => {
+	        Slot.personSlots &~ ignoreSlots
+	      }
+	    }
+	    new Some(KBPQuery(idText,nameText,docIDText,begInt,endInt,entityType,nodeId,slotsToFill))
     }
-    val nodeIDText = queryXML.\\("nodeid").text.trim()
-    val nodeId = if (nodeIDText.isEmpty || nodeIDText.startsWith("NIL")) None else Some(nodeIDText)
-    val ignoreText = queryXML.\\("ignore").text
-    val ignoreSlots = {
-      val ignoreNames = ignoreText.split(" ").toSet
-      Slot.getSlotTypesList(entityType).filter(slot => ignoreNames.contains(slot.name))
-    }
-    
-    
-    //find slotsToFill by taking the difference between the global slots set
-    // and the set specified in the xml doc
-    val slotsToFill = entityType match{
-      case ORG => {
-        Slot.orgSlots &~ ignoreSlots
+    catch {
+      case e: Exception => {
+        println(e.getMessage())
+        return None
+        
       }
-      case PER => {
-        Slot.personSlots &~ ignoreSlots
-      }
     }
-    new KBPQuery(idText,nameText,docIDText,begInt,endInt,entityType,nodeId,slotsToFill)
   }
   
 
@@ -159,7 +167,7 @@ object KBPQuery {
      
      val kbpQueryList = for( qXML <- queryXMLSeq) yield parseSingleKBPQueryFromXML(qXML)
     
-     kbpQueryList.toList
+     kbpQueryList.toList.flatten
   }
   
 }
