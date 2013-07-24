@@ -122,7 +122,7 @@ object SlotFillConsistency {
          locationConsistentMap += (cityListSlot.get -> truncatedLists(1))
     }
     if(stateOrProvinceListSlot.isDefined && cityListSlot.isDefined){
-         val truncatedLists = getTruncatedListForSlotFills(countryListSlot.get,cityListSlot.get,locationConsistentMap.toMap)
+         val truncatedLists = getTruncatedListForSlotFills(stateOrProvinceListSlot.get,cityListSlot.get,locationConsistentMap.toMap)
          locationConsistentMap += (stateOrProvinceListSlot.get -> truncatedLists(0))
          locationConsistentMap += (cityListSlot.get -> truncatedLists(1))
     }
