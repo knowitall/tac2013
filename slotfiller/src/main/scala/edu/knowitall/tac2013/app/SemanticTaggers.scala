@@ -38,7 +38,7 @@ object SemanticTaggers {
 
   private val morpha = new MorphaStemmer()
 
-  def useStandfordNERTagger(chunkedSentence: Seq[ChunkedToken]): List[Type] = StanfordNERTagger.synchronized {
+  def useStandfordNERTagger(chunkedSentence: Seq[ChunkedToken]): List[Type] =  {
     var tokens = List[Lemmatized[ChunkedToken]]()
     for (token <- chunkedSentence) {
       val lemma = morpha.lemmatizeToken(token);

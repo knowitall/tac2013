@@ -28,7 +28,7 @@ object SlotFillerBuild extends Build {
     Keys.fork in run := true,
     Keys.fork in Test := true,
     javaOptions in Test += "-Xmx8G",
-    javaOptions in run += "-Xmx8G",
+    javaOptions in run += "-Xmx12G",
     resolvers ++= Seq(
       "knowitall" at "http://knowitall.cs.washington.edu/maven2",
       "knowitall-snapshot" at "http://knowitall.cs.washington.edu/maven2-snapshot",
